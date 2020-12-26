@@ -1,16 +1,17 @@
 // Theme settings
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
+import { indigo } from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: "Roboto",
+    fontFamily: "Quicksand",
   },
   palette: {
     primary: {
-      main: "#d40000",
+      main: indigo[900],
     },
     secondary: {
-      main: "#000",
+      main: indigo[50],
     },
   },
 });

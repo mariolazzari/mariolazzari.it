@@ -1,9 +1,18 @@
 // App reducer
 import { SET_LOCALE } from "../actions/types";
+// locales
+import messages_EN from "../locales/en.json";
+import messages_IT from "../locales/it.json";
 
 // initial state
 const initState = {
-  locale: "it",
+  locale: "en",
+  messages: new Map([
+    ["en", messages_EN],
+    ["it", messages_IT],
+  ]),
+  drawerOpen: false,
+  menuOptions: [],
 };
 
 // app reducer
