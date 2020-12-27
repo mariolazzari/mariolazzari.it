@@ -6,10 +6,15 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
+// MUI icons
+import MailIcon from "@material-ui/icons/Mail";
+import DownloadIcon from "@material-ui/icons/CloudDownload";
+
 // MUI colors
 import { indigo } from "@material-ui/core/colors";
 // component
 import CardBox from "../../components/CardBox";
+import { Certification } from "../Certifications";
 
 // component styles
 const useStyles = makeStyles(theme => ({
@@ -30,6 +35,9 @@ const useStyles = makeStyles(theme => ({
   button: {
     width: theme.spacing(10),
     margin: theme.spacing(1),
+  },
+  icon: {
+    margin: theme.spacing(0, 1),
   },
 }));
 
@@ -100,6 +108,7 @@ const Home = () => {
               variant="contained"
               color="primary"
             >
+              <MailIcon className={classes.icon} color="secondary" />
               <FormattedMessage id="home.mailButton" />
             </Button>
           </Tooltip>
@@ -110,6 +119,7 @@ const Home = () => {
               variant="contained"
               color="secondary"
             >
+              <DownloadIcon className={classes.icon} color="primary" />
               <FormattedMessage id="home.cvButton" />
             </Button>
           </Tooltip>
