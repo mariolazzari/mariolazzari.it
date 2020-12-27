@@ -136,8 +136,7 @@ const handleError = (ex, type = GET) => {
 // file upload
 const fileUpload = (api, file, folder = "") => callApi(FILE, api, file, folder);
 
-// exports
-export default {
+const exportObj = {
   get,
   post,
   put,
@@ -145,3 +144,6 @@ export default {
   delete: del,
   fileUpload,
 };
+
+// exports
+export default exportObj;

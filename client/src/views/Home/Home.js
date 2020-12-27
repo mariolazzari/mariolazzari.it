@@ -175,22 +175,29 @@ const Home = () => {
             />
           </Grid>
         ))}
-      </Grid>
 
-      <Grid item xs={12}>
-        <Typography
-          className={classes.lastCert}
-          variant="h3"
-          color="primary"
-          align="center"
-        >
-          <FormattedMessage id="home.certTitle" />
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Typography variant="h5" color="primary" align="center">
-          <FormattedMessage id="home.certSubtitle" />
-        </Typography>
+        <Grid item xs={12}>
+          <Typography
+            className={classes.lastCert}
+            variant="h3"
+            color="primary"
+            align="center"
+          >
+            <FormattedMessage id="home.certTitle" />
+          </Typography>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Typography variant="h5" color="primary" align="center">
+            <FormattedMessage id="home.certSubtitle" />
+          </Typography>
+        </Grid>
+
+        {certifications.map(c => (
+          <Grid item key={c._id} xs={12} sm={6} lg={3}>
+            <Certification selected={c} />
+          </Grid>
+        ))}
       </Grid>
     </Box>
   );
