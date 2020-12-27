@@ -39,5 +39,15 @@ const required = (entity, message = "is mandatory") => [
   `${entity} ${message}`,
 ];
 
+// Customer group not found
+const notFound = (entity, id) =>
+  new ErrorResponse(`${entity} not found with id '${id}'.`, 404);
+
+// check date format
+const checkDate = date => {
+  const test = new Date(date);
+  return test != "Invalid Date";
+};
+
 // exports
-module.exports = { connectDB, updateOpts, required };
+module.exports = { connectDB, updateOpts, required, notFound, checkDate };

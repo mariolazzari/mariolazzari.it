@@ -3,6 +3,7 @@ const path = require("path");
 const readEnv = require("./utils/readEnv");
 const { connectDB } = require("./config/db");
 const logger = require("./utils/logger");
+const morgan = require("morgan");
 
 // read enviroment vars
 const {
@@ -11,18 +12,24 @@ const {
   EXPRESS_PORT,
   EXPRESS_URI,
   EXPRESS_ROOT,
-  MONGO_URI,
 } = readEnv;
 
 // database connection
-connectDB(MONGO_URI);
+connectDB();
 
 // express server
 const app = express();
 app.use(express.json());
+// log api call in dev mode only
+if (NODE_ENV === "dev") {
+  app.use(morgan("tiny"));
+}
+
+// express routes
 app.use(require("./routes"));
 app.use(require("./middlewares/errorHandler"));
-
+// static routes
+app.use("/uploads", express.static(__dirname + "/uploads"));
 // serve react client in production mode
 if (NODE_ENV === "prod") {
   // react index path

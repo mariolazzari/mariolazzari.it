@@ -1,4 +1,8 @@
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { getLastCertifiations } from "../../actions/certificationActions";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
@@ -39,10 +43,24 @@ const useStyles = makeStyles(theme => ({
   icon: {
     margin: theme.spacing(0, 1),
   },
+  mainTools: {
+    marginTop: theme.spacing(1),
+    fontWeight: "bold",
+  },
+  lastCert: {
+    marginTop: theme.spacing(3),
+    fontWeight: "bold",
+  },
 }));
 
 // component
 const Home = () => {
+  // Redux
+  const { certifications } = useSelector(state => ({
+    certifications: state.certification.certificationsLast,
+  }));
+  const dispatch = useDispatch();
+
   // cards to render
   const cards = [
     {
@@ -66,6 +84,11 @@ const Home = () => {
       text: "home.nodeText",
     },
   ];
+
+  // load last certifications
+  useEffect(() => {
+    dispatch(getLastCertifiations());
+  }, [dispatch]);
 
   // styles
   const classes = useStyles();
@@ -126,13 +149,24 @@ const Home = () => {
         </Grid>
 
         <Grid item xs={12}>
-          <Typography variant="h3" color="primary" align="center">
-            Strumenti principali
+          <Typography
+            className={classes.mainTools}
+            variant="h3"
+            color="primary"
+            align="center"
+          >
+            <FormattedMessage id="home.toolsTitle" />
           </Typography>
         </Grid>
 
-        {cards.map(card => (
-          <Grid item xs={12} sm={6} lg={3}>
+        <Grid item xs={12}>
+          <Typography variant="h5" color="primary" align="center">
+            <FormattedMessage id="home.toolsSubtitle" />
+          </Typography>
+        </Grid>
+
+        {cards.map((card, i) => (
+          <Grid key={i} item xs={12} sm={6} lg={3}>
             <CardBox
               avatar={card.avatar}
               title={card.title}
@@ -144,8 +178,18 @@ const Home = () => {
       </Grid>
 
       <Grid item xs={12}>
+        <Typography
+          className={classes.lastCert}
+          variant="h3"
+          color="primary"
+          align="center"
+        >
+          <FormattedMessage id="home.certTitle" />
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
         <Typography variant="h5" color="primary" align="center">
-          Visualizza tutti i miei strumenti nella sezione competenze.
+          <FormattedMessage id="home.certSubtitle" />
         </Typography>
       </Grid>
     </Box>
