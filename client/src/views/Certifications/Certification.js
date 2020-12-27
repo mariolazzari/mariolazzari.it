@@ -36,6 +36,20 @@ const Certification = ({ selected }) => {
     locale: state.app.locale,
     dates: state.app.dates,
   }));
+
+  // dates options
+  const options = {
+    locale: dates.get(locale),
+    includeSeconds: false,
+    addSuffix: true,
+  };
+
+  // render date
+  const renderDate = () => {
+    const date = new Date(selected.date);
+    return formatDistanceToNow(date, options);
+  };
+
   // styles
   const classes = useStyles();
 
@@ -55,17 +69,12 @@ const Certification = ({ selected }) => {
         src={selected.imagePath}
         alt={selected.title}
       />
-      <Typography>
-        {formatDistanceToNow(new Date(selected.date), {
-          locale: dates.get(locale),
-          includeSeconds: false,
-          addSuffix: true,
-        })}
-      </Typography>
+      <Typography>{renderDate()}</Typography>
     </Paper>
   );
 };
 
+// mandatory props
 Certification.propTypes = {
   selected: PropTypes.object.isRequired,
 };
