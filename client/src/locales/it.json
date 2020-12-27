@@ -11,10 +11,14 @@
   "home.title": "Mario V Lazzari",
   "home.subtitle": "Javascript Fullstack Developer",
   "home.intro": "Benvenuti nel mio sito, nel quale potrete trovare alcune informazioni su di me, i miei interessi e gli strumenti che utilizzo quotidianamente come sviluppatore software.",
+  "home.mailButton": "Mail",
+  "home.cvButton": "CV",
   "home.mongoTitle": "MongoDB",
   "home.mongoText": "MongoDB è un database di documenti che ti offre la scalabilità e la flessibilità che desideri insieme agli indici e alle query di cui hai bisogno. Il modello del documento di MongoDB è facile da comprendere e utilizzare per gli sviluppatori, e offre allo stesso tempo tutte le funzionalità richieste per soddisfare i requisiti più complessi a qualsiasi scala.",
   "home.expressTitle": "ExpressJS",
   "home.expressText": "Express è un framework per applicazioni web Node.js flessibile e leggero che fornisce una serie di funzioni avanzate per le applicazioni web e per dispositivi mobili. Con una miriade di metodi di utilità HTTP e middleware a disposizione, la creazione di un'API affidabile è un processo facile e veloce.",
+  "home.reactTitle": "ReactJS",
+  "home.reactText": "React rende la creazione di UI interattive facile e indolore. Progetta interfacce per ogni stato della tua applicazione. Ad ogni cambio di stato React aggiornerà efficientemente solamente le parti della UI che dipendono da tali dati. La natura dichiarativa dell’UI rende il tuo codice più prevedibile e facile da debuggare.",
   "home.nodeTitle": "NodeJS",
   "home.nodeText": "Node.js è una runtime di JavaScript Open source multipiattaforma orientato agli eventi per l'esecuzione di codice JavaScript, costruita sul motore JavaScript V8 di Google Chrome. Molti dei suoi moduli base sono scritti in JavaScript, e gli sviluppatori possono scrivere nuovi moduli in JavaScript."
 }

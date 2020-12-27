@@ -19,6 +19,9 @@ connectDB(MONGO_URI);
 
 // express server
 const app = express();
+app.use(express.json());
+app.use(require("./routes"));
+app.use(require("./middlewares/errorHandler"));
 
 // serve react client in production mode
 if (NODE_ENV === "prod") {

@@ -5,6 +5,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import Tooltip from "@material-ui/core/Tooltip";
 // MUI colors
 import { indigo } from "@material-ui/core/colors";
 // component
@@ -27,6 +28,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1, "10%"),
   },
   button: {
+    width: theme.spacing(10),
     margin: theme.spacing(1),
   },
 }));
@@ -92,27 +94,49 @@ const Home = () => {
 
       <Grid container justify="center" spacing={2}>
         <Grid item container justify="center" xs={12}>
-          <Button
-            className={classes.button}
-            variant="contained"
-            color="primary"
-          >
-            Scrivimi
-          </Button>
-          <Button
-            className={classes.button}
-            variant="contained"
-            color="secondary"
-          >
-            Scrica CV
-          </Button>
+          <Tooltip title="Premi qui per contattarmi">
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="primary"
+            >
+              <FormattedMessage id="home.mailButton" />
+            </Button>
+          </Tooltip>
+
+          <Tooltip title="Premi qui per scaricare il mio CV">
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="secondary"
+            >
+              <FormattedMessage id="home.cvButton" />
+            </Button>
+          </Tooltip>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Typography variant="h3" color="primary" align="center">
+            Strumenti principali
+          </Typography>
         </Grid>
 
         {cards.map(card => (
           <Grid item xs={12} sm={6} lg={3}>
-            <CardBox avatar={card.avatar} title={card.title} text={card.text} />
+            <CardBox
+              avatar={card.avatar}
+              title={card.title}
+              text={card.text}
+              height={400}
+            />
           </Grid>
         ))}
+      </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h5" color="primary" align="center">
+          Visualizza tutti i miei strumenti nella sezione competenze.
+        </Typography>
       </Grid>
     </Box>
   );

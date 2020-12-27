@@ -4,7 +4,6 @@ import { FormattedMessage } from "react-intl";
 // MUI components
 import { makeStyles } from "@material-ui/core/";
 import Paper from "@material-ui/core/Paper";
-import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 
 // styles
@@ -47,7 +46,7 @@ const CardBox = props => {
           className={classes.image}
           src={props.avatar}
           alt={props.title}
-          height={props.height || 75}
+          height={props.imageHeight || 75}
         />
       )}
 

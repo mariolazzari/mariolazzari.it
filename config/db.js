@@ -1,21 +1,43 @@
 const mongoose = require("mongoose");
+const readEnv = require("../utils/readEnv");
+const ErrorResponse = require("../utils/ErrorResponse");
 const logger = require("../utils/logger");
 
-// connection options
-const OPTS = {
+// read env settings
+const { MONGO_URI, NODE_ENV } = readEnv;
+
+// Mongo DB connection
+const MONGO_OPTS = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  autoIndex: NODE_ENV === "dev",
 };
 
-// connect to MongoDB
-const connectDB = async uri => {
+// connect to server
+const connectDB = async () => {
   try {
-    await mongoose.connect(uri, OPTS);
-    logger.info(`MongoDB connected to ${uri}.`);
+    await mongoose.connect(MONGO_URI, MONGO_OPTS);
+    // set debug in dev mode only
+    mongoose.set("debug", NODE_ENV === "dev");
+    logger.info(`MongoDB succesfully connected to ${MONGO_URI}.`);
   } catch (ex) {
-    logger.error(`Error while connecting to ${MONGO_URI}:`, ex.message);
+    logger.error(`MongoDB connection error: ${ex.message}.`);
   }
 };
 
+// update options
+const updateOpts = {
+  new: true,
+  runValidators: true,
+};
+
+// build required message for entity
+const required = (entity, message = "is mandatory") => [
+  true,
+  `${entity} ${message}`,
+];
+
 // exports
-module.exports = { connectDB };
+module.exports = { connectDB, updateOpts, required };
