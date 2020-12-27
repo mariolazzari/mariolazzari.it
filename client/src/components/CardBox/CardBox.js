@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { FormattedMessage } from "react-intl";
 // MUI components
 import { makeStyles } from "@material-ui/core/";
 import Paper from "@material-ui/core/Paper";
@@ -15,6 +16,15 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     borderRadius: theme.spacing(2),
   },
+  image: {
+    margin: theme.spacing(2, 0),
+  },
+  title: {
+    fontWeight: "bold",
+  },
+  text: {
+    margin: theme.spacing(3),
+  },
 }));
 
 // component
@@ -22,7 +32,7 @@ const CardBox = props => {
   // state
   const [elevation, setElevation] = useState(1);
   // styles
-  const classes = useStyles();
+  const classes = useStyles(props.height);
 
   return (
     <Paper
@@ -30,15 +40,28 @@ const CardBox = props => {
       elevation={elevation}
       onMouseEnter={() => setElevation(10)}
       onMouseLeave={() => setElevation(1)}
+      style={{ height: props.height || "auto" }}
     >
-      {props.avatar && <Avatar src={props.avatar} />}
-      <Typography variant="h4" align="center">
-        {props.title}
-      </Typography>
+      {props.avatar && (
+        <img
+          className={classes.image}
+          src={props.avatar}
+          alt={props.title}
+          height={props.height || 75}
+        />
+      )}
 
-      <Typography variant="h6" align="center">
-        {props.text}
-      </Typography>
+      {props.title && (
+        <Typography className={classes.title} variant="h4" align="center">
+          <FormattedMessage id={props.title} />
+        </Typography>
+      )}
+
+      {props.text && (
+        <Typography className={classes.text} align="justify">
+          <FormattedMessage id={props.text} />
+        </Typography>
+      )}
     </Paper>
   );
 };

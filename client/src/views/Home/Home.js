@@ -33,6 +33,30 @@ const useStyles = makeStyles(theme => ({
 
 // component
 const Home = () => {
+  // cards to render
+  const cards = [
+    {
+      avatar: "/images/logos/mongodb.png",
+      title: "home.mongoTitle",
+      text: "home.mongoText",
+    },
+    {
+      avatar: "/images/logos/express.png",
+      title: "home.expressTitle",
+      text: "home.expressText",
+    },
+    {
+      avatar: "/images/logos/reactjs.png",
+      title: "home.reactTitle",
+      text: "home.reactText",
+    },
+    {
+      avatar: "/images/logos/nodejs.png",
+      title: "home.nodeTitle",
+      text: "home.nodeText",
+    },
+  ];
+
   // styles
   const classes = useStyles();
 
@@ -84,18 +108,11 @@ const Home = () => {
           </Button>
         </Grid>
 
-        <Grid item xs={12} sm={6} lg={3}>
-          <CardBox avatar="/images/logos/MongoDB.png" title="MongoDB" />
-        </Grid>
-        <Grid item xs={12} sm={6} lg={3}>
-          <CardBox avatar="/images/logos/ExpressJS.png" title="NodeJS" />
-        </Grid>
-        <Grid item xs={12} sm={6} lg={3}>
-          <CardBox avatar="/images/logos/ReactJS.png" title="ReactJS" />
-        </Grid>
-        <Grid item xs={12} sm={6} lg={3}>
-          <CardBox avatar="/images/logos/NodeJS.png" title="NodeJS" />
-        </Grid>
+        {cards.map(card => (
+          <Grid item xs={12} sm={6} lg={3}>
+            <CardBox avatar={card.avatar} title={card.title} text={card.text} />
+          </Grid>
+        ))}
       </Grid>
     </Box>
   );

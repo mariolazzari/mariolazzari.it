@@ -10,5 +10,11 @@
 
   "home.title": "Mario V Lazzari",
   "home.subtitle": "Javascript Fullstack Developer",
-  "home.intro": "Welcome to my site, where I will share some infos about myself, my hobbies and the tools I used in my daily activity as a software developer."
+  "home.intro": "Welcome to my site, where I will share some infos about myself, my hobbies and the tools I used in my daily activity as a software developer.",
+  "home.mongoTitle": "MongoDB",
+  "home.mongoText": "MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need. MongoDB’s document model is simple for developers to learn and use, while still providing all the capabilities needed to meet the most complex requirements at any scale.",
+  "home.expressTitle": "ExpressJS",
+  "home.expressText": "Express è un framework per applicazioni web Node.js flessibile e leggero che fornisce una serie di funzioni avanzate per le applicazioni web e per dispositivi mobili. Con una miriade di metodi di utilità HTTP e middleware a disposizione, la creazione di un'API affidabile è un processo facile e veloce.",
+  "home.nodeTitle": "NodeJS",
+  "home.nodeText": "Node.js is an open-source, cross-platform, back-end, JavaScript runtime environment that executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command line tools and for server-side scripting—running scripts server-side to produce dynamic web page content before the page is sent to the user's web browser."
 }
