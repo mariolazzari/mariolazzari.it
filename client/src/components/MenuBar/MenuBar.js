@@ -14,7 +14,6 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     display: "flex",
     justifyContent: "space-around",
-    opacity: 0.9,
   },
   logo: {
     display: "flex",

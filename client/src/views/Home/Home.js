@@ -1,26 +1,34 @@
 import { FormattedMessage } from "react-intl";
 // MUI components
 import { makeStyles } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-// components
-import Carousel from "../../components/Carousel";
+import Button from "@material-ui/core/Button";
+// MUI colors
+import { indigo } from "@material-ui/core/colors";
+// component
+import CardBox from "../../components/CardBox";
 
 // component styles
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundImage: `url("/images/wallpapers/home.jpg")`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    minHeight: "100vh",
+    backgroundColor: indigo[50],
+    padding: theme.spacing(1),
   },
   title: {
+    marginTop: theme.spacing(8),
     fontWeight: "bold",
   },
-  subTitle: {
+  subtitle: {
     fontWeight: "bold",
   },
-  carousel: {},
+  intro: {
+    margin: theme.spacing(1, "10%"),
+  },
+  button: {
+    margin: theme.spacing(1),
+  },
 }));
 
 // component
@@ -29,33 +37,67 @@ const Home = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Grid container>
-        <Grid
-          item
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
-          xs={12}
-          md={6}
-        >
-          <Typography className={classes.title} variant="h1" color="secondary">
-            <FormattedMessage id="home.title" />
-          </Typography>
-          <Typography
-            className={classes.subTitle}
-            variant="h3"
+    <Box className={classes.root}>
+      <Typography
+        className={classes.title}
+        variant="h1"
+        color="primary"
+        align="center"
+      >
+        <FormattedMessage id="home.title" />
+      </Typography>
+
+      <Typography
+        className={classes.subtitle}
+        variant="h2"
+        color="primary"
+        align="center"
+        gutterBottom
+      >
+        <FormattedMessage id="home.subtitle" />
+      </Typography>
+
+      <Typography
+        className={classes.intro}
+        variant="h4"
+        align="center"
+        gutterBottom
+      >
+        <FormattedMessage id="home.intro" />
+      </Typography>
+
+      <Grid container justify="center" spacing={2}>
+        <Grid item container justify="center" xs={12}>
+          <Button
+            className={classes.button}
+            variant="contained"
+            color="primary"
+          >
+            Scrivimi
+          </Button>
+          <Button
+            className={classes.button}
+            variant="contained"
             color="secondary"
           >
-            <FormattedMessage id="home.subtitle" />
-          </Typography>
+            Scrica CV
+          </Button>
         </Grid>
-        <Grid item container xs={12} md={6}>
-          <Carousel />
+
+        <Grid item xs={12} sm={6} lg={3}>
+          <CardBox avatar="/images/logos/MongoDB.png" title="MongoDB" />
+        </Grid>
+        <Grid item xs={12} sm={6} lg={3}>
+          <CardBox avatar="/images/logos/ExpressJS.png" title="NodeJS" />
+        </Grid>
+        <Grid item xs={12} sm={6} lg={3}>
+          <CardBox avatar="/images/logos/ReactJS.png" title="ReactJS" />
+        </Grid>
+        <Grid item xs={12} sm={6} lg={3}>
+          <CardBox avatar="/images/logos/NodeJS.png" title="NodeJS" />
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 };
 

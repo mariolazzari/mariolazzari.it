@@ -1,12 +1,14 @@
 {
   "menu.logo": "Mario V Lazzari",
   "menu.home": "Home",
-  "menu.certifications": "Certifications",
-  "menu.contacts": "Contacts",
+  "menu.certifications": "Certificazioni",
+  "menu.contacts": "Contatti",
   "menu.nasa": "Nasa",
   "menu.meteo": "Meteo",
-  "menu.art": "Arts",
+  "menu.art": "Arte",
+  "menu.philosophy": "Filosofia",
 
   "home.title": "Mario V Lazzari",
-  "home.subtitle": "Javascript Fullstack Developer"
+  "home.subtitle": "Javascript Fullstack Developer",
+  "home.intro": "Benvenuti nel mio sito, nel quale potrete trovare alcune informazioni su di me, i miei interessi e gli strumenti che utilizzo quotidianamente come sviluppatore software."
 }
