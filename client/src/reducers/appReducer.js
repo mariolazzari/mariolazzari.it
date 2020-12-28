@@ -26,8 +26,8 @@ const initState = {
     { label: "menu.home", path: "/" },
     { label: "menu.skills", path: "/skills" },
     { label: "menu.certifications", path: "/certifications" },
-    { label: "menu.contacts", path: "/contacts" },
     { label: "menu.hobbies", path: "/hobbies" },
+    { label: "menu.contacts", path: "/contacts" },
   ],
   selectedRoute: "/",
 };

@@ -7,21 +7,21 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "100vh",
     backgroundColor: "white",
+    minHeight: "100vh",
   },
 }));
 
 // component
-const Certifications = () => {
+const Hobbies = () => {
   // styles
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <img src="/images/wip.jpg" alt="WIP" width={300} />
+      <img src="/images/wip.jpg" alt="WIP" />
     </div>
   );
 };
 
-export default Certifications;
+export default Hobbies;
