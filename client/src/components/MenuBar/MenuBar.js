@@ -8,6 +8,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import Hidden from "@material-ui/core/Hidden";
 // MUI icons
 import IdeaIcon from "@material-ui/icons/EmojiObjects";
 // components
@@ -58,9 +59,11 @@ const MenuBar = () => {
           </Typography>
         </Box>
 
-        <Box className={classes.options}>
-          <MenuBarOptions />
-        </Box>
+        <Hidden smDown>
+          <Box className={classes.options}>
+            <MenuBarOptions />
+          </Box>
+        </Hidden>
 
         <Box className={classes.icons}>
           <MenuBarIcons />
