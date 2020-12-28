@@ -9,33 +9,22 @@ import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 // MUI icons
-import MenuIcon from "@material-ui/icons/Menu";
 import IdeaIcon from "@material-ui/icons/EmojiObjects";
 // components
-import Flag from "react-world-flags";
+import MenuBarOptions from "./MenuBarOptions";
+import MenuBarIcons from "./MenuBarIcons";
 
 // component styles
 const useStyles = makeStyles(theme => ({
   appBar: {
     display: "flex",
-    justifyContent: "space-around",
+  },
+  toolbar: {
+    display: "flex",
+    justifyContent: "space-between",
   },
   logo: {
     display: "flex",
-    justifyContent: "space-around",
-    color: "white",
-  },
-  logoIcon: {
-    marginRight: theme.spacing(1),
-  },
-  options: {
-    flex: 1,
-  },
-  icons: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: theme.spacing(8),
   },
 }));
 
@@ -61,7 +50,7 @@ const MenuBar = () => {
 
   return (
     <AppBar className={classes.appBar} position="fixed" color="primary">
-      <Toolbar>
+      <Toolbar className={classes.toolbar}>
         <Box className={classes.logo}>
           <IdeaIcon className={classes.logoIcon} />
           <Typography>
@@ -69,15 +58,12 @@ const MenuBar = () => {
           </Typography>
         </Box>
 
-        <Box className={classes.options}></Box>
+        <Box className={classes.options}>
+          <MenuBarOptions />
+        </Box>
 
         <Box className={classes.icons}>
-          <Flag
-            code={locale === "it" ? "gb" : "it"}
-            height={16}
-            onClick={onClick}
-          />
-          <MenuIcon />
+          <MenuBarIcons />
         </Box>
       </Toolbar>
     </AppBar>

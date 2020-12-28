@@ -1,5 +1,9 @@
 // App reducer
-import { SET_LOCALE } from "../actions/types";
+import {
+  SET_LOCALE,
+  SET_SELECTED_ROUTE,
+  SET_DRAWER_OPEN,
+} from "../actions/types";
 // locales
 import messages_EN from "../locales/en.json";
 import messages_IT from "../locales/it.json";
@@ -18,7 +22,14 @@ const initState = {
     ["it", dates_IT],
   ]),
   drawerOpen: false,
-  menuOptions: [],
+  menuOptions: [
+    { label: "menu.home", path: "/" },
+    { label: "menu.skills", path: "/skills" },
+    { label: "menu.certifications", path: "/certifications" },
+    { label: "menu.contacts", path: "/contacts" },
+    { label: "menu.hobbies", path: "/hobbies" },
+  ],
+  selectedRoute: "/",
 };
 
 // app reducer
@@ -27,6 +38,12 @@ const appReducer = (state = initState, action) => {
     case SET_LOCALE: {
       return { ...state, locale: action.payload };
     }
+
+    case SET_SELECTED_ROUTE:
+      return { ...state, selectedRoute: action.payload };
+
+    case SET_DRAWER_OPEN:
+      return { ...state, drawerOpen: action.payload };
 
     default:
       return state;

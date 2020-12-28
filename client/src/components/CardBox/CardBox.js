@@ -30,6 +30,14 @@ const useStyles = makeStyles(theme => ({
 const CardBox = props => {
   // state
   const [elevation, setElevation] = useState(1);
+
+  // on card click
+  const onCardClick = () => {
+    if (props.onCardClick) {
+      props.onCardClick();
+    }
+  };
+
   // styles
   const classes = useStyles(props.height);
 
@@ -37,6 +45,7 @@ const CardBox = props => {
     <Paper
       className={classes.paper}
       elevation={elevation}
+      onClick={onCardClick}
       onMouseEnter={() => setElevation(10)}
       onMouseLeave={() => setElevation(1)}
       style={{ height: props.height || "auto" }}

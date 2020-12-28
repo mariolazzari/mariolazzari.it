@@ -3,10 +3,8 @@
   "menu.home": "Home",
   "menu.certifications": "Certificazioni",
   "menu.contacts": "Contatti",
-  "menu.nasa": "Nasa",
-  "menu.meteo": "Meteo",
-  "menu.art": "Arte",
-  "menu.philosophy": "Filosofia",
+  "menu.skills": "Competenze",
+  "menu.hobbies": "Interessi",
 
   "home.title": "Mario V Lazzari",
   "home.subtitle": "Javascript Fullstack Developer",
