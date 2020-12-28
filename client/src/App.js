@@ -16,6 +16,7 @@ import { IntlProvider } from "react-intl";
 // components
 import "./components/MenuBar";
 import MenuBar from "./components/MenuBar";
+import Footer from "./components/Footer";
 
 // component
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
           <CssBaseline />
           <MenuBar />
           <Routes />
+          <Footer />
         </BrowserRouter>
       </IntlProvider>
     </ThemeProvider>

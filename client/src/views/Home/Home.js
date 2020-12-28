@@ -14,7 +14,6 @@ import Avatar from "@material-ui/core/Avatar";
 // MUI icons
 import MailIcon from "@material-ui/icons/Mail";
 import DownloadIcon from "@material-ui/icons/CloudDownload";
-
 // MUI colors
 import { indigo } from "@material-ui/core/colors";
 // component
@@ -55,8 +54,9 @@ const useStyles = makeStyles(theme => ({
 // component
 const Home = () => {
   // Redux
-  const { certifications } = useSelector(state => ({
+  const { certifications, locale } = useSelector(state => ({
     certifications: state.certification.certificationsLast,
+    locale: state.app.locale,
   }));
   const dispatch = useDispatch();
 
@@ -95,7 +95,7 @@ const Home = () => {
       url: "https://www.linkedin.com/in/mario-lazzari",
     },
     {
-      imagePath: "github",
+      imagePath: "githubgit ",
       url: "https://github.com/mariolazzari",
     },
 
@@ -112,6 +112,15 @@ const Home = () => {
       url: "https://twitter.com/MarioLazzari2",
     },
   ];
+
+  // start cv download
+  const onDownloadClick = () => {
+    if (locale === "it") {
+      window.open("/uploads/cv/cv_mario_lazzari_en.pdf", "_blank");
+    } else {
+      window.open("/uploads/cv/cv_mario_lazzari_it.pdf", "_blank");
+    }
+  };
 
   // load last certifications
   useEffect(() => {
@@ -168,6 +177,7 @@ const Home = () => {
               className={classes.button}
               variant="contained"
               color="secondary"
+              onClick={onDownloadClick}
             >
               <DownloadIcon className={classes.icon} color="primary" />
               <FormattedMessage id="home.cvButton" />
