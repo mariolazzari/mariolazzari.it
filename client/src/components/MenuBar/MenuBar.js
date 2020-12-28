@@ -1,7 +1,5 @@
 import { FormattedMessage } from "react-intl";
-// Redux
-import { useDispatch, useSelector } from "react-redux";
-import { setLocale } from "../../actions/appActions";
+import { useHistory } from "react-router-dom";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
@@ -14,6 +12,7 @@ import IdeaIcon from "@material-ui/icons/EmojiObjects";
 // components
 import MenuBarOptions from "./MenuBarOptions";
 import MenuBarIcons from "./MenuBarIcons";
+import { child } from "winston";
 
 // component styles
 const useStyles = makeStyles(theme => ({
@@ -31,19 +30,12 @@ const useStyles = makeStyles(theme => ({
 
 // component
 const MenuBar = () => {
-  // Redux
-  const { locale } = useSelector(state => ({
-    locale: state.app.locale,
-  }));
-  const dispatch = useDispatch();
+  // navigation history
+  const history = useHistory();
 
-  // on flag click event handler
-  const onClick = () => {
-    if (locale === "it") {
-      dispatch(setLocale("en"));
-    } else {
-      dispatch(setLocale("it"));
-    }
+  // goto homepage
+  const onLogoClick = () => {
+    console.log("object", history);
   };
 
   // styles

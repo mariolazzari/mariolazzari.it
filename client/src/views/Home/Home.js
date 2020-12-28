@@ -10,6 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
+import Avatar from "@material-ui/core/Avatar";
 // MUI icons
 import MailIcon from "@material-ui/icons/Mail";
 import DownloadIcon from "@material-ui/icons/CloudDownload";
@@ -31,6 +32,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
   },
   subtitle: {
+    marginTop: theme.spacing(3),
     fontWeight: "bold",
   },
   intro: {
@@ -38,18 +40,15 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     width: theme.spacing(10),
-    margin: theme.spacing(1),
+    margin: theme.spacing(0, 1),
   },
   icon: {
     margin: theme.spacing(0, 1),
   },
-  mainTools: {
-    marginTop: theme.spacing(1),
-    fontWeight: "bold",
-  },
-  lastCert: {
-    marginTop: theme.spacing(3),
-    fontWeight: "bold",
+  avatar: {
+    margin: theme.spacing(2),
+    height: theme.spacing(10),
+    width: theme.spacing(10),
   },
 }));
 
@@ -89,6 +88,31 @@ const Home = () => {
     },
   ];
 
+  // socials to render
+  const socials = [
+    {
+      imagePath: "linkedin",
+      url: "https://www.linkedin.com/in/mario-lazzari",
+    },
+    {
+      imagePath: "github",
+      url: "https://github.com/mariolazzari",
+    },
+
+    {
+      imagePath: "facebook",
+      url: "https://www.facebook.com/mario.v.lazzari",
+    },
+    {
+      imagePath: "instagram",
+      url: "https://www.instagram.com/mario.lazzari75",
+    },
+    {
+      imagePath: "twitter",
+      url: "https://twitter.com/MarioLazzari2",
+    },
+  ];
+
   // load last certifications
   useEffect(() => {
     dispatch(getLastCertifiations());
@@ -113,7 +137,6 @@ const Home = () => {
         variant="h2"
         color="primary"
         align="center"
-        gutterBottom
       >
         <FormattedMessage id="home.subtitle" />
       </Typography>
@@ -151,10 +174,9 @@ const Home = () => {
             </Button>
           </Tooltip>
         </Grid>
-
         <Grid item xs={12}>
           <Typography
-            className={classes.mainTools}
+            className={classes.subtitle}
             variant="h3"
             color="primary"
             align="center"
@@ -162,13 +184,11 @@ const Home = () => {
             <FormattedMessage id="home.toolsTitle" />
           </Typography>
         </Grid>
-
         <Grid item xs={12}>
           <Typography variant="h5" color="primary" align="center">
             <FormattedMessage id="home.toolsSubtitle" />
           </Typography>
         </Grid>
-
         {cards.map((card, i) => (
           <Grid key={i} item xs={12} sm={6} lg={3}>
             <CardBox
@@ -180,10 +200,9 @@ const Home = () => {
             />
           </Grid>
         ))}
-
         <Grid item xs={12}>
           <Typography
-            className={classes.lastCert}
+            className={classes.subtitle}
             variant="h3"
             color="primary"
             align="center"
@@ -191,18 +210,38 @@ const Home = () => {
             <FormattedMessage id="home.certTitle" />
           </Typography>
         </Grid>
-
         <Grid item xs={12}>
           <Typography variant="h5" color="primary" align="center">
             <FormattedMessage id="home.certSubtitle" />
           </Typography>
         </Grid>
-
         {certifications.map(c => (
           <Grid item key={c._id} xs={12} sm={6} lg={3}>
             <Certification selected={c} />
           </Grid>
         ))}
+        <Grid item xs={12}>
+          <Typography
+            className={classes.subtitle}
+            variant="h3"
+            color="primary"
+            align="center"
+            gutterBottom
+          >
+            I miei contatti
+          </Typography>
+        </Grid>
+
+        <Grid item container justify="center" xs={12}>
+          {socials.map((s, i) => (
+            <Avatar
+              key={i}
+              className={classes.avatar}
+              src={`/images/logos/${s.imagePath}.png`}
+              onClick={() => window.open(s.url, "_blank")}
+            />
+          ))}
+        </Grid>
       </Grid>
     </Box>
   );

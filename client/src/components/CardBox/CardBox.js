@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     padding: theme.spacing(1),
-    borderRadius: theme.spacing(2),
+    borderRadius: theme.spacing(1),
   },
   image: {
     margin: theme.spacing(2, 0),

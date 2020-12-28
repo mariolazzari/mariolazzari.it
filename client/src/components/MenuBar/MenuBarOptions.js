@@ -40,20 +40,18 @@ const MenuBarOptions = () => {
   return (
     <div className={classes.root}>
       {options.map(({ label, path }) => (
-        <Link
-          key={path}
+        <Typography
           className={classes.option}
+          color="secondary"
+          component={Link}
+          key={path}
+          style={{ fontWeight: selected === path ? "bold" : "" }}
           to={path}
+          variant="h6"
           onClick={() => onClick(path)}
         >
-          <Typography
-            color="secondary"
-            style={{ fontWeight: selected === path ? "bold" : "" }}
-            variant="h6"
-          >
-            <FormattedMessage id={label} />
-          </Typography>
-        </Link>
+          <FormattedMessage id={label} />
+        </Typography>
       ))}
     </div>
   );

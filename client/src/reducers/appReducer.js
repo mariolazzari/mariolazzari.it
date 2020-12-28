@@ -35,9 +35,8 @@ const initState = {
 // app reducer
 const appReducer = (state = initState, action) => {
   switch (action.type) {
-    case SET_LOCALE: {
+    case SET_LOCALE:
       return { ...state, locale: action.payload };
-    }
 
     case SET_SELECTED_ROUTE:
       return { ...state, selectedRoute: action.payload };
