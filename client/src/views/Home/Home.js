@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import { Link } from "react-router-dom";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
+import { setSelectedRoute } from "../../actions/appActions";
 import { getLastCertifiations } from "../../actions/certificationActions";
+
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
@@ -95,7 +98,7 @@ const Home = () => {
       url: "https://www.linkedin.com/in/mario-lazzari",
     },
     {
-      imagePath: "githubgit ",
+      imagePath: "github",
       url: "https://github.com/mariolazzari",
     },
 
@@ -125,6 +128,7 @@ const Home = () => {
   // load last certifications
   useEffect(() => {
     dispatch(getLastCertifiations());
+    dispatch(setSelectedRoute("/"));
   }, [dispatch]);
 
   // styles
@@ -163,6 +167,8 @@ const Home = () => {
         <Grid item container justify="center" xs={12}>
           <Tooltip title="Premi qui per contattarmi">
             <Button
+              component={Link}
+              to="/contacts"
               className={classes.button}
               variant="contained"
               color="primary"

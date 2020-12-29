@@ -9,6 +9,12 @@ import messages_EN from "../locales/en.json";
 import messages_IT from "../locales/it.json";
 import dates_EN from "date-fns/locale/en-GB";
 import dates_IT from "date-fns/locale/it";
+// MUI icons
+import HomeIcon from "@material-ui/icons/Museum";
+import SkillIcon from "@material-ui/icons/LocalLibrary";
+import CertificationIcon from "@material-ui/icons/School";
+import HobbyIcon from "@material-ui/icons/Star";
+import ContactIcon from "@material-ui/icons/ContactMail";
 
 // initial state
 const initState = {
@@ -23,11 +29,31 @@ const initState = {
   ]),
   drawerOpen: false,
   menuOptions: [
-    { label: "menu.home", path: "/" },
-    { label: "menu.skills", path: "/skills" },
-    { label: "menu.certifications", path: "/certifications" },
-    { label: "menu.hobbies", path: "/hobbies" },
-    { label: "menu.contacts", path: "/contacts" },
+    {
+      label: "menu.home",
+      path: "/",
+      icon: <HomeIcon color="secondary" />,
+    },
+    {
+      label: "menu.skills",
+      path: "/skills",
+      icon: <SkillIcon color="secondary" />,
+    },
+    {
+      label: "menu.certifications",
+      path: "/certifications",
+      icon: <CertificationIcon color="secondary" />,
+    },
+    {
+      label: "menu.hobbies",
+      path: "/hobbies",
+      icon: <HobbyIcon color="secondary" />,
+    },
+    {
+      label: "menu.contacts",
+      path: "/contacts",
+      icon: <ContactIcon color="secondary" />,
+    },
   ],
   selectedRoute: "/",
 };

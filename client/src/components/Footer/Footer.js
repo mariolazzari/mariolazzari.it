@@ -21,7 +21,7 @@ const Footer = () => {
 
   return (
     <div className={classes.footer}>
-      <img src="/images/logos/linuxPower.png" alt="Mario Lazzari" height={50} />
+      <img src="/images/logos/linux.png" alt="Powered by Linux" height={50} />
     </div>
   );
 };

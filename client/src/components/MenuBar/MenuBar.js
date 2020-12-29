@@ -7,12 +7,11 @@ import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Hidden from "@material-ui/core/Hidden";
-// MUI icons
-import IdeaIcon from "@material-ui/icons/EmojiObjects";
+import Avatar from "@material-ui/core/Avatar";
 // components
 import MenuBarOptions from "./MenuBarOptions";
 import MenuBarIcons from "./MenuBarIcons";
-import { child } from "winston";
+import MenuDrawer from "./MenuDrawer";
 
 // component styles
 const useStyles = makeStyles(theme => ({
@@ -25,17 +24,23 @@ const useStyles = makeStyles(theme => ({
   },
   logo: {
     display: "flex",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    width: theme.spacing(4.5),
+    height: theme.spacing(4.5),
   },
 }));
 
-// component
+// component+
 const MenuBar = () => {
   // navigation history
   const history = useHistory();
 
   // goto homepage
   const onLogoClick = () => {
-    console.log("object", history);
+    history.push("/");
   };
 
   // styles
@@ -44,8 +49,8 @@ const MenuBar = () => {
   return (
     <AppBar className={classes.appBar} position="fixed" color="primary">
       <Toolbar className={classes.toolbar}>
-        <Box className={classes.logo}>
-          <IdeaIcon className={classes.logoIcon} />
+        <Box className={classes.logo} onClick={onLogoClick}>
+          <Avatar className={classes.avatar} src="/images/logos/logo.png" />
           <Typography>
             <FormattedMessage id="menu.logo" />
           </Typography>
@@ -61,6 +66,8 @@ const MenuBar = () => {
           <MenuBarIcons />
         </Box>
       </Toolbar>
+
+      <MenuDrawer />
     </AppBar>
   );
 };
