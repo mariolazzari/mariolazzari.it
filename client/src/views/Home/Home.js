@@ -13,7 +13,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
-import Avatar from "@material-ui/core/Avatar";
 // MUI icons
 import MailIcon from "@material-ui/icons/Mail";
 import DownloadIcon from "@material-ui/icons/CloudDownload";
@@ -22,6 +21,7 @@ import { indigo } from "@material-ui/core/colors";
 // component
 import CardBox from "../../components/CardBox";
 import { Certification } from "../Certifications";
+import Socials from "../../components/Socials";
 
 // component styles
 const useStyles = makeStyles(theme => ({
@@ -46,11 +46,6 @@ const useStyles = makeStyles(theme => ({
   },
   icon: {
     margin: theme.spacing(0, 1),
-  },
-  avatar: {
-    margin: theme.spacing(2),
-    height: theme.spacing(10),
-    width: theme.spacing(10),
   },
 }));
 
@@ -88,31 +83,6 @@ const Home = () => {
       title: "home.nodeTitle",
       text: "home.nodeText",
       onClick: () => window.open("https://nodejs.org/", "_blank"),
-    },
-  ];
-
-  // socials to render
-  const socials = [
-    {
-      imagePath: "linkedin",
-      url: "https://www.linkedin.com/in/mario-lazzari",
-    },
-    {
-      imagePath: "github",
-      url: "https://github.com/mariolazzari",
-    },
-
-    {
-      imagePath: "facebook",
-      url: "https://www.facebook.com/mario.v.lazzari",
-    },
-    {
-      imagePath: "instagram",
-      url: "https://www.instagram.com/mario.lazzari75",
-    },
-    {
-      imagePath: "twitter",
-      url: "https://twitter.com/MarioLazzari2",
     },
   ];
 
@@ -205,6 +175,7 @@ const Home = () => {
             <FormattedMessage id="home.toolsSubtitle" />
           </Typography>
         </Grid>
+
         {cards.map((card, i) => (
           <Grid key={i} item xs={12} sm={6} lg={3}>
             <CardBox
@@ -216,6 +187,7 @@ const Home = () => {
             />
           </Grid>
         ))}
+
         <Grid item xs={12}>
           <Typography
             className={classes.subtitle}
@@ -231,11 +203,13 @@ const Home = () => {
             <FormattedMessage id="home.certSubtitle" />
           </Typography>
         </Grid>
+
         {certifications.map(c => (
           <Grid item key={c._id} xs={12} sm={6} lg={3}>
             <Certification selected={c} />
           </Grid>
         ))}
+
         <Grid item xs={12}>
           <Typography
             className={classes.subtitle}
@@ -249,14 +223,7 @@ const Home = () => {
         </Grid>
 
         <Grid item container justify="center" xs={12}>
-          {socials.map((s, i) => (
-            <Avatar
-              key={i}
-              className={classes.avatar}
-              src={`/images/logos/${s.imagePath}.png`}
-              onClick={() => window.open(s.url, "_blank")}
-            />
-          ))}
+          <Socials />
         </Grid>
       </Grid>
     </Box>

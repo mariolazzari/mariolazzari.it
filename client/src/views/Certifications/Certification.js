@@ -17,13 +17,14 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     padding: theme.spacing(1),
     borderRadius: theme.spacing(1),
+    minWidth: theme.spacing(40),
   },
   title: {
     margin: theme.spacing(1),
     fontWeight: "bold",
   },
   image: {
-    width: theme.spacing(50),
+    width: "100%",
   },
 }));
 
@@ -61,7 +62,7 @@ const Certification = ({ selected }) => {
       onMouseEnter={() => setElevation(10)}
       onMouseLeave={() => setElevation(1)}
     >
-      <Typography className={classes.title} gutterBottom noWrap>
+      <Typography className={classes.title} gutterBottom>
         {selected.title}
       </Typography>
       <img

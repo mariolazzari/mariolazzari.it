@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     padding: theme.spacing(1),
     borderRadius: theme.spacing(1),
+    minWidth: theme.spacing(30),
   },
   image: {
     margin: theme.spacing(2, 0),
