@@ -43,6 +43,7 @@ const useStyles = makeStyles(theme => ({
   button: {
     width: theme.spacing(10),
     margin: theme.spacing(0, 1),
+    width: theme.spacing(15),
   },
   icon: {
     margin: theme.spacing(0, 1),
@@ -87,12 +88,17 @@ const Home = () => {
   ];
 
   // start cv download
-  const onDownloadClick = () => {
-    if (locale === "it") {
-      window.open("/uploads/cv/cv_mario_lazzari_en.pdf", "_blank");
-    } else {
-      window.open("/uploads/cv/cv_mario_lazzari_it.pdf", "_blank");
+  const onDownloadClick = e => {
+    e.preventDefault();
+    let cv = "/cv/cv_mario_lazzari_it.pdf";
+    let title = "CV Mario Lazzari";
+
+    if (locale === "en") {
+      cv = "/cv/cv_mario_lazzari_en.pdf";
+      title = "Mario Lazzari Resume";
     }
+
+    window.open(cv, title);
   };
 
   // load last certifications
