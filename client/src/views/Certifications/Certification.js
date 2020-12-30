@@ -62,7 +62,7 @@ const Certification = ({ selected }) => {
       onMouseEnter={() => setElevation(10)}
       onMouseLeave={() => setElevation(1)}
     >
-      <Typography className={classes.title} gutterBottom>
+      <Typography className={classes.title} align="center" gutterBottom>
         {selected.title}
       </Typography>
       <img
