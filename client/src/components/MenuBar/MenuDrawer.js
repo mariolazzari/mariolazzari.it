@@ -14,6 +14,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 // MUI colors
 import indigo from "@material-ui/core/colors/indigo";
+import yellow from "@material-ui/core/colors/yellow";
 
 // styles
 const useStyles = makeStyles(theme => ({
@@ -33,6 +34,9 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     color: indigo[50],
     fontWeight: "bold",
+    "&:hover": {
+      color: yellow[500],
+    },
   },
   label: {
     marginLeft: -theme.spacing(2),

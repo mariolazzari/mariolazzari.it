@@ -24,5 +24,8 @@
   "home.nodeText": "Node.js is an open-source, cross-platform, back-end, JavaScript runtime environment that executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command line tools and for server-side scripting—running scripts server-side to produce dynamic web page content before the page is sent to the user's web browser.",
 
   "home.certTitle": "Last certifications",
-  "home.certSubtitle": "Click here for my certifications full list"
+  "home.certSubtitle": "Click here for my certifications full list",
+
+  "contacts.mail": "You can send me an email here::",
+  "contacts.social": "...or find me on the following social accounts:"
 }

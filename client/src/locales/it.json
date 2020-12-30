@@ -24,5 +24,8 @@
   "home.nodeText": "Node.js è una runtime di JavaScript Open source multipiattaforma orientato agli eventi per l'esecuzione di codice JavaScript, costruita sul motore JavaScript V8 di Google Chrome. Molti dei suoi moduli base sono scritti in JavaScript, e gli sviluppatori possono scrivere nuovi moduli in JavaScript.",
 
   "home.certTitle": "Ultime certificazioni",
-  "home.certSubtitle": "Premi qui per elencare tutte le mie certificazioni"
+  "home.certSubtitle": "Premi qui per elencare tutte le mie certificazioni",
+
+  "contacts.mail": "Puoi contattarmi via mail al seguente indirizzo:",
+  "contacts.social": "...oppure trovarmi su questi social:"
 }

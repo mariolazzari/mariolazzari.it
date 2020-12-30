@@ -6,6 +6,8 @@ import { setSelectedRoute } from "../../actions/appActions";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+// MUI colors
+import yellow from "@material-ui/core/colors/yellow";
 
 // styles
 const useStyles = makeStyles(theme => ({
@@ -17,6 +19,9 @@ const useStyles = makeStyles(theme => ({
   option: {
     margin: theme.spacing(1),
     textDecoration: "none",
+    "&:hover": {
+      color: yellow[500],
+    },
   },
 }));
 

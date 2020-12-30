@@ -1,11 +1,12 @@
 import { useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 // Redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 // component
 import Socials from "../../components/Socials";
 
@@ -18,6 +19,12 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     padding: theme.spacing(1),
     minHeight: `calc(100vh - 80px)`,
+  },
+  title: {
+    marginTop: theme.spacing(5),
+  },
+  image: {
+    margin: theme.spacing(3, 0),
   },
 }));
 
@@ -36,9 +43,37 @@ const Contacts = () => {
 
   return (
     <Box className={classes.root}>
-      <form action="">
-        <Paper elevation={3}>form</Paper>
-      </form>
+      <Typography
+        className={classes.tite}
+        variant="h4"
+        color="primary"
+        gutterBottom
+        align="center"
+      >
+        <FormattedMessage id="contacts.mail" />
+      </Typography>
+
+      <Typography
+        component="a"
+        href="mailto:mario.lazzari@gmail.com"
+        target="_blank"
+        variant="h5"
+        align="center"
+        gutterBottom
+      >
+        mario.lazzari@gmail.com
+      </Typography>
+
+      <img
+        className={classes.image}
+        src="/images/logos/gmail.png"
+        alt="mario.lazzari@gmail.com"
+      />
+
+      <Typography variant="h4" color="primary" gutterBottom align="center">
+        <FormattedMessage id="contacts.social" />
+      </Typography>
+
       <Socials />
     </Box>
   );
