@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
   image: {
     margin: theme.spacing(3, 0),
   },
+  link: {
+    textDecoration: "none",
+  },
 }));
 
 //components
@@ -54,9 +57,9 @@ const Contacts = () => {
       </Typography>
 
       <Typography
+        className={classes.link}
         component="a"
         href="mailto:mario.lazzari@gmail.com"
-        target="_blank"
         variant="h5"
         align="center"
         gutterBottom
