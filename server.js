@@ -4,6 +4,7 @@ const readEnv = require("./utils/readEnv");
 const { connectDB } = require("./config/mongoDB");
 const logger = require("./utils/logger");
 const morgan = require("morgan");
+const compression = require("compression");
 
 // read enviroment vars
 const {
@@ -19,7 +20,9 @@ connectDB();
 
 // express server
 const app = express();
+app.use(compression());
 app.use(express.json());
+
 // log api call in dev mode only
 if (NODE_ENV === "dev") {
   app.use(morgan("tiny"));
