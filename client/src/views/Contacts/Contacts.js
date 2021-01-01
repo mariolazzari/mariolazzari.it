@@ -1,7 +1,7 @@
-import { useEffect, useSelector } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 // Redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
 // MUI components
 import { makeStyles } from "@material-ui/core";
@@ -42,6 +42,10 @@ const useStyles = makeStyles(theme => ({
 //components
 const Contacts = () => {
   // Redux
+  const { mail, mailTo } = useSelector(state => ({
+    mail: state.social.mail,
+    mailTo: state.social.mailTo,
+  }));
   const dispatch = useDispatch();
 
   // styles
@@ -67,21 +71,21 @@ const Contacts = () => {
       <Typography
         className={classes.link}
         component="a"
-        href="mailto:mario.lazzari@gmail.com"
+        href={mailTo}
         target="_blank"
         variant="h5"
         align="center"
         color="primary"
         gutterBottom
       >
-        mario.lazzari@gmail.com
+        {mail}
       </Typography>
 
       <img
         className={classes.image}
         src="/images/logos/gmail.png"
-        alt="mario.lazzari@gmail.com"
-        onClick={() => window.open("")}
+        alt={mail}
+        onClick={() => window.open(mailTo)}
       />
 
       <Typography variant="h4" color="primary" gutterBottom align="center">
