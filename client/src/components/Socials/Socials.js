@@ -53,6 +53,7 @@ const Socials = () => {
           key={i}
           className={classes.avatar}
           src={`/images/logos/${s.name}.png`}
+          alt={s.name}
           onClick={() => window.open(s.url, "_blank")}
         />
       ))}

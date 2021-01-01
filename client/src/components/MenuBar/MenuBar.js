@@ -50,7 +50,11 @@ const MenuBar = () => {
     <AppBar className={classes.appBar} position="fixed" color="primary">
       <Toolbar className={classes.toolbar}>
         <Box className={classes.logo} onClick={onLogoClick}>
-          <Avatar className={classes.avatar} src="/images/logos/logo.png" />
+          <Avatar
+            className={classes.avatar}
+            src="/images/logos/logo.png"
+            alt="Mario Lazzari"
+          />
           <Typography>
             <FormattedMessage id="menu.logo" />
           </Typography>
