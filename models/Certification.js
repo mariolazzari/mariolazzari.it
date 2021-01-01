@@ -48,7 +48,12 @@ const CertificationSchema = new mongoose.Schema(
 );
 
 // descending date index
-CertificationSchema.index({ date: -1, title: 1 });
+CertificationSchema.index({ date: -1 });
+CertificationSchema.index({
+  title: "text",
+  review_IT: "text",
+  review_EN: "text",
+});
 
 // export model
 module.exports = mongoose.model("Certification", CertificationSchema);

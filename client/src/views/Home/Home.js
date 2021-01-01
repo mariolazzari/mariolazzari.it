@@ -48,6 +48,9 @@ const useStyles = makeStyles(theme => ({
   icon: {
     margin: theme.spacing(0, 1),
   },
+  link: {
+    textDecoration: "none",
+  },
 }));
 
 // component
@@ -176,8 +179,15 @@ const Home = () => {
             <FormattedMessage id="home.toolsTitle" />
           </Typography>
         </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h5" color="primary" align="center">
+        <Grid item container justify="center" xs={12}>
+          <Typography
+            className={classes.link}
+            component={Link}
+            to="/skills"
+            variant="h5"
+            color="primary"
+            align="center"
+          >
             <FormattedMessage id="home.toolsSubtitle" />
           </Typography>
         </Grid>
@@ -204,8 +214,16 @@ const Home = () => {
             <FormattedMessage id="home.certTitle" />
           </Typography>
         </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h5" color="primary" align="center">
+
+        <Grid item container justify="center" xs={12}>
+          <Typography
+            className={classes.link}
+            component={Link}
+            to="/certifications"
+            variant="h5"
+            color="primary"
+            align="center"
+          >
             <FormattedMessage id="home.certSubtitle" />
           </Typography>
         </Grid>
