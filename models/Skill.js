@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { required } = require("../config/db");
+const { required } = require("../config/mongoDB");
 
 // Skill schema
 const SkillSchema = new mongoose.Schema({

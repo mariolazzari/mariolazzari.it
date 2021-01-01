@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { getSocials } from "../../actions/socialActions";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
@@ -28,33 +32,19 @@ const useStyles = makeStyles(theme => ({
 
 // component
 const Socials = () => {
-  // socials to render
-  const socials = [
-    {
-      imagePath: "linkedin",
-      url: "https://www.linkedin.com/in/mario-lazzari",
-    },
-    {
-      imagePath: "github",
-      url: "https://github.com/mariolazzari",
-    },
-
-    {
-      imagePath: "facebook",
-      url: "https://www.facebook.com/mario.v.lazzari",
-    },
-    {
-      imagePath: "instagram",
-      url: "https://www.instagram.com/mario.lazzari75",
-    },
-    {
-      imagePath: "twitter",
-      url: "https://twitter.com/MarioLazzari2",
-    },
-  ];
+  // Redux
+  const { socials } = useSelector(state => ({
+    socials: state.social.socials,
+  }));
+  const dispatch = useDispatch();
 
   // styles
   const classes = useStyles();
+
+  // load social accounts
+  useEffect(() => {
+    dispatch(getSocials());
+  }, [dispatch]);
 
   return (
     <Box className={classes.box}>
@@ -62,7 +52,7 @@ const Socials = () => {
         <Avatar
           key={i}
           className={classes.avatar}
-          src={`/images/logos/${s.imagePath}.png`}
+          src={`/images/logos/${s.name}.png`}
           onClick={() => window.open(s.url, "_blank")}
         />
       ))}

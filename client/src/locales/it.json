@@ -26,6 +26,8 @@
   "home.certTitle": "Ultime certificazioni",
   "home.certSubtitle": "Premi qui per elencare tutte le mie certificazioni",
 
+  "socials.error": "Errore durante il recuperto degli account social.",
+
   "contacts.mail": "Puoi contattarmi via mail al seguente indirizzo:",
   "contacts.social": "...oppure trovarmi su questi social:"
 }

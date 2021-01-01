@@ -1,7 +1,7 @@
 // Skill controller
 const asyncHandler = require("../middlewares/asyncHandler");
 const Skill = require("../models/Skill");
-const { notFound, updateOpts } = require("../config/db");
+const { notFound, updateOpts } = require("../config/mongoDB");
 
 // get all skills
 const getSkills = asyncHandler(async (req, res, next) => {

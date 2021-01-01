@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const readEnv = require("./utils/readEnv");
-const { connectDB } = require("./config/db");
+const { connectDB } = require("./config/mongoDB");
 const logger = require("./utils/logger");
 const morgan = require("morgan");
 

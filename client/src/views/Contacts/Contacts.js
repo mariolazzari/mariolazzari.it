@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useSelector } from "react";
 import { FormattedMessage } from "react-intl";
 // Redux
 import { useDispatch } from "react-redux";
@@ -25,6 +25,9 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     margin: theme.spacing(3, 0),
+    "&:hover": {
+      transform: "scale(1.1)",
+    },
   },
   link: {
     textDecoration: "none",
@@ -65,8 +68,10 @@ const Contacts = () => {
         className={classes.link}
         component="a"
         href="mailto:mario.lazzari@gmail.com"
+        target="_blank"
         variant="h5"
         align="center"
+        color="primary"
         gutterBottom
       >
         mario.lazzari@gmail.com
@@ -76,6 +81,7 @@ const Contacts = () => {
         className={classes.image}
         src="/images/logos/gmail.png"
         alt="mario.lazzari@gmail.com"
+        onClick={() => window.open("")}
       />
 
       <Typography variant="h4" color="primary" gutterBottom align="center">

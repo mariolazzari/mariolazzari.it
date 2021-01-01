@@ -3,6 +3,8 @@ import {
   SET_LOCALE,
   SET_SELECTED_ROUTE,
   SET_DRAWER_OPEN,
+  SET_ERROR,
+  SET_SUCCESS,
 } from "../actions/types";
 // locales
 import messages_EN from "../locales/en.json";
@@ -56,6 +58,8 @@ const initState = {
     },
   ],
   selectedRoute: "/",
+  error: "",
+  success: "",
 };
 
 // app reducer
@@ -69,6 +73,12 @@ const appReducer = (state = initState, action) => {
 
     case SET_DRAWER_OPEN:
       return { ...state, drawerOpen: action.payload };
+
+    case SET_ERROR:
+      return { ...state, error: action.payload };
+
+    case SET_SUCCESS:
+      return { ...state, success: action.payload };
 
     default:
       return state;

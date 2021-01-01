@@ -26,6 +26,8 @@
   "home.certTitle": "Last certifications",
   "home.certSubtitle": "Click here for my certifications full list",
 
+  "socials.error": "Error while getting social accounts..",
+
   "contacts.mail": "You can send me an email here::",
   "contacts.social": "...or find me on the following social accounts:"
 }

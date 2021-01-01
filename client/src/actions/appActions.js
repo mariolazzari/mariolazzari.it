@@ -1,5 +1,11 @@
 // App actions
-import { SET_LOCALE, SET_SELECTED_ROUTE, SET_DRAWER_OPEN } from "./types";
+import {
+  SET_LOCALE,
+  SET_SELECTED_ROUTE,
+  SET_DRAWER_OPEN,
+  SET_SUCCESS,
+  SET_ERROR,
+} from "./types";
 
 // set app locale
 export const setLocale = (locale = "en") => ({
@@ -17,4 +23,16 @@ export const setSelectedRoute = (route = "/") => ({
 export const setDrawerOpen = (status = true) => ({
   type: SET_DRAWER_OPEN,
   payload: status,
+});
+
+// set error message
+export const setError = (error = "") => ({
+  type: SET_ERROR,
+  payload: error,
+});
+
+// set success message
+export const setSuccess = (success = "") => ({
+  type: SET_SUCCESS,
+  payload: success,
 });
