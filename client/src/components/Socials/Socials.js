@@ -20,6 +20,9 @@ const useStyles = makeStyles(theme => ({
       height: theme.spacing(8),
       width: theme.spacing(8),
     },
+    "&:hover": {
+      transform: "scale(1.5)",
+    },
   },
 }));
 

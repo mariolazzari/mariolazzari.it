@@ -28,6 +28,11 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     textDecoration: "none",
+    "&:hover": {
+      fontWeight: "bold",
+      textDecoration: "underline",
+      transform: "scale(1.1)",
+    },
   },
 }));
 
