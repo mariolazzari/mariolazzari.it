@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -14,15 +14,17 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
+import CircularProgress from "@material-ui/core/CircularProgress";
 // MUI icons
 import MailIcon from "@material-ui/icons/Mail";
 import DownloadIcon from "@material-ui/icons/CloudDownload";
 // MUI colors
 import { indigo } from "@material-ui/core/colors";
 // component
-import CardBox from "../../components/CardBox";
-import { Certification } from "../Certifications";
-import Socials from "../../components/Socials";
+const Certification = lazy(() => import("../Certifications/Certification"));
+
+const CardBox = lazy(() => import("../../components/CardBox"));
+const Socials = lazy(() => import("../../components/Socials"));
 
 // component styles
 const useStyles = makeStyles(theme => ({
@@ -44,7 +46,6 @@ const useStyles = makeStyles(theme => ({
   button: {
     width: theme.spacing(10),
     margin: theme.spacing(0, 1),
-    width: theme.spacing(15),
   },
   icon: {
     margin: theme.spacing(0, 1),
@@ -211,13 +212,15 @@ const Home = () => {
 
         {cards.map((card, i) => (
           <Grid key={i} item xs={12} sm={6} lg={3}>
-            <CardBox
-              avatar={card.avatar}
-              title={card.title}
-              text={card.text}
-              height={400}
-              onCardClick={card.onClick}
-            />
+            <Suspense fallback={<CircularProgress />}>
+              <CardBox
+                avatar={card.avatar}
+                title={card.title}
+                text={card.text}
+                height={400}
+                onCardClick={card.onClick}
+              />
+            </Suspense>
           </Grid>
         ))}
 
@@ -247,7 +250,9 @@ const Home = () => {
 
         {certifications.map(c => (
           <Grid item key={c._id} xs={12} sm={6} lg={3}>
-            <Certification selected={c} />
+            <Suspense fallback={<CircularProgress />}>
+              <Certification selected={c} />
+            </Suspense>
           </Grid>
         ))}
 
@@ -264,7 +269,9 @@ const Home = () => {
         </Grid>
 
         <Grid item container justify="center" xs={12}>
-          <Socials />
+          <Suspense fallback={<CircularProgress />}>
+            <Socials />
+          </Suspense>
         </Grid>
       </Grid>
     </Box>
