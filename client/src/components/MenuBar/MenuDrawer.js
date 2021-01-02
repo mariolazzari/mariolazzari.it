@@ -71,7 +71,11 @@ const MenuDrawer = () => {
       anchor="right"
       classes={{ paper: classes.paper }}
     >
-      <Avatar className={classes.avatar} src="/images/logos/logo.png" />
+      <Avatar
+        className={classes.avatar}
+        src="/images/logos/logo.png"
+        alt="Mario Lazzari"
+      />
       <Divider />
       <List className={classes.list}>
         {options.map(o => (
