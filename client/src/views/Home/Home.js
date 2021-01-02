@@ -22,7 +22,6 @@ import DownloadIcon from "@material-ui/icons/CloudDownload";
 import { indigo } from "@material-ui/core/colors";
 // component
 const Certification = lazy(() => import("../Certifications/Certification"));
-
 const CardBox = lazy(() => import("../../components/CardBox"));
 const Socials = lazy(() => import("../../components/Socials"));
 

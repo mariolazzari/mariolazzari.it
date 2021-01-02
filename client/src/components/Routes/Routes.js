@@ -11,7 +11,7 @@ const Contacts = lazy(() => import("../../views/Contacts"));
 
 // routes
 const Routes = () => (
-  <Suspense fallback={<Backdrop />}>
+  <Suspense fallback={<Backdrop open />}>
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/certifications" component={Certifications} />
