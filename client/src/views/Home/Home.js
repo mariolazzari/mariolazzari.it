@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
@@ -66,6 +67,8 @@ const Home = () => {
     locale: state.app.locale,
   }));
   const dispatch = useDispatch();
+  // locales
+  const intl = useIntl();
 
   // cards to render
   const cards = [
@@ -120,6 +123,15 @@ const Home = () => {
 
   return (
     <Box className={classes.root}>
+      <Helmet>
+        <title>{intl.formatMessage({ id: "home.title" })}</title>
+        <meta
+          name="description"
+          content={intl.formatMessage({ id: "home.subtitle" })}
+        />
+        <link rel="canonical" href="https://mariolazzari.it" />
+      </Helmet>
+
       <Typography
         className={classes.title}
         variant="h1"

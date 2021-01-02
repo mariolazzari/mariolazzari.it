@@ -1,7 +1,7 @@
 {
   "name": "mariolazzari",
   "version": "1.0.0",
-  "description": "<!--\r **mariolazzari/mariolazzari** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.",
+  "description": "Mario Lazzari fullstack JavaScript developer.",
   "main": "server.js",
   "dependencies": {
     "app-root-path": "^3.0.0",

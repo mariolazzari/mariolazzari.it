@@ -28,6 +28,8 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       transform: "scale(1.1)",
     },
+    minWidth: theme.spacing(15),
+    maxWidth: theme.spacing(20),
   },
   link: {
     textDecoration: "none",
@@ -59,7 +61,7 @@ const Contacts = () => {
   return (
     <Box className={classes.root}>
       <Typography
-        className={classes.tite}
+        className={classes.title}
         variant="h4"
         color="primary"
         gutterBottom
