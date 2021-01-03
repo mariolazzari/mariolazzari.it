@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setLocale } from "./actions/appActions";
@@ -8,15 +8,13 @@ import Routes from "./components/Routes";
 // theme
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme";
-import "@fontsource/quicksand";
 import CssBaseline from "@material-ui/core/CssBaseline";
 // locale
 import { IntlProvider } from "react-intl";
-
 // components
-import "./components/MenuBar";
 import MenuBar from "./components/MenuBar";
-import Footer from "./components/Footer";
+import CircularProgress from "@material-ui/core/CircularProgress";
+const Footer = lazy(() => import("./components/Footer"));
 
 // component
 const App = () => {
@@ -44,7 +42,9 @@ const App = () => {
           <CssBaseline />
           <MenuBar />
           <Routes />
-          <Footer />
+          <Suspense fallback={<CircularProgress />}>
+            <Footer />
+          </Suspense>
         </BrowserRouter>
       </IntlProvider>
     </ThemeProvider>

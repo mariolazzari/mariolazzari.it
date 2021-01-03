@@ -1,20 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import reportWebVitals from "./reportWebVitals";
+//import reportWebVitals from "./reportWebVitals";
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
 // components
-import Backdrop from "@material-ui/core/Backdrop";
-const App = React.lazy(() => import("./App"));
+import "@fontsource/quicksand";
+import App from "./App";
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.Suspense fallback={<Backdrop open />}>
-      <App />
-    </React.Suspense>
+    <App />
   </Provider>,
   document.getElementById("root")
 );
 
-reportWebVitals();
+//reportWebVitals();

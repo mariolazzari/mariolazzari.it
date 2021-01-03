@@ -1,5 +1,6 @@
 // MUI components
 import { makeStyles } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 // MUI colors
 import indigo from "@material-ui/core/colors/indigo";
 
@@ -9,8 +10,11 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: theme.spacing(10),
+    height: theme.spacing(8),
     backgroundColor: indigo[800],
+  },
+  image: {
+    height: theme.spacing(5),
   },
 }));
 
@@ -20,9 +24,13 @@ const Footer = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.footer}>
-      <img src="/images/logos/linux.png" alt="Powered by Linux" height={50} />
-    </div>
+    <Box className={classes.footer}>
+      <img
+        className={classes.image}
+        src="/images/logos/linux.png"
+        alt="Powered by Linux"
+      />
+    </Box>
   );
 };
 

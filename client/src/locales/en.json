@@ -28,6 +28,12 @@
 
   "socials.error": "Error while getting social accounts..",
 
+  "skills.os": "Operating systems",
+  "skills.lang": "Programming languages",
+  "skills.db": "Databases",
+  "skills.ide": "Integrated development enviroments",
+  "skills.libs": "Libraries",
+
   "contacts.mail": "You can send me an email here::",
   "contacts.social": "...or find me on the following social accounts:"
 }

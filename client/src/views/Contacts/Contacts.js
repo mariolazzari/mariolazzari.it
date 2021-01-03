@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     padding: theme.spacing(1),
-    minHeight: `calc(100vh - 80px)`,
+    minHeight: `calc(100vh - ${theme.spacing(8)}px)`,
   },
   title: {
     marginTop: theme.spacing(5),

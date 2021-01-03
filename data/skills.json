@@ -1,0 +1,14 @@
+[
+  {
+    "type": "OS",
+    "name": "Debian GNU/Linux",
+    "description": [
+      { "locale": "en", "text": "" },
+      { "locale": "it", "text": "" }
+    ],
+    "useCase": [
+      { "locale": "en", "text": "" },
+      { "locale": "it", "text": "" }
+    ]
+  }
+]

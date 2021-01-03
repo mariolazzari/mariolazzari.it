@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     "&:hover": {
       color: yellow[500],
+      fontWeight: "bold",
     },
   },
 }));

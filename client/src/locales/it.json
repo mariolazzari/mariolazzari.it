@@ -28,6 +28,12 @@
 
   "socials.error": "Errore durante il recuperto degli account social.",
 
+  "skills.os": "Sistemi operativi",
+  "skills.lang": "Linguaggi di programmazione",
+  "skills.db": "Database",
+  "skills.ide": "Ambienti di sviluppo",
+  "skills.libs": "Librerie",
+
   "contacts.mail": "Puoi contattarmi via mail al seguente indirizzo:",
   "contacts.social": "...oppure trovarmi su questi social:"
 }
