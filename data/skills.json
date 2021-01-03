@@ -17,11 +17,89 @@
     "useCase": [
       {
         "locale": "en",
-        "text": "I used Debian mainly for web server, FTP service and storage projects"
+        "text": "I used Debian mainly for web server, FTP service and storage projectsy. I use this distribution as my main desktop machine too for years."
       },
       {
         "locale": "it",
-        "text": "Ho utilizzato Debian principalmente come server web, FTP e progetti storage."
+        "text": "Ho utilizzato Debian principalmente come server web, FTP e progetti storage. Per anni ho utilizzato questa distribuzione anche sui mie pc personali."
+      }
+    ]
+  },
+  {
+    "type": "os",
+    "name": "Ubuntu",
+    "imagePath": "ubuntu.png",
+    "url": "https://www.ubuntu.com",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Ubuntu is a Linux distribution based on Debian and mostly composed of free and open-source software. Ubuntu is officially released in three editions: Desktop, Server,[and Core for Internet of things devices and robots. All the editions can run on the computer alone, or in a virtual machine. Ubuntu is a popular operating system for cloud computing, with support for OpenStack."
+      },
+      {
+        "locale": "it",
+        "text": "Ubuntu è un termine africano col quale è stato chiamato il sistema operativo nato nel 2004 e basato su Linux, più precisamente sul ramo unstable di Debian. Ubuntu è prevalentemente composto da software libero, distribuito liberamente con licenza GNU GPL, ma supporta anche software proprietario."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I used Ubuntu as my main production server, where to deploy all my projects: this site itself in hosted on a Ububto 20:04 LTS server."
+      },
+      {
+        "locale": "it",
+        "text": "Utilizzato Ubuntu come server su cui pubblicarre tutti i miei progetti in produzione: questo sito stesso è gestito tramite un server Ubuntu 20.04 LTS."
+      }
+    ]
+  },
+  {
+    "type": "os",
+    "name": "Oracle Linux",
+    "imagePath": "oraclelinux.png",
+    "url": "https://www.oracle.com/it/linux",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Oracle Linux (abbreviated OL, formerly known as Oracle Enterprise Linux or OEL) is a Linux distribution packaged and freely distributed by Oracle, available partially under the GNU General Public License since late 2006. It is compiled from Red Hat Enterprise Linux (RHEL) source code, replacing Red Hat branding with Oracle's. It is also used by Oracle Cloud and Oracle Engineered Systems such as Oracle Exadata and others."
+      },
+      {
+        "locale": "it",
+        "text": "Oracle Linux è una distribuzione Linux pacchettizzata e distribuita gratuitamente da Oracle, disponibile parzialmente sotto la GNU General Public License dalla fine del 2006. È compilata dal codice sorgente di Red Hat Enterprise Linux, sostituendo il marchio Red Hat con quello di Oracle."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "Oracle Linux is my primary choice, in order to host Oracle databese instance smoothly."
+      },
+      {
+        "locale": "it",
+        "text": "Oralce Linux è il sistema operativo che prediligo quando sviluppo applicativi basati su database Oracle."
+      }
+    ]
+  },
+  {
+    "type": "os",
+    "name": "RedHat Linux",
+    "imagePath": "redhat.png",
+    "url": "https://www.redhat.com",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Oracle Linux (abbreviated OL, formerly known as Oracle Enterprise Linux or OEL) is a Linux distribution packaged and freely distributed by Oracle, available partially under the GNU General Public License since late 2006. It is compiled from Red Hat Enterprise Linux (RHEL) source code, replacing Red Hat branding with Oracle's. It is also used by Oracle Cloud and Oracle Engineered Systems such as Oracle Exadata and others."
+      },
+      {
+        "locale": "it",
+        "text": "Oracle Linux è una distribuzione Linux pacchettizzata e distribuita gratuitamente da Oracle, disponibile parzialmente sotto la GNU General Public License dalla fine del 2006. È compilata dal codice sorgente di Red Hat Enterprise Linux, sostituendo il marchio Red Hat con quello di Oracle."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "Oracle Linux is my primary choice, in order to host Oracle databese instance smoothly."
+      },
+      {
+        "locale": "it",
+        "text": "Oralce Linux è il sistema operativo che prediligo quando sviluppo applicativi basati su database Oracle."
       }
     ]
   }
