@@ -6,6 +6,7 @@ import { getSkills } from "../../actions/skillActions";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 // MUI colors
 import indigo from "@material-ui/core/colors/indigo";
@@ -15,10 +16,6 @@ import Skill from "./Skill";
 // styles
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
     padding: theme.spacing(1),
     backgroundColor: indigo[50],
   },
@@ -45,54 +42,76 @@ const Skills = () => {
 
   return (
     <Box className={classes.root}>
-      <Typography
-        className={classes.title}
-        variant="h3"
-        color="primary"
-        gutterBottom
-      >
-        <FormattedMessage id="skills.os" />
-      </Typography>
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
+          <Typography
+            className={classes.title}
+            variant="h3"
+            color="primary"
+            align="center"
+            gutterBottom
+          >
+            <FormattedMessage id="skills.os" />
+          </Typography>
+        </Grid>
+      </Grid>
 
-      {os.map(skill => (
-        <Skill selected={skill} locale={locale} />
-      ))}
-
-      <Typography
-        className={classes.title}
-        variant="h3"
-        color="primary"
-        gutterBottom
+      <Grid
+        item
+        container
+        justify="center"
+        alignItems="center"
+        wrap="wrap"
+        xs={12}
       >
-        <FormattedMessage id="skills.lang" />
-      </Typography>
+        {os.map(skill => (
+          <Skill locale={locale} selected={skill} />
+        ))}
+      </Grid>
 
-      <Typography
-        className={classes.title}
-        variant="h3"
-        color="primary"
-        gutterBottom
-      >
-        <FormattedMessage id="skills.db" />
-      </Typography>
+      <Grid item xs={!2}>
+        <Typography
+          className={classes.title}
+          variant="h3"
+          color="primary"
+          gutterBottom
+        >
+          <FormattedMessage id="skills.lang" />
+        </Typography>
+      </Grid>
 
-      <Typography
-        className={classes.title}
-        variant="h3"
-        color="primary"
-        gutterBottom
-      >
-        <FormattedMessage id="skills.ide" />
-      </Typography>
+      <Grid item xs={12}>
+        <Typography
+          className={classes.title}
+          variant="h3"
+          color="primary"
+          gutterBottom
+        >
+          <FormattedMessage id="skills.db" />
+        </Typography>
+      </Grid>
 
-      <Typography
-        className={classes.title}
-        variant="h3"
-        color="primary"
-        gutterBottom
-      >
-        <FormattedMessage id="skills.libs" />
-      </Typography>
+      <Grid item xs={12}>
+        <Typography
+          className={classes.title}
+          variant="h3"
+          color="primary"
+          gutterBottom
+        >
+          <FormattedMessage id="skills.ide" />
+        </Typography>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Typography
+          className={classes.title}
+          variant="h3"
+          color="primary"
+          gutterBottom
+        >
+          <FormattedMessage id="skills.libs" />
+        </Typography>
+      </Grid>
     </Box>
   );
 };

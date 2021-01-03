@@ -50,7 +50,5 @@
     ]
   },
   "proxy": "http://localhost:3001",
-  "devDependencies": {
-    "concurrently": "^5.3.0"
-  }
+  "devDependencies": {}
 }
