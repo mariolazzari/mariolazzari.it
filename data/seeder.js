@@ -3,14 +3,18 @@ const { connectDB } = require("../config/mongoDB");
 const fs = require("fs");
 
 // load models
+const Skill = require("../models/Skill");
 const Social = require("../models/Social");
 
 // read json files
+const skills = JSON.parse(fs.readFileSync("./skills.json", "utf-8"));
 const socials = JSON.parse(fs.readFileSync("./socials.json", "utf-8"));
 
 // import data
 const importData = async () => {
   try {
+    await Skill.create(skills);
+    console.log("Skills imported.");
     await Social.create(socials);
     console.log("Socials imported.");
   } catch (ex) {
@@ -22,6 +26,8 @@ const importData = async () => {
 // delete data from mongo db
 const deleteData = async () => {
   try {
+    await Skill.deleteMany();
+    console.log("Skills deleted.");
     await Social.deleteMany();
     console.log("Socials deleted.");
   } catch (ex) {

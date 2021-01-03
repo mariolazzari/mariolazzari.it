@@ -1,14 +1,28 @@
 [
   {
-    "type": "OS",
-    "name": "Debian GNU/Linux",
+    "type": "os",
+    "name": "Debian",
+    "imagePath": "debian.png",
+    "url": "https://www.debian.org",
     "description": [
-      { "locale": "en", "text": "" },
-      { "locale": "it", "text": "" }
+      {
+        "locale": "en",
+        "text": "Debian also known as Debian GNU/Linux, is a Linux distribution composed of free and open-source software, developed by the community-supported Debian Project, which was established by Ian Murdock on August 16, 1993. The first version of Debian (0.01) was released on September 15, 1993, and its first stable version (1.1) was released on June 17, 1996."
+      },
+      {
+        "locale": "it",
+        "text": "Debian è un sistema operativo multipiattaforma che supporta varie architetture di computer, composto interamente da software libero. La sua forma più diffusa è 'Debian GNU/Linux', così denominata perché utilizza al suo interno programmi di utilità provenienti dal sistema operativo GNU e utilizzando Linux come kernel"
+      }
     ],
     "useCase": [
-      { "locale": "en", "text": "" },
-      { "locale": "it", "text": "" }
+      {
+        "locale": "en",
+        "text": "I used Debian mainly for web server, FTP service and storage projects"
+      },
+      {
+        "locale": "it",
+        "text": "Ho utilizzato Debian principalmente come server web, FTP e progetti storage."
+      }
     ]
   }
 ]
