@@ -1,10 +1,16 @@
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { getSkills } from "../../actions/skillActions";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 // MUI colors
 import indigo from "@material-ui/core/colors/indigo";
+// component
+import Skill from "./Skill";
 
 // styles
 const useStyles = makeStyles(theme => ({
@@ -14,17 +20,28 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     padding: theme.spacing(1),
-    minHeight: `calc(100vh - ${theme.spacing(8)}px)`,
     backgroundColor: indigo[50],
   },
   title: {
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(10),
   },
 }));
 
 const Skills = () => {
+  // Redux
+  const { locale, os } = useSelector(state => ({
+    locale: state.app.locale,
+    os: state.skill.os,
+  }));
+  const dispatch = useDispatch();
+
   // styles
   const classes = useStyles();
+
+  // load skills
+  useEffect(() => {
+    dispatch(getSkills());
+  }, [dispatch]);
 
   return (
     <Box className={classes.root}>
@@ -36,6 +53,10 @@ const Skills = () => {
       >
         <FormattedMessage id="skills.os" />
       </Typography>
+
+      {os.map(skill => (
+        <Skill selected={skill} locale={locale} />
+      ))}
 
       <Typography
         className={classes.title}

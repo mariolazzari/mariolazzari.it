@@ -6,7 +6,8 @@ const Description = require("./Description");
 const SkillSchema = new mongoose.Schema(
   {
     type: {
-      enum: ["OS", "lang", "tool", "DB"],
+      type: String,
+      enum: ["os", "lang", "ide", "lib", "db"],
     },
     name: {
       type: String,
@@ -14,15 +15,17 @@ const SkillSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+    imagePath: {
+      type: String,
+    },
+    url: {
+      type: String,
+    },
     description: [Description],
     useCase: [Description],
     date: {
       type: Date,
       default: Date.now,
-    },
-    hold: {
-      type: Boolean,
-      default: false,
     },
   },
   {

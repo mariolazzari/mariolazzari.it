@@ -5,6 +5,7 @@ const { required } = require("../config/mongoDB");
 const DescriptionSchema = new mongoose.Schema(
   {
     locale: {
+      type: String,
       enum: ["en", "it"],
     },
     text: {
