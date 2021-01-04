@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1, "10%"),
   },
   button: {
-    width: theme.spacing(10),
+    minWidth: theme.spacing(12),
     margin: theme.spacing(0, 1),
   },
   icon: {
@@ -62,41 +62,14 @@ const useStyles = makeStyles(theme => ({
 // component
 const Home = () => {
   // Redux
-  const { certifications, locale } = useSelector(state => ({
+  const { certifications, locale, cards } = useSelector(state => ({
     certifications: state.certification.certificationsLast,
     locale: state.app.locale,
+    cards: state.skill.main,
   }));
   const dispatch = useDispatch();
   // locales
   const intl = useIntl();
-
-  // cards to render
-  const cards = [
-    {
-      avatar: "/images/logos/mongodb.png",
-      title: "home.mongoTitle",
-      text: "home.mongoText",
-      onClick: () => window.open("https://mongodb.com/", "_blank"),
-    },
-    {
-      avatar: "/images/logos/express.png",
-      title: "home.expressTitle",
-      text: "home.expressText",
-      onClick: () => window.open("https://expressjs.com/", "_blank"),
-    },
-    {
-      avatar: "/images/logos/reactjs.png",
-      title: "home.reactTitle",
-      text: "home.reactText",
-      onClick: () => window.open("https://reactjs.com/", "_blank"),
-    },
-    {
-      avatar: "/images/logos/nodejs.png",
-      title: "home.nodeTitle",
-      text: "home.nodeText",
-      onClick: () => window.open("https://nodejs.org/", "_blank"),
-    },
-  ];
 
   // start cv download
   const onDownloadClick = e => {
