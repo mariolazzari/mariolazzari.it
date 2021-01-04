@@ -85,21 +85,99 @@
     "description": [
       {
         "locale": "en",
-        "text": "Oracle Linux (abbreviated OL, formerly known as Oracle Enterprise Linux or OEL) is a Linux distribution packaged and freely distributed by Oracle, available partially under the GNU General Public License since late 2006. It is compiled from Red Hat Enterprise Linux (RHEL) source code, replacing Red Hat branding with Oracle's. It is also used by Oracle Cloud and Oracle Engineered Systems such as Oracle Exadata and others."
+        "text": "Red Hat® Enterprise Linux® is the world’s leading enterprise Linux platform.* It’s an open source operating system (OS). It’s the foundation from which you can scale existing apps—and roll out emerging technologies—across bare-metal, virtual, container, and all types of cloud environments."
       },
       {
         "locale": "it",
-        "text": "Oracle Linux è una distribuzione Linux pacchettizzata e distribuita gratuitamente da Oracle, disponibile parzialmente sotto la GNU General Public License dalla fine del 2006. È compilata dal codice sorgente di Red Hat Enterprise Linux, sostituendo il marchio Red Hat con quello di Oracle."
+        "text": "Red Hat® Enterprise Linux® è la piattaforma Linux di livello enterprise leader di settore*. È un sistema operativo open source (OS). Si tratta della base da cui partire per rendere le app esistenti scalabili e distribuire le tecnologie emergenti su software bare metal, virtuali, container e tutte le tipologie di ambienti cloud."
       }
     ],
     "useCase": [
       {
         "locale": "en",
-        "text": "Oracle Linux is my primary choice, in order to host Oracle databese instance smoothly."
+        "text": "I used this os as a good alternative to Oracle Linux, in order to host Oracle database instances."
       },
       {
         "locale": "it",
-        "text": "Oralce Linux è il sistema operativo che prediligo quando sviluppo applicativi basati su database Oracle."
+        "text": "Ho utilizzato questo sistema operativo come valida alternativa a Oracle Linux, per osptare istanze database Oracle."
+      }
+    ]
+  },
+  {
+    "type": "os",
+    "name": "Windows Server",
+    "imagePath": "winserver.png",
+    "url": "https://www.windowserver.it/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Windows Server is a brand name for a group of server operating systems released by Microsoft. It includes all Windows operating systems that are branded 'Windows Server', but not any other Microsoft product. The first Windows server edition to be released under that brand was Windows Server 2003. However, the first server edition of Windows was Windows NT. "
+      },
+      {
+        "locale": "it",
+        "text": "Windows Server è il marchio di una famiglia di sistemi operativi per sistemi server realizzati da Microsoft Corporation. Il suo utilizzo è tipico di reti informatiche di qualsiasi numero di host per la centralizzazione di diverse funzioni di networking ad uso Internet ed intranet, come web server, posta elettronica, dhcp, dns..."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I use this operating system mainly as primary omain controller and for hosting Sql Server database instances."
+      },
+      {
+        "locale": "it",
+        "text": "Utilizzo questo sistema operativo principalmente come primary domain controller e per ospitare istanze Sql Sever."
+      }
+    ]
+  },
+  {
+    "type": "os",
+    "name": "AS/400",
+    "imagePath": "as400.png",
+    "url": "https://www.ibm.com/it-it/it-infrastructure/power/os/ibm-i",
+    "description": [
+      {
+        "locale": "en",
+        "text": "The IBM System i is a midrange computer platform from IBM, sometimes referred to generically by the umbrella term AS/400 or 'AS400'. The platform was first introduced as the AS/400 (Application System/400) in June 1988, with the operating system being called OS/400. In 2000, IBM introduced the eServer iSeries (with the 400 sometimes added[1]). As part of IBM's re-branding initiative in 2006, it was again renamed to System i."
+      },
+      {
+        "locale": "it",
+        "text": "Il sistema AS/400 (Application System/400) è stato un minicomputer sviluppato dall'IBM per usi prevalentemente aziendali, come supporto del sistema informativo gestionale. Nasce nel giugno 1988 come successore del system/38 e dopo oltre 30 anni è ancora in produzione; il nome commerciale è stato cambiato in iSeries nel 2000, in System i nel 2004 mentre oggi si chiama semplicemente I"
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I used this operating system for hosting DB2 database instances and managing ERP softwares."
+      },
+      {
+        "locale": "it",
+        "text": "Ho utilizzato questo sistema operativo per ospitare istanze database DB/2 e diversi ERP aziendali."
+      }
+    ]
+  },
+  {
+    "type": "os",
+    "name": "Solaris",
+    "imagePath": "solaris.png",
+    "url": "https://www.ibm.com/it-it/it-infrastructure/power/os/ibm-i",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Solaris is a proprietary Unix operating system originally developed by Sun Microsystems. It superseded the company's earlier SunOS in 1993. In 2010, after the Sun acquisition by Oracle, it was renamed Oracle Solaris. Solaris is known for its scalability, especially on SPARC systems, and for originating many innovative features such as DTrace, ZFS and Time Slider."
+      },
+      {
+        "locale": "it",
+        "text": "Oracle Solaris (in passato noto anche come Solaris, Solaris Operating System o Solaris OS) è un sistema operativo Unix originariamente sviluppato da Sun Microsystems, scritto in linguaggio C e basato su SunOS 5.0: il 27 gennaio 2010 Oracle Corporation ha acquisito Sun Microsystems, diventando proprietaria di Solaris (divenuto Oracle Solaris)."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I used this operating system for deploying enterprise Java applications."
+      },
+      {
+        "locale": "it",
+        "text": "Ho utilizzato questo sistema operativo per distribuire applicazioni Java enterprise."
       }
     ]
   }
