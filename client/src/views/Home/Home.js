@@ -24,6 +24,7 @@ import { indigo } from "@material-ui/core/colors";
 const Certification = lazy(() => import("../Certifications/Certification"));
 const CardBox = lazy(() => import("../../components/CardBox"));
 const Socials = lazy(() => import("../../components/Socials"));
+const GitHub = lazy(() => import("./GitHub"));
 
 // component styles
 const useStyles = makeStyles(theme => ({
@@ -159,6 +160,7 @@ const Home = () => {
             </Button>
           </Tooltip>
         </Grid>
+
         <Grid item xs={12}>
           <Typography
             className={classes.subtitle}
@@ -227,6 +229,12 @@ const Home = () => {
             </Suspense>
           </Grid>
         ))}
+
+        <Grid item container justify="center" xs={12}>
+          <Suspense fallback={<CircularProgress />}>
+            <GitHub />
+          </Suspense>
+        </Grid>
 
         <Grid item xs={12}>
           <Typography
