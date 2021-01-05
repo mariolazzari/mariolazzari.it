@@ -38,6 +38,7 @@
   "skills.libs": "Libraries",
   "skills.tools": "Tools",
 
-  "contacts.mail": "You can send me an email here::",
+  "contacts.contacts": "Contacts",
+  "contacts.mail": "You can send me an email here:",
   "contacts.social": "...or find me on the following social accounts:"
 }
