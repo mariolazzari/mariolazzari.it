@@ -180,5 +180,57 @@
         "text": "Ho utilizzato questo sistema operativo per distribuire applicazioni Java enterprise."
       }
     ]
+  },
+  {
+    "type": "lang",
+    "name": "JavaScript",
+    "imagePath": "javascript.png",
+    "url": "https://developer.mozilla.org/it/docs/Web/JavaScript",
+    "description": [
+      {
+        "locale": "en",
+        "text": "JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB.0"
+      },
+      {
+        "locale": "it",
+        "text": "JavaScript (spesso abbreviato in JS) è un linguaggio leggero, interpretato, funzionale e orientato agli oggetti, conosciuto per lo più come linguaggio di script per pagine web, ma utilizzato in molti ambienti non-browser così come node.js o Apache CouchDB."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "Javascript is my main programming language for all my client and server projrct. Thanks to NodeJS enviroment and React Native, I am able to code multiplatform native mobile app too."
+      },
+      {
+        "locale": "it",
+        "text": "Utilizzo regolarmente JavaScript per tutti i miei progetti, sia lato client, che server. Grazie all'ecosistema NodeJS e a React Native, inoltre, sviluppo applicazioni mobile native e multi piattaforma."
+      }
+    ]
+  },
+  {
+    "type": "lang",
+    "name": "HTML",
+    "imagePath": "html.png",
+    "url": "https://developer.mozilla.org/it/docs/Web/HTML",
+    "description": [
+      {
+        "locale": "en",
+        "text": "HTML (HyperText Markup Language) is the most basic building block of the Web. It defines the meaning and structure of web content. Other technologies besides HTML are generally used to describe a web page's appearance/presentation (CSS) or functionality/behavior (JavaScript)."
+      },
+      {
+        "locale": "it",
+        "text": "HTML (HyperText Markup Language) è il linguaggio utilizzato per creare pagine web e altri tipi di documenti visualizzabili in un browser. Insieme all'HTML vengono utilizzate altre tecnologie per modificare la presentazione/apparenza di una pagina web (CSS) o la sua funzionalità (JavaScript)."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I use HTML for all my graphical user interfaces, both web and desktop, thanks to ElecronJS."
+      },
+      {
+        "locale": "it",
+        "text": "Utilizzo HTML per tutte le interfacce grafiche utente, sia web, che desktop, grazie a ElectronJS."
+      }
+    ]
   }
 ]
