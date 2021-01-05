@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 // MUI components
 import { makeStyles } from "@material-ui/core";
-import Paper from "@material-ui/core/paper";
+import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 
@@ -53,7 +53,7 @@ const Skill = ({ selected, locale }) => {
         setUse(use.text);
       }
     }
-  }, [locale, selected.description]);
+  }, [locale, selected.description, selected.useCase]);
 
   return (
     <Paper
