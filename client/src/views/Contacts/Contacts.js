@@ -66,7 +66,7 @@ const Contacts = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>
-          {intl.formatMessage({ id: "skills.title" }) +
+          {intl.formatMessage({ id: "contacts.title" }) +
             " - Mario Lazzari Fullstack Javascript Developer"}
         </title>
         <link rel="canonical" href="https://mariolazzari.it/contacts" />
