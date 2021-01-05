@@ -7,6 +7,7 @@ const initialState = {
   db: [],
   ide: [],
   lib: [],
+  tool: [],
   main: [
     {
       avatar: "/images/logos/mongodb.png",
@@ -45,8 +46,8 @@ const skillReducer = (state = initialState, action) => {
       const db = action.payload.filter(s => s.type === "db");
       const ide = action.payload.filter(s => s.type === "ide");
       const lib = action.payload.filter(s => s.type === "lib");
-
-      return { ...state, skills: action.payload, os, lang, db, ide, lib };
+      const tool = action.payload.filter(s => s.type === "tool");
+      return { ...state, os, lang, db, ide, lib, tool };
 
     default:
       return state;

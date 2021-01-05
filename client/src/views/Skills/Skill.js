@@ -5,19 +5,19 @@ import { makeStyles } from "@material-ui/core";
 import Paper from "@material-ui/core/paper";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-// MUI icons
-import LinkIcon from "@material-ui/icons/Link";
 
 // styles
 const useStyles = makeStyles(theme => ({
   paper: {
     display: "flex",
     flexDirection: "column",
+    justifyContent: "flex-start",
     alignItems: "center",
-    width: theme.spacing(50),
+    height: theme.spacing(45),
+    width: theme.spacing(45),
     margin: theme.spacing(1),
     padding: theme.spacing(1),
+    cursor: "pointer",
   },
   avatar: {
     height: theme.spacing(10),
@@ -25,9 +25,6 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontWeight: "bold",
-  },
-  link: {
-    alignSelf: "flex-start",
   },
 }));
 
@@ -62,6 +59,7 @@ const Skill = ({ selected, locale }) => {
     <Paper
       className={classes.paper}
       elevation={elevation}
+      onClick={onClick}
       onMouseEnter={() => setElevation(10)}
       onMouseLeave={() => setElevation(1)}
     >
@@ -81,16 +79,13 @@ const Skill = ({ selected, locale }) => {
         {selected.name}
       </Typography>
 
-      <Typography paragraph align="justify">
+      <Typography variant="body2" paragraph align="justify">
         {text}
       </Typography>
-      <Typography paragraph align="justify">
+
+      <Typography variant="body2" paragraph align="justify">
         {use}
       </Typography>
-
-      <IconButton className={classes.link} onClick={onClick}>
-        <LinkIcon />
-      </IconButton>
     </Paper>
   );
 };
