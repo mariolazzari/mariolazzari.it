@@ -1,12 +1,11 @@
 import { useEffect, Suspense, lazy } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
 import { getLastCertifiations } from "../../actions/certificationActions";
-
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
@@ -69,8 +68,6 @@ const Home = () => {
     cards: state.skill.main,
   }));
   const dispatch = useDispatch();
-  // locales
-  const intl = useIntl();
 
   // start cv download
   const onDownloadClick = e => {
@@ -98,12 +95,17 @@ const Home = () => {
   return (
     <Box className={classes.root}>
       <Helmet>
-        <title>{intl.formatMessage({ id: "home.title" })}</title>
+        <meta charSet="utf-8" />
+        <title>Mario Lazzari Fullstack Javascript Developer</title>
+        <link rel="canonical" href="https://mariolazzari.it" />
         <meta
           name="description"
-          content={intl.formatMessage({ id: "home.subtitle" })}
+          content="Benvenuti nel mio sito, nel quale potrete trovare alcune informazioni su di me, i miei interessi e gli strumenti che utilizzo quotidianamente come sviluppatore software."
         />
-        <link rel="canonical" href="https://mariolazzari.it" />
+        <meta
+          name="keywords"
+          content="programmazione javascript react redux nodejs mongodb web developer brescia milano"
+        />
       </Helmet>
 
       <Typography

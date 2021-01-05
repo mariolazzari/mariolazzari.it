@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
+import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
@@ -50,6 +51,8 @@ const Contacts = () => {
   }));
   const dispatch = useDispatch();
 
+  const intl = useIntl();
+
   // styles
   const classes = useStyles();
 
@@ -60,6 +63,26 @@ const Contacts = () => {
 
   return (
     <Box className={classes.root}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>
+          {intl.formatMessage({ id: "skills.title" }) +
+            " - Mario Lazzari Fullstack Javascript Developer"}
+        </title>
+        <link rel="canonical" href="https://mariolazzari.it/contacts" />
+        <meta
+          name="description"
+          content={
+            intl.formatMessage({ id: "skills.title" }) +
+            " - Mario Lazzari Fullstack Javascript Developer"
+          }
+        />
+        <meta
+          name="keywords"
+          content="programmazione javascript react redux nodejs mongodb web developer brescia milano competenze skill"
+        />
+      </Helmet>
+
       <Typography
         className={classes.title}
         variant="h4"

@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { useIntl } from "react-intl";
+import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { getSkills } from "../../actions/skillActions";
@@ -32,6 +34,9 @@ const Skills = () => {
   }));
   const dispatch = useDispatch();
 
+  //locales
+  const intl = useIntl();
+
   // styles
   const classes = useStyles();
 
@@ -42,6 +47,26 @@ const Skills = () => {
 
   return (
     <Box className={classes.root}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>
+          {intl.formatMessage({ id: "skills.title" }) +
+            " - Mario Lazzari Fullstack Javascript Developer"}
+        </title>
+        <link rel="canonical" href="https://mariolazzari.it/skills" />
+        <meta
+          name="description"
+          content={
+            intl.formatMessage({ id: "skills.title" }) +
+            " - Mario Lazzari Fullstack Javascript Developer"
+          }
+        />
+        <meta
+          name="keywords"
+          content="programmazione javascript react redux nodejs mongodb web developer brescia milano competenze skill"
+        />
+      </Helmet>
+
       <Secton title="skills.os" items={os} locale={locale} />
       <Secton title="skills.lang" items={lang} locale={locale} />
       <Secton title="skills.db" items={db} locale={locale} />
