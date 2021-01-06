@@ -69,9 +69,10 @@ const Skills = () => {
       </Helmet>
 
       <Secton title="skills.lang" items={lang} locale={locale} />
-      <Secton title="skills.os" items={os} locale={locale} />
-      <Secton title="skills.db" items={db} locale={locale} />
       <Secton title="skills.ide" items={ide} locale={locale} />
+      <Secton title="skills.os" items={os} locale={locale} />
+
+      <Secton title="skills.db" items={db} locale={locale} />
       <Secton title="skills.libs" items={lib} locale={locale} />
       <Secton title="skills.tools" items={tool} locale={locale} />
     </Box>

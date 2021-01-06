@@ -303,11 +303,141 @@
     "useCase": [
       {
         "locale": "en",
-        "text": "I used Java for deploying enterprise projects."
+        "text": "I used Java for deploying enterprise projects and Android native apps."
       },
       {
         "locale": "it",
-        "text": "Ho utilizzato Java per sviluppare progetti aziendali."
+        "text": "Ho utilizzato Java per sviluppare progetti aziendali e applicazioni Android native. "
+      }
+    ]
+  },
+  {
+    "type": "ide",
+    "name": "Visual Studio Code",
+    "imagePath": "code.png",
+    "url": "https://code.visualstudio.com/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages "
+      },
+      {
+        "locale": "it",
+        "text": "Visual Studio Code è un editor di codice sorgente sviluppato da Microsoft per Windows, Linux e macOS. Include il supporto per debugging, un controllo per Git integrato, Syntax highlighting, IntelliSense, Snippet e refactoring del codice. Sono personalizzabili il tema dell'editor, le scorciatoie da tastiera e le preferenze."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "Visual Studio Code is my main tool for virtually any issue, from coding to managing docker containers. By far the finest tool I had the pleasure to wotk with, in my humble opinion."
+      },
+      {
+        "locale": "it",
+        "text": "Visual Studio Code è il mio strumento principale per pratiamente ogni ambito, dalla programmazione alla gestione di container Docker. Di gran lunga il miglior strumento che abbia mai avuto il piacere di utilizzare."
+      }
+    ]
+  },
+  {
+    "type": "ide",
+    "name": "Visual Studio",
+    "imagePath": "vs.png",
+    "url": "",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Microsoft Visual Studio is an integrated development environment (IDE) from Microsoft. It is used to develop computer programs, as well as websites, web apps, web services and mobile apps."
+      },
+      {
+        "locale": "it",
+        "text": "Microsoft Visual Studio è un ambiente di sviluppo integrato sviluppato da Microsoft. Visual Studio è multilinguaggio e attualmente supporta la creazione di progetti per varie piattaforme, tra cui anche Mobile e Console."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I use Visual Studio form maintaining some legacy code, still based on .Net enviroment,"
+      },
+      {
+        "locale": "it",
+        "text": "Utilizzo Visual Studio per gestire applicazioni in produzione, basate ancora su ambiente .Net."
+      }
+    ]
+  },
+  {
+    "type": "ide",
+    "name": "Eclipse",
+    "imagePath": "eclipse.png",
+    "url": "",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Eclipse is an integrated development environment (IDE) used in computer programming.[6] It contains a base workspace and an extensible plug-in system for customizing the environment. Eclipse is written mostly in Java and its primary use is for developing Java applications, but it may also be used to develop applications in other programming languages via plug-ins."
+      },
+      {
+        "locale": "it",
+        "text": "Eclipse è un ambiente di sviluppo integrato multi-linguaggio e multipiattaforma. Ideato da un consorzio di grandi società quali Ericsson, HP, IBM, Intel, MontaVista Software, QNX, SAP e Serena Software, chiamato Eclipse Foundation."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I used Eclipse for coding Java enterprise applications and Business Intelligence projects."
+      },
+      {
+        "locale": "it",
+        "text": "Ho utilizzato Eclipse per sviluppare applicazioni Java enterprise e progetti di Business Intelligence."
+      }
+    ]
+  },
+  {
+    "type": "ide",
+    "name": "Netbeans",
+    "imagePath": "netbeans.png",
+    "url": "https://netbeans.org/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "NetBeans is an integrated development environment (IDE) for Java. NetBeans allows applications to be developed from a set of modular software components called modules."
+      },
+      {
+        "locale": "it",
+        "text": "NetBeans è un ambiente di sviluppo integrato multi-linguaggio, nato nel giugno 2000 e scritto interamente in Java, scelto dalla Oracle Corporation come IDE ufficiale."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I used Eclipse for coding Java enterprise applications and Business Intelligence projects."
+      },
+      {
+        "locale": "it",
+        "text": "Ho utilizzato Eclipse per sviluppare applicazioni Java enterprise e progetti di Business Intelligence."
+      }
+    ]
+  },
+  {
+    "type": "ide",
+    "name": "Android Studio",
+    "imagePath": "androidstudio.png",
+    "url": "https://developer.android.com/codelabs/basic-android-kotlin-training-change-app-icon#0",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Android Studio is the official integrated development environment for Google's Android operating system, built on JetBrains' IntelliJ IDEA software and designed specifically for Android development."
+      },
+      {
+        "locale": "it",
+        "text": "Android Studio è un ambiente di sviluppo integrato per lo sviluppo per la piattaforma Android. È stato annunciato il 16 maggio 2013 in occasione della conferenza Google I/O tenuta dal Product Manager Google, Katherine Chou."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I used Android Studio for coding native Android applications."
+      },
+      {
+        "locale": "it",
+        "text": "Ho utilizzato Android Studio per sviluppare applicazioni native Android."
       }
     ]
   }
