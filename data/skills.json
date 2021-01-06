@@ -232,5 +232,83 @@
         "text": "Utilizzo HTML per tutte le interfacce grafiche utente, sia web, che desktop, grazie a ElectronJS."
       }
     ]
+  },
+  {
+    "type": "lang",
+    "name": "CSS",
+    "imagePath": "css.png",
+    "url": "https://developer.mozilla.org/it/docs/Web/CSS",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML (including XML dialects such as SVG, MathML or XHTML). CSS describes how elements should be rendered on screen, on paper, in speech, or on other media."
+      },
+      {
+        "locale": "it",
+        "text": "Il Cascading Style Sheets (CSS) è un linguaggio per fogli di stile utilizzato per descrivere la presentazione di un documento scritto in HTML o XML (inclusi vari linguaggi XML quali SVG o XHTML). Il CSS descrive come gli elementi dovrebbero apparire su schermo, su carta, nel parlato o in altri media."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I daily use CSS for styling all my projects, thanks to the great flexibility offered by flexbox module."
+      },
+      {
+        "locale": "it",
+        "text": "Utilizzo quotidianamente CSS per gestire l'aspetto di tutti i miei progetti, grazie alla grande flessibilità offerta dal modulo flexbox."
+      }
+    ]
+  },
+  {
+    "type": "lang",
+    "name": "C#",
+    "imagePath": "cs.png",
+    "url": "https://docs.microsoft.com/it-it/dotnet/csharp/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "C# is an elegant and type-safe object-oriented language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem."
+      },
+      {
+        "locale": "it",
+        "text": "C# è un linguaggio orientato a oggetti elegante e indipendente dai tipi. C# consente agli sviluppatori di compilare molti tipi di applicazioni sicure e affidabili eseguite nell'ecosistema .NET."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I used C# for coding mainly desktop applications for Windows and I am still supporting some legacy code with this technology. "
+      },
+      {
+        "locale": "it",
+        "text": "Ho utilizzato C# per sviluppare principalmente applicazioni descktop per Windows e utilizzo questa tecnologia per supportare applicazioni in produzione."
+      }
+    ]
+  },
+  {
+    "type": "lang",
+    "name": "Java",
+    "imagePath": "java.png",
+    "url": "https://www.java.com/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Java is a programming language and computing platform first released by Sun Microsystems in 1995. There are lots of applications and websites that will not work unless you have Java installed, and more are created every day. Java is fast, secure, and reliable."
+      },
+      {
+        "locale": "it",
+        "text": "Java è una tecnologia utilizzata per lo sviluppo di applicazioni che rendono il Web più divertente e utile. Java è diverso da JavaScript in quanto quest'ultimo è una semplice tecnologia utilizzata per la creazione di pagine Web e viene eseguita solo nel browser."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I used Java for deploying enterprise projects."
+      },
+      {
+        "locale": "it",
+        "text": "Ho utilizzato Java per sviluppare progetti aziendali."
+      }
+    ]
   }
 ]
