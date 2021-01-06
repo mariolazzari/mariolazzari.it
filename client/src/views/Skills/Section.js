@@ -47,9 +47,13 @@ const Section = props => {
       </Typography>
 
       <Box className={classes.skills}>
-        {props.items.map(item => (
-          <Skill key={item._id} selected={item} locale={props.locale} />
-        ))}
+        {props.items.length > 0 ? (
+          props.items.map(item => (
+            <Skill key={item._id} selected={item} locale={props.locale} />
+          ))
+        ) : (
+          <Typography variantt="h3">Coming soon...</Typography>
+        )}
       </Box>
     </Box>
   );

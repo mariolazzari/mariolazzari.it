@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { Helmet } from "react-helmet";
 // Redux
@@ -22,6 +22,9 @@ const useStyles = makeStyles(theme => ({
 
 // compoennt
 const Skills = () => {
+  // State
+  const [title, setTitle] = useState("");
+
   // Redux
   const { locale, os, lang, db, ide, lib, tool } = useSelector(state => ({
     locale: state.app.locale,
@@ -43,6 +46,12 @@ const Skills = () => {
   // load skills
   useEffect(() => {
     window.scrollTo(0, 0);
+    // set page title
+    const homeTitle = intl.formatMessage({ id: "home.title" });
+    const homeSubtitle = intl.formatMessage({ id: "home.subtitle" });
+    const skillTitle = intl.formatMessage({ id: "skills.title" });
+    setTitle(skillTitle + " " + homeTitle + " " + homeSubtitle);
+    // get skills
     dispatch(getSkills());
   }, [dispatch]);
 
@@ -50,18 +59,9 @@ const Skills = () => {
     <Box className={classes.root}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>
-          {intl.formatMessage({ id: "skills.title" }) +
-            " - Mario Lazzari Fullstack Javascript Developer"}
-        </title>
+        <title>{title}</title>
         <link rel="canonical" href="https://mariolazzari.it/skills" />
-        <meta
-          name="description"
-          content={
-            intl.formatMessage({ id: "skills.title" }) +
-            " - Mario Lazzari Fullstack Javascript Developer"
-          }
-        />
+        <meta name="description" content={title} />
         <meta
           name="keywords"
           content="programmazione javascript react redux nodejs mongodb web developer brescia milano competenze skill"

@@ -14,3 +14,6 @@ export const GET_SKILLS = "GET_SKILLS";
 // Certificaction types
 export const GET_LAST_CERTIFICATIONS = "GET_LAST_CERTIFICATIONS";
 export const GET_CERTIFICATIONS = "GET_CERTIFICATIONS";
+
+// Job types
+export const GET_JOBS = "GET_JOBS";
