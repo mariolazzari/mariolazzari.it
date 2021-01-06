@@ -440,5 +440,31 @@
         "text": "Ho utilizzato Android Studio per sviluppare applicazioni native Android."
       }
     ]
+  },
+  {
+    "type": "db",
+    "name": "MongoDB",
+    "imagePath": "mongodb.png",
+    "url": "https://www.mongodb.com/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. MongoDB is developed by MongoDB Inc. and licensed under the Server Side Public License (SSPL)."
+      },
+      {
+        "locale": "it",
+        "text": "MongoDB  è un DBMS non relazionale, orientato ai documenti. Classificato come un database di tipo NoSQL, MongoDB si allontana dalla struttura tradizionale basata su tabelle dei database relazionali in favore di documenti in stile JSON con schema dinamico. "
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I use Mongo DB for all my proje/ts, due its schema less strategy and native Javascript support."
+      },
+      {
+        "locale": "it",
+        "text": "Utilizzo Mongo DB per tutti i miei progetti, grazie alla sua strategia a schema libero e al supporto nativo per JavaScript."
+      }
+    ]
   }
 ]
