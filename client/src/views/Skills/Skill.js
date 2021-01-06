@@ -18,6 +18,9 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     padding: theme.spacing(1),
     cursor: "pointer",
+    "&:hover": {
+      transform: "scale(1.1)",
+    },
   },
   avatar: {
     height: theme.spacing(10),
@@ -75,6 +78,7 @@ const Skill = ({ selected, locale }) => {
         variant="h6"
         align="center"
         gutterBottom
+        component="a"
       >
         {selected.name}
       </Typography>

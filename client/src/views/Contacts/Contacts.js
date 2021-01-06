@@ -58,6 +58,7 @@ const Contacts = () => {
 
   // set route
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(setSelectedRoute("/contacts"));
   }, [dispatch]);
 

@@ -42,6 +42,7 @@ const Skills = () => {
 
   // load skills
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(getSkills());
   }, [dispatch]);
 
@@ -67,8 +68,8 @@ const Skills = () => {
         />
       </Helmet>
 
-      <Secton title="skills.os" items={os} locale={locale} />
       <Secton title="skills.lang" items={lang} locale={locale} />
+      <Secton title="skills.os" items={os} locale={locale} />
       <Secton title="skills.db" items={db} locale={locale} />
       <Secton title="skills.ide" items={ide} locale={locale} />
       <Secton title="skills.libs" items={lib} locale={locale} />

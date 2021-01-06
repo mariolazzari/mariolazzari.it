@@ -85,6 +85,7 @@ const Home = () => {
 
   // load last certifications
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(getLastCertifiations());
     dispatch(setSelectedRoute("/"));
   }, [dispatch]);
