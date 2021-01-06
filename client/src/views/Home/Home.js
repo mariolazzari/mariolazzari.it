@@ -1,5 +1,5 @@
 import { useEffect, Suspense, lazy } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 // Redux
@@ -89,6 +89,9 @@ const Home = () => {
     dispatch(setSelectedRoute("/"));
   }, [dispatch]);
 
+  // locales
+  const intl = useIntl();
+
   // styles
   const classes = useStyles();
 
@@ -96,15 +99,19 @@ const Home = () => {
     <Box className={classes.root}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Mario Lazzari Fullstack Javascript Developer</title>
-        <link rel="canonical" href="https://mariolazzari.it" />
+        <title>
+          {intl.formatMessage({ id: "home.title" }) +
+            " " +
+            intl.formatMessage({ id: "home.subtitle" })}
+        </title>
+        <link rel="canonical" href="https://mariolazzari.it/" />
         <meta
           name="description"
-          content="Benvenuti nel mio sito, nel quale potrete trovare alcune informazioni su di me, i miei interessi e gli strumenti che utilizzo quotidianamente come sviluppatore software."
+          content={intl.formatMessage({ id: "home.intro" })}
         />
         <meta
           name="keywords"
-          content="programmazione javascript react redux nodejs mongodb web developer brescia milano"
+          content="programmazione javascript react redux nodejs mongo web developer brescia milano full stack"
         />
       </Helmet>
 
