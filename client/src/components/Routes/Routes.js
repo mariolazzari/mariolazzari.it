@@ -6,6 +6,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 const Home = lazy(() => import("../../views/Home"));
 const Certifications = lazy(() => import("../../views/Certifications"));
 const Skills = lazy(() => import("../../views/Skills"));
+const Jobs = lazy(() => import("../../views/Jobs"));
 const Hobbies = lazy(() => import("../../views/Hobbies"));
 const Contacts = lazy(() => import("../../views/Contacts"));
 
@@ -16,6 +17,7 @@ const Routes = () => (
       <Route path="/" exact component={Home} />
       <Route path="/certifications" component={Certifications} />
       <Route path="/skills" component={Skills} />
+      <Route path="/jobs" component={Jobs} />
       <Route path="/hobbies" component={Hobbies} />
       <Route path="/contacts" component={Contacts} />
       <Redirect to="/" />

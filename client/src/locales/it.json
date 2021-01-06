@@ -5,6 +5,7 @@
   "menu.contacts": "Contatti",
   "menu.skills": "Competenze",
   "menu.hobbies": "Interessi",
+  "menu.jobs": "Lavoro",
 
   "home.title": "Mario Lazzari",
   "home.subtitle": "Javascript Full Stack Developer",
@@ -37,6 +38,8 @@
   "skills.ide": "Ambienti di sviluppo",
   "skills.libs": "Librerie",
   "skills.tools": "Strumenti",
+
+  "jobs.title": "Lavoro",
 
   "contacts.title": "Contatti",
   "contacts.mail": "Puoi contattarmi via mail al seguente indirizzo:",

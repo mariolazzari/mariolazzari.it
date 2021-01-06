@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { getSkills } from "../../actions/skillActions";
+import { setSelectedRoute } from "../../actions/appActions";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
@@ -45,6 +46,7 @@ const Skills = () => {
 
   // load skills
   useEffect(() => {
+    dispatch(setSelectedRoute("/skills"));
     window.scrollTo(0, 0);
     // set page title
     const homeTitle = intl.formatMessage({ id: "home.title" });

@@ -1,0 +1,114 @@
+[
+  {
+    "company": "Liceo Scientifico Blaise Pascal",
+    "imagePath": "pascal.png",
+    "url": "",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Networking"
+      },
+      {
+        "locale": "it",
+        "text": "Amministratore rete"
+      }
+    ],
+    "date": "1999-01-01"
+  },
+  {
+    "company": "Se.Co.Ges.",
+    "imagePath": "secpges.png",
+    "url": "http://www.secoges.com/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Software developer"
+      },
+      {
+        "locale": "it",
+        "text": "Analista rogrammatore"
+      }
+    ],
+    "date": "1999-01-01"
+  },
+  {
+    "company": "Accademia Musicale Preludio",
+    "imagePath": "preludio.png",
+    "url": "http://www.accademiapreludio.org/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Modern Guitar Maestro"
+      },
+      {
+        "locale": "it",
+        "text": "Maestro Chitarra Moderna"
+      }
+    ],
+    "date": "2002-01-01"
+  },
+  {
+    "company": "UOP S.p.A.",
+    "imagePath": "uop.png",
+    "url": "https://www.uop.it/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "IT Manager"
+      },
+      {
+        "locale": "it",
+        "text": "Responsabile IT"
+      }
+    ],
+    "date": "2007-04-01"
+  },
+  {
+    "company": "Leggere S.r.l.",
+    "imagePath": "leggere.png",
+    "url": "https://www.leggere.it/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Software Developer"
+      },
+      {
+        "locale": "it",
+        "text": "Analista Programmatore"
+      }
+    ],
+    "date": "2014-02-15"
+  },
+  {
+    "company": "Italian Cable Company S.p.A.",
+    "imagePath": "icc.png",
+    "url": "https://icc.it/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Software Developer"
+      },
+      {
+        "locale": "it",
+        "text": "Analista Programmatore"
+      }
+    ],
+    "date": "2015-01-07"
+  },
+  {
+    "company": "Tecalux S.r.l",
+    "imagePath": "tecalux.png",
+    "url": "https://tecalux.it/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Software Developer"
+      },
+      {
+        "locale": "it",
+        "text": "Analista Programmatore"
+      }
+    ],
+    "date": "2016-11-07"
+  }
+]

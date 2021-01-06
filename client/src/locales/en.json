@@ -5,6 +5,7 @@
   "menu.contacts": "Contacts",
   "menu.skills": "Skills",
   "menu.hobbies": "Hobbies",
+  "menu.jobs": "Job",
 
   "home.title": "Mario Lazzari",
   "home.subtitle": "Javascript Full Stack Developer",
@@ -37,6 +38,8 @@
   "skills.ide": "Integrated development enviroments",
   "skills.libs": "Libraries",
   "skills.tools": "Tools",
+
+  "jobs.title": "Job",
 
   "contacts.title": "Contacts",
   "contacts.mail": "You can send me an email here:",

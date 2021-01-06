@@ -47,6 +47,11 @@ const initState = {
       icon: <CertificationIcon color="secondary" />,
     },
     {
+      label: "menu.jobs",
+      path: "/jobs",
+      icon: <HobbyIcon color="secondary" />,
+    },
+    {
       label: "menu.hobbies",
       path: "/hobbies",
       icon: <HobbyIcon color="secondary" />,
