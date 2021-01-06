@@ -466,5 +466,109 @@
         "text": "Utilizzo Mongo DB per tutti i miei progetti, grazie alla sua strategia a schema libero e al supporto nativo per JavaScript."
       }
     ]
+  },
+  {
+    "type": "db",
+    "name": "SQL Server",
+    "imagePath": "sqlserver.png",
+    "url": "",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Microsoft SQL Server is a relational database management system developed by Microsoft. As a database server, it is a software product with the primary function of storing and retrieving data as requested by other software applications—which may run either on the same computer or on another computer across a network. "
+      },
+      {
+        "locale": "it",
+        "text": "Microsoft SQL Server è un DBMS relazionale, prodotto da Microsoft. Nelle prime versioni era utilizzato per basi dati medio-piccole, ma a partire dalla versione 2000 è stato utilizzato anche per la gestione di basi dati di grandi dimensioni."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I use a lot SQL server in data integration projects and Industry 4.0 issues."
+      },
+      {
+        "locale": "it",
+        "text": "Utilizzo frequentemente SQL server in progetti di integrazine / scambio dati e Industry 4.0."
+      }
+    ]
+  },
+  {
+    "type": "db",
+    "name": "Oracle",
+    "imagePath": "oracle.png",
+    "url": "https://www.oracle.com/it/database/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Oracle Database is a multi-model database management system produced and marketed by Oracle Corporation. It is a database commonly used for running online transaction processing (OLTP), data warehousing (DW) and mixed (OLTP & DW) database workloads."
+      },
+      {
+        "locale": "it",
+        "text": "Oracle Database è uno tra i più famosi software di database management system sviluppato da Oracle Corporation. Scritto in linguaggio C, che fa parte dei cosiddetti RDBMS ovvero di sistemi di database basati sul modello relazionale affermatosi come standard"
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I used this database mainly for coding ERP application with PL/SQL language."
+      },
+      {
+        "locale": "it",
+        "text": "Ho utilizzato questo database principalmente per sviluppare software EPR basato su linguaggio PL/SQL. "
+      }
+    ]
+  },
+  {
+    "type": "db",
+    "name": "MySQL",
+    "imagePath": "mysql.png",
+    "url": "https://www.mysql.com/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "MySQL Database Service is a fully managed database service to deploy cloud-native applications. HeatWave, an integrated, high-performance analytics engine accelerates MySQL performance by 400x."
+      },
+      {
+        "locale": "it",
+        "text": "MySQL Database Service è un servizio di database completamente gestito per distribuire applicazioni native del cloud utilizzando il database open source più diffuso al mondo. È sviluppato, gestito e supportato al 100% dal Team MySQL."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I use this database in different projects, mainly on Linux servers."
+      },
+      {
+        "locale": "it",
+        "text": "Ho utilizzato questo database in diversi progetti. principalmente su server Linux."
+      }
+    ]
+  },
+  {
+    "type": "db",
+    "name": "PostgreSQL",
+    "imagePath": "postgres.png",
+    "url": "https://www.postgresql.org/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance."
+      },
+      {
+        "locale": "it",
+        "text": "PostgreSQL +è un completo DBMS ad oggetti rilasciato con licenza libera. Spesso abbreviato Postgres, sebbene questo sia un nome vecchio dello stesso progetto, è una reale alternativa sia rispetto ad altri prodotti liberi come MySQL."
+      }
+    ],
+    "useCase": [
+      {
+        "locale": "en",
+        "text": "I used PostgreSQL in several occasion as a good alternative to Oracole database, due its compatibility with PL/SQL language."
+      },
+      {
+        "locale": "it",
+        "text": "Ho utilizzato PostgreSQL come valida alternativa a database Oracle, grazie alla sua compatibilità con il linguaggio PL/SQL."
+      }
+    ]
   }
 ]
