@@ -68,7 +68,7 @@ const Certifications = () => {
         {certifications
           .filter(c => c.title.toLowerCase().includes(search.toLowerCase()))
           .map(c => (
-            <Grid item xs={12} md={6} lg={3}>
+            <Grid item xs={12} md={6} lg={4} xl={3}>
               <Certification key={c._id} selected={c} />
             </Grid>
           ))}
