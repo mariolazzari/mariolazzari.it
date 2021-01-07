@@ -233,7 +233,15 @@ const Home = () => {
         </Grid>
 
         {certifications.map(c => (
-          <Grid item key={c._id} xs={12} sm={6} lg={3}>
+          <Grid
+            item
+            container
+            justify="center"
+            key={c._id}
+            xs={12}
+            sm={6}
+            lg={3}
+          >
             <Suspense fallback={<CircularProgress />}>
               <Certification selected={c} />
             </Suspense>
