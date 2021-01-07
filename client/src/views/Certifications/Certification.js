@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     borderRadius: theme.spacing(1),
     minWidth: theme.spacing(40),
+    maxWidth: theme.spacing(50),
   },
   title: {
     margin: theme.spacing(1),
