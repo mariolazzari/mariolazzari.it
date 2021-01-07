@@ -4,6 +4,9 @@ import TextField from "@material-ui/core/TextField";
 // Mui icons
 import InputAdornment from "@material-ui/core/InputAdornment";
 import EditIcon from "@material-ui/icons/Edit";
+import ClearIcon from "@material-ui/icons/Clear";
+// MUI colors
+import red from "@material-ui/core/colors/red";
 
 // component
 const TextBox = props => {
@@ -19,11 +22,15 @@ const TextBox = props => {
       required={props.required}
       value={props.value}
       InputProps={{
-        endAdornment: (
-          <InputAdornment position="end">
-            <EditIcon color="primary" />
-          </InputAdornment>
+        startAdornment: (
+          <InputAdornment position="end">{props.startIcon}</InputAdornment>
         ),
+        endAdornment: props.onClear ? (
+          <ClearIcon
+            style={{ color: red[800], cursor: "pointer" }}
+            onClick={props.onClear}
+          />
+        ) : null,
       }}
     />
   );
@@ -34,6 +41,7 @@ TextBox.defaultProps = {
   autoFocus: false,
   fullWidth: true,
   required: true,
+  startIcon: <EditIcon color="primary" />,
 };
 
 // mandatory props
