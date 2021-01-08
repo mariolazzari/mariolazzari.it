@@ -1,14 +1,18 @@
 // MUI components
 import { makeStyles } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+// MUI colors
+import indigo from "@material-ui/core/colors/indigo";
 
 // styles
 const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-    minHeight: "100vh",
+  box: {
+    backgroundColor: indigo[50],
+    minHeight: "95vh",
+  },
+  gird: {
+    width: "100%",
   },
 }));
 
@@ -18,9 +22,11 @@ const Hobbies = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <img src="/images/wip.jpg" alt="WIP" />
-    </div>
+    <Box className={classes.box}>
+      <Grid className={classes.grid} container>
+        <Grid item></Grid>
+      </Grid>
+    </Box>
   );
 };
 
