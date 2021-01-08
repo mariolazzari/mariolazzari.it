@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
   },
   image: {
-    maxWidth: theme.spacing(50),
+    maxWidth: "100%",
   },
 }));
 
