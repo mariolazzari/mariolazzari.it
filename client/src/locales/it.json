@@ -1,5 +1,5 @@
 {
-  "menu.logo": "Mario V Lazzari",
+  "menu.logo": "Mario Lazzari",
   "menu.home": "Home",
   "menu.certifications": "Certificazioni",
   "menu.contacts": "Contatti",
@@ -40,6 +40,10 @@
   "skills.tools": "Strumenti",
 
   "jobs.title": "Lavoro",
+
+  "hobbies.more": "Scopri di più",
+  "hobbies.nasaTitle": "Nasa Open API",
+  "hobbies.nasaDesc": "In questa sezione potrai consultare una serie di informazioni, video e immagini,  messi a disposizione dal sito ufficiale della NASA: le foto astronomiche del giorno, le missioni su marte e la luna e molto altro.",
 
   "contacts.title": "Contatti",
   "contacts.mail": "Puoi contattarmi via mail al seguente indirizzo:",

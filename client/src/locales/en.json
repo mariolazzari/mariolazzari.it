@@ -1,5 +1,5 @@
 {
-  "menu.logo": "Mario V Lazzari",
+  "menu.logo": "Mario Lazzari",
   "menu.home": "Home",
   "menu.certifications": "Certifications",
   "menu.contacts": "Contacts",
@@ -9,7 +9,7 @@
 
   "home.title": "Mario Lazzari",
   "home.subtitle": "Javascript Full Stack Developer",
-  "home.intro": "Welcome to my site, where I will share some infos about myself, my hobbies and the tools I used in my daily activity as a software developer.",
+  "home.intro": "Welcome to my site, where I will share some infos about myself, my hobbies and the tools I use in my daily activity as a software developer.",
   "home.mailButton": "Mail",
   "home.cvButton": "Resume",
 
@@ -40,6 +40,10 @@
   "skills.tools": "Tools",
 
   "jobs.title": "Job",
+
+  "hobbies.more": "Learn more",
+  "hobbies.nasaTitle": "Nasa Open API",
+  "hobbies.nasaDesc": "In this section you will find lots on information, videos and images, made avaible by NASA officila site: astronomic picture of the day, missions from both mars and moon and meny more.",
 
   "contacts.title": "Contacts",
   "contacts.mail": "You can send me an email here:",

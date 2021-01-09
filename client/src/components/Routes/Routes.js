@@ -9,6 +9,7 @@ const Skills = lazy(() => import("../../views/Skills"));
 const Jobs = lazy(() => import("../../views/Jobs"));
 const Hobbies = lazy(() => import("../../views/Hobbies"));
 const Contacts = lazy(() => import("../../views/Contacts"));
+const Nasa = lazy(() => import("../../views/Nasa"));
 
 // routes
 const Routes = () => (
@@ -19,6 +20,7 @@ const Routes = () => (
       <Route path="/skills" component={Skills} />
       <Route path="/jobs" component={Jobs} />
       <Route path="/hobbies" component={Hobbies} />
+      <Route path="/nasa" component={Nasa} />
       <Route path="/contacts" component={Contacts} />
       <Redirect to="/" />
     </Switch>

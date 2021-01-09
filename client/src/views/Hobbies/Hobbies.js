@@ -11,8 +11,9 @@ import Hobby from "./Hobby";
 const useStyles = makeStyles(theme => ({
   box: {
     backgroundColor: indigo[50],
-    minHeight: "95vh",
-    padding: theme.spacing(10, 1),
+    minHeight: "94vh",
+    padding: theme.spacing(11, 1),
+    borderRadius: theme.spacing(1),
   },
   gird: {
     width: "100%",
@@ -24,7 +25,13 @@ const Hobbies = () => {
   // styles
   const classes = useStyles();
 
-  const hobbies = [{ title: "test" }];
+  const hobbies = [
+    {
+      title: "hobbies.nasaTitle",
+      description: "hobbies.nasaDesc",
+      imagePath: "nasa.png",
+    },
+  ];
 
   return (
     <Box className={classes.box}>
