@@ -45,7 +45,12 @@
   "hobbies.nasaTitle": "Nasa Open API",
   "hobbies.nasaDesc": "In this section you will find lots on information, videos and images, made avaible by NASA officila site: astronomic picture of the day, missions from both mars and moon and meny more.",
 
+  "nasa.search": "Search on NASA",
+
   "contacts.title": "Contacts",
   "contacts.mail": "You can send me an email here:",
-  "contacts.social": "...or find me on the following social accounts:"
+  "contacts.social": "...or find me on the following social accounts:",
+
+  "button.back": "Back",
+  "button.more": "Learn more"
 }

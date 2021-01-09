@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(11, 1),
     borderRadius: theme.spacing(1),
   },
-  gird: {
+  grid: {
     width: "100%",
   },
 }));

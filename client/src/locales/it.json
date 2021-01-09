@@ -41,11 +41,17 @@
 
   "jobs.title": "Lavoro",
 
-  "hobbies.more": "Scopri di più",
   "hobbies.nasaTitle": "Nasa Open API",
   "hobbies.nasaDesc": "In questa sezione potrai consultare una serie di informazioni, video e immagini,  messi a disposizione dal sito ufficiale della NASA: le foto astronomiche del giorno, le missioni su marte e la luna e molto altro.",
 
+  "nasa.search": "Cerca su NASA",
+
   "contacts.title": "Contatti",
   "contacts.mail": "Puoi contattarmi via mail al seguente indirizzo:",
-  "contacts.social": "...oppure trovarmi su questi social:"
+  "contacts.social": "...oppure trovarmi su questi social:",
+
+  "button.back": "Indietro",
+  "button.more": "Scopri di più",
+  "button.search": "Cerca",
+  "button.lucky": "Mi sento fortunato"
 }

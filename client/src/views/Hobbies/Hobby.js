@@ -7,7 +7,8 @@ import { makeStyles } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+// components
+import { More } from "../../components/Buttons";
 
 // style
 const useStyles = makeStyles(theme => ({
@@ -59,15 +60,7 @@ const Hobby = ({ selected }) => {
         </Typography>
       </Fragment>
 
-      <Button
-        className={classes.button}
-        variant="outlined"
-        color="primary"
-        component={Link}
-        to="/nasa"
-      >
-        <FormattedMessage id="hobbies.more" />
-      </Button>
+      <More to="/nasa" />
     </Paper>
   );
 };
