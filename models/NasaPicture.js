@@ -8,7 +8,6 @@ const NasaPictureSchema = new mongoose.Schema(
     date: {
       type: Date,
       required: required("Date"),
-      index: true,
     },
     title: {
       type: String,
@@ -17,7 +16,6 @@ const NasaPictureSchema = new mongoose.Schema(
     },
     explanation: {
       type: String,
-      required: required("Explanation"),
       trin: true,
     },
     url: {
@@ -25,9 +23,8 @@ const NasaPictureSchema = new mongoose.Schema(
       required: required("Url"),
       trin: true,
     },
-    urlHD: {
+    hdurl: {
       type: String,
-      required: required("HD Url"),
       trin: true,
     },
   },
@@ -36,6 +33,10 @@ const NasaPictureSchema = new mongoose.Schema(
     collection: "nasaPods",
   }
 );
+
+// indexes
+NasaPictureSchema.index({ date: -1 });
+NasaPictureSchema.index({ title: "text" }, { explanation: "text" });
 
 // create model
 const NasaPicture = mongoose.model("NasaPicture", NasaPictureSchema);

@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 
 // component
 const Hobby = props => {
-  return <div></div>;
+  return <div>{props.title}</div>;
 };
 
 // mandatory props
-Hobby.propTypes = {};
+Hobby.propTypes = {
+  selected: PropTypes.object.isRequired,
+};
 
 export default Hobby;
