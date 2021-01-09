@@ -17,3 +17,7 @@ export const GET_CERTIFICATIONS = "GET_CERTIFICATIONS";
 
 // Job types
 export const GET_JOBS = "GET_JOBS";
+
+// Nasa
+export const SET_NASA_PODS_LOADING = "SET_NASA_PODS_LOADING";
+export const GET_NASA_PODS = "GET_NASA_PODS";

@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { getNasaPods } from "../../actions/nasaActions";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import TextBox from "../../components/TextBox";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 // MUI colors
 import indigo from "@material-ui/core/colors/indigo";
 //MUI icons
 import SearchIcon from "@material-ui/icons/Search";
 // components
+import NasaPod from "./NasaPod";
 import { Back } from "../../components/Buttons";
 
 // styles
@@ -54,6 +59,12 @@ const useStyles = makeStyles(theme => ({
 const Nasa = () => {
   // state
   const [search, setSearch] = useState("");
+  // redux
+  const { pods, lodaing } = useSelector(state => ({
+    pods: state.nasa.pods,
+    lodaing: state.nasa.podsLoading,
+  }));
+  const dispatch = useDispatch();
 
   // on search change event handler
   const onSearchChange = e => {
@@ -65,32 +76,54 @@ const Nasa = () => {
     setSearch("");
   };
 
+  // on form submit
+  const onFormSubmit = e => {
+    e.preventDefault();
+    dispatch(getNasaPods(search));
+  };
+
   // styles
   const classes = useStyles();
 
   return (
     <Box className={classes.box}>
       <Avatar className={classes.avatar} src="/images/logos/nasa.png" />
+      <form onSubmit={onFormSubmit}>
+        <TextBox
+          className={classes.search}
+          value={search}
+          onChange={onSearchChange}
+          onClear={onClearSearch}
+          startIcon={<SearchIcon />}
+          required={false}
+        />
+        <Box className={classes.buttons}>
+          <Button
+            type="submit"
+            className={classes.button}
+            variant="contained"
+            color="primary"
+          >
+            <SearchIcon />
+            <FormattedMessage id="nasa.search" />
+          </Button>
+          <Button className={classes.button} variant="outlined">
+            <FormattedMessage id="button.lucky" />
+          </Button>
+        </Box>
 
-      <TextBox
-        className={classes.search}
-        value={search}
-        onChange={onSearchChange}
-        onClear={onClearSearch}
-        startIcon={<SearchIcon />}
-      />
+        {pods.length > 0 && (
+          <Typography variant="body1">
+            Risultati trovati: {pods.length}
+          </Typography>
+        )}
 
-      <Box className={classes.buttons}>
-        <Button className={classes.button} variant="contained" color="primary">
-          <SearchIcon />
-          <FormattedMessage id="nasa.search" />
-        </Button>
-        <Button className={classes.button} variant="outlined">
-          <FormattedMessage id="button.lucky" />
-        </Button>
-      </Box>
-
-      <Box className={classes.results}></Box>
+        <Box className={classes.results}>
+          {pods.map(pod => (
+            <NasaPod selected={pod} />
+          ))}
+        </Box>
+      </form>
 
       <Back className={classes.back} />
     </Box>

@@ -10,7 +10,7 @@ const { NASA_API_KEY } = readEnv;
 // Picture of the day
 const getPictureOfTheDay = asyncHandler(async (req, res, next) => {
   // check if today pic is available
-  const today = await NasaPicture.findOne({
+  let today = await NasaPicture.findOne({
     date: format(new Date(), "yyyy-MM-dd"),
   });
 
@@ -19,8 +19,11 @@ const getPictureOfTheDay = asyncHandler(async (req, res, next) => {
     const { data } = await axios.get(
       "https://api.nasa.gov/planetary/apod?api_key=" + NASA_API_KEY
     );
+
+    console.log(data);
+
     if (data) {
-      today = data;
+      today = new NasaPicture(data);
       await today.save();
     }
   }
@@ -45,7 +48,7 @@ const getPictureOfTheDay = asyncHandler(async (req, res, next) => {
   res.status(200).json({ data, query, api });
   */
 
-  res.json({ today, podsCount: pods.length, pods });
+  res.json({ today, pods });
 });
 
 // export
