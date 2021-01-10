@@ -20,8 +20,12 @@ import { format } from "date-fns";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    minWidth: theme.spacing(40),
-    maxWidth: theme.spacing(50),
+    [theme.breakpoints.down("xs")]: {
+      width: theme.spacing(40),
+    },
+    [theme.breakpoints.up("sm")]: {
+      width: theme.spacing(50),
+    },
     margin: theme.spacing(1),
   },
   media: {

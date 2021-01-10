@@ -5,6 +5,7 @@ const { connectDB } = require("./config/mongoDB");
 const logger = require("./utils/logger");
 const morgan = require("morgan");
 const compression = require("compression");
+const { startJobs } = require("./scheduler");
 
 // read enviroment vars
 const {
@@ -48,3 +49,6 @@ app.listen(3001, () =>
     `${NODE_NAME} started on ${EXPRESS_URI}:${EXPRESS_PORT} in '${NODE_ENV}' mode.`
   )
 );
+
+// start scheduled jobs
+startJobs();

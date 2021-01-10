@@ -1,7 +1,6 @@
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
 // MUI colors
 import indigo from "@material-ui/core/colors/indigo";
 // component
@@ -10,13 +9,13 @@ import Hobby from "./Hobby";
 // styles
 const useStyles = makeStyles(theme => ({
   box: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: indigo[50],
     minHeight: "94vh",
     padding: theme.spacing(11, 1),
     borderRadius: theme.spacing(1),
-  },
-  grid: {
-    width: "100%",
   },
 }));
 
@@ -35,13 +34,9 @@ const Hobbies = () => {
 
   return (
     <Box className={classes.box}>
-      <Grid className={classes.grid} container spacing={3}>
-        {hobbies.map(hobby => (
-          <Grid item container justify="center">
-            <Hobby selected={hobby} />
-          </Grid>
-        ))}
-      </Grid>
+      {hobbies.map(hobby => (
+        <Hobby selected={hobby} />
+      ))}
     </Box>
   );
 };
