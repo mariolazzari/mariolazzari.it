@@ -21,7 +21,7 @@
       },
       {
         "locale": "it",
-        "text": "Ho utilizzato Debian principalmente come server web, FTP e progetti storage. Per anni ho utilizzato questa distribuzione anche sui mie pc personali."
+        "text": "Ho utilizzato Debian principalmente come server web, FTP e progetti storage. Per anni ho utilizzato questa distribuzione anche sui miei pc personali."
       }
     ]
   },
@@ -99,7 +99,7 @@
       },
       {
         "locale": "it",
-        "text": "Ho utilizzato questo sistema operativo come valida alternativa a Oracle Linux, per osptare istanze database Oracle."
+        "text": "Ho utilizzato questo sistema operativo come valida alternativa a Oracle Linux, per ospitare istanze database Oracle."
       }
     ]
   },
@@ -333,7 +333,7 @@
       },
       {
         "locale": "it",
-        "text": "Visual Studio Code è il mio strumento principale per pratiamente ogni ambito, dalla programmazione alla gestione di container Docker. Di gran lunga il miglior strumento che abbia mai avuto il piacere di utilizzare."
+        "text": "Visual Studio Code è il mio strumento principale per praticamente ogni ambito, dalla programmazione alla gestione di container Docker. Di gran lunga il miglior strumento che abbia mai avuto il piacere di utilizzare."
       }
     ]
   },
@@ -407,11 +407,11 @@
     "useCase": [
       {
         "locale": "en",
-        "text": "I used Eclipse for coding Java enterprise applications and Business Intelligence projects."
+        "text": "I used Netbeans for coding Java enterprise applications and Business Intelligence projects."
       },
       {
         "locale": "it",
-        "text": "Ho utilizzato Eclipse per sviluppare applicazioni Java enterprise e progetti di Business Intelligence."
+        "text": "Ho utilizzato Netbeans per sviluppare applicazioni Java enterprise e progetti di Business Intelligence."
       }
     ]
   },
