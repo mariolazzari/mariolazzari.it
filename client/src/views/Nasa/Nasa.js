@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import indigo from "@material-ui/core/colors/indigo";
 //MUI icons
 import SearchIcon from "@material-ui/icons/Search";
+
 // components
 import NasaPod from "./NasaPod";
 import { Back, Options, Search } from "../../components/Buttons";

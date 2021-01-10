@@ -30,9 +30,6 @@ const useStyles = makeStyles(theme => ({
       cursor: "pointer",
     },
   },
-  avatar: {
-    backgroundColor: indigo[600],
-  },
   title: {
     width: theme.spacing(40),
     fontWeight: "bold",
@@ -48,22 +45,28 @@ const NasaPod = ({ selected }) => {
   // styles
   const classes = useStyles();
 
+  // render avatar
+  const renderAvatar = () => {
+    let backgroundColor, icon;
+
+    if (selected.media_type === "image") {
+      backgroundColor = indigo[500];
+      icon = <ImageIcon />;
+    } else {
+      backgroundColor = red[500];
+      icon = <VideoIcon />;
+    }
+
+    return <Avatar style={{ backgroundColor }}> {icon} </Avatar>;
+  };
+
   // on click event handler
   const onClick = () => window.open(selected.url, "_blank");
 
   return (
     <Card className={classes.root} onClick={onClick} elevation={3}>
       <CardHeader
-        avatar={
-          <Avatar
-            style={{
-              backgroundColor:
-                selected.media_type === "image" ? indigo[500] : red[900],
-            }}
-          >
-            {selected.media_type === "image" ? <ImageIcon /> : <VideoIcon />}
-          </Avatar>
-        }
+        avatar={renderAvatar()}
         title={
           <Typography className={classes.title} variant="body1" noWrap>
             {selected?.title}

@@ -27,7 +27,6 @@ const NasaPictureSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true,
     collection: "nasaPods",
   }
 );
