@@ -35,7 +35,12 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
-    width: theme.spacing(40),
+    [theme.breakpoints.down("xs")]: {
+      width: theme.spacing(30),
+    },
+    [theme.breakpoints.up("sm")]: {
+      width: theme.spacing(40),
+    },
     fontWeight: "bold",
   },
   content: {
@@ -73,7 +78,7 @@ const NasaPod = ({ selected }) => {
         avatar={renderAvatar()}
         title={
           <Typography className={classes.title} variant="body1" noWrap>
-            {selected?.title}
+            {selected.title}
           </Typography>
         }
         subheader={
