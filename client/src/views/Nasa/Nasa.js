@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FormattedMessage } from "react-intl";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { getNasaPods } from "../../actions/nasaActions";
@@ -8,7 +7,6 @@ import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import TextBox from "../../components/TextBox";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 // MUI colors
 import indigo from "@material-ui/core/colors/indigo";
@@ -16,7 +14,7 @@ import indigo from "@material-ui/core/colors/indigo";
 import SearchIcon from "@material-ui/icons/Search";
 // components
 import NasaPod from "./NasaPod";
-import { Back } from "../../components/Buttons";
+import { Back, Options, Search } from "../../components/Buttons";
 
 // styles
 const useStyles = makeStyles(theme => ({
@@ -41,9 +39,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     margin: theme.spacing(1, 0),
   },
-  button: {
-    margin: theme.spacing(1),
-  },
   results: {
     display: "flex",
     justifyContent: "center",
@@ -59,6 +54,7 @@ const useStyles = makeStyles(theme => ({
 const Nasa = () => {
   // state
   const [search, setSearch] = useState("");
+  const [showOptions, setShowOptions] = useState(false);
   // redux
   const { pods, lodaing } = useSelector(state => ({
     pods: state.nasa.pods,
@@ -82,6 +78,9 @@ const Nasa = () => {
     dispatch(getNasaPods(search));
   };
 
+  // on options click event handler
+  const onOptionsClick = () => {};
+
   // styles
   const classes = useStyles();
 
@@ -97,18 +96,8 @@ const Nasa = () => {
         required={false}
       />
       <Box className={classes.buttons}>
-        <Button
-          type="submit"
-          className={classes.button}
-          variant="contained"
-          color="primary"
-        >
-          <SearchIcon />
-          <FormattedMessage id="nasa.search" />
-        </Button>
-        <Button className={classes.button} variant="outlined">
-          <FormattedMessage id="button.lucky" />
-        </Button>
+        <Search />
+        <Options onClick={onOptionsClick} />
       </Box>
 
       {pods.length > 0 && (

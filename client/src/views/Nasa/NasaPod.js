@@ -26,6 +26,10 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: indigo[600],
   },
+  title: {
+    width: theme.spacing(40),
+    fontWeight: "bold",
+  },
   content: {
     height: theme.spacing(25),
     overflow: "auto",
@@ -45,7 +49,11 @@ const NasaPod = ({ selected }) => {
             {selected.title.substring(0, 1)}
           </Avatar>
         }
-        title={<Typography variant="h6">{selected.title}</Typography>}
+        title={
+          <Typography className={classes.title} variant="body1" noWrap>
+            {selected.title}
+          </Typography>
+        }
         subheader={
           <Typography variant="body1" align="justify">
             {format(new Date(selected.date), "d MMMM yyyy")}
@@ -58,7 +66,9 @@ const NasaPod = ({ selected }) => {
         title={selected.title}
       />
       <CardContent className={classes.content}>
-        <Typography variant="body1">{selected.explanation}</Typography>
+        <Typography variant="body2" align="justify">
+          {selected.explanation}
+        </Typography>
       </CardContent>
       <CardActions>
         <IconButton onClick={() => window.open(selected.hdurl, "_blank")}>
