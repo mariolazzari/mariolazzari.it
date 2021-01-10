@@ -86,47 +86,45 @@ const Nasa = () => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.box}>
+    <form className={classes.box} onSubmit={onFormSubmit}>
       <Avatar className={classes.avatar} src="/images/logos/nasa.png" />
-      <form onSubmit={onFormSubmit}>
-        <TextBox
-          className={classes.search}
-          value={search}
-          onChange={onSearchChange}
-          onClear={onClearSearch}
-          startIcon={<SearchIcon />}
-          required={false}
-        />
-        <Box className={classes.buttons}>
-          <Button
-            type="submit"
-            className={classes.button}
-            variant="contained"
-            color="primary"
-          >
-            <SearchIcon />
-            <FormattedMessage id="nasa.search" />
-          </Button>
-          <Button className={classes.button} variant="outlined">
-            <FormattedMessage id="button.lucky" />
-          </Button>
-        </Box>
+      <TextBox
+        className={classes.search}
+        value={search}
+        onChange={onSearchChange}
+        onClear={onClearSearch}
+        startIcon={<SearchIcon />}
+        required={false}
+      />
+      <Box className={classes.buttons}>
+        <Button
+          type="submit"
+          className={classes.button}
+          variant="contained"
+          color="primary"
+        >
+          <SearchIcon />
+          <FormattedMessage id="nasa.search" />
+        </Button>
+        <Button className={classes.button} variant="outlined">
+          <FormattedMessage id="button.lucky" />
+        </Button>
+      </Box>
 
-        {pods.length > 0 && (
-          <Typography variant="body1">
-            Risultati trovati: {pods.length}
-          </Typography>
-        )}
+      {pods.length > 0 && (
+        <Typography variant="body1">
+          Risultati trovati: {pods.length}
+        </Typography>
+      )}
 
-        <Box className={classes.results}>
-          {pods.map(pod => (
-            <NasaPod selected={pod} />
-          ))}
-        </Box>
-      </form>
+      <Box className={classes.results}>
+        {pods.map(pod => (
+          <NasaPod selected={pod} />
+        ))}
+      </Box>
 
       <Back className={classes.back} />
-    </Box>
+    </form>
   );
 };
 
