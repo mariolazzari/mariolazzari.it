@@ -10,7 +10,7 @@ const Social = require("../models/Social");
 
 // read json files
 //const jobs = JSON.parse(fs.readFileSync("./jobs.json", "utf-8"));
-const nasaPods = JSON.parse(fs.readFileSync("./nasaPods2020.json", "utf-8"));
+const nasaPods = JSON.parse(fs.readFileSync("./nasaPods2014.json", "utf-8"));
 //const skills = JSON.parse(fs.readFileSync("./skills.json", "utf-8"));
 //const socials = JSON.parse(fs.readFileSync("./socials.json", "utf-8"));
 
@@ -44,7 +44,7 @@ const deleteData = async () => {
     await Social.deleteMany();
     console.log("Socials deleted.");
   */
-    await NasaPicture.deleteMany();
+    //    await NasaPicture.deleteMany();
     //   console.log("Nasa pctures deleted.");
   } catch (ex) {
     console.log(ex.message);
