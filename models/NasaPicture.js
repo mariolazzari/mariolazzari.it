@@ -18,12 +18,10 @@ const NasaPictureSchema = new mongoose.Schema(
       type: String,
       trin: true,
     },
-    url: {
+    media_type: {
       type: String,
-      required: required("Url"),
-      trin: true,
     },
-    hdurl: {
+    url: {
       type: String,
       trin: true,
     },

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { getNasaPods } from "../../actions/nasaActions";
@@ -56,7 +56,8 @@ const Nasa = () => {
   const [search, setSearch] = useState("");
   const [showOptions, setShowOptions] = useState(false);
   // redux
-  const { pods, lodaing } = useSelector(state => ({
+  const { today, pods, lodaing } = useSelector(state => ({
+    today: state.nasa.podToday,
     pods: state.nasa.pods,
     lodaing: state.nasa.podsLoading,
   }));
@@ -84,6 +85,11 @@ const Nasa = () => {
   // styles
   const classes = useStyles();
 
+  // load today pic
+  useEffect(() => {
+    dispatch(getNasaPods(search));
+  }, [dispatch]);
+
   return (
     <form className={classes.box} onSubmit={onFormSubmit}>
       <Avatar className={classes.avatar} src="/images/logos/nasa.png" />
@@ -100,16 +106,18 @@ const Nasa = () => {
         <Options onClick={onOptionsClick} />
       </Box>
 
-      {pods.length > 0 && (
-        <Typography variant="body1">
-          Risultati trovati: {pods.length}
-        </Typography>
-      )}
+      <Typography variant="body1">
+        {pods.length > 0
+          ? "Risultati trovati: " + pods.length
+          : "Foto del giorno"}
+      </Typography>
 
       <Box className={classes.results}>
-        {pods.map(pod => (
-          <NasaPod selected={pod} />
-        ))}
+        {pods.length > 0 ? (
+          pods.map(pod => <NasaPod selected={pod} />)
+        ) : today ? (
+          <NasaPod selected={today} />
+        ) : null}
       </Box>
 
       <Back className={classes.back} />

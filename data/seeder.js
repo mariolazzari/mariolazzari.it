@@ -44,6 +44,8 @@ const deleteData = async () => {
     await Social.deleteMany();
     console.log("Socials deleted.");
   */
+    await NasaPicture.deleteMany();
+    //   console.log("Nasa pctures deleted.");
   } catch (ex) {
     console.log(ex.message);
     process.exit(1);

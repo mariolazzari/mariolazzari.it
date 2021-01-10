@@ -44,7 +44,8 @@
   "hobbies.nasaTitle": "Nasa Open API",
   "hobbies.nasaDesc": "In questa sezione potrai consultare una serie di informazioni, video e immagini,  messi a disposizione dal sito ufficiale della NASA: le foto astronomiche del giorno, le missioni su marte e la luna e molto altro.",
 
-  "nasa.search": "Cerca su NASA",
+  "nasa.zoom": "Zoom",
+  "nasa.zoomHD": "Zoom HD",
 
   "contacts.title": "Contatti",
   "contacts.mail": "Puoi contattarmi via mail al seguente indirizzo:",
