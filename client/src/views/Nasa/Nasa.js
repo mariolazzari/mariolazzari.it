@@ -1,3 +1,4 @@
+import { useIntl } from "react-intl";
 import { useState, useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -64,6 +65,9 @@ const Nasa = () => {
   }));
   const dispatch = useDispatch();
 
+  // locales
+  const intl = useIntl();
+
   // on search change event handler
   const onSearchChange = e => setSearch(e.target.value);
   // on clear search event handler
@@ -76,15 +80,25 @@ const Nasa = () => {
   };
 
   // on options click event handler
-  const onOptionsClick = () => {};
+  const onOptionsClick = () => setShowOptions(!showOptions);
+
+  // render results label
+  const renderLabel = () => {
+    const label =
+      pods.length === 0
+        ? intl.formatMessage({ id: "nasa.today" })
+        : intl.formatMessage({ id: "nasa.records" }) + " " + pods.length;
+
+    return label;
+  };
 
   // styles
   const classes = useStyles();
 
   // load today pic
   useEffect(() => {
-    dispatch(getNasaPods(search));
-  }, [dispatch, search]);
+    dispatch(getNasaPods(""));
+  }, [dispatch]);
 
   return (
     <form className={classes.box} onSubmit={onFormSubmit}>
@@ -103,11 +117,7 @@ const Nasa = () => {
         <Options onClick={onOptionsClick} />
       </Box>
 
-      <Typography variant="body1">
-        {pods.length > 0
-          ? "Risultati trovati: " + pods.length
-          : "Foto del giorno"}
-      </Typography>
+      <Typography variant="body1">{renderLabel()}</Typography>
 
       <Box className={classes.results}>
         {pods.length > 0 ? (
