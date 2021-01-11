@@ -8,14 +8,14 @@ import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import TextBox from "../../components/TextBox";
 import Typography from "@material-ui/core/Typography";
+import Backdrop from "@material-ui/core/Backdrop";
 // MUI colors
 import indigo from "@material-ui/core/colors/indigo";
 //MUI icons
 import SearchIcon from "@material-ui/icons/Search";
-
 // components
-import NasaPod from "./NasaPod";
 import { Back, Options, Search } from "../../components/Buttons";
+import NasaPod from "./NasaPod";
 
 // styles
 const useStyles = makeStyles(theme => ({
@@ -57,7 +57,7 @@ const Nasa = () => {
   const [search, setSearch] = useState("");
   const [showOptions, setShowOptions] = useState(false);
   // redux
-  const { today, pods, lodaing } = useSelector(state => ({
+  const { today, pods, loading } = useSelector(state => ({
     today: state.nasa.podToday,
     pods: state.nasa.pods,
     lodaing: state.nasa.podsLoading,
@@ -65,14 +65,9 @@ const Nasa = () => {
   const dispatch = useDispatch();
 
   // on search change event handler
-  const onSearchChange = e => {
-    setSearch(e.target.value);
-  };
-
+  const onSearchChange = e => setSearch(e.target.value);
   // on clear search event handler
-  const onClearSearch = () => {
-    setSearch("");
-  };
+  const onClearSearch = () => setSearch("");
 
   // on form submit
   const onFormSubmit = e => {
@@ -89,10 +84,11 @@ const Nasa = () => {
   // load today pic
   useEffect(() => {
     dispatch(getNasaPods(search));
-  }, [dispatch]);
+  }, [dispatch, search]);
 
   return (
     <form className={classes.box} onSubmit={onFormSubmit}>
+      <Backdrop open={loading} />
       <Avatar className={classes.avatar} src="/images/logos/nasa.png" />
       <TextBox
         className={classes.search}
