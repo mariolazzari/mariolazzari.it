@@ -40,7 +40,6 @@ const nasaPodTask = cron.schedule("0 0 * * * *", () => {
 
 // start jobs
 const startJobs = () => {
-  console.log("object");
   nasaPodTask.start();
 };
 
