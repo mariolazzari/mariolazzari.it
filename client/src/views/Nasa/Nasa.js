@@ -107,6 +107,11 @@ const Nasa = () => {
         <meta charSet="utf-8" />
         <title>{intl.formatMessage({ id: "nasa.title" })}</title>
         <link rel="canonical" href="https://www.mariolazzari.it/nasa/" />
+
+        <meta
+          name="keywords"
+          content="nasa programmazione javascript react redux nodejs mongo web developer brescia milano full stack"
+        />
       </Helmet>
 
       <Backdrop open={loading} />

@@ -105,7 +105,7 @@ const Home = () => {
             " " +
             intl.formatMessage({ id: "home.subtitle" })}
         </title>
-        <link rel="canonical" href="https://mariolazzari.it/" />
+        <link rel="canonical" href="https://www.mariolazzari.it/" />
         <meta
           name="description"
           content={intl.formatMessage({ id: "home.intro" })}

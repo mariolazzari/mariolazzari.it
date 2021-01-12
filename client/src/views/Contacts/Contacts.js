@@ -66,17 +66,11 @@ const Contacts = () => {
     <Box className={classes.root}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>
-          {intl.formatMessage({ id: "contacts.title" }) +
-            " - Mario Lazzari Fullstack Javascript Developer"}
-        </title>
-        <link rel="canonical" href="https://mariolazzari.it/contacts" />
+        <title>{intl.formatMessage({ id: "contacts.title" })}</title>
+        <link rel="canonical" href="https://www.mariolazzari.it/contacts/" />
         <meta
           name="description"
-          content={
-            intl.formatMessage({ id: "skills.title" }) +
-            " - Mario Lazzari Fullstack Javascript Developer"
-          }
+          content={intl.formatMessage({ id: "contacts.title" })}
         />
         <meta
           name="keywords"

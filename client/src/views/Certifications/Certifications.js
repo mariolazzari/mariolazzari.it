@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
+import { useIntl } from "react-intl";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
@@ -38,6 +40,9 @@ const Certifications = () => {
     loading: state.certification.certificationsLoading,
   }));
   const dispatch = useDispatch();
+
+  // locales
+  const intl = useIntl();
   // styles
   const classes = useStyles();
 
@@ -65,6 +70,23 @@ const Certifications = () => {
 
   return (
     <Box className={classes.box}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{intl.formatMessage({ id: "certs.title" })}</title>
+        <link
+          rel="canonical"
+          href="https://www.mariolazzari.it/certifications/"
+        />
+        <meta
+          name="description"
+          content={intl.formatMessage({ id: "certs.title" })}
+        />
+        <meta
+          name="keywords"
+          content="certificazioni programmazione javascript react redux nodejs mongodb web developer brescia milano competenze skill"
+        />
+      </Helmet>
+
       <Grid container justify="center" spacing={2}>
         <Grid item xs={12}>
           <TextBox
