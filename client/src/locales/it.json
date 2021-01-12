@@ -44,10 +44,12 @@
   "hobbies.nasaTitle": "Nasa Open API",
   "hobbies.nasaDesc": "In questa sezione potrai consultare una serie di informazioni, video e immagini,  messi a disposizione dal sito ufficiale della NASA: le foto astronomiche del giorno, le missioni su marte e la luna e molto altro.",
 
+  "nasa.title": "Mario Lazzari - Cerca immagini NASA",
   "nasa.zoom": "Zoom",
   "nasa.zoomHD": "Zoom HD",
   "nasa.records": "Risultati trovati:",
   "nasa.today": "Foto di oggi:",
+  "nasa.placeholder": "Cerca qui uno o più temini: moon, venus, mars...",
 
   "contacts.title": "Contatti",
   "contacts.mail": "Puoi contattarmi via mail al seguente indirizzo:",

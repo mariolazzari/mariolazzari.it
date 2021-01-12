@@ -19,13 +19,13 @@ const getNasaPod = async () => {
       logger.info("Nasa today pciture already present:", today.title);
     } else {
       const { data } = await axios.get(
-        "https://api.nasa.gov/planetary/apod?api_key=" + NASA_API_KEY
+        `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`
       );
       // insert today picture if not foud
       if (data) {
         today = new NasaPicture(data);
         await today.save();
-        logger.info("Nasa today picture inserted:" + today.title);
+        logger.info(`Nasa today picture inserted: ${today.title}`);
       }
     }
   } catch (ex) {

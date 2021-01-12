@@ -45,10 +45,12 @@
   "hobbies.nasaTitle": "Nasa Open API",
   "hobbies.nasaDesc": "In this section you will find lots on information, videos and images, made avaible by NASA official site: astronomic picture of the day, missions from both mars and moon and meny more.",
 
+  "nasa.title": "Mario Lazzari - NASA search engine",
   "nasa.zoom": "Zoom",
   "nasa.zoomHD": "Zoom HD",
   "nasa.records": "Records found:",
   "nasa.today": "Today's picture:",
+  "nasa.placeholder": "Type here one or more terms: mars, moon, veus...",
 
   "contacts.title": "Contacts",
   "contacts.mail": "You can send me an email here:",

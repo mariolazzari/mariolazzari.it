@@ -1,5 +1,6 @@
 import { useIntl } from "react-intl";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { getNasaPods } from "../../actions/nasaActions";
@@ -102,6 +103,12 @@ const Nasa = () => {
 
   return (
     <form className={classes.box} onSubmit={onFormSubmit}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{intl.formatMessage({ id: "nasa.title" })}</title>
+        <link rel="canonical" href="https://www.mariolazzari.it/nasa/" />
+      </Helmet>
+
       <Backdrop open={loading} />
       <Avatar className={classes.avatar} src="/images/logos/nasa.png" />
       <TextBox
@@ -111,6 +118,7 @@ const Nasa = () => {
         onClear={onClearSearch}
         startIcon={<SearchIcon />}
         required={false}
+        placeholder={intl.formatMessage({ id: "nasa.placeholder" })}
       />
       <Box className={classes.buttons}>
         <Search />
