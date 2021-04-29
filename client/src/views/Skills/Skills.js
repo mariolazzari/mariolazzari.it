@@ -55,7 +55,7 @@ const Skills = () => {
     setTitle(skillTitle + " " + homeTitle + " " + homeSubtitle);
     // get skills
     dispatch(getSkills());
-  }, [dispatch]);
+  }, [dispatch, intl]);
 
   return (
     <Box className={classes.root}>

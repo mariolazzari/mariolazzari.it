@@ -3,10 +3,7 @@ import PropTypes from "prop-types";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-// MUI colors
-import indigo from "@material-ui/core/colors/indigo";
 // component
 import Skill from "./Skill";
 
