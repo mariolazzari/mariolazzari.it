@@ -6,19 +6,10 @@ const logger = require("../utils/logger");
 // read env settings
 const { MONGO_URI, NODE_ENV } = readEnv;
 
-// Mongo DB connection
-const MONGO_OPTS = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  autoIndex: NODE_ENV === "dev",
-};
-
 // connect to server
 const connectDB = async () => {
   try {
-    await mongoose.connect(MONGO_URI, MONGO_OPTS);
+    await mongoose.connect(MONGO_URI);
     // set debug in dev mode only
     mongoose.set("debug", NODE_ENV === "dev");
     logger.info(`MongoDB succesfully connected to ${MONGO_URI}.`);
