@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
@@ -35,21 +35,13 @@ const useStyles = makeStyles(theme => ({
 
 // component+
 const MenuBar = () => {
-  // navigation history
-  const history = useHistory();
-
-  // goto homepage
-  const onLogoClick = () => {
-    history.push("/");
-  };
-
   // styles
   const classes = useStyles();
 
   return (
     <AppBar className={classes.appBar} position="fixed" color="primary">
       <Toolbar className={classes.toolbar}>
-        <Box className={classes.logo} onClick={onLogoClick}>
+        <Box className={classes.logo} component={Link} to="/">
           <Avatar
             className={classes.avatar}
             src="/images/logos/logo.png"

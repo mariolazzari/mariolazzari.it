@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // MUI components
 import { makeStyles } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -12,17 +12,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Back = props => {
-  // navigation history
-  const history = useHistory();
   // styles
   const classes = useStyles();
+  // routes
+  const navigate = useNavigate();
 
   return (
     <Button
       className={classes.button}
       color="primary"
       variant={props.variant}
-      onClick={() => history.goBack()}
+      onClick={() => navigate(-1)}
     >
       {props.label}
     </Button>
