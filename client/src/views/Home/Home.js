@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: indigo[50],
     padding: theme.spacing(1),
+    width: "100vw",
   },
   title: {
     marginTop: theme.spacing(8),
