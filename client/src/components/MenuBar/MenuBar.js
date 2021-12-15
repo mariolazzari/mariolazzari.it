@@ -47,9 +47,6 @@ const MenuBar = () => {
             src="/images/logos/logo.png"
             alt="Mario Lazzari"
           />
-          <Typography>
-            <FormattedMessage id="menu.logo" />
-          </Typography>
         </Box>
 
         <Hidden smDown>
