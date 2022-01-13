@@ -1,1 +1,1 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"company":{"$numberInt":"1"}},"name":"company_1","background":true,"unique":true}],"uuid":"518c6a9e6f9b4ed1a13641997c77a8fa","collectionName":"jobs","type":"collection"}
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"company":{"$numberInt":"1"}},"name":"company_1","background":true,"unique":true}],"uuid":"f6c4037876c443a290e083e49fc4544a","collectionName":"jobs"}
