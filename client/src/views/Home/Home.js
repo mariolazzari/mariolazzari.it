@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
   },
   subtitle: {
-    marginTop: theme.spacing(3),
+    margin: theme.spacing(1, 0),
     fontWeight: "bold",
   },
   intro: {
@@ -135,16 +135,16 @@ const Home = () => {
         <FormattedMessage id="home.subtitle" />
       </Typography>
 
-      <Typography
-        className={classes.intro}
-        variant="h4"
-        align="center"
-        gutterBottom
-      >
-        <FormattedMessage id="home.intro" />
-      </Typography>
-
       <Grid container justify="center" spacing={2}>
+        <Grid item container justify="center" xs={12}>
+          <img
+            src="images/ucraina.png"
+            alt="Ucraina"
+            width={250}
+            height={235}
+          />
+        </Grid>
+
         <Grid item container justify="center" xs={12}>
           <Tooltip title="Premi qui per contattarmi">
             <Button
@@ -173,12 +173,14 @@ const Home = () => {
         </Grid>
 
         <Grid item container justify="center" xs={12}>
-          <img
-            src="images/ucraina.png"
-            alt="Ucraina"
-            width={400}
-            height={375}
-          />
+          <Typography
+            className={classes.intro}
+            variant="h4"
+            align="center"
+            gutterBottom
+          >
+            <FormattedMessage id="home.intro" />
+          </Typography>
         </Grid>
 
         <Grid item xs={12}>
