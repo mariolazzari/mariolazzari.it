@@ -5,17 +5,17 @@
   "main": "server.js",
   "dependencies": {
     "app-root-path": "^3.0.0",
-    "axios": "^0.25.0",
+    "axios": "^0.26.0",
     "compression": "^1.7.4",
     "concurrently": "^7.0.0",
     "date-fns": "^2.28.0",
-    "dotenv": "^11.0.0",
-    "express": "^4.17.2",
-    "mongoose": "^6.1.8",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.3",
     "morgan": "^1.10.0",
     "node-cron": "^3.0.0",
-    "winston": "^3.5.0",
-    "winston-daily-rotate-file": "^4.6.0"
+    "winston": "^3.6.0",
+    "winston-daily-rotate-file": "^4.6.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
