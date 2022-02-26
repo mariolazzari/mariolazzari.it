@@ -1,17 +1,19 @@
 // Theme settings
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
-import { indigo } from "@material-ui/core/colors";
+import { createTheme, responsiveFontSizes } from "@material-ui/core/styles";
+//import { indigo } from "@material-ui/core/colors";
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: "Quicksand",
   },
   palette: {
     primary: {
-      main: indigo[800],
+      main: "#005BBC",
+      //main: indigo[800],
     },
     secondary: {
-      main: indigo[50],
+      main: "#ffd700",
+      //main: indigo[50],
     },
   },
 });

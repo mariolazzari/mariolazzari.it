@@ -172,6 +172,15 @@ const Home = () => {
           </Tooltip>
         </Grid>
 
+        <Grid item container justify="center" xs={12}>
+          <img
+            src="images/ucraina.png"
+            alt="Ucraina"
+            width={400}
+            height={375}
+          />
+        </Grid>
+
         <Grid item xs={12}>
           <Typography
             className={classes.subtitle}
