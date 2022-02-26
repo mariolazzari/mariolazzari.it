@@ -55,7 +55,7 @@ const MenuBarIcons = () => {
       <Flag
         className={classes.icon}
         code={locale === "it" ? "it" : "gb"}
-        height="16"
+        height={24}
         onClick={onFlagClick}
       />
       <MenuIcon
