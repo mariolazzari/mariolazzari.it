@@ -24,9 +24,6 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     fontWeight: "bold",
   },
-  image: {
-    maxWidth: "100%",
-  },
 }));
 
 // component
@@ -67,9 +64,10 @@ const Certification = ({ selected }) => {
         {selected.title}
       </Typography>
       <img
-        className={classes.image}
         src={selected.imagePath}
         alt={selected.title}
+        width={400}
+        height={298}
       />
       <Typography>{renderDate()}</Typography>
     </Paper>
