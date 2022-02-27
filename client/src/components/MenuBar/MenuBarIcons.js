@@ -16,7 +16,10 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
   },
   icon: {
-    margin: theme.spacing(1),
+    height: theme.spacing(4),
+    width: theme.spacing(4),
+    cursor: "pointer",
+    margin: theme.spacing(0, 1),
   },
 }));
 
@@ -30,22 +33,10 @@ const MenuBarIcons = () => {
   const dispatch = useDispatch();
 
   // on flag icon click event handler
-  const onFlagClick = () => {
-    if (locale === "it") {
-      dispatch(setLocale("en"));
-    } else {
-      dispatch(setLocale("it"));
-    }
-  };
+  const onFlagClick = () => dispatch(setLocale(locale === "it" ? "en" : "it"));
 
   // on menu icon click event handler
-  const onMenuClick = () => {
-    if (open) {
-      dispatch(setDrawerOpen(false));
-    } else {
-      dispatch(setDrawerOpen(true));
-    }
-  };
+  const onMenuClick = () => dispatch(setDrawerOpen(!open));
 
   // styles
   const classes = useStyles();
