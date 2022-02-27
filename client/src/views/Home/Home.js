@@ -175,6 +175,7 @@ const Home = () => {
         <Grid item container justify="center" xs={12}>
           <Typography
             className={classes.intro}
+            component="h2"
             variant="h4"
             align="center"
             gutterBottom

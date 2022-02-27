@@ -55,7 +55,7 @@ const MenuBarIcons = () => {
         />
       </IconButton>
 
-      <IconButton color="secondary" onClick={onMenuClick}>
+      <IconButton color="secondary" onClick={onMenuClick} aria-label="Menu">
         <MenuIcon />
       </IconButton>
     </Box>
