@@ -25,9 +25,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
   },
   avatar: {
-    margin: theme.spacing(1),
-    width: theme.spacing(4.5),
-    height: theme.spacing(4.5),
+    width: theme.spacing(5),
+    height: theme.spacing(5),
   },
 }));
 
