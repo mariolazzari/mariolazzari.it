@@ -4,6 +4,7 @@ export const SET_SELECTED_ROUTE = "SET_SELECTED_ROUTE";
 export const SET_DRAWER_OPEN = "SET_DRAWER_OPEN";
 export const SET_ERROR = "SET_ERROR";
 export const SET_SUCCESS = "SET_SUCCESS";
+export const SET_FLAG = "SET_FLAG";
 
 // Social types
 export const GET_SOCIALS = "GET_SOCIALS";

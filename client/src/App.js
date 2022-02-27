@@ -1,7 +1,7 @@
 import { useEffect, lazy, Suspense } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setLocale } from "./actions/appActions";
+import { setLocale, setFlag } from "./actions/appActions";
 // App routings
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./components/Routes";
@@ -33,6 +33,7 @@ const App = () => {
       userLocale = tokens[0] === "it" ? "it" : "en";
     }
     dispatch(setLocale(userLocale));
+    dispatch(setFlag(userLocale));
   }, [dispatch]);
 
   return (

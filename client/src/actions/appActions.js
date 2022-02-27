@@ -5,6 +5,7 @@ import {
   SET_DRAWER_OPEN,
   SET_SUCCESS,
   SET_ERROR,
+  SET_FLAG,
 } from "./types";
 
 // set app locale
@@ -35,4 +36,10 @@ export const setError = (error = "") => ({
 export const setSuccess = (success = "") => ({
   type: SET_SUCCESS,
   payload: success,
+});
+
+// set flag
+export const setFlag = (flag = "it") => ({
+  type: SET_FLAG,
+  payload: `/images/locales/${flag}.png`,
 });
