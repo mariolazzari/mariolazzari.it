@@ -1,6 +1,6 @@
 import { FormattedMessage } from "react-intl";
 // MUI components
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 // components
@@ -18,13 +18,15 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     marginTop: theme.spacing(2),
+    fontWeight: "bold",
   },
 }));
 
 // component
 const GitHub = () => {
-  // srtles
+  // styles
   const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <Box className={classes.root}>
@@ -38,7 +40,7 @@ const GitHub = () => {
         <FormattedMessage id="home.github" />
       </Typography>
 
-      <Calendar username="mariolazzari" color="hsl(203, 82%, 33%)">
+      <Calendar username="mariolazzari" color={theme.palette.primary.main}>
         <Tooltip delayShow={50} html />
       </Calendar>
     </Box>

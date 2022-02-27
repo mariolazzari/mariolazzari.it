@@ -1,8 +1,7 @@
 // MUI components
-import { makeStyles } from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import Box from "@material-ui/core/Box";
-// MUI colors
-import indigo from "@material-ui/core/colors/indigo";
+import Typography from "@material-ui/core/Typography";
 
 // styles
 const useStyles = makeStyles(theme => ({
@@ -11,10 +10,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     height: theme.spacing(8),
-    backgroundColor: indigo[800],
+    backgroundColor: theme.palette.primary.main,
   },
-  image: {
-    height: theme.spacing(5),
+  text: {
+    fontWeight: "bold",
   },
 }));
 
@@ -25,11 +24,9 @@ const Footer = () => {
 
   return (
     <Box className={classes.footer}>
-      <img
-        className={classes.image}
-        src="/images/logos/linux.png"
-        alt="Powered by Linux"
-      />
+      <Typography className={classes.text} variant="body1" color="secondary">
+        Mario Lazzari &copy; {new Date().getFullYear()}
+      </Typography>
     </Box>
   );
 };

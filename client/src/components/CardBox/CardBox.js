@@ -57,7 +57,8 @@ const CardBox = props => {
           className={classes.image}
           src={props.avatar}
           alt={props.title}
-          height={props.imageHeight || 75}
+          height={props.imageHeight}
+          width={props.imageWidth}
         />
       )}
 
@@ -80,6 +81,8 @@ const CardBox = props => {
 CardBox.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
+  imageHeight: 75,
+  imageWidth: 75,
 };
 
 export default CardBox;
