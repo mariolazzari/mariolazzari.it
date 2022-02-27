@@ -77,12 +77,16 @@ const CardBox = props => {
   );
 };
 
+// default props
+CardBox.defaultProps = {
+  imageHeight: 75,
+  imageWidth: 75,
+};
+
 // mandatory props
 CardBox.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  imageHeight: 75,
-  imageWidth: 75,
 };
 
 export default CardBox;
