@@ -108,7 +108,7 @@ const Certifications = () => {
             key={c._id}
             item
             container
-            justify="center"
+            justifyContent="center"
             xs={12}
             md={6}
             lg={4}

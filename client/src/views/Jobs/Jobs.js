@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "94vh",
+    minHeight: "95vh",
     backgroundColor: indigo[50],
     padding: theme.spacing(10, 1),
   },

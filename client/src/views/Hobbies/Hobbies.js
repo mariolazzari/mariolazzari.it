@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: indigo[50],
-    minHeight: "94vh",
+    minHeight: "95vh",
     padding: theme.spacing(11, 1),
     borderRadius: theme.spacing(1),
   },
@@ -30,6 +30,7 @@ const Hobbies = () => {
 
   const hobbies = [
     {
+      id: 1,
       title: "hobbies.nasaTitle",
       description: "hobbies.nasaDesc",
       imagePath: "nasa.png",
@@ -44,7 +45,7 @@ const Hobbies = () => {
         <link rel="canonical" href="https://www.mariolazzari.it/hobbies/" />
         <meta
           name="description"
-          content={intl.formatMessage({ id: "hobbiess.title" })}
+          content={intl.formatMessage({ id: "hobbies.title" })}
         />
         <meta
           name="keywords"
@@ -53,7 +54,7 @@ const Hobbies = () => {
       </Helmet>
 
       {hobbies.map(hobby => (
-        <Hobby selected={hobby} />
+        <Hobby key={hobby.id} selected={hobby} />
       ))}
     </Box>
   );

@@ -135,8 +135,8 @@ const Home = () => {
         <FormattedMessage id="home.subtitle" />
       </Typography>
 
-      <Grid container justify="center" spacing={2}>
-        <Grid item container justify="center" xs={12}>
+      <Grid container justifyContent="center" spacing={2}>
+        <Grid item container justifyContent="center" xs={12}>
           <img
             src="images/ucraina.png"
             alt="Ucraina"
@@ -145,7 +145,7 @@ const Home = () => {
           />
         </Grid>
 
-        <Grid item container justify="center" xs={12}>
+        <Grid item container justifyContent="center" xs={12}>
           <Tooltip title="Premi qui per contattarmi">
             <Button
               component={Link}
@@ -172,7 +172,7 @@ const Home = () => {
           </Tooltip>
         </Grid>
 
-        <Grid item container justify="center" xs={12}>
+        <Grid item container justifyContent="center" xs={12}>
           <Typography
             className={classes.intro}
             component="h2"
@@ -194,7 +194,7 @@ const Home = () => {
             <FormattedMessage id="home.toolsTitle" />
           </Typography>
         </Grid>
-        <Grid item container justify="center" xs={12}>
+        <Grid item container justifyContent="center" xs={12}>
           <Typography
             className={classes.link}
             component={Link}
@@ -232,7 +232,7 @@ const Home = () => {
           </Typography>
         </Grid>
 
-        <Grid item container justify="center" xs={12}>
+        <Grid item container justifyContent="center" xs={12}>
           <Typography
             className={classes.link}
             component={Link}
@@ -249,7 +249,7 @@ const Home = () => {
           <Grid
             item
             container
-            justify="center"
+            justifyContent="center"
             key={c._id}
             xs={12}
             sm={6}
@@ -261,7 +261,7 @@ const Home = () => {
           </Grid>
         ))}
 
-        <Grid item container justify="center" xs={12}>
+        <Grid item container justifyContent="center" xs={12}>
           <Suspense fallback={<CircularProgress />}>
             <GitHub />
           </Suspense>
@@ -279,7 +279,7 @@ const Home = () => {
           </Typography>
         </Grid>
 
-        <Grid item container justify="center" xs={12}>
+        <Grid item container justifyContent="center" xs={12}>
           <Suspense fallback={<CircularProgress />}>
             <Socials />
           </Suspense>

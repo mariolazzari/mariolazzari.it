@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
     width: theme.spacing(45),
     margin: theme.spacing(1),
     padding: theme.spacing(1),
+    borderRadius: theme.spacing(1),
     cursor: "pointer",
     "&:hover": {
       transform: "scale(1.1)",
