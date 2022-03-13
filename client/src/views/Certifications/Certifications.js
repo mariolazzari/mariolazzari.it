@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
 import { getCertifiations } from "../../actions/certificationActions";
 // MUI components
-import { makeStyles } from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -28,6 +28,9 @@ const useStyles = makeStyles(theme => ({
   grid: {
     width: "100%",
   },
+  search: {
+    margin: theme.spacing(10, 0),
+  },
 }));
 
 // component
@@ -40,11 +43,10 @@ const Certifications = () => {
     loading: state.certification.certificationsLoading,
   }));
   const dispatch = useDispatch();
-
-  // locales
-  const intl = useIntl();
   // styles
   const classes = useStyles();
+  // locales
+  const intl = useIntl();
 
   // on search change event handler
   const onSearchChange = e => setSearch(e.target.value);
@@ -87,19 +89,32 @@ const Certifications = () => {
         />
       </Helmet>
 
-      <Grid container justify="center" spacing={2}>
+      <Grid container justifyContent="center" spacing={2}>
         <Grid item xs={12}>
           <TextBox
+            className={classes.search}
+            name="search"
+            label={intl.formatMessage({ id: "certs.search" })}
             value={search}
             onChange={onSearchChange}
             onClear={onSearchClear}
             startIcon={<SearchIcon color="primary" />}
+            required={false}
           />
         </Grid>
 
         {certifications.filter(searchFilter).map(c => (
-          <Grid item container justify="center" xs={12} md={6} lg={4} xl={3}>
-            <Certification key={c._id} selected={c} />
+          <Grid
+            key={c._id}
+            item
+            container
+            justify="center"
+            xs={12}
+            md={6}
+            lg={4}
+            xl={3}
+          >
+            <Certification selected={c} />
           </Grid>
         ))}
       </Grid>

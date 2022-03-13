@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import Fade from "@material-ui/core/Fade";
 // utilities
 import { formatDistanceToNow } from "date-fns";
 
@@ -35,6 +36,8 @@ const Certification = ({ selected }) => {
     locale: state.app.locale,
     dates: state.app.dates,
   }));
+  // styles
+  const classes = useStyles();
 
   // dates options
   const options = {
@@ -49,9 +52,6 @@ const Certification = ({ selected }) => {
     return formatDistanceToNow(date, options);
   };
 
-  // styles
-  const classes = useStyles();
-
   return (
     <Paper
       className={classes.paper}
@@ -63,12 +63,16 @@ const Certification = ({ selected }) => {
       <Typography className={classes.title} align="center" gutterBottom>
         {selected.title}
       </Typography>
-      <img
-        src={selected.imagePath}
-        alt={selected.title}
-        width={400}
-        height={298}
-      />
+
+      <Fade in timeout={1000}>
+        <img
+          src={selected.imagePath}
+          alt={selected.title}
+          width={400}
+          height={298}
+        />
+      </Fade>
+
       <Typography>{renderDate()}</Typography>
     </Paper>
   );
