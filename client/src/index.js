@@ -1,6 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
-//import reportWebVitals from "./reportWebVitals";
+import { createRoot } from "react-dom/client";
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -8,11 +6,10 @@ import store from "./store";
 import "@fontsource/quicksand";
 import App from "./App";
 
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(
   <Provider store={store}>
     <App />
-  </Provider>,
-  document.getElementById("root")
+  </Provider>
 );
-
-//reportWebVitals();
