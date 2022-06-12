@@ -1018,14 +1018,7 @@
   "resolved" "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz"
   "version" "1.2.5"
 
-"moment-timezone@^0.5.31":
-  "integrity" "sha512-PTc2vcT8K9J5/9rDEPe5czSIKgLoGsH8UNpA4qZTVw0Vd/Uz19geE9abbIOQKaAQFcnQ3v5YEXrbSc5BpshH+w=="
-  "resolved" "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.33.tgz"
-  "version" "0.5.33"
-  dependencies:
-    "moment" ">= 2.9.0"
-
-"moment@^2.29.1", "moment@>= 2.9.0":
+"moment@^2.29.1":
   "integrity" "sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ=="
   "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz"
   "version" "2.29.1"
@@ -1050,10 +1043,10 @@
   optionalDependencies:
     "saslprep" "^1.0.3"
 
-"mongoose@^6.3.5":
-  "integrity" "sha512-Ho3b/MK3lFyb87NjzyVwrjCqQ5DuLsIPSMFYDuZjaIJNhZfHNPQIcUDR1RLZ0/l+uznwo0VBu3WSwdu8EfAZTA=="
-  "resolved" "https://registry.npmjs.org/mongoose/-/mongoose-6.3.5.tgz"
-  "version" "6.3.5"
+"mongoose@^6.3.6":
+  "integrity" "sha512-/Cixfo+bA32EHQ5Y7sxMj5ZOXFiAFlvA3X4mFruUET9OsbJZfstg4n2FzxovX8Q7EcoQ7Ry1bnOp9AeXtodF7w=="
+  "resolved" "https://registry.npmjs.org/mongoose/-/mongoose-6.3.6.tgz"
+  "version" "6.3.6"
   dependencies:
     "bson" "^4.6.2"
     "kareem" "2.3.5"
@@ -1111,12 +1104,10 @@
   "resolved" "https://registry.npmjs.org/negotiator/-/negotiator-0.6.3.tgz"
   "version" "0.6.3"
 
-"node-cron@^3.0.0":
-  "integrity" "sha512-DDwIvvuCwrNiaU7HEivFDULcaQualDv7KoNlB/UU1wPW0n1tDEmBJKhEIE6DlF2FuoOHcNbLJ8ITL2Iv/3AWmA=="
-  "resolved" "https://registry.npmjs.org/node-cron/-/node-cron-3.0.0.tgz"
-  "version" "3.0.0"
-  dependencies:
-    "moment-timezone" "^0.5.31"
+"node-cron@^3.0.1":
+  "integrity" "sha512-RAWZTNn2M5KDIUV/389UX0EXsqvdFAwc9QwHQceh0Ga56dygqSRthqIjwpgZsoDspHGt2rkHdk9Z4RgfPMdALw=="
+  "resolved" "https://registry.npmjs.org/node-cron/-/node-cron-3.0.1.tgz"
+  "version" "3.0.1"
 
 "nodemon@^2.0.16":
   "integrity" "sha512-zsrcaOfTWRuUzBn3P44RDliLlp263Z/76FPoHFr3cFFkOz0lTPAcIw8dCzfdVIx/t3AtDYCZRCDkoCojJqaG3w=="
