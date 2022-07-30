@@ -137,15 +137,6 @@ const Home = () => {
 
       <Grid container justifyContent="center" spacing={2}>
         <Grid item container justifyContent="center" xs={12}>
-          <img
-            src="images/ucraina.png"
-            alt="Ucraina"
-            width={250}
-            height={235}
-          />
-        </Grid>
-
-        <Grid item container justifyContent="center" xs={12}>
           <Tooltip title="Premi qui per contattarmi">
             <Button
               component={Link}

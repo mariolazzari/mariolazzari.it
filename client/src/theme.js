@@ -1,6 +1,6 @@
 // Theme settings
 import { createTheme, responsiveFontSizes } from "@material-ui/core/styles";
-//import { indigo } from "@material-ui/core/colors";
+import { indigo } from "@material-ui/core/colors";
 
 const theme = createTheme({
   typography: {
@@ -8,12 +8,10 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#005BBC",
-      //main: indigo[800],
+      main: indigo[800],
     },
     secondary: {
-      main: "#ffd700",
-      //main: indigo[50],
+      main: indigo[50],
     },
   },
 });
