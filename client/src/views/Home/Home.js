@@ -131,11 +131,24 @@ const Home = () => {
         variant="h2"
         color="primary"
         align="center"
+        gutterBottom
       >
         <FormattedMessage id="home.subtitle" />
       </Typography>
 
       <Grid container justifyContent="center" spacing={2}>
+        <Grid item container justifyContent="center" xs={12}>
+          <Typography
+            className={classes.intro}
+            component="h2"
+            variant="h4"
+            align="center"
+            gutterBottom
+          >
+            <FormattedMessage id="home.intro" />
+          </Typography>
+        </Grid>
+
         <Grid item container justifyContent="center" xs={12}>
           <Tooltip title="Premi qui per contattarmi">
             <Button
@@ -161,18 +174,6 @@ const Home = () => {
               <FormattedMessage id="home.cvButton" />
             </Button>
           </Tooltip>
-        </Grid>
-
-        <Grid item container justifyContent="center" xs={12}>
-          <Typography
-            className={classes.intro}
-            component="h2"
-            variant="h4"
-            align="center"
-            gutterBottom
-          >
-            <FormattedMessage id="home.intro" />
-          </Typography>
         </Grid>
 
         <Grid item xs={12}>
