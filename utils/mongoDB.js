@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const readEnv = require("../utils/readEnv");
-const ErrorResponse = require("../utils/ErrorResponse");
-const logger = require("../utils/logger");
+const readEnv = require("./readEnv");
+const ErrorResponse = require("./ErrorResponse");
+const logger = require("./logger");
 
 // read env settings
 const { MONGO_URI, NODE_ENV } = readEnv;

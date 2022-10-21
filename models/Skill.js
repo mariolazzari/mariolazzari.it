@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { required } = require("../config/mongoDB");
+const { required } = require("../utils/mongoDB");
 const Description = require("./Description");
 
 // Skill schema

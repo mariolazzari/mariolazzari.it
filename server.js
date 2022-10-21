@@ -1,26 +1,22 @@
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 const readEnv = require("./utils/readEnv");
-const { connectDB } = require("./config/mongoDB");
+const { connectDB } = require("./utils/mongoDB");
 const logger = require("./utils/logger");
 const morgan = require("morgan");
 const compression = require("compression");
-const { startJobs } = require("./scheduler");
 
 // read enviroment vars
-const {
-  NODE_NAME,
-  NODE_ENV,
-  EXPRESS_PORT,
-  EXPRESS_URI,
-  EXPRESS_ROOT,
-} = readEnv;
+const { NODE_NAME, NODE_ENV, EXPRESS_PORT, EXPRESS_URI, EXPRESS_ROOT } =
+  readEnv;
 
 // database connection
 connectDB();
 
 // express server
 const app = express();
+app.use(cors());
 app.use(compression());
 app.use(express.json());
 
@@ -49,6 +45,3 @@ app.listen(3001, () =>
     `${NODE_NAME} started on ${EXPRESS_URI}:${EXPRESS_PORT} in '${NODE_ENV}' mode.`
   )
 );
-
-// start scheduled jobs
-startJobs();

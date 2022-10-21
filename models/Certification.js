@@ -1,6 +1,6 @@
 // Certification model
 const mongoose = require("mongoose");
-const { required } = require("../config/mongoDB");
+const { required } = require("../utils/mongoDB");
 
 // Certification schema
 const CertificationSchema = new mongoose.Schema(

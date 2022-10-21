@@ -1,7 +1,7 @@
 // Certification controller
 const asyncHandler = require("../middlewares/asyncHandler");
 const Certification = require("../models/Certification");
-const { notFound, updateOpts } = require("../config/mongoDB");
+const { notFound, updateOpts } = require("../utils/mongoDB");
 
 // get all certifications
 const getCertifications = asyncHandler(async (req, res, next) => {

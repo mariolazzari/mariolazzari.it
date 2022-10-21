@@ -6,7 +6,7 @@ const appRoot = require("app-root-path");
 const rootPath = appRoot.path;
 
 // read vars anche check for errors
-const config = dotenv.config({ path: `${appRoot}/config/config.env` });
+const config = dotenv.config();
 if (config.error) {
   console.error(config.error);
   throw config.error;

@@ -1,6 +1,6 @@
 // Social model
 const mongoose = require("mongoose");
-const { required } = require("../config/mongoDB");
+const { required } = require("../utils/mongoDB");
 
 // Social schema
 const SocialSchema = new mongoose.Schema(

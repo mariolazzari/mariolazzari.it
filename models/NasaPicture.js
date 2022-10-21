@@ -1,6 +1,6 @@
 // Nasa picture of the day
 const mongoose = require("mongoose");
-const { required } = require("../config/mongoDB");
+const { required } = require("../utils/mongoDB");
 
 // Nasa picture schema
 const NasaPictureSchema = new mongoose.Schema(

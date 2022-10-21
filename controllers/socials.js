@@ -1,7 +1,7 @@
 // Skill controller
 const asyncHandler = require("../middlewares/asyncHandler");
 const Social = require("../models/Social");
-const { notFound, updateOpts } = require("../config/mongoDB");
+const { notFound, updateOpts } = require("../utils/mongoDB");
 
 // get all social accounts
 const getSocials = asyncHandler(async (req, res, next) => {
