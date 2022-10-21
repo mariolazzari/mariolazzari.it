@@ -6,7 +6,7 @@ import { setLocale, setFlag } from "./actions/appActions";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./components/Routes";
 // theme
-import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 import CssBaseline from "@mui/material/CssBaseline";
 // locale
@@ -36,18 +36,16 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <IntlProvider locale={locale} messages={messages.get(locale)}>
-          <BrowserRouter>
-            <CssBaseline />
-            <MenuBar />
-            <Routes />
-            <Footer />
-          </BrowserRouter>
-        </IntlProvider>
-      </ThemeProvider>
-    </StyledEngineProvider>
+    <ThemeProvider theme={theme}>
+      <IntlProvider locale={locale} messages={messages.get(locale)}>
+        <BrowserRouter>
+          <CssBaseline />
+          <MenuBar />
+          <Routes />
+          <Footer />
+        </BrowserRouter>
+      </IntlProvider>
+    </ThemeProvider>
   );
 };
 

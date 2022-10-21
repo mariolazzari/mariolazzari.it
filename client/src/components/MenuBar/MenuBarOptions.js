@@ -3,26 +3,10 @@ import { FormattedMessage } from "react-intl";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
-import makeStyles from '@mui/styles/makeStyles';
+// MUI components
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { yellow } from '@mui/material/colors';
-
-// styles
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-  },
-  option: {
-    margin: theme.spacing(1),
-    textDecoration: "none",
-    "&:hover": {
-      color: yellow[500],
-      fontWeight: "bold",
-    },
-  },
-}));
+import { yellow } from "@mui/material/colors";
 
 // component
 const MenuBarOptions = () => {
@@ -33,19 +17,33 @@ const MenuBarOptions = () => {
   }));
   const dispatch = useDispatch();
 
+  // styles
+  const styles = {
+    root: {
+      display: "flex",
+      justifyContent: "space-around",
+      alignItems: "center",
+    },
+    option: {
+      margin: 1,
+      textDecoration: "none",
+      "&:hover": {
+        color: yellow[500],
+        fontWeight: "bold",
+      },
+    },
+  };
+
   // on option click event handler
   const onClick = path => {
     dispatch(setSelectedRoute(path));
   };
 
-  // styles
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
+    <Box sx={styles.root}>
       {options.map(({ label, path }) => (
         <Typography
-          className={classes.option}
+          sx={styles.option}
           color="secondary"
           component={Link}
           key={path}
@@ -57,7 +55,7 @@ const MenuBarOptions = () => {
           <FormattedMessage id={label} />
         </Typography>
       ))}
-    </div>
+    </Box>
   );
 };
 
