@@ -1,9 +1,8 @@
 import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
+import makeStyles from '@mui/styles/makeStyles';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 // component
 import Skill from "./Skill";
 

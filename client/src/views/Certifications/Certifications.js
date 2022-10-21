@@ -5,18 +5,16 @@ import { useIntl } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
 import { getCertifiations } from "../../actions/certificationActions";
-// MUI components
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-import Backdrop from "@material-ui/core/Backdrop";
+import makeStyles from '@mui/styles/makeStyles';
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Backdrop from "@mui/material/Backdrop";
 // MUI icons
-import SearchIcon from "@material-ui/icons/Search";
-// MUI colors
-import indigo from "@material-ui/core/colors/indigo";
+import SearchIcon from "@mui/icons-material/Search";
 // components
 import TextBox from "../../components/TextBox";
 import Certification from "./Certification";
+import { indigo } from '@mui/material/colors';
 
 // styles
 const useStyles = makeStyles(theme => ({

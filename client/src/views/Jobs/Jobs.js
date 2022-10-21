@@ -5,24 +5,22 @@ import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
 import { getJobs } from "../../actions/jobActions";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-import Timeline from "@material-ui/lab/Timeline";
-import TimelineItem from "@material-ui/lab/TimelineItem";
-import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
-import TimelineConnector from "@material-ui/lab/TimelineConnector";
-import TimelineContent from "@material-ui/lab/TimelineContent";
-import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
-import TimelineDot from "@material-ui/lab/TimelineDot";
-import Avatar from "@material-ui/core/Avatar";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-// MUI colors
-import indigo from "@material-ui/core/colors/indigo";
+import makeStyles from '@mui/styles/makeStyles';
+import Box from "@mui/material/Box";
+import Timeline from "@mui/lab/Timeline";
+import TimelineItem from "@mui/lab/TimelineItem";
+import TimelineSeparator from "@mui/lab/TimelineSeparator";
+import TimelineConnector from "@mui/lab/TimelineConnector";
+import TimelineContent from "@mui/lab/TimelineContent";
+import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
+import TimelineDot from "@mui/lab/TimelineDot";
+import Avatar from "@mui/material/Avatar";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 // utilities
 import { formatDistanceToNow } from "date-fns";
+import { indigo } from '@mui/material/colors';
 
 //styles
 const useStyles = makeStyles(theme => ({

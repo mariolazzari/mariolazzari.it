@@ -2,10 +2,9 @@ import { useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { getSocials } from "../../actions/socialActions";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-import Avatar from "@material-ui/core/Avatar";
+import makeStyles from '@mui/styles/makeStyles';
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
 
 // styles
 const useStyles = makeStyles(theme => ({
@@ -19,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2),
     height: theme.spacing(10),
     width: theme.spacing(10),
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       margin: theme.spacing(1),
       height: theme.spacing(8),
       width: theme.spacing(8),

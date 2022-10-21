@@ -4,10 +4,9 @@ import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
+import makeStyles from '@mui/styles/makeStyles';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 // component
 import Socials from "../../components/Socials";
 
@@ -19,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
     padding: theme.spacing(1),
-    minHeight: `calc(100vh - ${theme.spacing(8)}px)`,
+    minHeight: `calc(100vh - ${theme.spacing(8)})`,
   },
   title: {
     marginTop: theme.spacing(5),

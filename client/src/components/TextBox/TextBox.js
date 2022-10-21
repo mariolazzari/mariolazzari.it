@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
 // MUI components
-import TextField from "@material-ui/core/TextField";
+import TextField from "@mui/material/TextField";
 // Mui icons
-import InputAdornment from "@material-ui/core/InputAdornment";
-import EditIcon from "@material-ui/icons/Edit";
-import ClearIcon from "@material-ui/icons/Clear";
-// MUI colors
-import red from "@material-ui/core/colors/red";
+import InputAdornment from "@mui/material/InputAdornment";
+import EditIcon from "@mui/icons-material/Edit";
+import ClearIcon from "@mui/icons-material/Clear";
+import { red } from '@mui/material/colors';
 
 // component
 const TextBox = props => {

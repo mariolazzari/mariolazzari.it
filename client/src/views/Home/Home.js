@@ -6,19 +6,17 @@ import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
 import { getLastCertifiations } from "../../actions/certificationActions";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Tooltip from "@material-ui/core/Tooltip";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import CircularProgress from "@mui/material/CircularProgress";
 // MUI icons
-import MailIcon from "@material-ui/icons/Mail";
-import DownloadIcon from "@material-ui/icons/CloudDownload";
+import MailIcon from "@mui/icons-material/Mail";
+import DownloadIcon from "@mui/icons-material/CloudDownload";
 // MUI colors
-import { indigo } from "@material-ui/core/colors";
+import { indigo } from "@mui/material/colors";
 // component
 const Certification = lazy(() => import("../Certifications/Certification"));
 const CardBox = lazy(() => import("../../components/CardBox"));
@@ -26,39 +24,40 @@ const Socials = lazy(() => import("../../components/Socials"));
 const GitHub = lazy(() => import("./GitHub"));
 
 // component styles
-const useStyles = makeStyles(theme => ({
+const styles = {
   root: {
     backgroundColor: indigo[50],
-    padding: theme.spacing(1),
+    padding: 1,
     width: "100vw",
   },
   title: {
-    marginTop: theme.spacing(8),
+    marginTop: 10,
     fontWeight: "bold",
   },
   subtitle: {
-    margin: theme.spacing(1, 0),
+    marginX: 1,
     fontWeight: "bold",
   },
   intro: {
-    margin: theme.spacing(1, "10%"),
+    marginY: 1,
   },
   button: {
-    minWidth: theme.spacing(12),
-    margin: theme.spacing(0, 1),
+    minWidth: 12,
+    margin: (0, 1),
   },
   icon: {
-    margin: theme.spacing(0, 1),
+    marginX: 0,
+    marginY: 1,
   },
   link: {
     textDecoration: "none",
     "&:hover": {
       fontWeight: "bold",
       textDecoration: "underline",
-      transform: "scale(1.1)",
+      transform: "scale(1.05)",
     },
   },
-}));
+};
 
 // component
 const Home = () => {
@@ -94,11 +93,8 @@ const Home = () => {
   // locales
   const intl = useIntl();
 
-  // styles
-  const classes = useStyles();
-
   return (
-    <Box className={classes.root}>
+    <Box sx={styles.root}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>
@@ -117,17 +113,12 @@ const Home = () => {
         />
       </Helmet>
 
-      <Typography
-        className={classes.title}
-        variant="h1"
-        color="primary"
-        align="center"
-      >
+      <Typography sx={styles.title} variant="h1" color="primary" align="center">
         <FormattedMessage id="home.title" />
       </Typography>
 
       <Typography
-        className={classes.subtitle}
+        sx={styles.subtitle}
         variant="h2"
         color="primary"
         align="center"
@@ -139,7 +130,7 @@ const Home = () => {
       <Grid container justifyContent="center" spacing={2}>
         <Grid item container justifyContent="center" xs={12}>
           <Typography
-            className={classes.intro}
+            sx={styles.intro}
             component="h2"
             variant="h4"
             align="center"
@@ -152,25 +143,25 @@ const Home = () => {
         <Grid item container justifyContent="center" xs={12}>
           <Tooltip title="Premi qui per contattarmi">
             <Button
+              sx={styles.button}
               component={Link}
               to="/contacts"
-              className={classes.button}
               variant="contained"
               color="primary"
             >
-              <MailIcon className={classes.icon} color="secondary" />
+              <MailIcon sx={styles.icon} color="secondary" />
               <FormattedMessage id="home.mailButton" />
             </Button>
           </Tooltip>
 
           <Tooltip title="Premi qui per scaricare il mio CV">
             <Button
-              className={classes.button}
+              sx={styles.button}
               variant="contained"
               color="secondary"
               onClick={onDownloadClick}
             >
-              <DownloadIcon className={classes.icon} color="primary" />
+              <DownloadIcon sx={styles.icon} color="primary" />
               <FormattedMessage id="home.cvButton" />
             </Button>
           </Tooltip>
@@ -178,7 +169,7 @@ const Home = () => {
 
         <Grid item xs={12}>
           <Typography
-            className={classes.subtitle}
+            sx={styles.subtitle}
             variant="h3"
             color="primary"
             align="center"
@@ -188,7 +179,7 @@ const Home = () => {
         </Grid>
         <Grid item container justifyContent="center" xs={12}>
           <Typography
-            className={classes.link}
+            sx={styles.link}
             component={Link}
             to="/skills"
             variant="h5"
@@ -215,7 +206,7 @@ const Home = () => {
 
         <Grid item xs={12}>
           <Typography
-            className={classes.subtitle}
+            sx={styles.subtitle}
             variant="h3"
             color="primary"
             align="center"
@@ -226,7 +217,7 @@ const Home = () => {
 
         <Grid item container justifyContent="center" xs={12}>
           <Typography
-            className={classes.link}
+            sx={styles.link}
             component={Link}
             to="/certifications"
             variant="h5"
@@ -261,7 +252,7 @@ const Home = () => {
 
         <Grid item xs={12}>
           <Typography
-            className={classes.subtitle}
+            sx={styles.subtitle}
             variant="h3"
             color="primary"
             align="center"

@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 // MUI components
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import InputAdornment from "@material-ui/core/InputAdornment";
+import Input from "@mui/material/Input";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import InputAdornment from "@mui/material/InputAdornment";
 // MUI icons
-import EditIcon from "@material-ui/icons/Create";
+import EditIcon from "@mui/icons-material/Create";
 
 // component
 const TextArea = props => (

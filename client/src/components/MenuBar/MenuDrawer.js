@@ -3,18 +3,15 @@ import { Link } from "react-router-dom";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setDrawerOpen, setSelectedRoute } from "../../actions/appActions";
-// MUI components
-import { makeStyles } from "@material-ui/core/styles";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import Divider from "@material-ui/core/Divider";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
-// MUI colors
-import indigo from "@material-ui/core/colors/indigo";
-import yellow from "@material-ui/core/colors/yellow";
+import makeStyles from '@mui/styles/makeStyles';
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import Divider from "@mui/material/Divider";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Avatar from "@mui/material/Avatar";
+import { indigo, yellow } from '@mui/material/colors';
 
 // styles
 const useStyles = makeStyles(theme => ({

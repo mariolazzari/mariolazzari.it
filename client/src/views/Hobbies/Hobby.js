@@ -1,11 +1,10 @@
 import { useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
+import makeStyles from '@mui/styles/makeStyles';
+import Paper from "@mui/material/Paper";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
 // components
 import { More } from "../../components/Buttons";
 

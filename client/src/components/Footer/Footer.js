@@ -1,7 +1,6 @@
-// MUI components
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
+import makeStyles from '@mui/styles/makeStyles';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 // styles
 const useStyles = makeStyles(theme => ({

@@ -1,8 +1,15 @@
 import axios from "axios";
 
+// react env
+const { NODE_ENV, REACT_APP_API_BASE_URL, REACT_APP_API_BASE_URL_DEV } =
+  process.env;
+
 // set user token for protected routes and axios defaults
 axios.defaults.headers.common.Authorization = localStorage.getItem("token");
-axios.defaults.baseURL = "/api";
+axios.defaults.baseURL =
+  NODE_ENV === "development"
+    ? REACT_APP_API_BASE_URL_DEV
+    : REACT_APP_API_BASE_URL;
 axios.defaults.responseType = "json";
 
 // api call type

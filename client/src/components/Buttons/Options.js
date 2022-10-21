@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import makeStyles from '@mui/styles/makeStyles';
+import Button from "@mui/material/Button";
 // MUI icons
-import OptionIcon from "@material-ui/icons/Settings";
+import OptionIcon from "@mui/icons-material/Settings";
 
 // styles
 const useStyles = makeStyles(theme => ({

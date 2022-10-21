@@ -1,4 +1,4 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setLocale, setFlag } from "./actions/appActions";
@@ -6,15 +6,14 @@ import { setLocale, setFlag } from "./actions/appActions";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./components/Routes";
 // theme
-import { ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
 import theme from "./theme";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from "@mui/material/CssBaseline";
 // locale
 import { IntlProvider } from "react-intl";
 // components
 import MenuBar from "./components/MenuBar";
-import CircularProgress from "@material-ui/core/CircularProgress";
-const Footer = lazy(() => import("./components/Footer"));
+import Footer from "./components/Footer";
 
 // component
 const App = () => {
@@ -37,18 +36,18 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <IntlProvider locale={locale} messages={messages.get(locale)}>
-        <BrowserRouter>
-          <CssBaseline />
-          <MenuBar />
-          <Routes />
-          <Suspense fallback={<CircularProgress />}>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <IntlProvider locale={locale} messages={messages.get(locale)}>
+          <BrowserRouter>
+            <CssBaseline />
+            <MenuBar />
+            <Routes />
             <Footer />
-          </Suspense>
-        </BrowserRouter>
-      </IntlProvider>
-    </ThemeProvider>
+          </BrowserRouter>
+        </IntlProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

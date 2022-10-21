@@ -1,12 +1,10 @@
 import { Helmet } from "react-helmet";
 import { useIntl } from "react-intl";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-// MUI colors
-import indigo from "@material-ui/core/colors/indigo";
+import makeStyles from '@mui/styles/makeStyles';
+import Box from "@mui/material/Box";
 // component
 import Hobby from "./Hobby";
+import { indigo } from '@mui/material/colors';
 
 // styles
 const useStyles = makeStyles(theme => ({

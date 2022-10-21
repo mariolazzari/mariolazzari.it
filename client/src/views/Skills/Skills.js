@@ -5,13 +5,11 @@ import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { getSkills } from "../../actions/skillActions";
 import { setSelectedRoute } from "../../actions/appActions";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-// MUI colors
-import indigo from "@material-ui/core/colors/indigo";
+import makeStyles from '@mui/styles/makeStyles';
+import Box from "@mui/material/Box";
 // component
 import Secton from "./Section";
+import { indigo } from '@mui/material/colors';
 
 // styles
 const useStyles = makeStyles(theme => ({

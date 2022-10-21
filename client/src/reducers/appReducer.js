@@ -13,11 +13,11 @@ import messages_IT from "../locales/it.json";
 import dates_EN from "date-fns/locale/en-GB";
 import dates_IT from "date-fns/locale/it";
 // MUI icons
-import HomeIcon from "@material-ui/icons/Museum";
-import SkillIcon from "@material-ui/icons/LocalLibrary";
-import CertificationIcon from "@material-ui/icons/School";
-import HobbyIcon from "@material-ui/icons/Star";
-import ContactIcon from "@material-ui/icons/ContactMail";
+import HomeIcon from "@mui/icons-material/Museum";
+import SkillIcon from "@mui/icons-material/LocalLibrary";
+import CertificationIcon from "@mui/icons-material/School";
+import HobbyIcon from "@mui/icons-material/Star";
+import ContactIcon from "@mui/icons-material/ContactMail";
 
 // initial state
 const initState = {

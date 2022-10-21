@@ -1,26 +1,25 @@
 // MUI components
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-// MUI colors
-import indigo from "@material-ui/core/colors/indigo";
-import red from "@material-ui/core/colors/red";
+import makeStyles from '@mui/styles/makeStyles';
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 // MUI icons
-import ImageIcon from "@material-ui/icons/Image";
-import VideoIcon from "@material-ui/icons/Videocam";
-import ZoomIcon from "@material-ui/icons/ZoomIn";
+import ImageIcon from "@mui/icons-material/Image";
+import VideoIcon from "@mui/icons-material/Videocam";
+import ZoomIcon from "@mui/icons-material/ZoomIn";
 // utils
 import { format } from "date-fns";
 
+import { indigo, red } from '@mui/material/colors';
+
 const useStyles = makeStyles(theme => ({
   root: {
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('sm')]: {
       width: theme.spacing(40),
     },
     [theme.breakpoints.up("sm")]: {
@@ -35,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('sm')]: {
       width: theme.spacing(30),
     },
     [theme.breakpoints.up("sm")]: {
@@ -101,7 +100,7 @@ const NasaPod = ({ selected }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <IconButton>
+        <IconButton size="large">
           <ZoomIcon fontSize="small" color="primary" />
         </IconButton>
       </CardActions>

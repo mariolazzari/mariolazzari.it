@@ -1,9 +1,8 @@
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import makeStyles from '@mui/styles/makeStyles';
+import Button from "@mui/material/Button";
 
 // styles
 const useStyles = makeStyles(theme => ({

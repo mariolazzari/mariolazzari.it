@@ -1,9 +1,8 @@
 import { FormattedMessage } from "react-intl";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import makeStyles from '@mui/styles/makeStyles';
+import Button from "@mui/material/Button";
 // MUI icons
-import SearchIcon from "@material-ui/icons/Search";
+import SearchIcon from "@mui/icons-material/Search";
 
 // styles
 const useStyles = makeStyles(theme => ({

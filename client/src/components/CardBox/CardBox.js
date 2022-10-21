@@ -1,10 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
-// MUI components
-import { makeStyles } from "@material-ui/core/";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
+import makeStyles from '@mui/styles/makeStyles';
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 // styles
 const useStyles = makeStyles(theme => ({

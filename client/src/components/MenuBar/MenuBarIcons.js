@@ -1,12 +1,11 @@
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setDrawerOpen, setLocale, setFlag } from "../../actions/appActions";
-// MUI components
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
+import makeStyles from '@mui/styles/makeStyles';
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
 // MUI icons
-import MenuIcon from "@material-ui/icons/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
 
 // styles
 const useStyles = makeStyles(theme => ({
@@ -46,7 +45,7 @@ const MenuBarIcons = () => {
 
   return (
     <Box className={classes.root}>
-      <IconButton color="secondary" onClick={onFlagClick}>
+      <IconButton color="secondary" onClick={onFlagClick} size="large">
         <img
           src={flag}
           alt={flag === "it" ? "Versione italiana" : "English version"}
@@ -55,7 +54,7 @@ const MenuBarIcons = () => {
         />
       </IconButton>
 
-      <IconButton color="secondary" onClick={onMenuClick} aria-label="Menu">
+      <IconButton color="secondary" onClick={onMenuClick} aria-label="Menu" size="large">
         <MenuIcon />
       </IconButton>
     </Box>

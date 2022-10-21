@@ -3,18 +3,17 @@ import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { setSuccess } from "../../actions/appActions";
 // MUI components
-import { makeStyles } from "@material-ui/styles";
-import Typography from "@material-ui/core/Typography";
-import Snackbar from "@material-ui/core/Snackbar";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from "@mui/styles";
+import Typography from "@mui/material/Typography";
+import Snackbar from "@mui/material/Snackbar";
+import SnackbarContent from "@mui/material/SnackbarContent";
+import IconButton from "@mui/material/IconButton";
 // MUI icons
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import CloseIcon from "@material-ui/icons/Close";
-// MUI colors
-import green from "@material-ui/core/colors/green";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CloseIcon from "@mui/icons-material/Close";
 // components
 import Transition from "./Transaition";
+import { green } from '@mui/material/colors';
 
 // component styles
 const useStyles = makeStyles(theme => ({
@@ -72,7 +71,7 @@ const Success = props => {
             color="inherit"
             className={classes.close}
             onClick={onClose}
-          >
+            size="large">
             <CloseIcon />
           </IconButton>,
         ]}

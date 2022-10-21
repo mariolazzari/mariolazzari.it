@@ -3,11 +3,9 @@ import { FormattedMessage } from "react-intl";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-// MUI colors
-import yellow from "@material-ui/core/colors/yellow";
+import makeStyles from '@mui/styles/makeStyles';
+import Typography from "@mui/material/Typography";
+import { yellow } from '@mui/material/colors';
 
 // styles
 const useStyles = makeStyles(theme => ({

@@ -4,20 +4,18 @@ import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { getNasaPods } from "../../actions/nasaActions";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-import Avatar from "@material-ui/core/Avatar";
+import makeStyles from '@mui/styles/makeStyles';
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
 import TextBox from "../../components/TextBox";
-import Typography from "@material-ui/core/Typography";
-import Backdrop from "@material-ui/core/Backdrop";
-// MUI colors
-import indigo from "@material-ui/core/colors/indigo";
+import Typography from "@mui/material/Typography";
+import Backdrop from "@mui/material/Backdrop";
 //MUI icons
-import SearchIcon from "@material-ui/icons/Search";
+import SearchIcon from "@mui/icons-material/Search";
 // components
 import { Back, Options, Search } from "../../components/Buttons";
 import NasaPod from "./NasaPod";
+import { indigo } from '@mui/material/colors';
 
 // styles
 const useStyles = makeStyles(theme => ({

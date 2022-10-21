@@ -1,6 +1,6 @@
 // Theme settings
-import { createTheme, responsiveFontSizes } from "@material-ui/core/styles";
-import { indigo } from "@material-ui/core/colors";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { indigo } from "@mui/material/colors";
 
 const theme = createTheme({
   typography: {

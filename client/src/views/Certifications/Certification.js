@@ -2,13 +2,17 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 // Redux
 import { useSelector } from "react-redux";
-// MUI components
-import { makeStyles } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Fade from "@material-ui/core/Fade";
+import makeStyles from "@mui/styles/makeStyles";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Fade from "@mui/material/Fade";
 // utilities
 import { formatDistanceToNow } from "date-fns";
+
+// react env
+const { NODE_ENV, REACT_APP_ROOT, REACT_APP_ROOT_DEV } = process.env;
+
+const prefix = NODE_ENV === "production" ? REACT_APP_ROOT : REACT_APP_ROOT_DEV;
 
 // compoennt styles
 const useStyles = makeStyles(theme => ({
@@ -66,7 +70,7 @@ const Certification = ({ selected }) => {
 
       <Fade in timeout={1000}>
         <img
-          src={selected.imagePath}
+          src={`${prefix}${selected.imagePath}`}
           alt={selected.title}
           width={400}
           height={298}

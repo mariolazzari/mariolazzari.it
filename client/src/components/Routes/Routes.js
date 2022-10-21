@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import Backdrop from "@material-ui/core/Backdrop";
+import Backdrop from "@mui/material/Backdrop";
 // Application routes
 import { Routes, Route } from "react-router-dom";
 // components

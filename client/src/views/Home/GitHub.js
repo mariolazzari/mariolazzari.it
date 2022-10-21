@@ -1,8 +1,9 @@
 import { FormattedMessage } from "react-intl";
 // MUI components
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
+import { useTheme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 // components
 import Calendar from "react-github-calendar";
 import Tooltip from "react-tooltip";
