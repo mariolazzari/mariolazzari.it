@@ -5,25 +5,15 @@ import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { getSkills } from "../../actions/skillActions";
 import { setSelectedRoute } from "../../actions/appActions";
-import makeStyles from '@mui/styles/makeStyles';
 import Box from "@mui/material/Box";
 // component
 import Secton from "./Section";
-import { indigo } from '@mui/material/colors';
-
-// styles
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: theme.spacing(10, 1),
-    backgroundColor: indigo[50],
-  },
-}));
+import { indigo } from "@mui/material/colors";
 
 // compoennt
 const Skills = () => {
   // State
   const [title, setTitle] = useState("");
-
   // Redux
   const { locale, os, lang, db, ide, lib, tool } = useSelector(state => ({
     locale: state.app.locale,
@@ -40,7 +30,12 @@ const Skills = () => {
   const intl = useIntl();
 
   // styles
-  const classes = useStyles();
+  const styles = {
+    root: {
+      padding: 1,
+      backgroundColor: indigo[50],
+    },
+  };
 
   // load skills
   useEffect(() => {
@@ -50,13 +45,13 @@ const Skills = () => {
     const homeTitle = intl.formatMessage({ id: "home.title" });
     const homeSubtitle = intl.formatMessage({ id: "home.subtitle" });
     const skillTitle = intl.formatMessage({ id: "skills.title" });
-    setTitle(skillTitle + " " + homeTitle + " " + homeSubtitle);
+    setTitle(`${skillTitle} ${homeTitle} ${homeSubtitle}`);
     // get skills
     dispatch(getSkills());
   }, [dispatch, intl]);
 
   return (
-    <Box className={classes.root}>
+    <Box sx={styles.root}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>

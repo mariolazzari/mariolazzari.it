@@ -18,8 +18,9 @@ import DownloadIcon from "@mui/icons-material/CloudDownload";
 // MUI colors
 import { indigo } from "@mui/material/colors";
 // component
+import CardBox from "../../components/CardBox";
+
 const Certification = lazy(() => import("../Certifications/Certification"));
-const CardBox = lazy(() => import("../../components/CardBox"));
 const Socials = lazy(() => import("../../components/Socials"));
 const GitHub = lazy(() => import("./GitHub"));
 
@@ -42,12 +43,11 @@ const styles = {
     marginY: 1,
   },
   button: {
-    minWidth: 12,
-    margin: (0, 1),
+    width: 110,
+    margin: 1,
   },
   icon: {
-    marginX: 0,
-    marginY: 1,
+    margin: 1,
   },
   link: {
     textDecoration: "none",
@@ -146,10 +146,10 @@ const Home = () => {
               sx={styles.button}
               component={Link}
               to="/contacts"
-              variant="contained"
+              variant="outlined"
               color="primary"
             >
-              <MailIcon sx={styles.icon} color="secondary" />
+              <MailIcon sx={styles.icon} />
               <FormattedMessage id="home.mailButton" />
             </Button>
           </Tooltip>
@@ -158,10 +158,10 @@ const Home = () => {
             <Button
               sx={styles.button}
               variant="contained"
-              color="secondary"
+              color="primary"
               onClick={onDownloadClick}
             >
-              <DownloadIcon sx={styles.icon} color="primary" />
+              <DownloadIcon sx={styles.icon} color="secondary" />
               <FormattedMessage id="home.cvButton" />
             </Button>
           </Tooltip>
@@ -177,6 +177,7 @@ const Home = () => {
             <FormattedMessage id="home.toolsTitle" />
           </Typography>
         </Grid>
+
         <Grid item container justifyContent="center" xs={12}>
           <Typography
             sx={styles.link}
@@ -190,17 +191,15 @@ const Home = () => {
           </Typography>
         </Grid>
 
-        {cards.map((card, i) => (
-          <Grid key={i} item xs={12} sm={6} lg={3}>
-            <Suspense fallback={<CircularProgress />}>
-              <CardBox
-                avatar={card.avatar}
-                title={card.title}
-                text={card.text}
-                height={400}
-                onCardClick={card.onClick}
-              />
-            </Suspense>
+        {cards.map(card => (
+          <Grid key={card.title} item xs={12} sm={6} lg={3}>
+            <CardBox
+              avatar={card.avatar}
+              title={card.title}
+              text={card.text}
+              height={400}
+              onCardClick={card.onClick}
+            />
           </Grid>
         ))}
 

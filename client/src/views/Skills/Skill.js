@@ -1,48 +1,48 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import makeStyles from '@mui/styles/makeStyles';
 import Paper from "@mui/material/Paper";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 
-// styles
-const useStyles = makeStyles(theme => ({
-  paper: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    height: theme.spacing(45),
-    width: theme.spacing(45),
-    margin: theme.spacing(1),
-    padding: theme.spacing(1),
-    borderRadius: theme.spacing(1),
-    cursor: "pointer",
-    "&:hover": {
-      transform: "scale(1.1)",
-    },
-  },
-  avatar: {
-    height: theme.spacing(10),
-    width: theme.spacing(10),
-  },
-  title: {
-    fontWeight: "bold",
-  },
-}));
-
 // component
 const Skill = ({ selected, locale }) => {
   // state
-  const [elevation, setElevation] = useState(1);
+  const [elevation, setElevation] = useState(10);
   const [text, setText] = useState("");
   const [use, setUse] = useState("");
 
   // show skill site
-  const onClick = () => window.open(selected.url, "_blank");
+  const onClick = () => {
+    window.open(selected.url, "_blank");
+  };
 
   // styles
-  const classes = useStyles();
+  const styles = {
+    paper: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "flex-start",
+      alignItems: "center",
+      height: 400,
+      width: 400,
+      margin: 2,
+      padding: 2,
+      borderRadius: 2,
+      cursor: "pointer",
+      "&:hover": {
+        transform: "scale(1.1)",
+        margin: 1,
+      },
+    },
+    avatar: {
+      height: 64,
+      width: 64,
+      marginBottom: 2,
+    },
+    title: {
+      fontWeight: "bold",
+    },
+  };
 
   // init component
   useEffect(() => {
@@ -60,22 +60,22 @@ const Skill = ({ selected, locale }) => {
 
   return (
     <Paper
-      className={classes.paper}
+      sx={styles.paper}
       elevation={elevation}
       onClick={onClick}
-      onMouseEnter={() => setElevation(10)}
-      onMouseLeave={() => setElevation(1)}
+      onMouseEnter={() => setElevation(20)}
+      onMouseLeave={() => setElevation(10)}
     >
       <Avatar
-        className={classes.avatar}
+        sx={styles.avatar}
         src={`/images/logos/${selected.imagePath}`}
         alt={selected.name}
         onClick={onClick}
       />
 
       <Typography
-        className={classes.title}
-        variant="h6"
+        sx={styles.title}
+        variant="h5"
         align="center"
         gutterBottom
         component="a"
