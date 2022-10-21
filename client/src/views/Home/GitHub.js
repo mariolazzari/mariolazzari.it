@@ -1,42 +1,38 @@
 import { FormattedMessage } from "react-intl";
 // MUI components
 import { useTheme } from "@mui/material/styles";
-import makeStyles from '@mui/styles/makeStyles';
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 // components
 import Calendar from "react-github-calendar";
 import Tooltip from "react-tooltip";
 
-// styles
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignContent: "center",
-    padding: theme.spacing(1),
-  },
-  title: {
-    marginTop: theme.spacing(2),
-    fontWeight: "bold",
-  },
-}));
-
 // component
 const GitHub = () => {
   // styles
-  const classes = useStyles();
   const theme = useTheme();
+  const styles = {
+    root: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignContent: "center",
+      padding: 1,
+    },
+    title: {
+      marginTop: 2,
+      fontWeight: "bold",
+    },
+  };
 
   return (
-    <Box className={classes.root}>
+    <Box sx={styles.root}>
       <Typography
-        className={classes.title}
+        sx={styles.title}
         variant="h3"
-        gutterBottom
         align="center"
         color="primary"
+        gutterBottom
       >
         <FormattedMessage id="home.github" />
       </Typography>

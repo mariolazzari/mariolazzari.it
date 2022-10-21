@@ -1,20 +1,10 @@
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setDrawerOpen, setLocale, setFlag } from "../../actions/appActions";
-import makeStyles from '@mui/styles/makeStyles';
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 // MUI icons
 import MenuIcon from "@mui/icons-material/Menu";
-
-// styles
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-  },
-}));
 
 // component
 const MenuBarIcons = () => {
@@ -25,6 +15,15 @@ const MenuBarIcons = () => {
     flag: state.app.flag,
   }));
   const dispatch = useDispatch();
+
+  // styles
+  const styles = {
+    root: {
+      display: "flex",
+      justifyContent: "space-around",
+      alignItems: "center",
+    },
+  };
 
   // on flag icon click event handler
   const onFlagClick = () => {
@@ -40,11 +39,8 @@ const MenuBarIcons = () => {
   // on menu icon click event handler
   const onMenuClick = () => dispatch(setDrawerOpen(!open));
 
-  // styles
-  const classes = useStyles();
-
   return (
-    <Box className={classes.root}>
+    <Box className={styles.root}>
       <IconButton color="secondary" onClick={onFlagClick} size="large">
         <img
           src={flag}
@@ -54,7 +50,12 @@ const MenuBarIcons = () => {
         />
       </IconButton>
 
-      <IconButton color="secondary" onClick={onMenuClick} aria-label="Menu" size="large">
+      <IconButton
+        color="secondary"
+        onClick={onMenuClick}
+        aria-label="Menu"
+        size="large"
+      >
         <MenuIcon />
       </IconButton>
     </Box>
