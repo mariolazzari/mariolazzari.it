@@ -1,5 +1,4 @@
 // MUI components
-import makeStyles from '@mui/styles/makeStyles';
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -12,46 +11,33 @@ import Typography from "@mui/material/Typography";
 import ImageIcon from "@mui/icons-material/Image";
 import VideoIcon from "@mui/icons-material/Videocam";
 import ZoomIcon from "@mui/icons-material/ZoomIn";
+// MUI colors
+import { indigo, red } from "@mui/material/colors";
 // utils
 import { format } from "date-fns";
 
-import { indigo, red } from '@mui/material/colors';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    [theme.breakpoints.down('sm')]: {
-      width: theme.spacing(40),
-    },
-    [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(50),
-    },
-    margin: theme.spacing(1),
-  },
-  media: {
-    height: theme.spacing(25),
-    "&:hover": {
-      cursor: "pointer",
-    },
-  },
-  title: {
-    [theme.breakpoints.down('sm')]: {
-      width: theme.spacing(30),
-    },
-    [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(40),
-    },
-    fontWeight: "bold",
-  },
-  content: {
-    height: theme.spacing(25),
-    overflow: "auto",
-  },
-}));
-
 // component
-const NasaPod = ({ selected }) => {
+const Pod = ({ selected }) => {
   // styles
-  const classes = useStyles();
+  const styles = {
+    root: {
+      margin: 1,
+    },
+    media: {
+      height: 200,
+      "&:hover": {
+        cursor: "pointer",
+      },
+    },
+    title: {
+      fontWeight: "bold",
+    },
+    content: {
+      width: 400,
+      height: 300,
+      overflow: "auto",
+    },
+  };
 
   // render avatar
   const renderAvatar = () => {
@@ -72,11 +58,11 @@ const NasaPod = ({ selected }) => {
   const onClick = () => window.open(selected.url, "_blank");
 
   return (
-    <Card className={classes.root} onClick={onClick} elevation={3}>
+    <Card sx={styles.root} onClick={onClick} elevation={3}>
       <CardHeader
         avatar={renderAvatar()}
         title={
-          <Typography className={classes.title} variant="body1" noWrap>
+          <Typography sx={styles.title} variant="body1" noWrap>
             {selected.title}
           </Typography>
         }
@@ -88,13 +74,13 @@ const NasaPod = ({ selected }) => {
       />
 
       <CardMedia
-        className={classes.media}
+        sx={styles.media}
         component={selected.media_type === "image" ? "img" : "iframe"}
         src={selected.url}
         title={selected.title}
       />
 
-      <CardContent className={classes.content}>
+      <CardContent sx={styles.content}>
         <Typography variant="body2" align="justify">
           {selected.explanation}
         </Typography>
@@ -108,4 +94,4 @@ const NasaPod = ({ selected }) => {
   );
 };
 
-export default NasaPod;
+export default Pod;

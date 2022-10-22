@@ -1,53 +1,43 @@
 import { useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
-import makeStyles from '@mui/styles/makeStyles';
+// MUI components
 import Paper from "@mui/material/Paper";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 // components
 import { More } from "../../components/Buttons";
 
-// style
-const useStyles = makeStyles(theme => ({
-  paper: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: theme.spacing(1),
-    height: theme.spacing(50),
-    width: theme.spacing(50),
-    "&:hover": {
-      cursor: "pointer",
-      transform: "scale(1.05)",
-    },
-  },
-  avatar: {
-    width: theme.spacing(15),
-    height: theme.spacing(15),
-  },
-}));
-
 // component
 const Hobby = ({ selected }) => {
   // satte
-  const [elevation, setElevation] = useState(1);
+  const [elevation, setElevation] = useState(10);
 
   // styles
-  const classes = useStyles();
+  const styles = {
+    paper: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      alignItems: "center",
+      padding: 1,
+      height: 400,
+      width: 400,
+    },
+    avatar: {
+      width: 60,
+      height: 60,
+    },
+  };
 
   return (
     <Paper
-      className={classes.paper}
+      sx={styles.paper}
       elevation={elevation}
-      onMouseEnter={() => setElevation(10)}
-      onMouseLeave={() => setElevation(1)}
+      onMouseEnter={() => setElevation(20)}
+      onMouseLeave={() => setElevation(10)}
     >
-      <Avatar
-        className={classes.avatar}
-        src={`/images/logos/${selected.imagePath}`}
-      />
+      <Avatar sx={styles.avatar} src={`/images/logos/${selected.imagePath}`} />
 
       <Fragment>
         <Typography variant="h5" align="center" gutterBottom>

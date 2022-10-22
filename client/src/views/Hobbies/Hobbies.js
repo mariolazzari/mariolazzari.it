@@ -1,30 +1,28 @@
 import { Helmet } from "react-helmet";
 import { useIntl } from "react-intl";
-import makeStyles from '@mui/styles/makeStyles';
+// MUI components
 import Box from "@mui/material/Box";
 // component
 import Hobby from "./Hobby";
-import { indigo } from '@mui/material/colors';
-
-// styles
-const useStyles = makeStyles(theme => ({
-  box: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: indigo[50],
-    minHeight: "95vh",
-    padding: theme.spacing(11, 1),
-    borderRadius: theme.spacing(1),
-  },
-}));
+import { indigo } from "@mui/material/colors";
 
 // component
 const Hobbies = () => {
   // locales
   const intl = useIntl();
+
   // styles
-  const classes = useStyles();
+  const styles = {
+    box: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: indigo[50],
+      minHeight: "95vh",
+      padding: 5,
+      borderRadius: 1,
+    },
+  };
 
   const hobbies = [
     {
@@ -36,7 +34,7 @@ const Hobbies = () => {
   ];
 
   return (
-    <Box className={classes.box}>
+    <Box sx={styles.box}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{intl.formatMessage({ id: "hobbies.title" })}</title>

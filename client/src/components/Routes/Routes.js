@@ -9,7 +9,7 @@ const Skills = lazy(() => import("../../views/Skills"));
 const Jobs = lazy(() => import("../../views/Jobs"));
 const Hobbies = lazy(() => import("../../views/Hobbies"));
 const Contacts = lazy(() => import("../../views/Contacts"));
-const Nasa = lazy(() => import("../../views/Nasa"));
+const Nasa = lazy(() => import("../../views/Hobbies/Nasa"));
 
 // routes
 const MyRoutes = () => (

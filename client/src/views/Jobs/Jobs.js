@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
 import { getJobs } from "../../actions/jobActions";
-import makeStyles from '@mui/styles/makeStyles';
+// MUI components
 import Box from "@mui/material/Box";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
@@ -20,30 +20,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 // utilities
 import { formatDistanceToNow } from "date-fns";
-import { indigo } from '@mui/material/colors';
-
-//styles
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: "95vh",
-    backgroundColor: indigo[50],
-    padding: theme.spacing(10, 1),
-  },
-  avatar: { backgroundColor: "white" },
-  paper: {
-    padding: theme.spacing(1, 2),
-  },
-  link: {
-    "&:hover": {
-      mouse: "pointer",
-      fontWeight: "bold",
-    },
-  },
-}));
+import { indigo } from "@mui/material/colors";
 
 // component
 const Works = () => {
@@ -56,7 +33,29 @@ const Works = () => {
   const dispatch = useDispatch();
 
   // styles
-  const classes = useStyles();
+  const styles = {
+    root: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      minHeight: "95vh",
+      backgroundColor: indigo[50],
+      padding: 10,
+    },
+    avatar: {
+      backgroundColor: "white",
+    },
+    paper: {
+      padding: 2,
+    },
+    link: {
+      "&:hover": {
+        mouse: "pointer",
+        fontWeight: "bold",
+      },
+    },
+  };
 
   const options = {
     locale: dates.get(locale),
@@ -99,7 +98,7 @@ const Works = () => {
   }, [dispatch]);
 
   return (
-    <Box className={classes.root}>
+    <Box sx={styles.root}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{intl.formatMessage({ id: "jobs.title" })}</title>
@@ -110,7 +109,7 @@ const Works = () => {
         />
       </Helmet>
 
-      <Timeline align="alternate">
+      <Timeline position="alternate">
         {jobs.map(job => (
           <TimelineItem
             key={job._id}
@@ -122,7 +121,7 @@ const Works = () => {
             <TimelineSeparator>
               <TimelineDot>
                 <Avatar
-                  className={classes.avatar}
+                  sx={styles.avatar}
                   src={`/images/logos/${job.imagePath}`}
                   alt={job.company}
                 />
@@ -130,8 +129,8 @@ const Works = () => {
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
-              <Paper elevation={5} className={classes.paper}>
-                <Typography className={classes.link} variant="h6">
+              <Paper elevation={5} sx={styles.paper}>
+                <Typography sx={styles.link} variant="h6">
                   {job.company}
                 </Typography>
                 <Typography>{renderDescription(job.description)}</Typography>
@@ -142,7 +141,7 @@ const Works = () => {
       </Timeline>
 
       <Button
-        className={classes.download}
+        sx={styles.download}
         variant="contained"
         color="primary"
         onClick={onDownloadClick}
