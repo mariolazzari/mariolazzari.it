@@ -14,10 +14,9 @@ const Section = props => {
       flexDirection: "column",
       justifyContent: "center",
       alignContent: "center",
-      marginBottom: 5,
     },
     title: {
-      marginBottom: 5,
+      marginY: 10,
       fontWeight: "bold",
     },
     skills: {
