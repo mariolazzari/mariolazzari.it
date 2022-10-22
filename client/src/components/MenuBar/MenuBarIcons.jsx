@@ -1,6 +1,6 @@
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setDrawerOpen, setLocale, setFlag } from "../../actions/appActions";
+import { setDrawerOpen, setLocale, setFlag } from "redux/slices/appSlice";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 // MUI icons
@@ -43,7 +43,7 @@ const MenuBarIcons = () => {
     <Box className={styles.root}>
       <IconButton color="secondary" onClick={onFlagClick} size="large">
         <img
-          src={flag}
+          src={`images/locales/${flag}.png`}
           alt={flag === "it" ? "Versione italiana" : "English version"}
           width={48}
           height={24}

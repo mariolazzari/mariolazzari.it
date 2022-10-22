@@ -2,7 +2,7 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setDrawerOpen, setSelectedRoute } from "../../actions/appActions";
+import { setDrawerOpen, setSelectedRoute } from "redux/slices/appSlice";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";

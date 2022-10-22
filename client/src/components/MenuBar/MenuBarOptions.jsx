@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedRoute } from "../../actions/appActions";
+import { setSelectedRoute } from "redux/slices/appSlice";
 // MUI components
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";

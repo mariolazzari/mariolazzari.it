@@ -3,8 +3,8 @@ import { useIntl } from "react-intl";
 import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getSkills } from "../../actions/skillActions";
-import { setSelectedRoute } from "../../actions/appActions";
+import { getSkills } from "redux/slices/skillSlice";
+import { setSelectedRoute } from "redux/slices/appSlice";
 import Box from "@mui/material/Box";
 // component
 import Secton from "./Section";
