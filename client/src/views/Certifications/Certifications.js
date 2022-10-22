@@ -3,8 +3,7 @@ import { Helmet } from "react-helmet";
 import { useIntl } from "react-intl";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedRoute } from "../../actions/appActions";
-import { getCertifiations } from "../../actions/certificationActions";
+import { setSelectedRoute } from "redux/slices/appSlice";
 // MUI components
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -58,7 +57,6 @@ const Certifications = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(setSelectedRoute("/certifications"));
-    dispatch(getCertifiations());
   }, [dispatch]);
 
   // filter certs

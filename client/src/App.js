@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setLocale, setFlag } from "./actions/appActions";
+import { setLocale, setFlag } from "redux/slices/appSlice";
 // App routings
 import { BrowserRouter } from "react-router-dom";
-import Routes from "./components/Routes";
+import Routes from "components/Routes";
 // theme
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
@@ -12,8 +12,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 // locale
 import { IntlProvider } from "react-intl";
 // components
-import MenuBar from "./components/MenuBar";
-import Footer from "./components/Footer";
+import MenuBar from "components/MenuBar";
+import Footer from "components/Footer";
 
 // component
 const App = () => {

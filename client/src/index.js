@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 // Redux
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "redux/store";
 // components
 import "@fontsource/quicksand";
 import App from "./App";

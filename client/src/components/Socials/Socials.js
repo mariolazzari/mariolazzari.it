@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getSocials } from "../../actions/socialActions";
+import { getSocials } from "redux/slices/socialSlice";
 // MUI components
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";

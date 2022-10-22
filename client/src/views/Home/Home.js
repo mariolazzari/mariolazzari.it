@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedRoute } from "../../actions/appActions";
-import { getLastCertifiations } from "../../actions/certificationActions";
+import { setSelectedRoute } from "redux/slices/appSlice";
+import { getCertifications } from "redux/slices/certificationSlice";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -18,10 +18,10 @@ import DownloadIcon from "@mui/icons-material/CloudDownload";
 // MUI colors
 import { indigo } from "@mui/material/colors";
 // component
-import CardBox from "../../components/CardBox";
+import CardBox from "components/CardBox";
 
-const Certification = lazy(() => import("../Certifications/Certification"));
-const Socials = lazy(() => import("../../components/Socials"));
+const Certification = lazy(() => import("views/Certifications/Certification"));
+const Socials = lazy(() => import("components/Socials"));
 const GitHub = lazy(() => import("./GitHub"));
 
 // component styles
@@ -86,7 +86,7 @@ const Home = () => {
   // load last certifications
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(getLastCertifiations());
+    dispatch(getCertifications());
     dispatch(setSelectedRoute("/"));
   }, [dispatch]);
 
