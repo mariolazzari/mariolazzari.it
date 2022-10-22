@@ -9,6 +9,7 @@ const Options = props => {
   const styles = {
     button: {
       margin: 1,
+      width: 120,
     },
   };
 

@@ -4,42 +4,11 @@ import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
-import makeStyles from '@mui/styles/makeStyles';
+// MUI components
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 // component
 import Socials from "../../components/Socials";
-
-// styles
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: theme.spacing(1),
-    minHeight: `calc(100vh - ${theme.spacing(8)})`,
-  },
-  title: {
-    marginTop: theme.spacing(5),
-  },
-  image: {
-    margin: theme.spacing(3, 0),
-    "&:hover": {
-      transform: "scale(1.1)",
-    },
-    minWidth: theme.spacing(15),
-    maxWidth: theme.spacing(20),
-  },
-  link: {
-    textDecoration: "none",
-    "&:hover": {
-      fontWeight: "bold",
-      textDecoration: "underline",
-      transform: "scale(1.1)",
-    },
-  },
-}));
 
 //components
 const Contacts = () => {
@@ -53,7 +22,30 @@ const Contacts = () => {
   const intl = useIntl();
 
   // styles
-  const classes = useStyles();
+  const styles = {
+    root: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 1,
+      minHeight: "95vh",
+    },
+    title: {
+      marginTop: 5,
+    },
+    social: {
+      marginY: 5,
+    },
+    link: {
+      textDecoration: "none",
+      "&:hover": {
+        fontWeight: "bold",
+        textDecoration: "underline",
+        transform: "scale(1.1)",
+      },
+    },
+  };
 
   // set route
   useEffect(() => {
@@ -62,7 +54,7 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <Box className={classes.root}>
+    <Box sx={styles.root}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{intl.formatMessage({ id: "contacts.title" })}</title>
@@ -78,7 +70,7 @@ const Contacts = () => {
       </Helmet>
 
       <Typography
-        className={classes.title}
+        sx={styles.title}
         variant="h4"
         color="primary"
         gutterBottom
@@ -88,7 +80,7 @@ const Contacts = () => {
       </Typography>
 
       <Typography
-        className={classes.link}
+        sx={styles.link}
         component="a"
         href={mailTo}
         target="_blank"
@@ -101,17 +93,22 @@ const Contacts = () => {
       </Typography>
 
       <img
-        className={classes.image}
         src="/images/logos/gmail.png"
         alt={mail}
         onClick={() => window.open(mailTo)}
       />
 
-      <Typography variant="h4" color="primary" gutterBottom align="center">
+      <Typography
+        sx={styles.social}
+        variant="h4"
+        color="primary"
+        gutterBottom
+        align="center"
+      >
         <FormattedMessage id="contacts.social" />
       </Typography>
 
-      <Socials />
+      <Socials size={96} />
     </Box>
   );
 };

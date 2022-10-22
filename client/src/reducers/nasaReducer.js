@@ -19,7 +19,7 @@ const nasaReducer = (state = initialState, action) => {
     case GET_NASA_PODS:
       return {
         ...state,
-        pods: action.payload.pods,
+        pods: action.payload,
         podToday: action.payload.today,
       };
 

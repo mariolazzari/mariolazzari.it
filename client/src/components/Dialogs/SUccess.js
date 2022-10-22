@@ -3,7 +3,6 @@ import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { setSuccess } from "../../actions/appActions";
 // MUI components
-import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
 import Snackbar from "@mui/material/Snackbar";
 import SnackbarContent from "@mui/material/SnackbarContent";
@@ -13,26 +12,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CloseIcon from "@mui/icons-material/Close";
 // components
 import Transition from "./Transaition";
-import { green } from '@mui/material/colors';
-
-// component styles
-const useStyles = makeStyles(theme => ({
-  root: {
-    backgroundColor: green[600],
-  },
-  close: {
-    padding: theme.spacing(0.5),
-  },
-  message: {
-    display: "flex",
-    alignItems: "center",
-  },
-  icon: {
-    fontSize: 20,
-    opacity: 0.95,
-    marginRight: theme.spacing(1),
-  },
-}));
+import { green } from "@mui/material/colors";
 
 // component
 const Success = props => {
@@ -45,7 +25,23 @@ const Success = props => {
   const onClose = () => dispatch(setSuccess(""));
 
   // component styles
-  const classes = useStyles();
+  const styles = {
+    root: {
+      backgroundColor: green[600],
+    },
+    close: {
+      padding: 0.5,
+    },
+    message: {
+      display: "flex",
+      alignItems: "center",
+    },
+    icon: {
+      fontSize: 20,
+      opacity: 0.95,
+      marginRight: 1,
+    },
+  };
 
   return (
     <Snackbar
@@ -56,10 +52,10 @@ const Success = props => {
       TransitionComponent={Transition}
     >
       <SnackbarContent
-        className={classes.root}
+        sx={styles.root}
         message={
-          <span className={classes.message}>
-            <CheckCircleIcon className={classes.icon} />
+          <span sx={styles.message}>
+            <CheckCircleIcon sx={styles.icon} />
             <Typography variant="body1" color="inherit">
               {success && <FormattedMessage id={success} />}
             </Typography>
@@ -67,11 +63,11 @@ const Success = props => {
         }
         action={[
           <IconButton
-            key={1}
+            sx={styles.close}
             color="inherit"
-            className={classes.close}
             onClick={onClose}
-            size="large">
+            size="large"
+          >
             <CloseIcon />
           </IconButton>,
         ]}

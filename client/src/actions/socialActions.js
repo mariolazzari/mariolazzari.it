@@ -1,6 +1,6 @@
 import { GET_SOCIALS } from "./types";
 import { setError } from "../actions/appActions";
-import api from "../utils/api";
+import api from "../api/local";
 
 // get all social accounts
 export const getSocials = () => async dispatch => {

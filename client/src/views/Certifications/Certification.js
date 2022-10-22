@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 // Redux
 import { useSelector } from "react-redux";
-import makeStyles from "@mui/styles/makeStyles";
+// MUI components
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Fade from "@mui/material/Fade";
@@ -11,25 +11,7 @@ import { formatDistanceToNow } from "date-fns";
 
 // react env
 const { NODE_ENV, REACT_APP_ROOT, REACT_APP_ROOT_DEV } = process.env;
-
 const prefix = NODE_ENV === "production" ? REACT_APP_ROOT : REACT_APP_ROOT_DEV;
-
-// compoennt styles
-const useStyles = makeStyles(theme => ({
-  paper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: theme.spacing(1),
-    borderRadius: theme.spacing(1),
-    minWidth: theme.spacing(40),
-    maxWidth: theme.spacing(50),
-  },
-  title: {
-    margin: theme.spacing(1),
-    fontWeight: "bold",
-  },
-}));
 
 // component
 const Certification = ({ selected }) => {
@@ -40,8 +22,22 @@ const Certification = ({ selected }) => {
     locale: state.app.locale,
     dates: state.app.dates,
   }));
-  // styles
-  const classes = useStyles();
+
+  // compoennt styles
+  const styles = {
+    paper: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      padding: 1,
+      borderRadius: 1,
+      width: 410,
+    },
+    title: {
+      margin: 1,
+      fontWeight: "bold",
+    },
+  };
 
   // dates options
   const options = {
@@ -58,13 +54,13 @@ const Certification = ({ selected }) => {
 
   return (
     <Paper
-      className={classes.paper}
+      sx={styles.paper}
       elevation={elevation}
       onClick={() => window.open(selected.url, "_blank")}
       onMouseEnter={() => setElevation(10)}
       onMouseLeave={() => setElevation(1)}
     >
-      <Typography className={classes.title} align="center" gutterBottom>
+      <Typography sx={styles.title} variant="h6" align="center" gutterBottom>
         {selected.title}
       </Typography>
 
@@ -77,7 +73,7 @@ const Certification = ({ selected }) => {
         />
       </Fade>
 
-      <Typography>{renderDate()}</Typography>
+      <Typography variant="body1">{renderDate()}</Typography>
     </Paper>
   );
 };

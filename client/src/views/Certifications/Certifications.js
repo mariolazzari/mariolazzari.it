@@ -5,7 +5,7 @@ import { useIntl } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "../../actions/appActions";
 import { getCertifiations } from "../../actions/certificationActions";
-import makeStyles from '@mui/styles/makeStyles';
+// MUI components
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Backdrop from "@mui/material/Backdrop";
@@ -14,22 +14,7 @@ import SearchIcon from "@mui/icons-material/Search";
 // components
 import TextBox from "../../components/TextBox";
 import Certification from "./Certification";
-import { indigo } from '@mui/material/colors';
-
-// styles
-const useStyles = makeStyles(theme => ({
-  box: {
-    backgroundColor: indigo[50],
-    padding: theme.spacing(10, 5),
-    minHeight: "95vh",
-  },
-  grid: {
-    width: "100%",
-  },
-  search: {
-    margin: theme.spacing(10, 0),
-  },
-}));
+import { indigo } from "@mui/material/colors";
 
 // component
 const Certifications = () => {
@@ -41,15 +26,33 @@ const Certifications = () => {
     loading: state.certification.certificationsLoading,
   }));
   const dispatch = useDispatch();
+
   // styles
-  const classes = useStyles();
+  const styles = {
+    box: {
+      backgroundColor: indigo[50],
+      padding: 10,
+      minHeight: "95vh",
+    },
+    grid: {
+      width: "100%",
+    },
+    search: {
+      marginY: 10,
+    },
+  };
+
   // locales
   const intl = useIntl();
 
   // on search change event handler
-  const onSearchChange = e => setSearch(e.target.value);
+  const onSearchChange = e => {
+    setSearch(e.target.value);
+  };
   // on search clear event handler
-  const onSearchClear = () => setSearch("");
+  const onSearchClear = () => {
+    setSearch("");
+  };
 
   // init page
   useEffect(() => {
@@ -69,7 +72,7 @@ const Certifications = () => {
   };
 
   return (
-    <Box className={classes.box}>
+    <Box sx={styles.box}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{intl.formatMessage({ id: "certs.title" })}</title>
@@ -88,9 +91,8 @@ const Certifications = () => {
       </Helmet>
 
       <Grid container justifyContent="center" spacing={2}>
-        <Grid item xs={12}>
+        <Grid sx={styles.search} item xs={12}>
           <TextBox
-            className={classes.search}
             name="search"
             label={intl.formatMessage({ id: "certs.search" })}
             value={search}

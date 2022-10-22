@@ -1,7 +1,7 @@
 // Skill action
 import { GET_JOBS } from "./types";
 import { setError } from "./appActions";
-import api from "../utils/api";
+import api from "../api/local";
 
 // get all skills
 export const getJobs = () => async dispatch => {

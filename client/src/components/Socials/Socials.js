@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 
 // component
-const Socials = () => {
+const Socials = ({ size }) => {
   // Redux
   const { socials } = useSelector(state => ({
     socials: state.social.socials,
@@ -25,8 +25,8 @@ const Socials = () => {
     },
     avatar: {
       margin: 1,
-      height: 48,
-      width: 48,
+      height: size,
+      width: size,
       "&:hover": {
         transform: "scale(1.5)",
       },
@@ -51,6 +51,11 @@ const Socials = () => {
       ))}
     </Box>
   );
+};
+
+// default props
+Socials.defaultProps = {
+  size: 48,
 };
 
 export default Socials;

@@ -1,7 +1,10 @@
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+// MUI icons
+import BackIcon from "@mui/icons-material/ArrowBack";
 
+// component
 const Back = props => {
   // routes
   const navigate = useNavigate();
@@ -9,6 +12,7 @@ const Back = props => {
   const styles = {
     button: {
       margin: 1,
+      width: 120,
     },
   };
 
@@ -19,6 +23,7 @@ const Back = props => {
       variant={props.variant}
       onClick={() => navigate(-1)}
     >
+      <BackIcon />
       {props.label}
     </Button>
   );
