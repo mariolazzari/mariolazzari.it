@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 // MUI components
@@ -6,7 +6,7 @@ import Paper from "@mui/material/Paper";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 // components
-import { More } from "../../components/Buttons";
+import { More } from "components/Buttons";
 
 // component
 const Hobby = ({ selected }) => {
@@ -18,15 +18,20 @@ const Hobby = ({ selected }) => {
     paper: {
       display: "flex",
       flexDirection: "column",
-      justifyContent: "space-between",
       alignItems: "center",
-      padding: 1,
+      margin: 1,
+      padding: 2,
       height: 400,
       width: 400,
+      borderRadius: 2,
     },
     avatar: {
       width: 60,
       height: 60,
+      marginY: 1,
+    },
+    text: {
+      marginBottom: "auto",
     },
   };
 
@@ -39,16 +44,17 @@ const Hobby = ({ selected }) => {
     >
       <Avatar sx={styles.avatar} src={`/images/logos/${selected.imagePath}`} />
 
-      <Fragment>
+      <>
         <Typography variant="h5" align="center" gutterBottom>
           <FormattedMessage id={selected.title} />
         </Typography>
-        <Typography variant="body1" align="justify" paragraph>
+
+        <Typography sx={styles.text} variant="body1" align="justify" paragraph>
           <FormattedMessage id={selected.description} />
         </Typography>
-      </Fragment>
+      </>
 
-      <More to="/nasa" />
+      <More to="/rijks" />
     </Paper>
   );
 };

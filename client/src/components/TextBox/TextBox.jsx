@@ -5,13 +5,13 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
-import { red } from '@mui/material/colors';
+import { red } from "@mui/material/colors";
 
 // component
 const TextBox = props => {
   return (
     <TextField
-      className={props.className}
+      sx={props.sx}
       autoFocus={props.autoFocus}
       id={props.name}
       name={props.name}
@@ -42,6 +42,7 @@ TextBox.defaultProps = {
   fullWidth: true,
   required: true,
   startIcon: <EditIcon color="primary" />,
+  sx: null,
 };
 
 // mandatory props
