@@ -15,6 +15,7 @@ const Hobbies = () => {
   const styles = {
     box: {
       display: "flex",
+      flexWrap: "wrap",
       justifyContent: "center",
       alignItems: "center",
       backgroundColor: indigo[50],
