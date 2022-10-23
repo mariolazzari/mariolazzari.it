@@ -3,12 +3,12 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedRoute } from "../../actions/appActions";
+import { setSelectedRoute } from "redux/slices/appSlice";
 // MUI components
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 // component
-import Socials from "../../components/Socials";
+import Socials from "components/Socials";
 
 //components
 const Contacts = () => {

@@ -3,19 +3,30 @@ import { createSlice } from "@reduxjs/toolkit";
 // initial state
 const initialState = {
   jobs: [],
-  jobsLoading: false,
+  loading: false,
+  error: "",
 };
 
 const jobSlice = createSlice({
   name: "job",
   initialState,
   reducers: {
-    getJobs: (state, action) => {
-      state.jobsLoading = true;
+    getJobs: state => {
+      state.loading = true;
+      state.jobs = [];
+      state.error = "";
+    },
+    getJobsError: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    getJobsSuccess: (state, action) => {
+      state.loading = false;
+      state.jobs = action.payload;
     },
   },
 });
 
-export const { getJobs } = jobSlice.actions;
+export const { getJobs, getJobsError, getJobsSuccess } = jobSlice.actions;
 
 export default jobSlice.reducer;

@@ -3,8 +3,8 @@ import { useIntl } from "react-intl";
 import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedRoute } from "../../actions/appActions";
-import { getJobs } from "../../actions/jobActions";
+import { setSelectedRoute } from "redux/slices/appSlice";
+import { getJobs } from "redux/slices/jobSlice";
 // MUI components
 import Box from "@mui/material/Box";
 import Timeline from "@mui/lab/Timeline";

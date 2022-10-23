@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   pods: [],
   podsLoading: false,
+  error: "",
 };
 
 const nasaSlice = createSlice({
@@ -11,11 +12,21 @@ const nasaSlice = createSlice({
   initialState,
   reducers: {
     getPods: state => {
+      state.pods = [];
       state.podsLoading = true;
+      state.error = "";
+    },
+    getPodsError: (state, action) => {
+      state.error = action.payload;
+      state.podsLoading = true;
+    },
+    getPodsSuccess: (state, action) => {
+      state.pods = action.payload;
+      state.podsLoading = false;
     },
   },
 });
 
-export const { getPods } = nasaSlice.actions;
+export const { getPods, getPodsError, getPodsSuccess } = nasaSlice.actions;
 
 export default nasaSlice.reducer;

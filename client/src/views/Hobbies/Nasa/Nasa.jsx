@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getNasaPods } from "actions/nasaActions";
+import { getPods } from "redux/slices/nasaSlice";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Backdrop from "@mui/material/Backdrop";
@@ -17,7 +17,7 @@ const Nasa = () => {
   // redux
   const { pods, loading } = useSelector(state => ({
     pods: state.nasa.pods,
-    lodaing: state.nasa.podsLoading,
+    loading: state.nasa.podsLoading,
   }));
   const dispatch = useDispatch();
 
@@ -57,12 +57,12 @@ const Nasa = () => {
   // on form submit
   const onFormSubmit = e => {
     e.preventDefault();
-    dispatch(getNasaPods(10));
+    dispatch(getPods(10));
   };
 
   // load today pic
   useEffect(() => {
-    dispatch(getNasaPods(10));
+    dispatch(getPods());
   }, [dispatch]);
 
   return (
@@ -80,6 +80,7 @@ const Nasa = () => {
 
       <form onSubmit={onFormSubmit}>
         <Backdrop open={loading} />
+
         <Avatar sx={styles.avatar} src="/images/logos/nasa.png" />
         <Box sx={styles.buttons}>
           <Back sx={styles.back} variant="outlined" />
@@ -88,7 +89,7 @@ const Nasa = () => {
 
         <Box sx={styles.results}>
           {pods?.map(pod => (
-            <NasaPod ky={pod.url} selected={pod} />
+            <NasaPod key={pod.url} selected={pod} />
           ))}
         </Box>
       </form>

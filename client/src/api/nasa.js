@@ -1,85 +1,26 @@
 import axios from "axios";
 
-// set user token for protected routes and axios defaults
-axios.defaults.baseURL = "https://api.nasa.gov";
-axios.defaults.responseType = "json";
+// api endpoints
 
-// api call type
-const GET = "GET";
-// get records
-const get = api => callApi(GET, api);
+const apiKey = process.env.REACT_APP_NASA_API_KEY;
+let res = null;
+let podsUrl = `/planetary/apod?api_key=${apiKey}`;
 
-// handle api call
-const callApi = async (type = "GET", api) => {
-  let res;
+// nasa api client
+const api = axios.create({
+  baseURL: "https://api.nasa.gov",
+  responseType: "json",
+});
 
+// get nasa pods
+api.getPods = async (top = 10) => {
   try {
-    switch (type) {
-      case GET:
-        res = await axios.get(api);
-        break;
-
-      default:
-        return { data: null, error: "API call type is mandatory." };
-    }
-
+    console.log(`${podsUrl}&count=${top}`);
+    res = await api.get(`${podsUrl}&count=${top}`);
     return { data: res.data, error: "" };
   } catch (ex) {
-    return { data: null, error: handleError(ex, type) };
+    return { data: null, error: ex.message };
   }
 };
 
-// error handling
-const handleError = (ex, type = GET) => {
-  let error = "";
-
-  if (ex.response) {
-    // Request made and server responded with error
-    const { status, data } = ex.response;
-
-    switch (status) {
-      case 400:
-        error = "Richiesta errata";
-        break;
-
-      case 401:
-        error = "Utente non abilitato";
-        break;
-
-      case 404:
-        error = "Risorsa non trovata";
-        break;
-
-      default:
-        error = "Errore server";
-        break;
-    }
-
-    if (data) {
-      error += `: ${data.error}`;
-    }
-  } else if (ex.request) {
-    // The request was made but no response was received
-    error = "Server non trovato.";
-  } else {
-    let operationType = "";
-
-    switch (type) {
-      case GET:
-        operationType = "il recupero dei record.";
-        break;
-
-      default:
-        operationType = "la chiamata API.";
-        break;
-    }
-
-    error = `Errore durante ${operationType}. ${ex.message}`;
-  }
-  return error;
-};
-
-const exportObj = { get };
-
-// exports
-export default exportObj;
+export default api;
