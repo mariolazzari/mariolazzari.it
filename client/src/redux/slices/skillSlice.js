@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // initial state
 const initialState = {
-  skillsLoading: false,
   os: [],
   lang: [],
   db: [],
@@ -35,6 +34,8 @@ const initialState = {
       onClick: () => window.open("https://nodejs.org/", "_blank"),
     },
   ],
+  loading: false,
+  error: "",
 };
 
 // skill slice
@@ -43,11 +44,26 @@ const skillSlice = createSlice({
   initialState,
   reducers: {
     getSkills: (state, action) => {
-      state.skillsLoading = true;
+      state.loading = true;
+    },
+    getSkillsError: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    getSkillsSuccess: (state, action) => {
+      state.loading = false;
+      // filetr skills by type
+      state.os = action.payload.filter(s => s.type === "os");
+      state.lang = action.payload.filter(s => s.type === "lang");
+      state.db = action.payload.filter(s => s.type === "db");
+      state.ide = action.payload.filter(s => s.type === "ide");
+      state.lib = action.payload.filter(s => s.type === "lib");
+      state.tool = action.payload.filter(s => s.type === "tool");
     },
   },
 });
 
-export const { getSkills } = skillSlice.actions;
+export const { getSkills, getSkillsError, getSkillsSuccess } =
+  skillSlice.actions;
 
 export default skillSlice.reducer;
