@@ -57,7 +57,7 @@ const Certification = ({ selected }) => {
       sx={styles.paper}
       elevation={elevation}
       onClick={() => window.open(selected.url, "_blank")}
-      onMouseEnter={() => setElevation(10)}
+      onMouseEnter={() => setElevation(20)}
       onMouseLeave={() => setElevation(1)}
     >
       <Typography sx={styles.title} variant="h6" align="center" gutterBottom>

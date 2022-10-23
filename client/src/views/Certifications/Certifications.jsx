@@ -4,6 +4,7 @@ import { useIntl } from "react-intl";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRoute } from "redux/slices/appSlice";
+import { getCertifications } from "redux/slices/certificationSlice";
 // MUI components
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -11,7 +12,7 @@ import Backdrop from "@mui/material/Backdrop";
 // MUI icons
 import SearchIcon from "@mui/icons-material/Search";
 // components
-import TextBox from "../../components/TextBox";
+import TextBox from "components/TextBox";
 import Certification from "./Certification";
 import { indigo } from "@mui/material/colors";
 
@@ -22,7 +23,7 @@ const Certifications = () => {
   // Redux
   const { certifications, loading } = useSelector(state => ({
     certifications: state.certification.certifications,
-    loading: state.certification.certificationsLoading,
+    loading: state.certification.loading,
   }));
   const dispatch = useDispatch();
 
@@ -57,6 +58,7 @@ const Certifications = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(setSelectedRoute("/certifications"));
+    dispatch(getCertifications());
   }, [dispatch]);
 
   // filter certs
