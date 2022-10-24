@@ -5,6 +5,7 @@ import { getRijks } from "redux/slices/rijksSlice";
 // MUI components
 import Backdrop from "@mui/material/Backdrop";
 import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 import TextBox from "components/TextBox";
 import { Back, Search } from "components/Buttons";
 // MUI colors
@@ -31,7 +32,9 @@ const Rijks = () => {
       padding: 2,
     },
     search: {
-      marginY: 10,
+      marginY: 8,
+      padding: 2,
+      textAlign: "center",
     },
   };
 
@@ -59,18 +62,16 @@ const Rijks = () => {
         </Grid>
 
         <Grid item xs={12}>
-          <TextBox
-            sx={styles.search}
-            label="Cerca"
-            value={search}
-            onChange={onSearchChange}
-          />
+          <Paper sx={styles.search} elevation={10}>
+            <TextBox label="Cerca" value={search} onChange={onSearchChange} />
+            <>
+              <Back variant="outlined" />
+              <Search disabled={search === ""} />
+            </>
+          </Paper>
         </Grid>
 
-        <Grid item container justifyContent="center" xs={12}>
-          <Back />
-          <Search />
-        </Grid>
+        <Grid item container justifyContent="center" xs={12}></Grid>
 
         {images.map(i => (
           <Grid

@@ -19,6 +19,7 @@ const Search = props => {
       variant={props.variant}
       color="primary"
       type="submit"
+      disabled={props.disabled}
     >
       <SearchIcon />
       {props.label}
@@ -28,6 +29,7 @@ const Search = props => {
 
 // default props
 Search.defaultProps = {
+  disabled: false,
   label: <FormattedMessage id="button.search" />,
   variant: "contained",
 };

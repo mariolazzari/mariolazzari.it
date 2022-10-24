@@ -32,7 +32,7 @@ const Back = props => {
 // default props
 Back.defaultProps = {
   label: <FormattedMessage id="button.back" />,
-  variant: "contained",
+  variant: "outlined",
 };
 
 export default Back;
