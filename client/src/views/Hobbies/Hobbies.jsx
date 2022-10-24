@@ -27,16 +27,16 @@ const Hobbies = () => {
 
   const hobbies = [
     {
-      id: 1,
       title: "hobbies.nasaTitle",
       description: "hobbies.nasaDesc",
       imagePath: "nasa.png",
+      to: "/nasa",
     },
     {
-      id: 2,
       title: "hobbies.rijksTitle",
       description: "hobbies.rijksDesc",
       imagePath: "rijks.png",
+      to: "/rijks",
     },
   ];
 
@@ -57,7 +57,7 @@ const Hobbies = () => {
       </Helmet>
 
       {hobbies.map(hobby => (
-        <Hobby key={hobby.id} selected={hobby} />
+        <Hobby key={hobby.to} selected={hobby} />
       ))}
     </Box>
   );

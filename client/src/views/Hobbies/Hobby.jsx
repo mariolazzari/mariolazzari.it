@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
 // MUI components
 import Paper from "@mui/material/Paper";
 import Avatar from "@mui/material/Avatar";
@@ -10,8 +11,11 @@ import { More } from "components/Buttons";
 
 // component
 const Hobby = ({ selected }) => {
-  // satte
+  // state
   const [elevation, setElevation] = useState(10);
+
+  // navigation
+  const navigate = useNavigate();
 
   // styles
   const styles = {
@@ -41,6 +45,7 @@ const Hobby = ({ selected }) => {
       elevation={elevation}
       onMouseEnter={() => setElevation(20)}
       onMouseLeave={() => setElevation(10)}
+      onClick={() => navigate(selected.to)}
     >
       <Avatar sx={styles.avatar} src={`/images/logos/${selected.imagePath}`} />
 
@@ -54,7 +59,7 @@ const Hobby = ({ selected }) => {
         </Typography>
       </>
 
-      <More to="/rijks" />
+      <More />
     </Paper>
   );
 };
