@@ -1,18 +1,14 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import {
-  getRijks,
-  getRijksError,
-  getRijksSuccess,
-} from "redux/slices/rijksSlice";
+import { getRijks, setError, setRijks } from "redux/slices/rijksSlice";
 import api from "api/rijks";
 
 // nasa pods worker
 function* onGetRijks(action) {
   const { data, error } = yield call(() => api.getCollection(action.payload));
   if (error) {
-    yield put(getRijksError(error));
+    yield put(setError(error));
   } else {
-    yield put(getRijksSuccess(data));
+    yield put(setRijks(data));
   }
 }
 

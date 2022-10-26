@@ -43,14 +43,10 @@ const skillSlice = createSlice({
   name: "skill",
   initialState,
   reducers: {
-    getSkills: (state, action) => {
+    getSkills: state => {
       state.loading = true;
     },
-    getSkillsError: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    getSkillsSuccess: (state, action) => {
+    setSkills: (state, action) => {
       state.loading = false;
       // filetr skills by type
       state.os = action.payload.filter(s => s.type === "os");
@@ -60,10 +56,13 @@ const skillSlice = createSlice({
       state.lib = action.payload.filter(s => s.type === "lib");
       state.tool = action.payload.filter(s => s.type === "tool");
     },
+    setError: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
-export const { getSkills, getSkillsError, getSkillsSuccess } =
-  skillSlice.actions;
+export const { getSkills, setError, setSkills } = skillSlice.actions;
 
 export default skillSlice.reducer;

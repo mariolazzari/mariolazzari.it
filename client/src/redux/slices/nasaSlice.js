@@ -16,17 +16,17 @@ const nasaSlice = createSlice({
       state.podsLoading = true;
       state.error = "";
     },
-    getPodsError: (state, action) => {
-      state.error = action.payload;
-      state.podsLoading = true;
-    },
-    getPodsSuccess: (state, action) => {
+    setPods: (state, action) => {
       state.pods = action.payload;
       state.podsLoading = false;
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
+      state.podsLoading = true;
     },
   },
 });
 
-export const { getPods, getPodsError, getPodsSuccess } = nasaSlice.actions;
+export const { getPods, setPods, setError } = nasaSlice.actions;
 
 export default nasaSlice.reducer;

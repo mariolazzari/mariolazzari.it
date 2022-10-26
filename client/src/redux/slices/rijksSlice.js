@@ -16,17 +16,17 @@ const rijksSlice = createSlice({
       state.loading = true;
       state.error = "";
     },
-    getRijksError: (state, action) => {
-      state.error = action.payload;
+    setRijks: (state, action) => {
+      state.images = action.payload;
       state.loading = false;
     },
-    getRijksSuccess: (state, action) => {
-      state.images = action.payload;
+    getError: (state, action) => {
+      state.error = action.payload;
       state.loading = false;
     },
   },
 });
 
-export const { getRijks, getRijksError, getRijksSuccess } = rijksSlice.actions;
+export const { getRijks, setError, setRijks } = rijksSlice.actions;
 
 export default rijksSlice.reducer;

@@ -1,14 +1,14 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { getJobs, getJobsError, getJobsSuccess } from "redux/slices/jobSlice";
+import { getJobs, setJobs, setError } from "redux/slices/jobSlice";
 import api from "api/local";
 
 // job watcher
 function* onGetJobs() {
   const { data, error } = yield call(() => api.get("/jobs"));
   if (error) {
-    yield put(getJobsError(error));
+    yield put(setError(error));
   } else {
-    yield put(getJobsSuccess(data.results));
+    yield put(setJobs(data.results));
   }
 }
 

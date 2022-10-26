@@ -1,18 +1,14 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import {
-  getSkills,
-  getSkillsError,
-  getSkillsSuccess,
-} from "redux/slices/skillSlice";
+import { getSkills, setError, setSkills } from "redux/slices/skillSlice";
 import api from "api/local";
 
 // skills worker
 function* onGetSkills() {
   const { data, error } = yield call(() => api.get("/skills"));
   if (error) {
-    yield put(getSkillsError(error));
+    yield put(setError(error));
   } else {
-    yield put(getSkillsSuccess(data.results));
+    yield put(setSkills(data.results));
   }
 }
 

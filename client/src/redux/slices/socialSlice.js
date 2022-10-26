@@ -15,21 +15,21 @@ const socialSlice = createSlice({
   initialState,
   reducers: {
     getSocials: state => {
+      state.socials = [];
       state.socialsLoading = true;
       state.error = "";
     },
-    getSocialsSccess: (state, action) => {
+    setSocials: (state, action) => {
       state.socials = action.payload;
       state.socialsLoading = true;
       state.error = "";
     },
-    getSocialsError: (state, action) => {
+    setError: (state, action) => {
       state.loading = true;
       state.error = action.payload;
     },
   },
 });
-export const { getSocials, getSocialsSccess, getSocialsError } =
-  socialSlice.actions;
+export const { getSocials, setSocials, setError } = socialSlice.actions;
 
 export default socialSlice.reducer;

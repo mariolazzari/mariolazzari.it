@@ -16,17 +16,17 @@ const jobSlice = createSlice({
       state.jobs = [];
       state.error = "";
     },
-    getJobsError: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    getJobsSuccess: (state, action) => {
+    setJobs: (state, action) => {
       state.loading = false;
       state.jobs = action.payload;
+    },
+    setError: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     },
   },
 });
 
-export const { getJobs, getJobsError, getJobsSuccess } = jobSlice.actions;
+export const { getJobs, setJobs, setError } = jobSlice.actions;
 
 export default jobSlice.reducer;

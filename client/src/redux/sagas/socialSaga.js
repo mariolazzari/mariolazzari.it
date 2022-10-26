@@ -1,17 +1,13 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import {
-  getSocials,
-  getSocialsSccess,
-  getSocialsError,
-} from "redux/slices/socialSlice";
+import { getSocials, setSocials, setError } from "redux/slices/socialSlice";
 import api from "api/local";
 
 function* onGetSocial() {
   const { data, error } = yield call(() => api.get("/socials"));
   if (error) {
-    yield put(getSocialsError(error));
+    yield put(setError(error));
   } else {
-    yield put(getSocialsSccess(data.results));
+    yield put(setSocials(data.results));
   }
 }
 

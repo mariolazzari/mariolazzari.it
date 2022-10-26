@@ -1,14 +1,14 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { getPods, getPodsError, getPodsSuccess } from "redux/slices/nasaSlice";
+import { getPods, setError, setPods } from "redux/slices/nasaSlice";
 import api from "api/nasa";
 
 // nasa pods worker
 function* onGetPods(action) {
   const { data, error } = yield call(() => api.getPods(action.payload));
   if (error) {
-    yield put(getPodsError(error));
+    yield put(setError(error));
   } else {
-    yield put(getPodsSuccess(data));
+    yield put(setPods(data));
   }
 }
 

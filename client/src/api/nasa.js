@@ -1,7 +1,6 @@
 import axios from "axios";
 
 // api endpoints
-
 const apiKey = process.env.REACT_APP_NASA_API_KEY;
 let res = null;
 let podsUrl = `/planetary/apod?api_key=${apiKey}`;

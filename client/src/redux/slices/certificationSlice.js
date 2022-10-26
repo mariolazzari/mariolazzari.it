@@ -13,25 +13,23 @@ const certificationSlice = createSlice({
   initialState,
   reducers: {
     getCertifications: state => {
+      state.certifications = [];
       state.loading = true;
       state.error = "";
     },
-    getCertificationsSuccess: (state, action) => {
+    setCertifications: (state, action) => {
       state.loading = false;
       state.certifications = action.payload;
       state.certificationsLast = action.payload.slice(0, 4);
     },
-    getCertificationsError: (state, action) => {
+    setError: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
   },
 });
 
-export const {
-  getCertifications,
-  getCertificationsSuccess,
-  getCertificationsError,
-} = certificationSlice.actions;
+export const { getCertifications, setCertifications, setError } =
+  certificationSlice.actions;
 
 export default certificationSlice.reducer;
