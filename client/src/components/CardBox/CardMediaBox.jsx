@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 // Mui components
 import Card from "@mui/material/Card";
@@ -10,14 +11,42 @@ import Button from "@mui/material/Button";
 
 // component
 const CardMediaBox = props => {
+  const [elevation, setElevation] = useState(10);
+
   const styles = {
     card: {
+      margin: 1,
       maxWidth: props.width,
+    },
+    title: {
+      fontWeight: "bold",
+    },
+    area: {
+      height: props.areaHeight,
+      overflow: "auto",
     },
   };
 
+  const onCardClick = () => {
+    props.onClick?.();
+  };
+
+  const onMouseEnter = () => {
+    setElevation(20);
+  };
+
+  const onMouseLeave = () => {
+    setElevation(10);
+  };
+
   return (
-    <Card sx={styles.card}>
+    <Card
+      sx={styles.card}
+      elevation={elevation}
+      onClick={onCardClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <CardActionArea>
         <CardMedia
           component="img"
@@ -25,8 +54,8 @@ const CardMediaBox = props => {
           image={props.image}
           alt={props.title}
         />
-        <CardContent>
-          <Typography variant="h6" gutterBottom>
+        <CardContent sx={styles.area}>
+          <Typography sx={styles.title} variant="h6" gutterBottom>
             {props.title}
           </Typography>
           <Typography variant="body1" paragraph>
@@ -34,19 +63,25 @@ const CardMediaBox = props => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-      </CardActions>
+
+      {props.actions.length > 0 && (
+        <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+        </CardActions>
+      )}
     </Card>
   );
 };
 
 // default props
 CardMediaBox.defaultProps = {
-  maxWidth: 350,
+  width: 350,
   imageHeight: 250,
+  areaHeight: 200,
+  actions: [],
+  onClick: null,
 };
 
 // mandatory props

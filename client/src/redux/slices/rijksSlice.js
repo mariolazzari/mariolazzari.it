@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // initial state
 const initialState = {
-  images: [],
+  data: {
+    count: 0,
+    images: [],
+  },
   loading: false,
   error: "",
 };
@@ -11,22 +14,25 @@ const rijksSlice = createSlice({
   name: "rijks",
   initialState,
   reducers: {
-    getRijks: state => {
-      state.images = [];
+    getData: state => {
+      state.data = {
+        count: 0,
+        images: [],
+      };
       state.loading = true;
       state.error = "";
     },
-    setRijks: (state, action) => {
-      state.images = action.payload;
+    setData: (state, action) => {
+      state.data = action.payload;
       state.loading = false;
     },
-    getError: (state, action) => {
+    setError: (state, action) => {
       state.error = action.payload;
       state.loading = false;
     },
   },
 });
 
-export const { getRijks, setError, setRijks } = rijksSlice.actions;
+export const { getData, setError, setData } = rijksSlice.actions;
 
 export default rijksSlice.reducer;

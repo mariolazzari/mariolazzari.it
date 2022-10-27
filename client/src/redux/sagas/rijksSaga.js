@@ -1,20 +1,21 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { getRijks, setError, setRijks } from "redux/slices/rijksSlice";
+import { getData, setError, setData } from "redux/slices/rijksSlice";
 import api from "api/rijks";
 
 // nasa pods worker
-function* onGetRijks(action) {
-  const { data, error } = yield call(() => api.getCollection(action.payload));
+function* onGetData(action) {
+  const { search, page } = action.payload;
+  const { data, error } = yield call(() => api.getCollection(search, page));
   if (error) {
     yield put(setError(error));
   } else {
-    yield put(setRijks(data));
+    yield put(setData(data));
   }
 }
 
 // nasa watcher
 function* nasaSaga() {
-  yield takeEvery(getRijks.type, onGetRijks);
+  yield takeEvery(getData.type, onGetData);
 }
 
 export default nasaSaga;

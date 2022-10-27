@@ -13,10 +13,11 @@ const api = axios.create({
 });
 
 // search collection
-api.getCollection = async (search = "Rembrandt") => {
+api.getCollection = async (search = "Rembrandt", page = 1) => {
   try {
-    res = await api.get(`${collectionUrl}&q=${search}`);
+    res = await api.get(`${collectionUrl}&q=${search}&p=${page}&ps=10`);
 
+    const { count } = res.data;
     const images = res.data.artObjects.map(ao => ({
       id: ao.id,
       title: ao.title,
@@ -25,7 +26,7 @@ api.getCollection = async (search = "Rembrandt") => {
       url: ao.webImage.url,
     }));
 
-    return { data: images, error: "" };
+    return { data: { count, images }, error: "" };
   } catch (ex) {
     return { data: null, error: ex.message };
   }

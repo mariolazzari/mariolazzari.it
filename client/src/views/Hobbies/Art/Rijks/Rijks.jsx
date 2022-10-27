@@ -1,41 +1,55 @@
 import { useEffect, useState } from "react";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { getRijks } from "redux/slices/rijksSlice";
+import { getData } from "redux/slices/rijksSlice";
 // MUI components
 import Backdrop from "@mui/material/Backdrop";
-import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import TextBox from "components/TextBox";
+import PageBox from "components/PageBox";
 import { Back, Search } from "components/Buttons";
 import { CardMediaBox } from "components/CardBox";
 // MUI colors
 import indigo from "@mui/material/colors/indigo";
-// components
-import Image from "./Image";
 
 // component
 const Rijks = () => {
   // state
   const [search, setSearch] = useState("Rembrandt");
+  const [page, setPage] = useState(0);
   // redux
-  const { images, loading } = useSelector(state => ({
-    images: state.rijks.images,
+  const { data, loading } = useSelector(state => ({
+    data: state.rijks.data,
     loading: state.rijks.loading,
   }));
   const dispatch = useDispatch();
 
   // styles
   const styles = {
-    box: {
-      minHeight: "95vh",
+    root: {
+      minHeight: "94vh",
       backgroundColor: indigo[50],
       padding: 2,
     },
     search: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
       marginY: 8,
       padding: 2,
-      textAlign: "center",
+    },
+    buttons: {
+      display: "flex",
+      justifyContent: "center",
+    },
+    results: {
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      alignItems: "cemter",
+      maxHeight: "65vh",
+      overflow: "auto",
     },
   };
 
@@ -44,53 +58,69 @@ const Rijks = () => {
     setSearch(e.target.value);
   };
 
+  const onSearchClear = () => {
+    setSearch("");
+  };
+
+  const onPageChange = page => {
+    setPage(page);
+    dispatch(getData({ search, page }));
+  };
+
   // on submit event handler
   const onSubmit = e => {
     e.preventDefault();
-    dispatch(getRijks(search));
+    setPage(1);
+    dispatch(getData({ search }));
+  };
+
+  const onCardClick = to => {
+    window.open(to, "_blank");
   };
 
   // search
   useEffect(() => {
-    dispatch(getRijks());
+    dispatch(getData({ search: "Rembrandt", page: 1 }));
   }, [dispatch]);
 
   return (
-    <form onSubmit={onSubmit}>
-      <Grid sx={styles.box} container justifyContent="center" spacing={1}>
-        <Grid item xs={12}>
-          <Backdrop open={loading} />
-        </Grid>
+    <Box sx={styles.root}>
+      <Backdrop open={loading} />
 
-        <Grid item xs={12}>
-          <Paper sx={styles.search} elevation={10}>
-            <TextBox label="Cerca" value={search} onChange={onSearchChange} />
-            <>
-              <Back variant="outlined" />
-              <Search disabled={search === ""} />
-            </>
-          </Paper>
-        </Grid>
+      <form onSubmit={onSubmit}>
+        <Paper sx={styles.search} elevation={10}>
+          <TextBox
+            name="search"
+            label="Cerca"
+            value={search}
+            onChange={onSearchChange}
+            onClear={onSearchClear}
+          />
+          <Box sx={styles.buttons}>
+            <Back variant="outlined" />
+            <Search disabled={search === ""} />
+          </Box>
 
-        <Grid item container justifyContent="center" xs={12}></Grid>
+          <PageBox
+            count={data.count / 10}
+            page={page}
+            onChange={onPageChange}
+          />
+        </Paper>
+      </form>
 
-        {images.map(i => (
-          <Grid
+      <Box sx={styles.results}>
+        {data.images.map(i => (
+          <CardMediaBox
             key={i.id}
-            item
-            container
-            justifyContent="center"
-            alignItems="stretch"
-            xs={12}
-            md={6}
-            lg={4}
-            xl={3}
-          >
-            <CardMediaBox key={i.id} title={i.title} image={i.preview} />
-          </Grid>
+            title={i.title}
+            text={i.longTitle}
+            image={i.preview}
+            onClick={() => onCardClick(i.url)}
+          />
         ))}
-      </Grid>
-    </form>
+      </Box>
+    </Box>
   );
 };
 
