@@ -21,6 +21,7 @@ api.getCollection = async (search = "Rembrandt") => {
       id: ao.id,
       title: ao.title,
       longTitle: ao.longTitle,
+      preview: ao.headerImage.url,
       url: ao.webImage.url,
     }));
 

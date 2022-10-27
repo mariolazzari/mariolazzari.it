@@ -8,6 +8,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import TextBox from "components/TextBox";
 import { Back, Search } from "components/Buttons";
+import { CardMediaBox } from "components/CardBox";
 // MUI colors
 import indigo from "@mui/material/colors/indigo";
 // components
@@ -85,7 +86,7 @@ const Rijks = () => {
             lg={4}
             xl={3}
           >
-            <Image selected={i} />
+            <CardMediaBox key={i.id} title={i.title} image={i.preview} />
           </Grid>
         ))}
       </Grid>
