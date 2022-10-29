@@ -17,6 +17,8 @@ const PageBox = props => {
       count={props.count}
       color={props.color}
       onChange={onChange}
+      showFirstButton
+      showLastButton
     />
   );
 };

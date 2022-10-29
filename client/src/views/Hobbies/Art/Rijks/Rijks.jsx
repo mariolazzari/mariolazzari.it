@@ -38,7 +38,8 @@ const Rijks = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      marginY: 8,
+      marginTop: 8,
+      marginBottom: 4,
       padding: 2,
     },
     buttons: {
