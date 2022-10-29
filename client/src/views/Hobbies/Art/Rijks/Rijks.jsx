@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "redux/slices/rijksSlice";
 // MUI components
-import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import TextBox from "components/TextBox";
@@ -12,12 +11,15 @@ import { Back, Search } from "components/Buttons";
 import { CardMediaBox } from "components/CardBox";
 // MUI colors
 import indigo from "@mui/material/colors/indigo";
+// compoennts
+import BackDrop from "components/BackDrop";
 
 // component
 const Rijks = () => {
   // state
   const [search, setSearch] = useState("Rembrandt");
   const [page, setPage] = useState(0);
+
   // redux
   const { data, loading } = useSelector(state => ({
     data: state.rijks.data,
@@ -28,7 +30,7 @@ const Rijks = () => {
   // styles
   const styles = {
     root: {
-      minHeight: "94vh",
+      minHeight: "95vh",
       backgroundColor: indigo[50],
       padding: 2,
     },
@@ -42,6 +44,7 @@ const Rijks = () => {
     buttons: {
       display: "flex",
       justifyContent: "center",
+      marginY: 1,
     },
     results: {
       display: "flex",
@@ -71,7 +74,7 @@ const Rijks = () => {
   const onSubmit = e => {
     e.preventDefault();
     setPage(1);
-    dispatch(getData({ search }));
+    dispatch(getData({ search, page: 1 }));
   };
 
   const onCardClick = to => {
@@ -85,7 +88,7 @@ const Rijks = () => {
 
   return (
     <Box sx={styles.root}>
-      <Backdrop open={loading} />
+      <BackDrop open={loading} />
 
       <form onSubmit={onSubmit}>
         <Paper sx={styles.search} elevation={10}>
@@ -102,7 +105,7 @@ const Rijks = () => {
           </Box>
 
           <PageBox
-            count={data.count / 10}
+            count={Math.round(data.count / 10)}
             page={page}
             onChange={onPageChange}
           />

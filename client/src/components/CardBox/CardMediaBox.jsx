@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
+// MUI colors
+import indigo from "@mui/material/colors/indigo";
 
 // component
 const CardMediaBox = props => {
@@ -15,8 +17,13 @@ const CardMediaBox = props => {
 
   const styles = {
     card: {
-      margin: 1,
+      margin: 2,
       maxWidth: props.width,
+      border: `2px solid ${indigo[200]}`,
+      "&:hover": {
+        border: `2px solid ${indigo[400]}`,
+        transform: "scale(1.1)",
+      },
     },
     title: {
       fontWeight: "bold",
