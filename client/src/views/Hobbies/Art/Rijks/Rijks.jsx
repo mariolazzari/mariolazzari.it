@@ -5,6 +5,7 @@ import { getData } from "redux/slices/rijksSlice";
 // MUI components
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import Avatar from "@mui/material/Avatar";
 import TextBox from "components/TextBox";
 import PageBox from "components/PageBox";
 import { Back, Search } from "components/Buttons";
@@ -33,6 +34,11 @@ const Rijks = () => {
       minHeight: "95vh",
       backgroundColor: indigo[50],
       padding: 2,
+    },
+    avatar: {
+      marginBottom: 2,
+      width: 60,
+      height: 60,
     },
     search: {
       display: "flex",
@@ -93,6 +99,12 @@ const Rijks = () => {
 
       <form onSubmit={onSubmit}>
         <Paper sx={styles.search} elevation={10}>
+          <Avatar
+            sx={styles.avatar}
+            src="/images/logos/rijks.png"
+            alt="Rijksmuseum"
+          />
+
           <TextBox
             name="search"
             label="Cerca"

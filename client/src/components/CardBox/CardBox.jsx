@@ -1,8 +1,11 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
+// MUI components
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+// MUI colors
+import indigo from "@mui/material/colors/indigo";
 
 // component
 const CardBox = props => {
@@ -23,9 +26,13 @@ const CardBox = props => {
       flexDirection: "column",
       alignItems: "center",
       padding: 1,
-      borderRadius: 1,
       minWidth: 40,
       minHeight: 55,
+      border: `2px solid ${indigo[200]}`,
+      "&:hover": {
+        transform: "scale(1.1)",
+        border: `2px solid ${indigo[400]}`,
+      },
     },
     image: {
       margin: (2, 0),

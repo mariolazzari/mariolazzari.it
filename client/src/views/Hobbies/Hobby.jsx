@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
+// MUI colors
+import indigo from "@mui/material/colors/indigo";
 // components
 import { More } from "components/Buttons";
 
@@ -23,11 +25,15 @@ const Hobby = ({ selected }) => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      margin: 1,
+      margin: 2,
       padding: 2,
       height: 400,
-      width: 400,
-      borderRadius: 2,
+      width: 380,
+      border: `2px solid ${indigo[200]}`,
+      "&:hover": {
+        transform: "scale(1.1)",
+        border: `2px solid ${indigo[400]}`,
+      },
     },
     avatar: {
       width: 60,
