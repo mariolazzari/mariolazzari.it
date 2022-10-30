@@ -57,7 +57,7 @@ const Rijks = () => {
       display: "flex",
       flexWrap: "wrap",
       justifyContent: "center",
-      alignItems: "cemter",
+      alignItems: "center",
       maxHeight: "65vh",
       overflow: "auto",
     },

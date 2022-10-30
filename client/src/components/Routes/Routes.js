@@ -9,6 +9,7 @@ const Skills = lazy(() => import("views/Skills"));
 const Jobs = lazy(() => import("views/Jobs"));
 const Hobbies = lazy(() => import("views/Hobbies"));
 const Contacts = lazy(() => import("views/Contacts"));
+const Met = lazy(() => import("views/Hobbies/Art/Met"));
 const Nasa = lazy(() => import("views/Hobbies/Nasa"));
 const Rijks = lazy(() => import("views/Hobbies/Art/Rijks"));
 
@@ -21,6 +22,7 @@ const MyRoutes = () => (
       <Route path="/skills" element={<Skills />} />
       <Route path="/jobs" element={<Jobs />} />
       <Route path="/hobbies" element={<Hobbies />} />
+      <Route path="/met" element={<Met />} />
       <Route path="/nasa" element={<Nasa />} />
       <Route path="/rijks" element={<Rijks />} />
       <Route path="/contacts" element={<Contacts />} />

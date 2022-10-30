@@ -38,6 +38,12 @@ const Hobbies = () => {
       imagePath: "rijks.png",
       to: "/rijks",
     },
+    {
+      title: "hobbies.metTitle",
+      description: "hobbies.metDesc",
+      imagePath: "met.png",
+      to: "/met",
+    },
   ];
 
   return (

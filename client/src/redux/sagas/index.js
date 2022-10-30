@@ -2,6 +2,7 @@
 import { all } from "redux-saga/effects";
 import certificationSaga from "./certificationSaga";
 import jobSaga from "./jobSaga";
+import metSaga from "./metSagas";
 import nasaSaga from "./nasaSaga";
 import rijksSaga from "./rijksSaga";
 import socialSaga from "./socialSaga";
@@ -11,6 +12,7 @@ function* rootSaga() {
   yield all([
     certificationSaga(),
     jobSaga(),
+    metSaga(),
     nasaSaga(),
     rijksSaga(),
     socialSaga(),
