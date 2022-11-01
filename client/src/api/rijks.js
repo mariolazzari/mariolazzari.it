@@ -1,21 +1,22 @@
 import axios from "axios";
 
-// api endpoints
-
-const apiKey = process.env.REACT_APP_RIJKS_API_KEY;
-let res = null;
-let collectionUrl = `/collection?key=${apiKey}&imgonly=True`;
-
-// nasa api client
+// api client
 const api = axios.create({
   baseURL: "https://www.rijksmuseum.nl/api/en",
   responseType: "json",
 });
 
+// api endpoints
+const apiKey = process.env.REACT_APP_RIJKS_API_KEY;
+let res = null;
+let collectionUrl = `/collection?key=${apiKey}&imgonly=True`;
+let query = "";
+
 // search collection
 api.getCollection = async (search = "Rembrandt", page = 1) => {
   try {
-    res = await api.get(`${collectionUrl}&q=${search}&p=${page}&ps=10`);
+    query = `&q=${search}&p=${page}&ps=10`;
+    res = await api.get(`${collectionUrl}${query}`);
 
     const { count } = res.data;
     const images = res.data.artObjects.map(ao => ({
