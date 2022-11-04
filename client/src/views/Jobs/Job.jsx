@@ -30,7 +30,7 @@ const Job = ({ job, dates, locale }) => {
     },
     paper: {
       padding: 1,
-      border: focus ? `1px solid ${indigo[300]}` : `2px solid ${indigo[900]}`,
+      border: focus ? `2px solid ${indigo[900]}` : `1px solid ${indigo[300]}`,
     },
     connect: {
       height: 50,
