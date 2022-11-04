@@ -29,12 +29,18 @@ const Job = ({ job, dates, locale }) => {
       padding: 1,
       cursor: "pointer",
       border: `1px solid ${indigo[300]}`,
+      "&:hover": {
+        border: `1px solid ${indigo[900]}`,
+      },
     },
     link: {
       "&:hover": {
-        cursor: "pointer",
         fontWeight: "bold",
       },
+    },
+    connect: {
+      height: 50,
+      backgroundColor: indigo[900],
     },
   };
 
@@ -64,15 +70,16 @@ const Job = ({ job, dates, locale }) => {
       <TimelineOppositeContent>
         <Typography variant="body1">{renderDate(job.date)}</Typography>
       </TimelineOppositeContent>
+
       <TimelineSeparator>
-        <TimelineDot>
+        <TimelineDot color="info">
           <Avatar
             sx={styles.avatar}
             src={`/images/logos/${job.imagePath}`}
             alt={job.company}
           />
         </TimelineDot>
-        <TimelineConnector />
+        <TimelineConnector sx={styles.connect} />
       </TimelineSeparator>
 
       <TimelineContent>

@@ -32,13 +32,11 @@ const Works = () => {
     root: {
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
       alignItems: "center",
-      minHeight: "90vh",
-      overflow: "auto",
+      minHeight: "95vh",
       backgroundColor: indigo[50],
       marginTop: 8,
-      paddingY: 2,
+      paddingY: 1,
     },
   };
 
@@ -77,18 +75,18 @@ const Works = () => {
         />
       </Helmet>
 
+      <Timeline position="alternate">
+        {jobs.map(job => (
+          <Job key={job._id} job={job} dates={dates} locale={locale} />
+        ))}
+      </Timeline>
+
       <Tooltip title="Premi qui per scaricare il mio CV">
         <Button variant="contained" color="primary" onClick={onDownloadClick}>
           <DownloadIcon sx={styles.icon} color="secondary" />
           {intl.formatMessage({ id: "home.cvButton" })}
         </Button>
       </Tooltip>
-
-      <Timeline position="alternate">
-        {jobs.map(job => (
-          <Job key={job._id} job={job} dates={dates} locale={locale} />
-        ))}
-      </Timeline>
     </Box>
   );
 };
