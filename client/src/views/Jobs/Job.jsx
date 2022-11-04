@@ -16,10 +16,13 @@ import { formatDistanceToNow } from "date-fns";
 
 const Job = ({ job, dates, locale }) => {
   // state
-  const [elevation, setElevation] = useState(1);
+  const [focus, setFocus] = useState(false);
 
   // styles
   const styles = {
+    item: {
+      cursor: "pointer",
+    },
     avatar: {
       backgroundColor: "white",
       height: 64,
@@ -27,16 +30,7 @@ const Job = ({ job, dates, locale }) => {
     },
     paper: {
       padding: 1,
-      cursor: "pointer",
-      border: `1px solid ${indigo[300]}`,
-      "&:hover": {
-        border: `1px solid ${indigo[900]}`,
-      },
-    },
-    link: {
-      "&:hover": {
-        fontWeight: "bold",
-      },
+      border: focus ? `1px solid ${indigo[300]}` : `2px solid ${indigo[900]}`,
     },
     connect: {
       height: 50,
@@ -66,13 +60,21 @@ const Job = ({ job, dates, locale }) => {
   };
 
   return (
-    <TimelineItem key={job._id} onClick={() => onItemClick(job.url)}>
-      <TimelineOppositeContent>
-        <Typography variant="body1">{renderDate(job.date)}</Typography>
+    <TimelineItem
+      sx={styles.item}
+      key={job._id}
+      onClick={() => onItemClick(job.url)}
+      onMouseEnter={() => setFocus(true)}
+      onMouseLeave={() => setFocus(false)}
+    >
+      <TimelineOppositeContent align="center">
+        <Typography variant={focus ? "h6" : "body1"} color="primary">
+          {renderDate(job.date)}
+        </Typography>
       </TimelineOppositeContent>
 
       <TimelineSeparator>
-        <TimelineDot color="info">
+        <TimelineDot color="primary" variant={focus ? "filled" : "outlined"}>
           <Avatar
             sx={styles.avatar}
             src={`/images/logos/${job.imagePath}`}
@@ -83,12 +85,7 @@ const Job = ({ job, dates, locale }) => {
       </TimelineSeparator>
 
       <TimelineContent>
-        <Paper
-          sx={styles.paper}
-          elevation={elevation}
-          onMouseEnter={() => setElevation(20)}
-          onMouseLeave={() => setElevation(1)}
-        >
+        <Paper sx={styles.paper} elevation={focus ? 20 : 1}>
           <Typography sx={styles.link} variant="body1">
             {job.company}
           </Typography>
