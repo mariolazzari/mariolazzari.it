@@ -7,20 +7,15 @@ import { setSelectedRoute } from "redux/slices/appSlice";
 import { getJobs } from "redux/slices/jobSlice";
 // MUI components
 import Box from "@mui/material/Box";
+import Tooltip from "@mui/material/Tooltip";
 import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
-import TimelineDot from "@mui/lab/TimelineDot";
-import Avatar from "@mui/material/Avatar";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-// utilities
-import { formatDistanceToNow } from "date-fns";
+// MUI icons
+import DownloadIcon from "@mui/icons-material/Download";
+// MUI colors
 import { indigo } from "@mui/material/colors";
+// components
+import Job from "./Job";
 
 // component
 const Works = () => {
@@ -39,39 +34,12 @@ const Works = () => {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      minHeight: "95vh",
+      minHeight: "90vh",
+      overflow: "auto",
       backgroundColor: indigo[50],
-      padding: 10,
+      marginTop: 8,
+      paddingY: 2,
     },
-    avatar: {
-      backgroundColor: "white",
-    },
-    paper: {
-      padding: 2,
-    },
-    link: {
-      "&:hover": {
-        mouse: "pointer",
-        fontWeight: "bold",
-      },
-    },
-  };
-
-  const options = {
-    locale: dates.get(locale),
-    includeSeconds: false,
-    addSuffix: true,
-  };
-
-  // redenr date
-  const renderDate = jobDate => {
-    const date = new Date(jobDate);
-    return formatDistanceToNow(date, options);
-  };
-
-  // render description
-  const renderDescription = desc => {
-    return desc.find(d => d.locale === locale).text;
   };
 
   // start cv download
@@ -109,45 +77,18 @@ const Works = () => {
         />
       </Helmet>
 
+      <Tooltip title="Premi qui per scaricare il mio CV">
+        <Button variant="contained" color="primary" onClick={onDownloadClick}>
+          <DownloadIcon sx={styles.icon} color="secondary" />
+          {intl.formatMessage({ id: "home.cvButton" })}
+        </Button>
+      </Tooltip>
+
       <Timeline position="alternate">
         {jobs.map(job => (
-          <TimelineItem
-            key={job._id}
-            onClick={() => window.open(job.url, "_blank")}
-          >
-            <TimelineOppositeContent>
-              <Typography>{renderDate(job.date)}</Typography>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot>
-                <Avatar
-                  sx={styles.avatar}
-                  src={`/images/logos/${job.imagePath}`}
-                  alt={job.company}
-                />
-              </TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Paper elevation={5} sx={styles.paper}>
-                <Typography sx={styles.link} variant="h6">
-                  {job.company}
-                </Typography>
-                <Typography>{renderDescription(job.description)}</Typography>
-              </Paper>
-            </TimelineContent>
-          </TimelineItem>
+          <Job key={job._id} job={job} dates={dates} locale={locale} />
         ))}
       </Timeline>
-
-      <Button
-        sx={styles.download}
-        variant="contained"
-        color="primary"
-        onClick={onDownloadClick}
-      >
-        Download
-      </Button>
     </Box>
   );
 };
