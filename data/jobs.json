@@ -110,5 +110,21 @@
       }
     ],
     "date": "2016-11-07"
+  },
+  {
+    "company": "N-And Group Ltd",
+    "imagePath": "nand.png",
+    "url": "https://www.n-andgroup.com/",
+    "description": [
+      {
+        "locale": "en",
+        "text": "Software Developer"
+      },
+      {
+        "locale": "it",
+        "text": "Analista Programmatore"
+      }
+    ],
+    "date": "2022-11-02"
   }
 ]

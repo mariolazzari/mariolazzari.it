@@ -4,7 +4,7 @@ import api from "api/local";
 
 // job watcher
 function* onGetJobs() {
-  const { data, error } = yield call(() => api.get("/jobs"));
+  const { data, error } = yield call(() => api.get("/jobs?sort=-date"));
   if (error) {
     yield put(setError(error));
   } else {
