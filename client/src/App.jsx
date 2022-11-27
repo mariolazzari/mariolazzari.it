@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setLocale, setFlag } from "redux/slices/appSlice";
+import { setLocale, setFlag, selectLocales } from "redux/slices/appSlice";
 // App routings
 import { BrowserRouter } from "react-router-dom";
 import Routes from "components/Routes";
@@ -18,10 +18,7 @@ import Footer from "components/Footer";
 // component
 const App = () => {
   // Redux
-  const { locale, messages } = useSelector(state => ({
-    locale: state.app.locale,
-    messages: state.app.messages,
-  }));
+  const { locale, messages } = useSelector(selectLocales);
   const dispatch = useDispatch();
 
   // load locales
@@ -37,7 +34,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <IntlProvider locale={locale} messages={messages.get(locale)}>
+      <IntlProvider locale={locale} messages={messages[locale]}>
         <BrowserRouter>
           <CssBaseline />
           <MenuBar />

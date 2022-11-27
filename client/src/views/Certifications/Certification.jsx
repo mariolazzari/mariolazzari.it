@@ -7,7 +7,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Fade from "@mui/material/Fade";
 // utilities
-import { formatDistanceToNow } from "date-fns";
+import { renderDate } from "utils/dates";
 
 // react env
 const { NODE_ENV, REACT_APP_ROOT, REACT_APP_ROOT_DEV } = process.env;
@@ -18,9 +18,8 @@ const Certification = ({ selected }) => {
   // state
   const [elevation, setElevation] = useState(1);
   // redux
-  const { locale, dates } = useSelector(state => ({
+  const { locale } = useSelector(state => ({
     locale: state.app.locale,
-    dates: state.app.dates,
   }));
 
   // compoennt styles
@@ -37,19 +36,6 @@ const Certification = ({ selected }) => {
       margin: 1,
       fontWeight: "bold",
     },
-  };
-
-  // dates options
-  const options = {
-    locale: dates.get(locale),
-    includeSeconds: false,
-    addSuffix: true,
-  };
-
-  // render date
-  const renderDate = () => {
-    const date = new Date(selected.date);
-    return formatDistanceToNow(date, options);
   };
 
   return (
@@ -73,7 +59,9 @@ const Certification = ({ selected }) => {
         />
       </Fade>
 
-      <Typography variant="body1">{renderDate()}</Typography>
+      <Typography variant="body1">
+        {renderDate(selected.date, locale)}
+      </Typography>
     </Paper>
   );
 };

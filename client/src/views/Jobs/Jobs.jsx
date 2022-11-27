@@ -20,10 +20,9 @@ import Job from "./Job";
 // component
 const Works = () => {
   // Redux
-  const { jobs, locale, dates } = useSelector(state => ({
+  const { jobs, locale } = useSelector(state => ({
     jobs: state.job.jobs,
     locale: state.app.locale,
-    dates: state.app.dates,
   }));
   const dispatch = useDispatch();
 
@@ -77,7 +76,7 @@ const Works = () => {
 
       <Timeline position="alternate">
         {jobs.map(job => (
-          <Job key={job._id} job={job} dates={dates} locale={locale} />
+          <Job key={job._id} job={job} locale={locale} />
         ))}
       </Timeline>
 

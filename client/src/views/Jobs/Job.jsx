@@ -12,9 +12,9 @@ import Typography from "@mui/material/Typography";
 // MUI colors
 import { indigo } from "@mui/material/colors";
 // utils
-import { formatDistanceToNow } from "date-fns";
+import { renderDate } from "utils/dates";
 
-const Job = ({ job, dates, locale }) => {
+const Job = ({ job, locale }) => {
   // state
   const [focus, setFocus] = useState(false);
 
@@ -38,18 +38,6 @@ const Job = ({ job, dates, locale }) => {
     },
   };
 
-  const options = {
-    locale: dates.get(locale),
-    includeSeconds: false,
-    addSuffix: true,
-  };
-
-  // render date
-  const renderDate = jobDate => {
-    const date = new Date(jobDate);
-    return formatDistanceToNow(date, options);
-  };
-
   // render description
   const renderDescription = desc => {
     return desc.find(d => d.locale === locale).text;
@@ -69,7 +57,7 @@ const Job = ({ job, dates, locale }) => {
     >
       <TimelineOppositeContent align="center">
         <Typography variant={focus ? "h6" : "body1"} color="primary">
-          {renderDate(job.date)}
+          {renderDate(job.date, locale)}
         </Typography>
       </TimelineOppositeContent>
 

@@ -11,13 +11,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import { indigo, yellow } from "@mui/material/colors";
+// options
+import options from "./options";
 
 // component
 const MenuDrawer = () => {
   // redux
-  const { open, options, selected } = useSelector(state => ({
+  const { open, selected } = useSelector(state => ({
     open: state.app.drawerOpen,
-    options: state.app.menuOptions,
     selected: state.app.selectedRoute,
   }));
   const dispatch = useDispatch();

@@ -3,22 +3,20 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getPods } from "redux/slices/nasaSlice";
+import { getPods, selectPods } from "redux/slices/nasaSlice";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
+import { indigo } from "@mui/material/colors";
 // components
 import BackDrop from "components/BackDrop";
+import TextBox from "components/TextBox";
 import { Back, Search } from "components/Buttons";
 import NasaPod from "./Pod";
-import { indigo } from "@mui/material/colors";
 
 // components
 const Nasa = () => {
   // redux
-  const { pods, loading } = useSelector(state => ({
-    pods: state.nasa.pods,
-    loading: state.nasa.podsLoading,
-  }));
+  const { pods, loading } = useSelector(selectPods);
   const dispatch = useDispatch();
 
   // styles
@@ -82,6 +80,9 @@ const Nasa = () => {
         <BackDrop open={loading} />
 
         <Avatar sx={styles.avatar} src="/images/logos/nasa.png" />
+
+        <TextBox required={false} />
+
         <Box sx={styles.buttons}>
           <Back sx={styles.back} variant="outlined" />
           <Search />

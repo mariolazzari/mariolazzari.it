@@ -27,6 +27,13 @@ const nasaSlice = createSlice({
   },
 });
 
+// selectors
+export const selectPods = state => ({
+  pods: state.nasa.pods,
+  loading: state.nasa.podsLoading,
+});
+
+// actions
 export const { getPods, setPods, setError } = nasaSlice.actions;
 
 export default nasaSlice.reducer;
