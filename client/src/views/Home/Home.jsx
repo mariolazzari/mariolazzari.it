@@ -83,6 +83,9 @@ const Home = () => {
     window.open(cv, title);
   };
 
+  // on card click
+  const onCardClick = url => window.open(url, "_blank");
+
   // load last certifications
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -198,7 +201,7 @@ const Home = () => {
               title={card.title}
               text={card.text}
               height={400}
-              onCardClick={() => window.open(card.url, "_blank")}
+              onCardClick={() => onCardClick(card.url)}
             />
           </Grid>
         ))}

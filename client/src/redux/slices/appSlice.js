@@ -1,53 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-// locales
-import messages_EN from "locales/en.json";
-import messages_IT from "locales/it.json";
-// MUI icons
-import HomeIcon from "@mui/icons-material/Museum";
-import SkillIcon from "@mui/icons-material/LocalLibrary";
-import CertificationIcon from "@mui/icons-material/School";
-import HobbyIcon from "@mui/icons-material/Star";
-import ContactIcon from "@mui/icons-material/ContactMail";
 
 const initialState = {
   locale: "en",
-  messages: {
-    en: messages_EN,
-    it: messages_IT,
-  },
   drawerOpen: false,
-  menuOptions: [
-    {
-      label: "menu.home",
-      path: "/",
-      // icon: <HomeIcon color="secondary" />,
-    },
-    {
-      label: "menu.skills",
-      path: "/skills",
-      // icon: <SkillIcon color="secondary" />,
-    },
-    {
-      label: "menu.certifications",
-      path: "/certifications",
-      // icon: <CertificationIcon color="secondary" />,
-    },
-    {
-      label: "menu.jobs",
-      path: "/jobs",
-      // icon: <HobbyIcon color="secondary" />,
-    },
-    {
-      label: "menu.hobbies",
-      path: "/hobbies",
-      // icon: <HobbyIcon color="secondary" />,
-    },
-    {
-      label: "menu.contacts",
-      path: "/contacts",
-      // icon: <ContactIcon color="secondary" />,
-    },
-  ],
   selectedRoute: "/",
   error: "",
   success: "",
@@ -80,10 +35,7 @@ const appSlice = createSlice({
 });
 
 // selecors
-export const selectLocales = state => ({
-  locale: state.app.locale,
-  messages: state.app.messages,
-});
+export const selectLocale = state => state.app.locale;
 
 // actions
 export const {

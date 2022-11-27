@@ -1,21 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-// Redux
-import { useDispatch, useSelector } from "react-redux";
-import { setSelectedRoute } from "redux/slices/appSlice";
 // MUI components
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { yellow } from "@mui/material/colors";
+// components
+import options from "./options";
 
 // component
 const MenuBarOptions = () => {
-  // Redux
-  const { options, selected } = useSelector(state => ({
-    options: state.app.menuOptions,
-    selected: state.app.selectedRoute,
-  }));
-  const dispatch = useDispatch();
+  // navigation
+  const location = useLocation();
 
   // styles
   const styles = {
@@ -34,23 +29,19 @@ const MenuBarOptions = () => {
     },
   };
 
-  // on option click event handler
-  const onClick = path => {
-    dispatch(setSelectedRoute(path));
-  };
-
   return (
     <Box sx={styles.root}>
-      {options.map(({ label, path }) => (
+      {options?.map(({ label, path }) => (
         <Typography
-          sx={styles.option}
+          key={path}
+          sx={{
+            ...styles.option,
+            fontWeight: location.pathname === path ? "bold" : "",
+          }}
           color="secondary"
           component={Link}
-          key={path}
-          style={{ fontWeight: selected === path ? "bold" : "" }}
           to={path}
           variant="h6"
-          onClick={() => onClick(path)}
         >
           <FormattedMessage id={label} />
         </Typography>
