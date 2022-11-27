@@ -198,7 +198,7 @@ const Home = () => {
               title={card.title}
               text={card.text}
               height={400}
-              onCardClick={card.onClick}
+              onCardClick={() => window.open(card.url, "_blank")}
             />
           </Grid>
         ))}
