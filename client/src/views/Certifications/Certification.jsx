@@ -38,11 +38,15 @@ const Certification = ({ selected }) => {
     },
   };
 
+  const onPaperClick = url => {
+    window.open(selected.url, "_blank");
+  };
+
   return (
     <Paper
       sx={styles.paper}
       elevation={elevation}
-      onClick={() => window.open(selected.url, "_blank")}
+      onClick={onPaperClick}
       onMouseEnter={() => setElevation(20)}
       onMouseLeave={() => setElevation(1)}
     >

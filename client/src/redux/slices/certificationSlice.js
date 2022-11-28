@@ -29,6 +29,11 @@ const certificationSlice = createSlice({
   },
 });
 
+export const selectCerts = state => ({
+  certifications: state.certification.certifications,
+  loading: state.certification.loading,
+});
+
 export const { getCertifications, setCertifications, setError } =
   certificationSlice.actions;
 

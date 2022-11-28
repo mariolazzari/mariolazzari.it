@@ -1,23 +1,18 @@
-import { useEffect } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
-import { Helmet } from "react-helmet";
+import { FormattedMessage } from "react-intl";
 // Redux
 import { useSelector } from "react-redux";
+import { selectMail } from "redux/slices/socialSlice";
 // MUI components
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 // component
+import Meta from "components/Meta";
 import Socials from "components/Socials";
 
 //components
 const Contacts = () => {
   // Redux
-  const { mail, mailTo } = useSelector(state => ({
-    mail: state.social.mail,
-    mailTo: state.social.mailTo,
-  }));
-
-  const intl = useIntl();
+  const { mail, mailTo } = useSelector(selectMail);
 
   // styles
   const styles = {
@@ -45,26 +40,9 @@ const Contacts = () => {
     },
   };
 
-  // set route
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <Box sx={styles.root}>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>{intl.formatMessage({ id: "contacts.title" })}</title>
-        <link rel="canonical" href="https://www.mariolazzari.it/contacts/" />
-        <meta
-          name="description"
-          content={intl.formatMessage({ id: "contacts.title" })}
-        />
-        <meta
-          name="keywords"
-          content="programmazione javascript react redux nodejs mongodb web developer brescia milano competenze skill"
-        />
-      </Helmet>
+      <Meta title="contacts.title" canonical="/contacts" />
 
       <Typography
         sx={styles.title}

@@ -1,7 +1,6 @@
 import { useEffect, Suspense, lazy } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { getCertifications } from "redux/slices/certificationSlice";
@@ -17,6 +16,7 @@ import DownloadIcon from "@mui/icons-material/CloudDownload";
 // MUI colors
 import { indigo } from "@mui/material/colors";
 // component
+import Meta from "components/Meta";
 import CardBox from "components/CardBox";
 
 const Certification = lazy(() => import("views/Certifications/Certification"));
@@ -91,184 +91,172 @@ const Home = () => {
     dispatch(getCertifications());
   }, [dispatch]);
 
-  // locales
-  const intl = useIntl();
-
   return (
-    <Box sx={styles.root}>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>
-          {intl.formatMessage({ id: "home.title" }) +
-            " " +
-            intl.formatMessage({ id: "home.subtitle" })}
-        </title>
-        <link rel="canonical" href="https://www.mariolazzari.it/" />
-        <meta
-          name="description"
-          content={intl.formatMessage({ id: "home.intro" })}
-        />
-        <meta
-          name="keywords"
-          content="programmazione javascript react redux nodejs mongo web developer brescia milano full stack"
-        />
-      </Helmet>
+    <>
+      <Meta title="home.title" canonical="" />
 
-      <Typography sx={styles.title} variant="h1" color="primary" align="center">
-        <FormattedMessage id="home.title" />
-      </Typography>
+      <Box sx={styles.root}>
+        <Typography
+          sx={styles.title}
+          variant="h1"
+          color="primary"
+          align="center"
+        >
+          <FormattedMessage id="home.title" />
+        </Typography>
 
-      <Typography
-        sx={styles.subtitle}
-        variant="h2"
-        color="primary"
-        align="center"
-        gutterBottom
-      >
-        <FormattedMessage id="home.subtitle" />
-      </Typography>
+        <Typography
+          sx={styles.subtitle}
+          variant="h2"
+          color="primary"
+          align="center"
+          gutterBottom
+        >
+          <FormattedMessage id="home.subtitle" />
+        </Typography>
 
-      <Grid container justifyContent="center" spacing={2}>
-        <Grid item container justifyContent="center" xs={12}>
-          <Typography
-            sx={styles.intro}
-            component="h2"
-            variant="h4"
-            align="center"
-            gutterBottom
-          >
-            <FormattedMessage id="home.intro" />
-          </Typography>
-        </Grid>
-
-        <Grid item container justifyContent="center" xs={12}>
-          <Tooltip title="Premi qui per contattarmi">
-            <Button
-              sx={styles.button}
-              component={Link}
-              to="/contacts"
-              variant="outlined"
-              color="primary"
+        <Grid container justifyContent="center" spacing={2}>
+          <Grid item container justifyContent="center" xs={12}>
+            <Typography
+              sx={styles.intro}
+              component="h2"
+              variant="h4"
+              align="center"
+              gutterBottom
             >
-              <MailIcon sx={styles.icon} />
-              <FormattedMessage id="home.mailButton" />
-            </Button>
-          </Tooltip>
-
-          <Tooltip title="Premi qui per scaricare il mio CV">
-            <Button
-              sx={styles.button}
-              variant="contained"
-              color="primary"
-              onClick={onDownloadClick}
-            >
-              <DownloadIcon sx={styles.icon} color="secondary" />
-              <FormattedMessage id="home.cvButton" />
-            </Button>
-          </Tooltip>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Typography
-            sx={styles.subtitle}
-            variant="h3"
-            color="primary"
-            align="center"
-          >
-            <FormattedMessage id="home.toolsTitle" />
-          </Typography>
-        </Grid>
-
-        <Grid item container justifyContent="center" xs={12}>
-          <Typography
-            sx={styles.link}
-            component={Link}
-            to="/skills"
-            variant="h5"
-            color="primary"
-            align="center"
-          >
-            <FormattedMessage id="home.toolsSubtitle" />
-          </Typography>
-        </Grid>
-
-        {cards.map(card => (
-          <Grid key={card.title} item xs={12} sm={6} lg={3}>
-            <CardBox
-              avatar={card.avatar}
-              title={card.title}
-              text={card.text}
-              height={400}
-              onCardClick={() => onCardClick(card.url)}
-            />
+              <FormattedMessage id="home.intro" />
+            </Typography>
           </Grid>
-        ))}
 
-        <Grid item xs={12}>
-          <Typography
-            sx={styles.subtitle}
-            variant="h3"
-            color="primary"
-            align="center"
-          >
-            <FormattedMessage id="home.certTitle" />
-          </Typography>
-        </Grid>
+          <Grid item container justifyContent="center" xs={12}>
+            <Tooltip title="Premi qui per contattarmi">
+              <Button
+                sx={styles.button}
+                component={Link}
+                to="/contacts"
+                variant="outlined"
+                color="primary"
+              >
+                <MailIcon sx={styles.icon} />
+                <FormattedMessage id="home.mailButton" />
+              </Button>
+            </Tooltip>
 
-        <Grid item container justifyContent="center" xs={12}>
-          <Typography
-            sx={styles.link}
-            component={Link}
-            to="/certifications"
-            variant="h5"
-            color="primary"
-            align="center"
-          >
-            <FormattedMessage id="home.certSubtitle" />
-          </Typography>
-        </Grid>
+            <Tooltip title="Premi qui per scaricare il mio CV">
+              <Button
+                sx={styles.button}
+                variant="contained"
+                color="primary"
+                onClick={onDownloadClick}
+              >
+                <DownloadIcon sx={styles.icon} color="secondary" />
+                <FormattedMessage id="home.cvButton" />
+              </Button>
+            </Tooltip>
+          </Grid>
 
-        {certifications.map(c => (
-          <Grid
-            item
-            container
-            justifyContent="center"
-            key={c._id}
-            xs={12}
-            sm={6}
-            lg={3}
-          >
+          <Grid item xs={12}>
+            <Typography
+              sx={styles.subtitle}
+              variant="h3"
+              color="primary"
+              align="center"
+            >
+              <FormattedMessage id="home.toolsTitle" />
+            </Typography>
+          </Grid>
+
+          <Grid item container justifyContent="center" xs={12}>
+            <Typography
+              sx={styles.link}
+              component={Link}
+              to="/skills"
+              variant="h5"
+              color="primary"
+              align="center"
+            >
+              <FormattedMessage id="home.toolsSubtitle" />
+            </Typography>
+          </Grid>
+
+          {cards.map(card => (
+            <Grid key={card.title} item xs={12} sm={6} lg={3}>
+              <CardBox
+                avatar={card.avatar}
+                title={card.title}
+                text={card.text}
+                height={400}
+                onCardClick={() => onCardClick(card.url)}
+              />
+            </Grid>
+          ))}
+
+          <Grid item xs={12}>
+            <Typography
+              sx={styles.subtitle}
+              variant="h3"
+              color="primary"
+              align="center"
+            >
+              <FormattedMessage id="home.certTitle" />
+            </Typography>
+          </Grid>
+
+          <Grid item container justifyContent="center" xs={12}>
+            <Typography
+              sx={styles.link}
+              component={Link}
+              to="/certifications"
+              variant="h5"
+              color="primary"
+              align="center"
+            >
+              <FormattedMessage id="home.certSubtitle" />
+            </Typography>
+          </Grid>
+
+          {certifications.map(c => (
+            <Grid
+              item
+              container
+              justifyContent="center"
+              key={c._id}
+              xs={12}
+              sm={6}
+              lg={3}
+            >
+              <Suspense fallback={<CircularProgress />}>
+                <Certification selected={c} />
+              </Suspense>
+            </Grid>
+          ))}
+
+          <Grid item container justifyContent="center" xs={12}>
             <Suspense fallback={<CircularProgress />}>
-              <Certification selected={c} />
+              <GitHub />
             </Suspense>
           </Grid>
-        ))}
 
-        <Grid item container justifyContent="center" xs={12}>
-          <Suspense fallback={<CircularProgress />}>
-            <GitHub />
-          </Suspense>
-        </Grid>
+          <Grid item xs={12}>
+            <Typography
+              sx={styles.subtitle}
+              variant="h3"
+              color="primary"
+              align="center"
+              gutterBottom
+            >
+              I miei contatti
+            </Typography>
+          </Grid>
 
-        <Grid item xs={12}>
-          <Typography
-            sx={styles.subtitle}
-            variant="h3"
-            color="primary"
-            align="center"
-            gutterBottom
-          >
-            I miei contatti
-          </Typography>
+          <Grid item container justifyContent="center" xs={12}>
+            <Suspense fallback={<CircularProgress />}>
+              <Socials />
+            </Suspense>
+          </Grid>
         </Grid>
-
-        <Grid item container justifyContent="center" xs={12}>
-          <Suspense fallback={<CircularProgress />}>
-            <Socials />
-          </Suspense>
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </>
   );
 };
 

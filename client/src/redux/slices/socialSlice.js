@@ -30,6 +30,12 @@ const socialSlice = createSlice({
     },
   },
 });
+
+export const selectMail = state => ({
+  mail: state.social.mail,
+  mailTo: state.social.mailTo,
+});
+
 export const { getSocials, setSocials, setError } = socialSlice.actions;
 
 export default socialSlice.reducer;

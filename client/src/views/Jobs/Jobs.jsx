@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 // MUI icons
 import DownloadIcon from "@mui/icons-material/Download";
 // MUI colors
-import { indigo } from "@mui/material/colors";
+import indigo from "@mui/material/colors/indigo";
 // components
 import Job from "./Job";
 

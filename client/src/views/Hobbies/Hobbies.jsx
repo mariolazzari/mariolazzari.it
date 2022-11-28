@@ -1,16 +1,12 @@
-import { Helmet } from "react-helmet";
-import { useIntl } from "react-intl";
 // MUI components
 import Box from "@mui/material/Box";
 // component
+import Meta from "components/Meta";
 import Hobby from "./Hobby";
-import { indigo } from "@mui/material/colors";
+import indigo from "@mui/material/colors/indigo";
 
 // component
 const Hobbies = () => {
-  // locales
-  const intl = useIntl();
-
   // styles
   const styles = {
     box: {
@@ -48,19 +44,7 @@ const Hobbies = () => {
 
   return (
     <Box sx={styles.box}>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>{intl.formatMessage({ id: "hobbies.title" })}</title>
-        <link rel="canonical" href="https://www.mariolazzari.it/hobbies/" />
-        <meta
-          name="description"
-          content={intl.formatMessage({ id: "hobbies.title" })}
-        />
-        <meta
-          name="keywords"
-          content="hobby programmazione javascript react redux nodejs mongodb web developer brescia milano competenze skill"
-        />
-      </Helmet>
+      <Meta title="hobbies.title" canonical="/hobbies" />
 
       {hobbies.map(hobby => (
         <Hobby key={hobby.to} selected={hobby} />

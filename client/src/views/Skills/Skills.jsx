@@ -28,6 +28,16 @@ const Skills = () => {
     },
   };
 
+  // sections to render
+  const sections = [
+    { title: "lang", items: lang },
+    { title: "ide", items: ide },
+    { title: "os", items: os },
+    { title: "db", items: db },
+    { title: "libs", items: lib },
+    { title: "tools", items: tool },
+  ];
+
   // load skills
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,7 +51,7 @@ const Skills = () => {
   }, [dispatch, intl]);
 
   return (
-    <Box sx={styles.root}>
+    <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
@@ -53,14 +63,17 @@ const Skills = () => {
         />
       </Helmet>
 
-      <Section title="skills.lang" items={lang} locale={locale} />
-      <Section title="skills.ide" items={ide} locale={locale} />
-      <Section title="skills.os" items={os} locale={locale} />
-
-      <Section title="skills.db" items={db} locale={locale} />
-      <Section title="skills.libs" items={lib} locale={locale} />
-      <Section title="skills.tools" items={tool} locale={locale} />
-    </Box>
+      <Box sx={styles.root}>
+        {sections.map(s => (
+          <Section
+            key={s.title}
+            title={`skills.${s.title}`}
+            items={s.items}
+            locale={locale}
+          />
+        ))}
+      </Box>
+    </>
   );
 };
 
