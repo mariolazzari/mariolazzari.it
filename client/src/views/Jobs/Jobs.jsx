@@ -3,7 +3,6 @@ import { useIntl } from "react-intl";
 import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedRoute } from "redux/slices/appSlice";
 import { getJobs } from "redux/slices/jobSlice";
 // MUI components
 import Box from "@mui/material/Box";
@@ -58,7 +57,6 @@ const Works = () => {
   // get all jobs
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(setSelectedRoute("/jobs"));
     dispatch(getJobs());
   }, [dispatch]);
 

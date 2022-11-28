@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   locale: "en",
   drawerOpen: false,
-  selectedRoute: "/",
   error: "",
   success: "",
   flag: "en",
@@ -15,9 +14,6 @@ const appSlice = createSlice({
   reducers: {
     setLocale: (state, action) => {
       state.locale = action.payload;
-    },
-    setSelectedRoute: (state, action) => {
-      state.selectedRoute = action.payload;
     },
     setDrawerOpen: (state, action) => {
       state.drawerOpen = action.payload;
@@ -38,13 +34,7 @@ const appSlice = createSlice({
 export const selectLocale = state => state.app.locale;
 
 // actions
-export const {
-  setLocale,
-  setSelectedRoute,
-  setDrawerOpen,
-  setError,
-  setSuccess,
-  setFlag,
-} = appSlice.actions;
+export const { setLocale, setDrawerOpen, setError, setSuccess, setFlag } =
+  appSlice.actions;
 
 export default appSlice.reducer;

@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Helmet } from "react-helmet";
 // Redux
-import { useDispatch, useSelector } from "react-redux";
-import { setSelectedRoute } from "redux/slices/appSlice";
+import { useSelector } from "react-redux";
 // MUI components
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -17,7 +16,6 @@ const Contacts = () => {
     mail: state.social.mail,
     mailTo: state.social.mailTo,
   }));
-  const dispatch = useDispatch();
 
   const intl = useIntl();
 
@@ -50,8 +48,7 @@ const Contacts = () => {
   // set route
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(setSelectedRoute("/contacts"));
-  }, [dispatch]);
+  }, []);
 
   return (
     <Box sx={styles.root}>

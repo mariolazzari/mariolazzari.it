@@ -3,11 +3,10 @@ import { useIntl } from "react-intl";
 import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getSkills } from "redux/slices/skillSlice";
-import { setSelectedRoute } from "redux/slices/appSlice";
+import { getSkills, selectSkills } from "redux/slices/skillSlice";
 import Box from "@mui/material/Box";
 // component
-import Secton from "./Section";
+import Section from "./Section";
 import { indigo } from "@mui/material/colors";
 
 // compoennt
@@ -15,15 +14,7 @@ const Skills = () => {
   // State
   const [title, setTitle] = useState("");
   // Redux
-  const { locale, os, lang, db, ide, lib, tool } = useSelector(state => ({
-    locale: state.app.locale,
-    os: state.skill.os,
-    lang: state.skill.lang,
-    db: state.skill.db,
-    ide: state.skill.ide,
-    lib: state.skill.lib,
-    tool: state.skill.tool,
-  }));
+  const { locale, os, lang, db, ide, lib, tool } = useSelector(selectSkills);
   const dispatch = useDispatch();
 
   //locales
@@ -39,7 +30,6 @@ const Skills = () => {
 
   // load skills
   useEffect(() => {
-    dispatch(setSelectedRoute("/skills"));
     window.scrollTo(0, 0);
     // set page title
     const homeTitle = intl.formatMessage({ id: "home.title" });
@@ -63,13 +53,13 @@ const Skills = () => {
         />
       </Helmet>
 
-      <Secton title="skills.lang" items={lang} locale={locale} />
-      <Secton title="skills.ide" items={ide} locale={locale} />
-      <Secton title="skills.os" items={os} locale={locale} />
+      <Section title="skills.lang" items={lang} locale={locale} />
+      <Section title="skills.ide" items={ide} locale={locale} />
+      <Section title="skills.os" items={os} locale={locale} />
 
-      <Secton title="skills.db" items={db} locale={locale} />
-      <Secton title="skills.libs" items={lib} locale={locale} />
-      <Secton title="skills.tools" items={tool} locale={locale} />
+      <Section title="skills.db" items={db} locale={locale} />
+      <Section title="skills.libs" items={lib} locale={locale} />
+      <Section title="skills.tools" items={tool} locale={locale} />
     </Box>
   );
 };

@@ -63,6 +63,18 @@ const skillSlice = createSlice({
   },
 });
 
+// selectrs
+export const selectSkills = state => ({
+  locale: state.app.locale,
+  os: state.skill.os,
+  lang: state.skill.lang,
+  db: state.skill.db,
+  ide: state.skill.ide,
+  lib: state.skill.lib,
+  tool: state.skill.tool,
+});
+
+// actions
 export const { getSkills, setError, setSkills } = skillSlice.actions;
 
 export default skillSlice.reducer;

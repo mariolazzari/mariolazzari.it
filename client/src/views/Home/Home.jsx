@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedRoute } from "redux/slices/appSlice";
 import { getCertifications } from "redux/slices/certificationSlice";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -90,7 +89,6 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getCertifications());
-    dispatch(setSelectedRoute("/"));
   }, [dispatch]);
 
   // locales

@@ -1,8 +1,8 @@
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setDrawerOpen, setSelectedRoute } from "redux/slices/appSlice";
+import { setDrawerOpen } from "redux/slices/appSlice";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
@@ -17,11 +17,13 @@ import options from "./options";
 // component
 const MenuDrawer = () => {
   // redux
-  const { open, selected } = useSelector(state => ({
+  const { open } = useSelector(state => ({
     open: state.app.drawerOpen,
-    selected: state.app.selectedRoute,
   }));
   const dispatch = useDispatch();
+
+  // navigation
+  const location = useLocation();
 
   // styles
   const styles = {
@@ -52,8 +54,7 @@ const MenuDrawer = () => {
   };
 
   // on drawer item click
-  const onItemClick = path => {
-    dispatch(setSelectedRoute(path));
+  const onItemClick = () => {
     dispatch(setDrawerOpen(false));
   };
 
@@ -79,9 +80,9 @@ const MenuDrawer = () => {
             sx={styles.link}
             component={Link}
             key={o.path}
-            onClick={() => onItemClick(o.path)}
+            onClick={onItemClick}
             to={o.path}
-            selected={o.path === selected}
+            selected={o.path === location.pathname}
           >
             <ListItemIcon>{o.icon}</ListItemIcon>
             <ListItemText
