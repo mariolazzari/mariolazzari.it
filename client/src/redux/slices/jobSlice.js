@@ -27,6 +27,11 @@ const jobSlice = createSlice({
   },
 });
 
+export const selectJobs = state => ({
+  jobs: state.job.jobs,
+  locale: state.app.locale,
+});
+
 export const { getJobs, setJobs, setError } = jobSlice.actions;
 
 export default jobSlice.reducer;

@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useIntl } from "react-intl";
-import { Helmet } from "react-helmet";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getJobs } from "redux/slices/jobSlice";
+import { getJobs, selectJobs } from "redux/slices/jobSlice";
 // MUI components
 import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";
@@ -14,15 +13,13 @@ import DownloadIcon from "@mui/icons-material/Download";
 // MUI colors
 import indigo from "@mui/material/colors/indigo";
 // components
+import Meta from "components/Meta";
 import Job from "./Job";
 
 // component
 const Works = () => {
   // Redux
-  const { jobs, locale } = useSelector(state => ({
-    jobs: state.job.jobs,
-    locale: state.app.locale,
-  }));
+  const { jobs, locale } = useSelector(selectJobs);
   const dispatch = useDispatch();
 
   // styles
@@ -31,10 +28,15 @@ const Works = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      minHeight: "95vh",
+      minHeight: "90vh",
       backgroundColor: indigo[50],
-      marginTop: 8,
+      marginTop: 10,
       paddingY: 1,
+    },
+    timeline: {
+      height: "70vh",
+      overflow: "auto",
+      marginY: 5,
     },
   };
 
@@ -56,27 +58,20 @@ const Works = () => {
 
   // get all jobs
   useEffect(() => {
-    window.scrollTo(0, 0);
     dispatch(getJobs());
   }, [dispatch]);
 
   return (
-    <Box sx={styles.root}>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>{intl.formatMessage({ id: "jobs.title" })}</title>
-        <link rel="canonical" href="https://mariolazzari.it/jobs" />
-        <meta
-          name="keywords"
-          content="programmazione javascript react redux nodejs mongodb web developer brescia milano competenze skill"
-        />
-      </Helmet>
+    <Box Box sx={styles.root}>
+      <Meta title="jobs.title" canonical="/jobs" />
 
-      <Timeline position="alternate">
-        {jobs.map(job => (
-          <Job key={job._id} job={job} locale={locale} />
-        ))}
-      </Timeline>
+      <Box sx={styles.timeline}>
+        <Timeline position="alternate">
+          {jobs.map(job => (
+            <Job key={job._id} job={job} locale={locale} />
+          ))}
+        </Timeline>
+      </Box>
 
       <Tooltip title="Premi qui per scaricare il mio CV">
         <Button variant="contained" color="primary" onClick={onDownloadClick}>
