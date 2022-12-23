@@ -1,24 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  iamges: [],
+  images: [],
   loading: false,
   error: "",
   page: 1,
   perPage: 10,
+  count: 0,
 };
 
 const metSlice = createSlice({
   name: "met",
   initialState,
   reducers: {
-    getImages: state => {
+    getData: state => {
       state.images = [];
       state.loading = true;
       state.error = "";
+      state.count = 0;
+      state.page = 1;
     },
-    setImages: (state, action) => {
-      state.images = action.payload;
+    setData: (state, action) => {
+      const { images, count } = action.payload;
+      state.images = images;
+      state.count = count;
       state.loading = false;
     },
     setError: (state, action) => {
@@ -28,6 +33,13 @@ const metSlice = createSlice({
   },
 });
 
-export const { getImages, setImages, setError } = metSlice.actions;
+export const selectData = state => ({
+  images: state.met.images,
+  error: state.met.error,
+  loading: state.met.loading,
+  count: state.met.count,
+});
+
+export const { getData, setData, setError } = metSlice.actions;
 
 export default metSlice.reducer;

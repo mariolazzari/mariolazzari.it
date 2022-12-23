@@ -20,6 +20,7 @@ export const getDepartments = async () => {
 export const searchImages = async (term = "Rembrant", page = 1) => {
   try {
     const { data } = await api.get("/search?q=" + term);
+    const count = data.total;
     const ids = data.objectIDs.slice(10 * (page - 1), 10 + page);
 
     const images = [];
@@ -45,7 +46,7 @@ export const searchImages = async (term = "Rembrant", page = 1) => {
       });
     }
 
-    return { data: images, error: "" };
+    return { data: { images, count }, error: "" };
   } catch (ex) {
     return { data: [], error: ex.message };
   }

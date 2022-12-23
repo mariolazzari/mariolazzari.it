@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { getImages, setImages, setError } from "redux/slices/metSlice";
+import { getData, setData, setError } from "redux/slices/metSlice";
 import { searchImages } from "api/met";
 
 // images watcher
@@ -11,13 +11,13 @@ function* onGetImages(action) {
   if (error) {
     yield put(setError(error));
   } else {
-    yield put(setImages(data));
+    yield put(setData(data));
   }
 }
 
 // met watchers
 function* metSaga() {
-  yield takeEvery(getImages.type, onGetImages);
+  yield takeEvery(getData.type, onGetImages);
 }
 
 export default metSaga;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { getImages } from "redux/slices/metSlice";
+import { getData, selectData } from "redux/slices/metSlice";
 // MUI components
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -16,9 +16,10 @@ const Met = () => {
   const [page, setPage] = useState(0);
 
   // redux
-  const { images, loading } = useSelector(state => ({
+  const { images, loading, count } = useSelector(state => ({
     images: state.met.images,
     loading: state.met.loading,
+    count: state.met.count,
   }));
   const dispatch = useDispatch();
 
@@ -47,13 +48,13 @@ const Met = () => {
 
   const onPageChange = page => {
     setPage(page);
-    dispatch(getImages({ search, page }));
+    dispatch(getData({ search, page }));
   };
 
   // on submit event handler
   const onSubmit = () => {
     setPage(1);
-    dispatch(getImages({ search, page: 1 }));
+    dispatch(getData({ search, page: 1 }));
   };
 
   const onCardClick = url => {
@@ -61,7 +62,7 @@ const Met = () => {
   };
 
   useEffect(() => {
-    dispatch(getImages());
+    dispatch(getData());
   }, [dispatch]);
 
   return (
@@ -76,7 +77,7 @@ const Met = () => {
             onChange={onSearchChange}
             onClear={onSearchClear}
             onPageChange={onPageChange}
-            count={Math.round(images.count / 10)}
+            count={Math.round(count / 10)}
             page={page}
             image="met.png"
           />
