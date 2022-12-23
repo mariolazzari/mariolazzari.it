@@ -7,12 +7,14 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 // components
 import BackDrop from "components/BackDrop";
-import TextBox from "components/TextBox";
+import SearchBox from "components/SearchBox";
 import { CardMediaBox } from "components/CardBox";
 
 const Met = () => {
   // state
   const [search, setSearch] = useState("Rembrandt");
+  const [page, setPage] = useState(0);
+
   // redux
   const { images, loading } = useSelector(state => ({
     images: state.met.images,
@@ -34,6 +36,26 @@ const Met = () => {
     },
   };
 
+  const onSearchChange = e => {
+    const { value } = e.target;
+    setSearch(value);
+  };
+
+  const onSearchClear = () => {
+    setSearch("");
+  };
+
+  const onPageChange = page => {
+    setPage(page);
+    dispatch(getImages({ search, page }));
+  };
+
+  // on submit event handler
+  const onSubmit = () => {
+    setPage(1);
+    dispatch(getImages({ search, page: 1 }));
+  };
+
   const onCardClick = url => {
     window.open(url, "_blank");
   };
@@ -46,13 +68,18 @@ const Met = () => {
     <Box sx={styles.root}>
       <BackDrop open={loading} />
 
-      <Grid container spacing={2}>
-        <Grid sx={styles.logo} item container justifyContent="center" xs={12}>
-          <img src="/images/logos/met.png" alt="MET" width={100} />
-        </Grid>
-
+      <Grid container justifyContent="center" spacing={2}>
         <Grid sx={styles.search} item xs={12}>
-          <TextBox label="Cerca" value={search} />
+          <SearchBox
+            value={search}
+            onSubmit={onSubmit}
+            onChange={onSearchChange}
+            onClear={onSearchClear}
+            onPageChange={onPageChange}
+            count={Math.round(images.count / 10)}
+            page={page}
+            image="met.png"
+          />
         </Grid>
 
         {images?.map(i => (

@@ -17,7 +17,7 @@ import Meta from "components/Meta";
 import Job from "./Job";
 
 // component
-const Works = () => {
+const Jobs = () => {
   // Redux
   const { jobs, locale } = useSelector(selectJobs);
   const dispatch = useDispatch();
@@ -28,9 +28,9 @@ const Works = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      minHeight: "90vh",
+      minHeight: "88vh",
       backgroundColor: indigo[50],
-      marginTop: 10,
+      marginTop: 8,
       paddingY: 1,
     },
     timeline: {
@@ -84,4 +84,4 @@ const Works = () => {
 };
 
 // component
-export default Works;
+export default Jobs;

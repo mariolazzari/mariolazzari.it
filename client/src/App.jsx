@@ -33,8 +33,6 @@ const App = () => {
     dispatch(setFlag(userLocale));
   }, [dispatch]);
 
-  console.log(messages);
-
   return (
     <ThemeProvider theme={theme}>
       <IntlProvider locale={locale} messages={messages[locale]}>

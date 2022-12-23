@@ -4,16 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getData } from "redux/slices/rijksSlice";
 // MUI components
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Avatar from "@mui/material/Avatar";
-import TextBox from "components/TextBox";
-import PageBox from "components/PageBox";
-import { Back, Search } from "components/Buttons";
-import { CardMediaBox } from "components/CardBox";
 // MUI colors
 import indigo from "@mui/material/colors/indigo";
 // compoennts
+import { CardMediaBox } from "components/CardBox";
 import BackDrop from "components/BackDrop";
+import SearchBox from "components/SearchBox";
 
 // component
 const Rijks = () => {
@@ -34,24 +30,6 @@ const Rijks = () => {
       minHeight: "95vh",
       backgroundColor: indigo[50],
       padding: 2,
-    },
-    avatar: {
-      marginBottom: 2,
-      width: 60,
-      height: 60,
-    },
-    search: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      marginTop: 8,
-      marginBottom: 4,
-      padding: 2,
-    },
-    buttons: {
-      display: "flex",
-      justifyContent: "center",
-      marginY: 1,
     },
     results: {
       display: "flex",
@@ -78,8 +56,7 @@ const Rijks = () => {
   };
 
   // on submit event handler
-  const onSubmit = e => {
-    e.preventDefault();
+  const onSubmit = () => {
     setPage(1);
     dispatch(getData({ search, page: 1 }));
   };
@@ -97,33 +74,16 @@ const Rijks = () => {
     <Box sx={styles.root}>
       <BackDrop open={loading} />
 
-      <form onSubmit={onSubmit}>
-        <Paper sx={styles.search} elevation={10}>
-          <Avatar
-            sx={styles.avatar}
-            src="/images/logos/rijks.png"
-            alt="Rijksmuseum"
-          />
-
-          <TextBox
-            name="search"
-            label="Cerca"
-            value={search}
-            onChange={onSearchChange}
-            onClear={onSearchClear}
-          />
-          <Box sx={styles.buttons}>
-            <Back variant="outlined" />
-            <Search disabled={search === ""} />
-          </Box>
-
-          <PageBox
-            count={Math.round(data.count / 10)}
-            page={page}
-            onChange={onPageChange}
-          />
-        </Paper>
-      </form>
+      <SearchBox
+        value={search}
+        onSubmit={onSubmit}
+        onChange={onSearchChange}
+        onClear={onSearchClear}
+        onPageChange={onPageChange}
+        count={Math.round(data.count / 10)}
+        page={page}
+        image="rijks.png"
+      />
 
       <Box sx={styles.results}>
         {data.images.map(i => (

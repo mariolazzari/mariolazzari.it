@@ -12,7 +12,7 @@ const metSlice = createSlice({
   name: "met",
   initialState,
   reducers: {
-    getImages: (state, action) => {
+    getImages: state => {
       state.images = [];
       state.loading = true;
       state.error = "";
