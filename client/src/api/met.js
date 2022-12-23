@@ -21,7 +21,7 @@ export const searchImages = async (term = "Rembrant", page = 1) => {
   try {
     const { data } = await api.get("/search?q=" + term);
     const count = data.total;
-    const ids = data.objectIDs.slice(10 * (page - 1), 10 + page);
+    const ids = data.objectIDs.slice(10 * (page - 1), 10 * page);
 
     const images = [];
     for await (const id of ids) {

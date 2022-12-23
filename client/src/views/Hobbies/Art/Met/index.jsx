@@ -16,11 +16,7 @@ const Met = () => {
   const [page, setPage] = useState(0);
 
   // redux
-  const { images, loading, count } = useSelector(state => ({
-    images: state.met.images,
-    loading: state.met.loading,
-    count: state.met.count,
-  }));
+  const { images, loading, count } = useSelector(selectData);
   const dispatch = useDispatch();
 
   const styles = {
