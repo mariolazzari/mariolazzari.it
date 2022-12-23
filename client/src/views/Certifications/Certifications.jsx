@@ -93,10 +93,10 @@ const Certifications = () => {
               item
               container
               justifyContent="center"
+              alignItems="center"
               xs={12}
               md={6}
               lg={4}
-              xl={3}
             >
               <Certification selected={c} />
             </Grid>

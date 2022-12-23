@@ -20,7 +20,7 @@ const certificationSlice = createSlice({
     setCertifications: (state, action) => {
       state.loading = false;
       state.certifications = action.payload;
-      state.certificationsLast = action.payload.slice(0, 4);
+      state.certificationsLast = action.payload.slice(0, 6);
     },
     setError: (state, action) => {
       state.loading = false;

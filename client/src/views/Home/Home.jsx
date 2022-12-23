@@ -223,7 +223,7 @@ const Home = () => {
               key={c._id}
               xs={12}
               sm={6}
-              lg={3}
+              lg={4}
             >
               <Suspense fallback={<CircularProgress />}>
                 <Certification selected={c} />

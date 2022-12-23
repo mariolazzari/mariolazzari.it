@@ -16,7 +16,7 @@ const prefix = NODE_ENV === "production" ? REACT_APP_ROOT : REACT_APP_ROOT_DEV;
 // component
 const Certification = ({ selected }) => {
   // state
-  const [elevation, setElevation] = useState(1);
+  const [elevation, setElevation] = useState(10);
   // redux
   const { locale } = useSelector(state => ({
     locale: state.app.locale,
@@ -31,14 +31,18 @@ const Certification = ({ selected }) => {
       padding: 1,
       borderRadius: 1,
       width: 410,
+      "&:hover": {
+        transform: "scale(1.1)",
+      },
     },
     title: {
       margin: 1,
       fontWeight: "bold",
+      maxWidth: 350,
     },
   };
 
-  const onPaperClick = url => {
+  const onPaperClick = () => {
     window.open(selected.url, "_blank");
   };
 
@@ -48,9 +52,15 @@ const Certification = ({ selected }) => {
       elevation={elevation}
       onClick={onPaperClick}
       onMouseEnter={() => setElevation(20)}
-      onMouseLeave={() => setElevation(1)}
+      onMouseLeave={() => setElevation(10)}
     >
-      <Typography sx={styles.title} variant="h6" align="center" gutterBottom>
+      <Typography
+        sx={styles.title}
+        variant="h6"
+        align="center"
+        gutterBottom
+        noWrap
+      >
         {selected.title}
       </Typography>
 
