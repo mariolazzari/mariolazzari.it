@@ -4,9 +4,7 @@ import api from "api/nasa";
 
 // nasa pods worker
 function* onGetPods(action) {
-  console.log("action saga", action);
-
-  const { data, error } = yield call(() => api.getPods(action.payload));
+  const { data, error } = yield call(() => api.pods(action.payload));
   if (error) {
     yield put(setError(error));
   } else {

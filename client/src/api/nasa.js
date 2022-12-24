@@ -11,15 +11,16 @@ const api = axios.create({
   responseType: "json",
 });
 
-// get nasa pods
-api.getPods = async (top = 10) => {
+// get nasa picture of the day
+const pods = async (count = 10) => {
   try {
-    console.log(`${podsUrl}&count=${top}`);
-    res = await api.get(`${podsUrl}&count=${top}`);
+    res = await api.get(`${podsUrl}&count=${count}`);
     return { data: res.data, error: "" };
   } catch (ex) {
-    return { data: null, error: ex.message };
+    return { error: ex.message };
   }
 };
 
-export default api;
+// export apis
+const nasaApi = { pods };
+export default nasaApi;
