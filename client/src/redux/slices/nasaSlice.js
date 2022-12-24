@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 // initial state
 const initialState = {
   pods: [],
-  podsLoading: false,
+  neos: [],
+  loading: false,
   error: "",
 };
 
@@ -13,16 +14,25 @@ const nasaSlice = createSlice({
   reducers: {
     getPods: state => {
       state.pods = [];
-      state.podsLoading = true;
       state.error = "";
+      state.loading = true;
     },
     setPods: (state, action) => {
       state.pods = action.payload;
-      state.podsLoading = false;
+      state.loading = false;
+    },
+    getNeos: state => {
+      state.neos = [];
+      state.error = "";
+      state.loading = true;
+    },
+    setNeos: (state, action) => {
+      state.neos = action.payload;
+      state.loading = false;
     },
     setError: (state, action) => {
       state.error = action.payload;
-      state.podsLoading = true;
+      state.loading = false;
     },
   },
 });
@@ -30,10 +40,18 @@ const nasaSlice = createSlice({
 // selectors
 export const selectPods = state => ({
   pods: state.nasa.pods,
-  loading: state.nasa.podsLoading,
+  loading: state.nasa.loading,
+  error: state.nasa.error,
+});
+
+export const selectNeos = state => ({
+  neos: state.nasa.neos,
+  loading: state.nasa.loading,
+  error: state.nasa.error,
 });
 
 // actions
-export const { getPods, setPods, setError } = nasaSlice.actions;
+export const { getPods, setPods, getNeos, setNeos, setError } =
+  nasaSlice.actions;
 
 export default nasaSlice.reducer;

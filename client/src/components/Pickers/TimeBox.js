@@ -1,13 +1,13 @@
 import React from "react";
 import DateFnsUtils from "@date-io/date-fns"; // choose your lib
-import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { TimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 
-function Date() {
+function TimeBox(props) {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <DatePicker value={props.value} onChange={props.onChange} />
+      <TimePicker value={props.value} onChange={props.onChange} />
     </MuiPickersUtilsProvider>
   );
 }
 
-export default Date;
+export default TimeBox;

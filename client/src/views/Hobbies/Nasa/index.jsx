@@ -1,22 +1,34 @@
 import { useIntl } from "react-intl";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getPods, selectPods } from "redux/slices/nasaSlice";
+import { getPods, getNeos, selectPods } from "redux/slices/nasaSlice";
+// Mui
 import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
 import indigo from "@mui/material/colors/indigo";
+// Mui icons
+import BackIcon from "@mui/icons-material/ArrowBack";
+import PodIcon from "@mui/icons-material/CameraAlt";
+import NeoIcon from "@mui/icons-material/NearMe";
 // components
 import Meta from "components/Meta";
 import BackDrop from "components/BackDrop";
-import TextBox from "components/TextBox";
-import { Back, Search } from "components/Buttons";
-import NasaPod from "./Pod";
+import SearchBox from "./SearchBox";
+import { Speed } from "components/Buttons";
+import Pods from "./Pods";
+import Neos from "./Neos";
 
 // components
 const Nasa = () => {
+  // state
+  const [section, setSection] = useState("pods");
+  const [from, setFrom] = useState(new Date());
+  const [to, setTo] = useState(new Date());
+
   // redux
-  const { pods, loading } = useSelector(selectPods);
+  const { loading, error } = useSelector(selectPods);
   const dispatch = useDispatch();
 
   // styles
@@ -27,35 +39,63 @@ const Nasa = () => {
       justifyContent: "center",
       backgroundColor: indigo[50],
       minHeight: "95vh",
-      paddingX: 2,
-      paddingTop: 8,
-    },
-    avatar: {
-      height: 100,
-      width: 100,
-      marginX: "auto",
-      marginBottom: 5,
+      padding: 2,
+      paddingTop: 10,
     },
     buttons: {
       display: "flex",
       justifyContent: "center",
       margin: 1,
     },
-    results: {
-      display: "flex",
-      justifyContent: "center",
-      flexWrap: "wrap",
-      minHeight: "50vh",
-    },
   };
+
+  // navigarion
+  const navigate = useNavigate();
 
   // locales
   const intl = useIntl();
 
+  const speedActions = [
+    {
+      name: "Back",
+      icon: <BackIcon />,
+      onClick: () => navigate(-1),
+    },
+    {
+      name: "Picture of the day",
+      icon: <PodIcon />,
+      onClick: () => setSection("pods"),
+    },
+    {
+      name: "Near Earth objects",
+      icon: <NeoIcon />,
+      onClick: () => setSection("neos"),
+    },
+  ];
+
   // on form submit
-  const onFormSubmit = e => {
-    e.preventDefault();
-    dispatch(getPods(10));
+  const onSubmit = () => {
+    switch (section) {
+      case "pods":
+        dispatch(getPods({ from, to }));
+        break;
+
+      case "neos":
+        dispatch(getNeos({ from, to }));
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  // redenr section
+  const renderSection = () => {
+    const sections = {
+      pods: <Pods />,
+      neos: <Neos />,
+    };
+    return sections[section];
   };
 
   // load today pic
@@ -64,31 +104,28 @@ const Nasa = () => {
   }, [dispatch]);
 
   return (
-    <Box sx={styles.box}>
+    <>
       <Meta
         title={intl.formatMessage({ id: "nasa.title" })}
-        canonical="https://www.mariolazzari.it/nasa/"
+        canonical="https://www.mariolazzari.it/nasa"
       />
 
-      <form onSubmit={onFormSubmit}>
+      <Box sx={styles.box}>
+        <Typography color="error">{error}</Typography>
         <BackDrop open={loading} />
+        <SearchBox
+          title={section}
+          from={from}
+          to={to}
+          onSearch={onSubmit}
+          onFromChange={setFrom}
+          onToChange={setTo}
+        />
 
-        <Avatar sx={styles.avatar} src="/images/logos/nasa.png" />
-
-        <TextBox required={false} />
-
-        <Box sx={styles.buttons}>
-          <Back sx={styles.back} variant="outlined" />
-          <Search />
-        </Box>
-
-        <Box sx={styles.results}>
-          {pods?.map(pod => (
-            <NasaPod key={pod.url} selected={pod} />
-          ))}
-        </Box>
-      </form>
-    </Box>
+        {renderSection()}
+        <Speed items={speedActions} />
+      </Box>
+    </>
   );
 };
 
