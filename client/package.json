@@ -8,7 +8,7 @@
     "@fontsource/quicksand": "^4.5.11",
     "@mui/icons-material": "^5.11.0",
     "@mui/lab": "^5.0.0-alpha.104",
-    "@mui/material": "^5.11.1",
+    "@mui/material": "^5.11.2",
     "@mui/x-date-pickers": "^5.0.12",
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.1",
