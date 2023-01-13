@@ -1496,10 +1496,10 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@mui/base@5.0.0-alpha.112":
-  version "5.0.0-alpha.112"
-  resolved "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.112.tgz"
-  integrity sha512-KPwb1iYPXsV/P8uu0SNQrj7v7YU6wdN4Eccc2lZQyRDW+f6PJYjHBuFUTYKc408B98Jvs1XbC/z5MN45a2DWrQ==
+"@mui/base@5.0.0-alpha.113":
+  version "5.0.0-alpha.113"
+  resolved "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.113.tgz"
+  integrity sha512-XSjvyQWATM8uk+EJZvYna8D21kOXC42lwb3q4K70btuGieKlCIQLaHTTDV2OfD4+JfT4o3NJy3I4Td2co31RZA==
   dependencies:
     "@babel/runtime" "^7.20.7"
     "@emotion/is-prop-valid" "^1.2.0"
@@ -1510,10 +1510,10 @@
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
-"@mui/core-downloads-tracker@^5.11.3":
-  version "5.11.3"
-  resolved "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.3.tgz"
-  integrity sha512-Bgb6//KtxY7IC7M5Pa5RKFX1wttc213mqpKqydnz3wn4BGDXfA5c0vf5nTu5zqsJeB4T3ysAJTRJhQ/E1GsZDQ==
+"@mui/core-downloads-tracker@^5.11.4":
+  version "5.11.4"
+  resolved "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.4.tgz"
+  integrity sha512-jWVwGM3vG4O0sXcW0VcIl+njCWbGCBF5vvjRpuKJajrz51AD7D6+fP1SkInZXVk5pRHf6Bnk/Yj9Of9gXxb/hA==
 
 "@mui/icons-material@^5.11.0":
   version "5.11.0"
@@ -1523,28 +1523,28 @@
     "@babel/runtime" "^7.20.6"
 
 "@mui/lab@^5.0.0-alpha.104":
-  version "5.0.0-alpha.114"
-  resolved "https://registry.npmjs.org/@mui/lab/-/lab-5.0.0-alpha.114.tgz"
-  integrity sha512-tChDoLaJ3qcYk37GIwBL1KrCiW0gpmEY//D5z5nHWnO/mzx3axjRJZpBOBeGEvhuoO/Y3QzMz4rhTvqbGNkW0w==
+  version "5.0.0-alpha.115"
+  resolved "https://registry.npmjs.org/@mui/lab/-/lab-5.0.0-alpha.115.tgz"
+  integrity sha512-3u9gRiTboC1tj1Vf8Fse1EaIaJaBwE5M/9NTr4Yp/7seFpIFgL5t/2auM+r9mohqzHT6wP6HWvPAB+OZ9q0/yg==
   dependencies:
     "@babel/runtime" "^7.20.7"
-    "@mui/base" "5.0.0-alpha.112"
-    "@mui/system" "^5.11.2"
+    "@mui/base" "5.0.0-alpha.113"
+    "@mui/system" "^5.11.4"
     "@mui/types" "^7.2.3"
     "@mui/utils" "^5.11.2"
     clsx "^1.2.1"
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
-"@mui/material@^5.11.3":
-  version "5.11.3"
-  resolved "https://registry.npmjs.org/@mui/material/-/material-5.11.3.tgz"
-  integrity sha512-Oz+rMFiMtxzzDLUxKyyj4mSxF9ShmsBoJ9qvglXCYqklgSrEl1R/Z4hfPZ+2pWd5CriO8U/0CFHr4DksrlTiCw==
+"@mui/material@^5.11.4":
+  version "5.11.4"
+  resolved "https://registry.npmjs.org/@mui/material/-/material-5.11.4.tgz"
+  integrity sha512-ZL/czK9ynrQJ6uyDwQgK+j7m1iKA1XKPON+rEPupwAu/bJ1XJxD+H/H2bkMM8UpOkzaucx/WuMbJJGQ60l7gBg==
   dependencies:
     "@babel/runtime" "^7.20.7"
-    "@mui/base" "5.0.0-alpha.112"
-    "@mui/core-downloads-tracker" "^5.11.3"
-    "@mui/system" "^5.11.2"
+    "@mui/base" "5.0.0-alpha.113"
+    "@mui/core-downloads-tracker" "^5.11.4"
+    "@mui/system" "^5.11.4"
     "@mui/types" "^7.2.3"
     "@mui/utils" "^5.11.2"
     "@types/react-transition-group" "^4.4.5"
@@ -1573,10 +1573,10 @@
     csstype "^3.1.1"
     prop-types "^15.8.1"
 
-"@mui/system@^5.11.2":
-  version "5.11.2"
-  resolved "https://registry.npmjs.org/@mui/system/-/system-5.11.2.tgz"
-  integrity sha512-PPkYhrcP2MkhscX6SauIl0wPgra0w1LGPtll+hIKc2Z2JbGRSrUCFif93kxejB7I1cAoCay9jWW4mnNhsOqF/g==
+"@mui/system@^5.11.4":
+  version "5.11.4"
+  resolved "https://registry.npmjs.org/@mui/system/-/system-5.11.4.tgz"
+  integrity sha512-fE2Ts33V5zh7ouciwXgMm/a6sLvjIj9OMeojuHNYY7BStTxparC/Fp9CNUZNJwt76U6ZJC59aYScFSRQKbW08g==
   dependencies:
     "@babel/runtime" "^7.20.7"
     "@mui/private-theming" "^5.11.2"
@@ -3709,10 +3709,10 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001272, caniuse-lite@^1.0.30001317, caniuse-lite@^1.0.30001441:
-  version "1.0.30001441"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001441.tgz"
-  integrity sha512-OyxRR4Vof59I3yGWXws6i908EtGbMzVUi3ganaZQHmydk1iwDhRnvaPG2WaR0KcqrDFKrxVZHULT396LEPhXfg==
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001272, caniuse-lite@^1.0.30001317, caniuse-lite@^1.0.30001444:
+  version "1.0.30001444"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001444.tgz"
+  integrity sha512-ecER9xgJQVMqcrxThKptsW0pPxSae8R2RB87LNa+ivW9ppNWRHEplXcDzkCOP4LYWGj8hunXLqaiC41iBATNyg==
 
 case-sensitive-paths-webpack-plugin@^2.4.0:
   version "2.4.0"
@@ -9032,13 +9032,13 @@ react-refresh@^0.11.0:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-router-dom@^6.6.1:
-  version "6.6.1"
-  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.6.1.tgz"
-  integrity sha512-u+8BKUtelStKbZD5UcY0NY90WOzktrkJJhyhNg7L0APn9t1qJNLowzrM9CHdpB6+rcPt6qQrlkIXsTvhuXP68g==
+react-router-dom@^6.6.2:
+  version "6.6.2"
+  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.6.2.tgz"
+  integrity sha512-6SCDXxRQqW5af8ImOqKza7icmQ47/EMbz572uFjzvcArg3lZ+04PxSPp8qGs+p2Y+q+b+S/AjXv8m8dyLndIIA==
   dependencies:
     "@remix-run/router" "1.2.1"
-    react-router "6.6.1"
+    react-router "6.6.2"
 
 react-router-sitemap@^1.2.0:
   version "1.2.0"
@@ -9047,10 +9047,10 @@ react-router-sitemap@^1.2.0:
   dependencies:
     sitemap "^1.6.0"
 
-react-router@6.6.1:
-  version "6.6.1"
-  resolved "https://registry.npmjs.org/react-router/-/react-router-6.6.1.tgz"
-  integrity sha512-YkvlYRusnI/IN0kDtosUCgxqHeulN5je+ew8W+iA1VvFhf86kA+JEI/X/8NqYcr11hCDDp906S+SGMpBheNeYQ==
+react-router@6.6.2:
+  version "6.6.2"
+  resolved "https://registry.npmjs.org/react-router/-/react-router-6.6.2.tgz"
+  integrity sha512-uJPG55Pek3orClbURDvfljhqFvMgJRo59Pktywkk8hUUkTY2aRfza8Yhl/vZQXs+TNQyr6tu+uqz/fLxPICOGQ==
   dependencies:
     "@remix-run/router" "1.2.1"
 
@@ -10794,10 +10794,10 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-web-vitals@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/web-vitals/-/web-vitals-3.1.0.tgz"
-  integrity sha512-zCeQ+bOjWjJbXv5ZL0r8Py3XP2doCQMZXNKlBGfUjPAVZWokApdeF/kFlK1peuKlCt8sL9TFkKzyXE9/cmNJQA==
+web-vitals@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.npmjs.org/web-vitals/-/web-vitals-3.1.1.tgz"
+  integrity sha512-qvllU+ZeQChqzBhZ1oyXmWsjJ8a2jHYpH8AMaVuf29yscOPZfTQTjQFRX6+eADTdsDE8IanOZ0cetweHMs8/2A==
 
 webidl-conversions@^4.0.2:
   version "4.0.2"
