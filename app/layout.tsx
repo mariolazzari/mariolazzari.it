@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Layout } from "@/types/Layout";
 import { ThemeProvider } from "next-themes";
+import { SideBar } from "@/components/SideBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,7 @@ function RootLayout({ children }: Layout) {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <SideBar>{children}</SideBar>
         </ThemeProvider>
       </body>
     </html>
