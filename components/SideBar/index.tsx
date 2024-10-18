@@ -3,8 +3,8 @@
 import { PropsWithChildren, useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
 import {
+  IconHome,
   IconArrowLeft,
-  IconBrandTabler,
   IconSettings,
   IconUserBolt,
 } from "@tabler/icons-react";
@@ -13,15 +13,15 @@ import { cn } from "@/lib/utils";
 
 const links = [
   {
-    label: "Dashboard",
-    href: "#",
+    label: "Home",
+    href: "/",
     icon: (
-      <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      <IconHome className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
     ),
   },
   {
-    label: "Profile",
-    href: "#",
+    label: "Competenze",
+    href: "/skills",
     icon: (
       <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
     ),
