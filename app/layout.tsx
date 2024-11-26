@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Footer } from "@/components/Footer";
+import { Layout } from "@/types/Layout";
 
 export const metadata: Metadata = {
   title: {
@@ -14,11 +15,7 @@ export const metadata: Metadata = {
 
 const inter = Inter({ subsets: ["latin"] });
 
-function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+function RootLayout({ children }: Layout) {
   return (
     <html lang="en" className={inter.className}>
       <body>
