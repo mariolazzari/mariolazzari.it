@@ -16,13 +16,13 @@ export function ThemeToggle() {
   const renderIcon = () => {
     switch (theme) {
       case "light":
-        return <FaSun size={32} />;
+        return <FaSun size={24} />;
 
       case "dark":
-        return <FaMoon size={32} />;
+        return <FaMoon size={24} />;
 
       default:
-        return <CiSettings size={32} />;
+        return <CiSettings size={24} />;
     }
   };
 
@@ -32,14 +32,14 @@ export function ThemeToggle() {
 
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
-          <FaSun size={32} /> Light
+          <FaSun size={24} /> Light
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <FaMoon size={32} />
+          <FaMoon size={24} />
           Dark
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          <CiSettings size={32} />
+          <CiSettings size={24} />
           System
         </DropdownMenuItem>
       </DropdownMenuContent>

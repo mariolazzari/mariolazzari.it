@@ -7,6 +7,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Logo } from "../Logo";
+import { Links } from "../Links";
 
 export function Drawer() {
   return (
@@ -15,11 +17,14 @@ export function Drawer() {
         <Menu />
       </SheetTrigger>
 
-      <SheetContent className="bg-primary w-64">
-        <SheetHeader>
+      <SheetContent className="w-64">
+        <SheetHeader className="flex flex-col items-center">
+          <Logo isSmall />
           <SheetTitle>Mario Lazzari</SheetTitle>
           <SheetDescription>Senior full stack developer</SheetDescription>
         </SheetHeader>
+
+        <Links isDrawer />
       </SheetContent>
     </Sheet>
   );
