@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { Copyright } from "lucide-react";
 import {
   FaLinkedin,
   FaGithub,
   FaInstagram,
   FaFacebook,
   FaTwitter,
+  FaCopyright,
 } from "react-icons/fa";
 
 export function Footer() {
@@ -42,7 +42,7 @@ export function Footer() {
         ))}
       </div>
       <p className="flex items-center gap-1 text-sm">
-        <Copyright size={16} /> Mario Lazzari {new Date().getFullYear()}
+        <FaCopyright size={16} /> Mario Lazzari {new Date().getFullYear()}
       </p>
     </footer>
   );
