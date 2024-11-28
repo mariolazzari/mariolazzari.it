@@ -1,5 +1,6 @@
 import { Home, Laptop, GraduationCap, Code, PartyPopper } from "lucide-react";
 import { LinksProps } from "./LinksProps";
+import Link from "next/link";
 
 export function Links({ isDrawer = false }: LinksProps) {
   const links = [
@@ -39,9 +40,11 @@ export function Links({ isDrawer = false }: LinksProps) {
       }
     >
       {links.map(link => (
-        <li className="flex items-center gap-2 mr-1" key={link.href}>
-          {link.icon} {link.label}
-        </li>
+        <Link key={link.href} href={link.href}>
+          <li className="flex items-center gap-2 mr-1">
+            {link.icon} {link.label}
+          </li>
+        </Link>
       ))}
     </ul>
   );

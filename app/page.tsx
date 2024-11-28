@@ -1,6 +1,8 @@
 import { Logo } from "@/components/Logo";
+import { SkillsBadges } from "@/components/SkillsBadges";
 import { Button } from "@/components/ui/button";
 import { Mail, Download } from "lucide-react";
+import Link from "next/link";
 
 function HomePage() {
   return (
@@ -14,13 +16,17 @@ function HomePage() {
       </h2>
 
       <div className="flex gap-2 my-4">
-        <Button className="w-24">
-          <Mail /> Scrivimi
-        </Button>
+        <Link href="mailto:mario.lazzari@gmail.com" target="_blank">
+          <Button className="w-24">
+            <Mail /> Scrivimi
+          </Button>
+        </Link>
 
-        <Button className="w-24" variant="destructive">
-          <Download /> CV
-        </Button>
+        <Link href="">
+          <Button className="w-24">
+            <Download /> CV
+          </Button>
+        </Link>
       </div>
 
       <p className="max-w-xl text-center mb-4">
@@ -28,6 +34,8 @@ function HomePage() {
         di me, i miei interessi e gli strumenti che utilizzo quotidianamente
         come sviluppatore software.
       </p>
+
+      <SkillsBadges />
     </div>
   );
 }

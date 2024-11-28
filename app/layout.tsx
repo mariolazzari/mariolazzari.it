@@ -21,7 +21,7 @@ function RootLayout({ children }: Layout) {
   return (
     <html lang="en" className={inter.className}>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Header />
           <main className="h-[calc(100dvh-100px)] overflow-y-auto p-4">
             {children}
