@@ -5,9 +5,8 @@ export type Skill = {
   id: string;
   type: SkillType;
   name: string;
-  imagePath: string;
   url: string;
-  icon?: ReactNode;
+  icon: ReactNode;
 };
 
 export default Skill;

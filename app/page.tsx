@@ -1,8 +1,7 @@
+import { LinkButton } from "@/components/LinkButton";
 import { Logo } from "@/components/Logo";
 import { SkillsBadges } from "@/components/SkillsBadges";
-import { Button } from "@/components/ui/button";
 import { Mail, Download } from "lucide-react";
-import Link from "next/link";
 
 function HomePage() {
   return (
@@ -16,17 +15,14 @@ function HomePage() {
       </h2>
 
       <div className="flex gap-2 my-4">
-        <Link href="mailto:mario.lazzari@gmail.com" target="_blank">
-          <Button className="w-24">
-            <Mail /> Scrivimi
-          </Button>
-        </Link>
+        <LinkButton
+          href="mailto:mario.lazzari@gmail.com"
+          label="Scrivimi"
+          icon={<Mail />}
+          newTab
+        />
 
-        <Link href="">
-          <Button className="w-24">
-            <Download /> CV
-          </Button>
-        </Link>
+        <LinkButton href="/pdf/cv.pdf" label="CV" icon={<Download />} newTab />
       </div>
 
       <p className="max-w-xl text-center mb-4">
