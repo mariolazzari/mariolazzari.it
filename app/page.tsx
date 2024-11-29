@@ -1,3 +1,4 @@
+import { GithubCalendar } from "@/components/GithubCalendar";
 import { LinkButton } from "@/components/LinkButton";
 import { Logo } from "@/components/Logo";
 import { SkillsBadges } from "@/components/SkillsBadges";
@@ -32,6 +33,7 @@ function HomePage() {
       </p>
 
       <SkillsBadges />
+      <GithubCalendar />
     </div>
   );
 }

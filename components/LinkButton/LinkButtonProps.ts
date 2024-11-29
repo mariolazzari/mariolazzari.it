@@ -6,4 +6,5 @@ export type LinkButtonProps = {
 } & Partial<{
   icon: ReactNode;
   newTab: boolean;
+  className: string;
 }>;

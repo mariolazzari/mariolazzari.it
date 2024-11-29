@@ -1,6 +1,8 @@
 import { skillFilter } from "@/data/skills";
 import { SkillBadges } from "./SkillBadges";
 import { Separator } from "../ui/separator";
+import { LinkButton } from "../LinkButton";
+import { SlInfo } from "react-icons/sl";
 
 export function SkillsBadges() {
   const skills = [
@@ -39,6 +41,7 @@ export function SkillsBadges() {
           <SkillBadges key={skill.title} {...skill} />
         ))}
       </div>
+      <LinkButton href="/skills" label="Dettagli" icon={<SlInfo />} />
     </>
   );
 }
