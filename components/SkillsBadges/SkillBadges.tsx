@@ -11,7 +11,7 @@ import { SkillBadgesProps } from "./SkillBadgesProps";
 
 export function SkillBadges({ title, skills }: SkillBadgesProps) {
   return (
-    <Card>
+    <Card className="bg-gradient-to-br from-background to-muted">
       <CardHeader>
         <CardTitle className="text-xl font-semibold">{title}</CardTitle>
         <CardDescription className="hidden"></CardDescription>
