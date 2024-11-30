@@ -39,7 +39,12 @@ export function SkillsBadges() {
           <SkillBadges key={skill.title} {...skill} />
         ))}
       </div>
-      <LinkButton href="/skills" label="Dettagli" icon={<SlInfo />} />
+      <LinkButton
+        className="my-8"
+        href="/skills"
+        label="Dettagli"
+        icon={<SlInfo />}
+      />
     </>
   );
 }

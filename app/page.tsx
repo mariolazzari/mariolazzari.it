@@ -1,4 +1,4 @@
-import { GithubCalendar } from "@/components/GithubCalendar";
+import { Github } from "@/components/Github";
 import Hero from "@/components/Hero";
 import { SkillsBadges } from "@/components/SkillsBadges";
 
@@ -7,7 +7,7 @@ function HomePage() {
     <div className="flex flex-col items-center">
       <Hero />
       <SkillsBadges />
-      <GithubCalendar />
+      <Github />
     </div>
   );
 }
