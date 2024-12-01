@@ -1,13 +1,19 @@
 import { Github } from "@/components/Github";
 import Hero from "@/components/Hero";
 import { SkillsBadges } from "@/components/SkillsBadges";
+import { getUserInfo, getUserProjects } from "@/actions/github";
 
-function HomePage() {
+async function HomePage() {
+  const githubUser = await getUserInfo();
+
+  const res = await getUserProjects();
+  console.log(res);
+
   return (
     <div className="flex flex-col items-center">
       <Hero />
       <SkillsBadges />
-      <Github />
+      <Github user={githubUser} />
     </div>
   );
 }
