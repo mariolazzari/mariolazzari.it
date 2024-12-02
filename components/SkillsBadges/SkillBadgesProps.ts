@@ -1,6 +1,6 @@
 import Skill from "@/types/Skill";
 
 export type SkillBadgesProps = {
-  title: String;
+  title: string;
   skills: Skill[];
 };

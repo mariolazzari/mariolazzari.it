@@ -21,19 +21,25 @@ export function Calendar({
       "Dec",
     ],
     weekdays: ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Don"],
-    totalCount: "",
+    // totalCount: "",
+    legend: {
+      less: "-",
+      more: "+",
+    },
   };
 
   return (
-    <GitHubCalendar
-      username={username}
-      year={year}
-      colorScheme="dark"
-      blockRadius={50}
-      weekStart={1}
-      blockMargin={5}
-      showWeekdayLabels
-      labels={labels}
-    />
+    <div className="max-w-xs sm:max-w-md md:max-w-xl lg:max-w-4xl xl:max-w-6xl">
+      <GitHubCalendar
+        username={username}
+        year={year}
+        colorScheme="dark"
+        blockRadius={50}
+        weekStart={1}
+        blockMargin={5}
+        showWeekdayLabels
+        labels={labels}
+      />
+    </div>
   );
 }

@@ -1,25 +1,26 @@
 import Hero from "@/components/Hero";
 import { SkillsBadges } from "@/components/SkillsBadges";
-import { getUserInfo, getUserRepos } from "@/actions/github";
+import { getUserInfo, getUserRepos, getUserStars } from "@/actions/github";
 import { LastGithubActivities } from "@/components/Github";
 
 async function HomePage() {
   // data fetching
-  const [githubUser, lastActivities] = await Promise.all([
-    getUserInfo(),
+  const githubUser = await getUserInfo();
+  const [lastRepos, stars] = await Promise.all([
     getUserRepos({
       direction: "desc",
       page: 1,
       per_page: 5,
       username: "mariolazzari",
     }),
+    getUserStars(githubUser),
   ]);
 
   return (
     <div className="flex flex-col items-center">
       <Hero />
       <SkillsBadges />
-      <LastGithubActivities info={githubUser} repos={lastActivities} />
+      <LastGithubActivities info={githubUser} repos={lastRepos} stars={stars} />
     </div>
   );
 }

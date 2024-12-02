@@ -3,7 +3,7 @@
 import { Repo } from "@/types/github/Repo";
 import { UserInfo } from "@/types/github/UserInfo";
 import { UserReposParams } from "@/types/github/UserReposParams";
-import { Octokit } from "@octokit/rest";
+import { Octokit, RestEndpointMethodTypes } from "@octokit/rest";
 
 // read token from env
 const auth = process.env.GITHUB_TOKEN;
@@ -38,4 +38,45 @@ export async function getUserRepos({
   });
 
   return data as Repo[];
+}
+
+// user stars
+export async function getUserStars(user: UserInfo): Promise<number> {
+  console.time("stars");
+
+  let stars = 0;
+  let pages = Math.ceil(user.public_repos / 100);
+
+  const promises: Promise<
+    RestEndpointMethodTypes["repos"]["listForUser"]["response"]
+  >[] = [];
+
+  while (pages > 0) {
+    promises.push(
+      octokit.repos.listForUser({
+        username: user.login,
+        sort: "created",
+        direction: "asc",
+        per_page: 100,
+        page: pages,
+      })
+    );
+
+    pages--;
+  }
+
+  const responses = await Promise.all(promises);
+  responses.forEach(res => {
+    res.data
+      .filter(r => !!r.stargazers_count)
+      .forEach(r => {
+        if (r.stargazers_count) {
+          stars += r.stargazers_count;
+        }
+      });
+  });
+
+  console.timeEnd("stars");
+
+  return stars;
 }

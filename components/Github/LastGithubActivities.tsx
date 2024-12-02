@@ -1,9 +1,11 @@
+import { FaGithub } from "react-icons/fa6";
 import { Calendar } from "./Calendar";
 import { LastGithubActivitiesProps } from "./LastGithubActivitiesProps";
 import { User } from "./User";
 
 export function LastGithubActivities({
   info,
+  stars,
   repos,
 }: LastGithubActivitiesProps) {
   if (!info) {
@@ -12,9 +14,16 @@ export function LastGithubActivities({
 
   return (
     <div className="flex flex-col items-center gap-8 my-8">
-      <h3 className="font-semibold text-4xl">Il mio ultimo anno so Github</h3>
+      <div className="flex flex-col items-center gap-2">
+        <FaGithub size={64} />
+        <h3 className="font-semibold text-4xl text-center">
+          Il mio ultimo anno su Github
+        </h3>
+      </div>
       <Calendar username="mariolazzari" year="last" />
-      <User user={info} />
+      <User user={info} stars={stars} />
+
+      {repos.length}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { KpisProps } from "./KpiProps";
 
 export function Kpi({ title, icon, value }: KpisProps) {
   return (
-    <div className="group flex flex-col items-center gap-4 p-4 rounded-xl shadow-xl w-48 h-36 bg-gradient-to-br from-background to-muted border border-muted hover:border-primary">
+    <div className="group flex flex-col items-center gap-4 p-4 rounded-xl shadow-xl w-48 h-40 bg-gradient-to-br from-background to-muted border border-muted hover:border-primary">
       <div className="group-hover:text-primary group-hover:animate-bounce">
         {icon}
       </div>
