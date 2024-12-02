@@ -5,6 +5,25 @@ export function Calendar({
   username = "mariolazzari",
   year = "last",
 }: CalendarProps) {
+  const labels = {
+    months: [
+      "Gen",
+      "Feb",
+      "Mar",
+      "Apr",
+      "Mag",
+      "Giu",
+      "Lug",
+      "Ago",
+      "Set",
+      "Ott",
+      "Nov",
+      "Dec",
+    ],
+    weekdays: ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Don"],
+    totalCount: "",
+  };
+
   return (
     <GitHubCalendar
       username={username}
@@ -14,6 +33,7 @@ export function Calendar({
       weekStart={1}
       blockMargin={5}
       showWeekdayLabels
+      labels={labels}
     />
   );
 }
