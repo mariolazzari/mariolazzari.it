@@ -1,6 +1,7 @@
 import { UserInfo } from "@/types/github/UserInfo";
+import { UserInfoExtra } from "@/types/github/UserInfoExtra";
 
 export type UserProps = {
-  user: UserInfo;
-  stars: number;
+  info: UserInfo;
+  extra: UserInfoExtra;
 };

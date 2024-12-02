@@ -2,31 +2,31 @@ import { Kpi, KpisProps } from "@/components/Charts";
 import { UserProps } from "./UserProps";
 import { Users, Eye, Star, GitFork, FolderGit } from "lucide-react";
 
-export function User({ user, stars }: UserProps) {
+export function User({ info, extra }: UserProps) {
   const kpis: KpisProps[] = [
     {
       title: "Followers",
-      value: user.followers.toFixed(0),
+      value: info.followers.toFixed(0),
       icon: <Users />,
     },
     {
       title: "Following",
-      value: user.following.toFixed(0),
+      value: info.following.toFixed(0),
       icon: <Eye />,
     },
     {
       title: "Progetti",
-      value: user.public_repos.toFixed(0),
+      value: info.public_repos.toFixed(0),
       icon: <FolderGit />,
     },
     {
       title: "Stelle",
-      value: stars.toFixed(0),
+      value: extra.stars.toFixed(0),
       icon: <Star />,
     },
     {
       title: "Fork",
-      value: user.public_gists.toFixed(0),
+      value: extra.forks.toFixed(0),
       icon: <GitFork />,
     },
   ];

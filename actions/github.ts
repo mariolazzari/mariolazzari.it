@@ -2,6 +2,7 @@
 
 import { Repo } from "@/types/github/Repo";
 import { UserInfo } from "@/types/github/UserInfo";
+import { UserInfoExtra } from "@/types/github/UserInfoExtra";
 import { UserReposParams } from "@/types/github/UserReposParams";
 import { Octokit, RestEndpointMethodTypes } from "@octokit/rest";
 
@@ -40,11 +41,10 @@ export async function getUserRepos({
   return data as Repo[];
 }
 
-// user stars
-export async function getUserStars(user: UserInfo): Promise<number> {
-  console.time("stars");
-
+// user extra infos
+export async function getUserInfoExtra(user: UserInfo): Promise<UserInfoExtra> {
   let stars = 0;
+  let forks = 0;
   let pages = Math.ceil(user.public_repos / 100);
 
   const promises: Promise<
@@ -73,10 +73,11 @@ export async function getUserStars(user: UserInfo): Promise<number> {
         if (r.stargazers_count) {
           stars += r.stargazers_count;
         }
+        if (r.forks_count) {
+          forks += r.forks_count;
+        }
       });
   });
 
-  console.timeEnd("stars");
-
-  return stars;
+  return { stars, forks };
 }

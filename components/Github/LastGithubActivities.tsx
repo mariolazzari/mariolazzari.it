@@ -5,7 +5,7 @@ import { User } from "./User";
 
 export function LastGithubActivities({
   info,
-  stars,
+  infoExtra,
   repos,
 }: LastGithubActivitiesProps) {
   if (!info) {
@@ -21,7 +21,7 @@ export function LastGithubActivities({
         </h3>
       </div>
       <Calendar username="mariolazzari" year="last" />
-      <User user={info} stars={stars} />
+      <User info={info} extra={infoExtra} />
 
       {repos.length}
     </div>
