@@ -6,7 +6,6 @@ import { User } from "./User";
 export function LastGithubActivities({
   info,
   infoExtra,
-  repos,
 }: LastGithubActivitiesProps) {
   if (!info) {
     return null;
@@ -22,8 +21,6 @@ export function LastGithubActivities({
       </div>
       <Calendar username="mariolazzari" year="last" />
       <User info={info} extra={infoExtra} />
-
-      {repos.length}
     </div>
   );
 }
