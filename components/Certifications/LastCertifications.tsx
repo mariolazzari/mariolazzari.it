@@ -1,3 +1,4 @@
+import { LinkButton } from "../LinkButton";
 import { Certification } from "./Certification";
 import { LastGithubActivitiesProps } from "./LasfCertificationsProps";
 import { GraduationCap } from "lucide-react";
@@ -17,6 +18,12 @@ function LastCertifications({ certifications }: LastGithubActivitiesProps) {
           <Certification key={cer.title} certification={cer} />
         ))}
       </div>
+
+      <LinkButton
+        label="Certificazioni"
+        href="/certifications"
+        icon={<GraduationCap />}
+      />
     </div>
   );
 }

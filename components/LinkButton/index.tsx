@@ -11,7 +11,7 @@ export function LinkButton({
 }: LinkButtonProps) {
   return (
     <Link href={href} target={newTab ? "_blank" : undefined}>
-      <Button className={className ?? "w-24"}>
+      <Button className={className ?? "min-w-24"}>
         {icon} {label}
       </Button>
     </Link>

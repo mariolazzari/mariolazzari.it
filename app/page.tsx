@@ -5,6 +5,7 @@ import { LastGithubActivities } from "@/components/Github";
 import { Certification } from "@/types/Certification";
 import { getLastCertifications } from "@/actions/certifications";
 import LastCertifications from "@/components/Certifications/LastCertifications";
+import { Hobbies } from "@/components/Hobbies";
 
 async function HomePage() {
   // data fetching
@@ -30,6 +31,7 @@ async function HomePage() {
         infoExtra={extra}
       />
       <LastCertifications certifications={certs} />
+      <Hobbies />
     </div>
   );
 }
