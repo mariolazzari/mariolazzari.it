@@ -1,43 +1,75 @@
-import { Palette, FlaskConical, Brain, Music, Book } from "lucide-react";
+import {
+  Palette,
+  FlaskConical,
+  Brain,
+  Music,
+  Book,
+  Calendar,
+  Trophy,
+  Video,
+  Church,
+} from "lucide-react";
 import { HobbyProps } from "./HobbyProps";
 import { Hobby } from "./Hobby";
+import { useTranslations } from "next-intl";
 
 export function Hobbies() {
+  const t = useTranslations("Hobbies");
+
   const cards: HobbyProps[] = [
     {
-      title: "Arte",
+      title: t("artTitle"),
       icon: <Palette size={32} />,
-      description:
-        "Ho scoperto la passione per l'arte viaggiando con mia moglie attraverso la nostra bella Italia, visitando città d'arte e musei: in questa sezione potrete consultare i cataloghi dei musei più prestigiosi al mondo.",
+      description: t("artText"),
       href: "/hobbies/art",
     },
     {
-      title: "Scienza",
+      title: t("sciTitle"),
       icon: <FlaskConical size={32} />,
-      description:
-        "Fin da piccolo sono sempre stato affascinato dalla scienza, astronomia in particolare: in questa sezione avrete la possibilità di accedere ai servizi offerti dalla Nasa e strutture simili.",
+      description: t("sciText"),
       href: "/hobbies/sci",
     },
     {
-      title: "Filosofia",
+      title: t("phyTitle"),
       icon: <Brain size={32} />,
-      description:
-        "Terminato il liceo mi sarebbe piaciuto molto studiare filosofia: ho comunque continuato a coltivare questo mio interesse, leggendo i miei autori preferiti (Platone, Kant, Hegel, Nietzsche, Heidegger)",
+      description: t("phyText"),
       href: "/hobbies/phylo",
     },
     {
-      title: "Musica",
+      title: t("musTitle"),
       icon: <Music size={32} />,
-      description:
-        "Mio padre mi ha trasmesso la passione per la chitarra, che ho studiato per oltre vent'anni, insegnando in 4 accademie di musica moderna e suonando regolarmente dal vivo in diverse band.",
+      description: t("musText"),
       href: "/hobbies/music",
     },
     {
-      title: "Letteratura",
+      title: t("bokTitle"),
       icon: <Book size={32} />,
-      description:
-        "  Trascorro la maggior parte del mio tempo libero leggendo i miei autori preferiti, in particolar modo Dostoevskij, Celine, Kafka e Thomas Mann",
+      description: t("bokText"),
       href: "/hobbies/books",
+    },
+    {
+      title: t("hysTitle"),
+      icon: <Calendar size={32} />,
+      description: t("hysText"),
+      href: "/hobbies/history",
+    },
+    {
+      title: t("sprTitle"),
+      icon: <Trophy size={32} />,
+      description: t("sprText"),
+      href: "/hobbies/sport",
+    },
+    {
+      title: t("cinTitle"),
+      icon: <Video size={32} />,
+      description: t("cinText"),
+      href: "/hobbies/sport",
+    },
+    {
+      title: t("relTitle"),
+      icon: <Church size={32} />,
+      description: t("relText"),
+      href: "/hobbies/religion",
     },
   ];
 

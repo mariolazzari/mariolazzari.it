@@ -213,11 +213,11 @@
   },
 
   "Nasa": {
-    "nasa.zoom": "Zoom",
-    "nasa.zoomHD": "Zoom HD",
-    "nasa.apod": "Foto del giorno",
-    "nasa.marsRovers": "Foto da Marte",
-    "nasa.marsRovers0": "Nessuna foto trovata: prova un altro giorno"
+    "zoom": "Zoom",
+    "zoomHD": "Zoom HD",
+    "apod": "Foto del giorno",
+    "marsRovers": "Foto da Marte",
+    "marsRovers0": "Nessuna foto trovata: prova un altro giorno"
   },
 
   "Picker": {
