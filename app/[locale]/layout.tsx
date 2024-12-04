@@ -1,14 +1,12 @@
-import { Header } from "@/components/Header";
 import "../globals.css";
 import type { Metadata } from "next";
+import { Header } from "@/components/Header";
 import { Inter } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Layout } from "@/types/Layout";
 import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: {
@@ -22,12 +20,8 @@ export const metadata: Metadata = {
 const inter = Inter({ subsets: ["latin"] });
 
 async function RootLayout({ children, params }: Layout) {
-  // Ensure that the incoming `locale` is valid
+  // locales
   const { locale } = await params;
-  if (!routing.locales.includes(locale as any)) {
-    notFound();
-  }
-  // Providing all messages to the client
   const messages = await getMessages();
 
   return (

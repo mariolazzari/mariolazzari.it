@@ -14,10 +14,10 @@ export function Drawer() {
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu />
+        <Menu size={24} />
       </SheetTrigger>
 
-      <SheetContent className="w-64">
+      <SheetContent className="w-64 border-muted">
         <SheetHeader className="flex flex-col items-center">
           <Logo isSmall />
           <SheetTitle>Mario Lazzari</SheetTitle>
