@@ -1,8 +1,15 @@
 import Skill from "@/types/Skill";
 import SkillType from "@/types/SkillType";
-import { FaJava } from "react-icons/fa";
+import { FaJava, FaWindows, FaServer } from "react-icons/fa";
 import {
-  SiCsharp,
+  TbBrandCSharp,
+  TbBrandVisualStudio,
+  TbBrandVscode,
+} from "react-icons/tb";
+import { VscVscode, VscAzureDevops } from "react-icons/vsc";
+import { DiMsqlServer } from "react-icons/di";
+
+import {
   SiCss3,
   SiHtml5,
   SiJavascript,
@@ -10,16 +17,11 @@ import {
   SiDebian,
   SiUbuntu,
   SiRedhat,
-  SiWindows,
-  SiIbm,
   SiApple,
-  SiVisualstudiocode,
-  SiVisualstudio,
   SiEclipseide,
   SiApachenetbeanside,
   SiAndroidstudio,
   SiMongodb,
-  SiMicrosoftsqlserver,
   SiOracle,
   SiMysql,
   SiPostgresql,
@@ -32,8 +34,6 @@ import {
   SiGit,
   SiGithub,
   SiPostman,
-  SiAzuredataexplorer,
-  SiVisualstudioappcenter,
   SiSequelize,
   SiDrizzle,
   SiGo,
@@ -71,14 +71,14 @@ export const skills: Skill[] = [
     type: "os",
     name: "Windows Server",
     url: "https://www.windowserver.it/",
-    icon: <SiWindows />,
+    icon: <FaWindows />,
   },
   {
     id: "as400",
     type: "os",
     name: "AS/400",
     url: "https://www.ibm.com/it-it/it-infrastructure/power/os/ibm-i",
-    icon: <SiIbm />,
+    icon: <FaServer />,
   },
   {
     id: "macos",
@@ -141,7 +141,7 @@ export const skills: Skill[] = [
     type: "lang",
     name: "C#",
     url: "https://docs.microsoft.com/it-it/dotnet/csharp/",
-    icon: <SiCsharp />,
+    icon: <TbBrandCSharp />,
   },
   {
     id: "java",
@@ -155,14 +155,14 @@ export const skills: Skill[] = [
     type: "ide",
     name: "Visual Studio Code",
     url: "https://code.visualstudio.com",
-    icon: <SiVisualstudiocode />,
+    icon: <VscVscode />,
   },
   {
     id: "vs",
     type: "ide",
     name: "Visual Studio",
     url: "visualstudio.microsoft.com",
-    icon: <SiVisualstudio />,
+    icon: <TbBrandVisualStudio />,
   },
   {
     id: "eclipse",
@@ -197,7 +197,7 @@ export const skills: Skill[] = [
     type: "db",
     name: "SQL Server",
     url: "https://www.microsoft.com/en-us/sql-server/sql-server-downloads",
-    icon: <SiMicrosoftsqlserver />,
+    icon: <DiMsqlServer />,
   },
   {
     id: "oracle",
@@ -330,14 +330,14 @@ export const skills: Skill[] = [
     type: "tool",
     name: "Azure Data Studio",
     url: "https://azure.microsoft.com/products/data-studio",
-    icon: <SiAzuredataexplorer />,
+    icon: <VscAzureDevops />,
   },
   {
     id: "sqlms",
     type: "tool",
     name: "SQL Management Studio",
     url: "https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16",
-    icon: <SiVisualstudioappcenter />,
+    icon: <TbBrandVscode />,
   },
 ];
 
