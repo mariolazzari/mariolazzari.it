@@ -1,8 +1,8 @@
-import { Drawer } from "@/components/Drawer";
+import { Drawer } from "./Drawer";
 import { ThemeToggle } from "@/components/Theme/ThemeToggle";
 import { Separator } from "../ui/separator";
 import { Links } from "../Links";
-import { Flags } from "../Flags";
+import { Flags } from "./Flags";
 
 export function Header() {
   return (
