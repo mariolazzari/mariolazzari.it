@@ -11,7 +11,7 @@ export function Links({ isDrawer = false }: LinksProps) {
     },
     {
       icon: <Laptop size={24} />,
-      label: "Laptop",
+      label: "Competenze",
       href: "/skills",
     },
     {
