@@ -2,41 +2,24 @@ import { skillFilter } from "@/data/skills";
 import { SkillBadges } from "./SkillBadges";
 import { LinkButton } from "../LinkButton";
 import { SlInfo } from "react-icons/sl";
+import { Subtitle } from "../Typography";
+import { useTranslations } from "next-intl";
+import SkillType from "@/types/SkillType";
 
 export function SkillsBadges() {
-  const skills = [
-    {
-      title: "Linguaggi di programmazione",
-      skills: skillFilter("lang"),
-    },
-    {
-      title: "Librerie",
-      skills: skillFilter("lib"),
-    },
-    {
-      title: "Strumenti",
-      skills: skillFilter("tool"),
-    },
-    {
-      title: "IDE",
-      skills: skillFilter("ide"),
-    },
-    {
-      title: "Database",
-      skills: skillFilter("db"),
-    },
-    {
-      title: "Sistemi operativi",
-      skills: skillFilter("os"),
-    },
-  ];
+  const t = useTranslations("SkillTypes");
+  const skills: SkillType[] = ["lang", "lib", "tool", "ide", "db", "os"];
 
   return (
-    <>
-      <h3 className="text-5xl font-semibold my-16">Competenze</h3>
-      <div className="my-4 flex justify-center items-center gap-16 flex-wrap">
+    <section className="my-8">
+      <Subtitle text={"Competenze"} />
+      <div className="my-8 flex justify-center items-center gap-16 flex-wrap">
         {skills.map(skill => (
-          <SkillBadges key={skill.title} {...skill} />
+          <SkillBadges
+            key={skill}
+            title={t(skill)}
+            skills={skillFilter(skill)}
+          />
         ))}
       </div>
       <LinkButton
@@ -45,6 +28,6 @@ export function SkillsBadges() {
         label="Dettagli"
         icon={<SlInfo />}
       />
-    </>
+    </section>
   );
 }

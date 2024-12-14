@@ -15,7 +15,6 @@ export function Hero() {
       <Logo />
       <Title text={title} />
       <Subtitle text={subtitle} />
-
       <Buttons />
       <Paragraph text={intro} />
     </section>

@@ -29,7 +29,7 @@ export function Calendar({
   };
 
   return (
-    <div className="max-w-xs sm:max-w-md md:max-w-xl lg:max-w-4xl xl:max-w-6xl">
+    <div className="max-w-xs sm:max-w-md md:max-w-xl lg:max-w-4xl xl:max-w-6xl bg-background p-4 rounded-xl shadow-xl">
       <GitHubCalendar
         username={username}
         year={year}

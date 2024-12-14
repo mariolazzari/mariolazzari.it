@@ -20,7 +20,7 @@ export function Header() {
         </div>
       </header>
 
-      <Separator className="h-0.5" />
+      <Separator />
     </>
   );
 }

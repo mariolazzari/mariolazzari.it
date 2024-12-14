@@ -32,10 +32,11 @@ export function Footer() {
       href: "https://x.com/MarioLazzari2",
     },
   ];
+  const year = new Date().getFullYear();
 
   return (
     <>
-      <Separator className="h-0.5" />
+      <Separator />
       <footer className="h-[50px] flex flex-col items-center py-2">
         <div className="flex gap-2">
           {links.map(link => (
@@ -44,9 +45,9 @@ export function Footer() {
             </Link>
           ))}
         </div>
-        <p className="flex items-center gap-2 text-sm">
-          <FaCopyright size={16} /> Mario Lazzari {new Date().getFullYear()}
-        </p>
+        <span className="flex items-center gap-2 text-sm">
+          <FaCopyright size={16} /> Mario Lazzari {year}
+        </span>
       </footer>
     </>
   );
