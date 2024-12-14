@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+import { Hero } from "@/components/Hero";
 import { SkillsBadges } from "@/components/SkillsBadges";
 import { getUserInfo, getUserRepos, getUserInfoExtra } from "@/actions/github";
 import { LastGithubActivities } from "@/components/Github";

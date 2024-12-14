@@ -1,19 +1,22 @@
 import { Download, Mail } from "lucide-react";
-import { LinkButton } from "../LinkButton";
-import { useTranslations, useLocale } from "next-intl";
+import { LinkButton, LinkButtonProps } from "@/components/LinkButton";
+import { useTranslations } from "next-intl";
+import { getLocale } from "next-intl/server";
 
-export function Buttons() {
-  const locale = useLocale();
+export async function Buttons() {
+  const locale = getLocale();
   const t = useTranslations("Home");
-  const buttons = [
+
+  // buttons to render
+  const buttons: LinkButtonProps[] = [
     {
       href: "mailto:mario.lazzari@gmail.com",
-      label: t("mailButton"),
+      label: "mailButton",
       icon: <Mail />,
     },
     {
       href: `/pdf/cv_mario_lazzari_${locale}.pdf`,
-      label: t("cvButton"),
+      label: "cvButton",
       icon: <Download />,
     },
   ];
@@ -25,7 +28,7 @@ export function Buttons() {
           className="w-28"
           key={b.href}
           href={b.href}
-          label={b.label}
+          label={t(b.label)}
           icon={b.icon}
           newTab
         />

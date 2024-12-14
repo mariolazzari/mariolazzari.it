@@ -1,19 +1,2 @@
-import Link from "next/link";
-import { Button } from "../ui/button";
-import { LinkButtonProps } from "./LinkButtonProps";
-
-export function LinkButton({
-  label,
-  href,
-  icon,
-  newTab,
-  className,
-}: LinkButtonProps) {
-  return (
-    <Link href={href} target={newTab ? "_blank" : undefined}>
-      <Button className={className ?? "min-w-24"}>
-        {icon} {label}
-      </Button>
-    </Link>
-  );
-}
+export * from "./LinkButton";
+export * from "./LinkButtonProps";

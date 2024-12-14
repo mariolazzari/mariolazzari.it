@@ -1,25 +1,23 @@
-import { Logo } from "../Logo";
-import { Buttons } from "./Buttons";
 import { useTranslations } from "next-intl";
+import { Logo } from "@/components/Logo";
+import { Title, Subtitle, Paragraph } from "@/components/Typography";
+import { Buttons } from "./Buttons";
 
-function Hero() {
+export function Hero() {
   // locales
   const t = useTranslations("Home");
+  const title = t("title");
+  const subtitle = t("subtitle");
+  const intro = t("intro");
 
   return (
     <section className="flex flex-col items-center">
       <Logo />
-
-      <h1 className="text-6xl font-bold text-primary text-center">
-        {t("title")}
-      </h1>
-      <h2 className="text-4xl text-center font-semibold">{t("subtitle")}</h2>
+      <Title text={title} />
+      <Subtitle text={subtitle} />
 
       <Buttons />
-
-      <p className="max-w-xl text-center mb-4">{t("intro")}</p>
+      <Paragraph text={intro} />
     </section>
   );
 }
-
-export default Hero;
