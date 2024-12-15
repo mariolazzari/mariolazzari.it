@@ -10,15 +10,12 @@ import { CertificationProps } from "./CertificationProps";
 import Link from "next/link";
 import { LinkIcon } from "lucide-react";
 import Image from "next/image";
-import { formatDistanceToNow } from "date-fns";
-import { it } from "date-fns/locale";
+import { useLocale } from "next-intl";
+import { toNow } from "@/lib/dates";
 
 export function Certification({ certification }: CertificationProps) {
   const { title, imagePath, date, url } = certification;
-
-  const renderDate = () => {
-    return formatDistanceToNow(date, { locale: it, addSuffix: true });
-  };
+  const locale = useLocale();
 
   return (
     <Link href={url} target="_blank">
@@ -27,7 +24,7 @@ export function Certification({ certification }: CertificationProps) {
           <CardTitle className="group-hover:text-primary text-xl">
             {title}
           </CardTitle>
-          <CardDescription>{renderDate()}</CardDescription>
+          <CardDescription>{toNow(date, locale)}</CardDescription>
         </CardHeader>
 
         <CardContent className="h-[250px] flex items-center">
@@ -41,7 +38,7 @@ export function Certification({ certification }: CertificationProps) {
         </CardContent>
 
         <CardFooter className="h-[50px]">
-          <LinkIcon className="group-hover:text-primary group-hover:animate-pulse" />
+          <LinkIcon className="group-hover:text-primary group-hover:animate-bounce" />
         </CardFooter>
       </Card>
     </Link>
