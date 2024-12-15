@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -8,31 +7,33 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { SkillBadgesProps } from "./SkillBadgesProps";
-import { LinkButton } from "../LinkButton";
+import { Badge } from "../ui/badge";
 
 export function SkillBadges({ title, skills }: SkillBadgesProps) {
   return (
     <Card className="bg-background border border-secondary group hover:border-primary">
       <CardHeader>
-        <CardTitle className="text-xl font-semibold">{title}</CardTitle>
+        <CardTitle className="text-xl font-semibold group-hover:text-primary">
+          {title}
+        </CardTitle>
         <CardDescription className="hidden"></CardDescription>
       </CardHeader>
-      <CardContent className="w-[350px] h-[270px]">
+      <CardContent className="w-[350px] h-[270px] grid grid-cols-2 grid-flow-row-dense">
         {skills.map(skill => (
-          <Badge
+          <Link
             key={skill.id}
-            className="px-2 mr-2 my-1 rounded-xl hover:animate-pulse"
-            variant="secondary"
+            className="flex items-center gap-1 text-lg hover:text-primary"
+            href={skill.url}
+            target="_blank"
           >
-            <Link
-              className="flex items-center gap-2 text-lg"
-              href={skill.url}
-              target="_blank"
+            <Badge
+              className="px-2 py-1 gap-1 hover:bg-primary"
+              variant="secondary"
             >
-              {skill.name}
               {skill.icon}
-            </Link>
-          </Badge>
+              {skill.name}
+            </Badge>
+          </Link>
         ))}
       </CardContent>
     </Card>

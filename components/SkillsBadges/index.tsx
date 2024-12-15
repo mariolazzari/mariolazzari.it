@@ -8,12 +8,13 @@ import SkillType from "@/types/SkillType";
 
 export function SkillsBadges() {
   const t = useTranslations("SkillTypes");
+  const tHome = useTranslations("Home");
   const skills: SkillType[] = ["lang", "lib", "tool", "ide", "db", "os"];
 
   return (
-    <section className="my-8">
-      <Subtitle text={"Competenze"} />
-      <div className="my-8 flex justify-center items-center gap-16 flex-wrap">
+    <section className="my-8 flex flex-col items-center">
+      <Subtitle text={tHome("skillsTitle")} />
+      <div className="my-8 flex justify-center gap-16 flex-wrap">
         {skills.map(skill => (
           <SkillBadges
             key={skill}
@@ -23,9 +24,9 @@ export function SkillsBadges() {
         ))}
       </div>
       <LinkButton
-        className="my-8"
+        className="my-4"
         href="/skills"
-        label="Dettagli"
+        label={tHome("skillsButton")}
         icon={<SlInfo />}
       />
     </section>
