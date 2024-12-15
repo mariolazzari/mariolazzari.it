@@ -12,6 +12,8 @@ import {
 import { HobbyProps } from "./HobbyProps";
 import { Hobby } from "./Hobby";
 import { useTranslations } from "next-intl";
+import { Subtitle } from "../Typography";
+import { PartyPopper } from "lucide-react";
 
 export function Hobbies() {
   const t = useTranslations("Hobbies");
@@ -74,8 +76,12 @@ export function Hobbies() {
   ];
 
   return (
-    <section className="flex flex-col">
-      <h4 className="text-4xl my-8 text-center">I miei interessi</h4>
+    <section className="flex flex-col items-center gap-8 my-8">
+      <div className="flex flex-col items-center">
+        <PartyPopper size={64} />
+        <Subtitle text={t("title")} />
+      </div>
+
       <div className="flex justify-center items-center flex-wrap gap-16">
         {cards.map(card => (
           <Hobby key={card.title} {...card} />

@@ -11,7 +11,7 @@ export function Hero() {
   const intro = t("intro");
 
   return (
-    <section className="flex flex-col items-center">
+    <section className="flex flex-col items-center mb-8">
       <Logo />
       <Title text={title} />
       <Subtitle text={subtitle} />
