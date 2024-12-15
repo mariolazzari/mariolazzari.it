@@ -1,27 +1,48 @@
 import GitHubCalendar from "react-github-calendar";
 import { CalendarProps } from "./CalendarProps";
+import { useLocale } from "next-intl";
 
 export function Calendar({
   username = "mariolazzari",
   year = "last",
 }: CalendarProps) {
+  const locale = useLocale();
+
   const labels = {
-    months: [
-      "Gen",
-      "Feb",
-      "Mar",
-      "Apr",
-      "Mag",
-      "Giu",
-      "Lug",
-      "Ago",
-      "Set",
-      "Ott",
-      "Nov",
-      "Dec",
-    ],
-    weekdays: ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Don"],
-    // totalCount: "",
+    months:
+      locale === "it"
+        ? [
+            "Gen",
+            "Feb",
+            "Mar",
+            "Apr",
+            "Mag",
+            "Giu",
+            "Lug",
+            "Ago",
+            "Set",
+            "Ott",
+            "Nov",
+            "Dec",
+          ]
+        : [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+    weekdays:
+      locale === "it"
+        ? ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"]
+        : ["Mon", "Tue", "Wed", "Thr", "Fri", "Sat", "Sun"],
     legend: {
       less: "-",
       more: "+",
@@ -33,7 +54,6 @@ export function Calendar({
       <GitHubCalendar
         username={username}
         year={year}
-        colorScheme="dark"
         blockRadius={50}
         weekStart={1}
         blockMargin={5}

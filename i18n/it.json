@@ -1,12 +1,10 @@
 {
   "Menu": {
-    "logo": "Mario Lazzari JavaScrip Full Stack Developer",
     "home": "Home",
     "certifications": "Certificazioni",
-    "contacts": "Contatti",
     "skills": "Competenze",
-    "hobbies": "Interessi",
-    "jobs": "Lavoro"
+    "projects": "Progetti",
+    "hobbies": "Interessi"
   },
 
   "Home": {
@@ -16,10 +14,11 @@
     "intro": "Benvenuti nel mio sito, nel quale potrete trovare alcune informazioni su di me, i miei interessi e gli strumenti che utilizzo quotidianamente come sviluppatore software.",
     "mailButton": "Mail",
     "cvButton": "CV",
-    "skillsTitle": "Competenze",
-    "skillsButton": "Dettagli",
+    "skillsTitle": "Le mie competenze",
+    "skillsButton": "Competenze",
+    "githubLastYear": "Il mio ultimo anno su Github",
     "certTitle": "Ultime certificazioni",
-    "certButton": "Tutte"
+    "certButton": "Certificazioni"
   },
 
   "SkillTypes": {

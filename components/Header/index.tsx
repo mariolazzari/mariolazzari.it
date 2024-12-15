@@ -1,7 +1,6 @@
-import { Drawer } from "./Drawer";
 import { ThemeToggle } from "@/components/Theme/ThemeToggle";
-import { Separator } from "../ui/separator";
-import { Links } from "../Links";
+import { Drawer } from "./Drawer";
+import { Links } from "./Links";
 import { Flags } from "./Flags";
 
 export function Header() {
@@ -9,7 +8,7 @@ export function Header() {
     <header className="h-[50px] flex justify-between items-center px-4 py-2">
       <Flags />
 
-      <nav>
+      <nav className="hidden md:block">
         <Links />
       </nav>
 

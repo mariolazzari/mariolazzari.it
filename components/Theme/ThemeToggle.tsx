@@ -40,6 +40,7 @@ export function ThemeToggle() {
       <DropdownMenuContent className="border-muted" align="end">
         {themes.map(theme => (
           <DropdownMenuItem
+            key={theme}
             className="capitalize"
             onClick={() => setTheme(theme)}
           >

@@ -4,8 +4,9 @@ import { useTranslations } from "next-intl";
 import { getLocale } from "next-intl/server";
 
 export async function Buttons() {
-  const locale = getLocale();
   const t = useTranslations("Home");
+
+  const locale = await getLocale();
 
   // buttons to render
   const buttons: LinkButtonProps[] = [
@@ -23,13 +24,13 @@ export async function Buttons() {
 
   return (
     <div className="flex gap-2 my-4">
-      {buttons.map(b => (
+      {buttons.map(({ href, label, icon }) => (
         <LinkButton
           className="w-28"
-          key={b.href}
-          href={b.href}
-          label={t(b.label)}
-          icon={b.icon}
+          key={href}
+          href={href}
+          label={t(label)}
+          icon={icon}
           newTab
         />
       ))}

@@ -14,15 +14,9 @@ export function Flags() {
 
   return (
     <div className="flex gap-2 items-center">
-      {flags.map(flag => (
-        <Link key={flag.locale} href={path} locale={flag.locale}>
-          <Image
-            src={flag.img}
-            alt={flag.locale}
-            width={24}
-            height={24}
-            priority
-          />
+      {flags.map(({ img, locale }) => (
+        <Link key={locale} href={path} locale={locale}>
+          <Image src={img} alt={locale} width={24} height={24} priority />
         </Link>
       ))}
     </div>

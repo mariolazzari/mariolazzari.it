@@ -74,13 +74,13 @@ export function Hobbies() {
   ];
 
   return (
-    <div className="flex flex-col">
+    <section className="flex flex-col">
       <h4 className="text-4xl my-8 text-center">I miei interessi</h4>
       <div className="flex justify-center items-center flex-wrap gap-16">
         {cards.map(card => (
           <Hobby key={card.title} {...card} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }

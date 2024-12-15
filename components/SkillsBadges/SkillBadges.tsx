@@ -11,14 +11,14 @@ import { Badge } from "../ui/badge";
 
 export function SkillBadges({ title, skills }: SkillBadgesProps) {
   return (
-    <Card className="bg-background border border-secondary group hover:border-primary">
+    <Card className="group hover:border-primary bg-background">
       <CardHeader>
-        <CardTitle className="text-xl font-semibold group-hover:text-primary">
+        <CardTitle className="text-xl font-semibold group-hover:text-primary group-hover:animate-bounce">
           {title}
         </CardTitle>
         <CardDescription className="hidden"></CardDescription>
       </CardHeader>
-      <CardContent className="w-[350px] h-[270px] grid grid-cols-2 grid-flow-row-dense">
+      <CardContent className="w-[350px] h-[270px] grid grid-cols-2">
         {skills.map(skill => (
           <Link
             key={skill.id}

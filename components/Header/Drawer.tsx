@@ -8,7 +8,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Logo } from "../Logo";
-import { Links } from "../Links";
+import { Links } from "./Links";
 
 export function Drawer() {
   return (

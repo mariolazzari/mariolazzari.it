@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 function SkillsPage() {
-  return <div>SkillsPage</div>;
+  return <section>Skills Page</section>;
 }
 
 export default SkillsPage;

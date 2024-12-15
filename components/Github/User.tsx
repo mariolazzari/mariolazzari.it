@@ -1,32 +1,38 @@
 import { Kpi, KpisProps } from "@/components/Charts";
 import { UserProps } from "./UserProps";
 import { Users, Eye, Star, GitFork, FolderGit } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export function User({ info, extra }: UserProps) {
+  const { followers, following, public_repos } = info;
+  const { stars, forks } = extra;
+
+  const t = useTranslations("Github");
+
   const kpis: KpisProps[] = [
     {
-      title: "Followers",
-      value: info.followers.toFixed(0),
+      title: t("followers"),
+      value: followers,
       icon: <Users />,
     },
     {
-      title: "Following",
-      value: info.following.toFixed(0),
+      title: t("following"),
+      value: following,
       icon: <Eye />,
     },
     {
-      title: "Progetti",
-      value: info.public_repos.toFixed(0),
+      title: t("projects"),
+      value: public_repos,
       icon: <FolderGit />,
     },
     {
-      title: "Stelle",
-      value: extra.stars.toFixed(0),
+      title: t("stars"),
+      value: stars,
       icon: <Star />,
     },
     {
-      title: "Fork",
-      value: extra.forks.toFixed(0),
+      title: t("forks"),
+      value: forks,
       icon: <GitFork />,
     },
   ];

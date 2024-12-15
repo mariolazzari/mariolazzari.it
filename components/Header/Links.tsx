@@ -1,32 +1,35 @@
 import { Home, Laptop, GraduationCap, Code, PartyPopper } from "lucide-react";
 import { LinksProps } from "./LinksProps";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 export function Links({ isDrawer = false }: LinksProps) {
+  const t = useTranslations("Menu");
+
   const links = [
     {
       icon: <Home size={24} />,
-      label: "Home",
+      label: "home",
       href: "/",
     },
     {
       icon: <Laptop size={24} />,
-      label: "Competenze",
+      label: "skills",
       href: "/skills",
     },
     {
       icon: <GraduationCap size={24} />,
-      label: "Certificazioni",
+      label: "certifications",
       href: "/certifications",
     },
     {
       icon: <Code size={24} />,
-      label: "Progetti",
+      label: "projects",
       href: "/projects",
     },
     {
       icon: <PartyPopper size={24} />,
-      label: "Interessi",
+      label: "hobbies",
       href: "/hobbies",
     },
   ];
@@ -36,13 +39,13 @@ export function Links({ isDrawer = false }: LinksProps) {
       className={
         isDrawer
           ? "flex flex-col gap-4 mt-8"
-          : "hidden md:flex justify-center items-center gap-2"
+          : "flex justify-center items-center gap-2"
       }
     >
       {links.map(link => (
-        <Link key={link.href} href={link.href}>
+        <Link className="hover:text-primary" key={link.href} href={link.href}>
           <li className="flex items-center gap-2 mr-1">
-            {link.icon} {link.label}
+            {link.icon} {t(link.label)}
           </li>
         </Link>
       ))}

@@ -23,6 +23,7 @@ export function SkillsBadges() {
           />
         ))}
       </div>
+
       <LinkButton
         className="my-4"
         href="/skills"

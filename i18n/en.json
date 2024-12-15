@@ -1,12 +1,10 @@
 {
   "Menu": {
-    "logo": "Mario Lazzari",
     "home": "Home",
     "certifications": "Certifications",
-    "contacts": "Contacts",
     "skills": "Skills",
-    "hobbies": "Hobbies",
-    "jobs": "Job"
+    "projects": "Projects",
+    "hobbies": "Hobbies"
   },
 
   "Home": {
@@ -17,9 +15,10 @@
     "mailButton": "Mail",
     "cvButton": "Resume",
     "skillsTitle": "My skills",
-    "skillsButton": "Details",
+    "skillsButton": "Skills",
+    "githubLastYear": "My last year on Github",
     "certTitle": "Last certifications",
-    "certButton": "Show all"
+    "certButton": "Certifications"
   },
 
   "SkillTypes": {
