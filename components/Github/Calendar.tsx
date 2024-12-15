@@ -4,12 +4,6 @@ import GitHubCalendar from "react-github-calendar";
 import { CalendarProps } from "./CalendarProps";
 import { useLocale } from "next-intl";
 import { useTheme } from "next-themes";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../ui/tooltip";
 
 export function Calendar({
   username = "mariolazzari",
