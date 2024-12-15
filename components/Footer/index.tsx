@@ -7,7 +7,6 @@ import {
   FaTwitter,
   FaCopyright,
 } from "react-icons/fa";
-import { Separator } from "@/components/ui/separator";
 
 export function Footer() {
   const links = [
@@ -35,20 +34,17 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <>
-      <Separator />
-      <footer className="h-[50px] flex flex-col items-center py-2">
-        <div className="flex gap-2">
-          {links.map(link => (
-            <Link key={link.href} href={link.href} target="_blank">
-              {link.icon}
-            </Link>
-          ))}
-        </div>
-        <span className="flex items-center gap-2 text-sm">
-          <FaCopyright size={16} /> Mario Lazzari {year}
-        </span>
-      </footer>
-    </>
+    <footer className="h-[50px] flex flex-col items-center py-2">
+      <div className="flex gap-2">
+        {links.map(link => (
+          <Link key={link.href} href={link.href} target="_blank">
+            {link.icon}
+          </Link>
+        ))}
+      </div>
+      <span className="flex items-center gap-2 text-sm">
+        <FaCopyright size={16} /> Mario Lazzari {year}
+      </span>
+    </footer>
   );
 }

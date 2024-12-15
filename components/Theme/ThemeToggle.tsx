@@ -1,8 +1,9 @@
 "use client";
 
-import { FaMoon, FaSun } from "react-icons/fa";
-import { CiSettings } from "react-icons/ci";
+import { Moon, Sun, Settings } from "lucide-react";
 import { useTheme } from "next-themes";
+
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,37 +12,41 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function ThemeToggle() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme, themes } = useTheme();
 
-  const renderIcon = () => {
+  const renderIcon = (theme: string) => {
     switch (theme) {
       case "light":
-        return <FaSun size={24} />;
+        return <Sun />;
 
       case "dark":
-        return <FaMoon size={24} />;
+        return <Moon />;
 
       default:
-        return <CiSettings size={24} />;
+        return <Settings />;
     }
   };
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>{renderIcon()}</DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          <FaSun size={24} /> Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <FaMoon size={24} />
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          <CiSettings size={24} />
-          System
-        </DropdownMenuItem>
+      <DropdownMenuContent className="border-muted" align="end">
+        {themes.map(theme => (
+          <DropdownMenuItem
+            className="capitalize"
+            onClick={() => setTheme(theme)}
+          >
+            {renderIcon(theme)}
+            {theme}
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );

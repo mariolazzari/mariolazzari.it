@@ -27,10 +27,10 @@ export function SkillBadges({ title, skills }: SkillBadgesProps) {
             target="_blank"
           >
             <Badge
-              className="px-2 py-1 gap-1 hover:bg-primary"
-              variant="secondary"
+              className="px-2 py-1 gap-1 hover:bg-primary hover:text-white border-none"
+              variant="outline"
             >
-              {skill.icon}
+              <span className="text-xl">{skill.icon}</span>
               {skill.name}
             </Badge>
           </Link>

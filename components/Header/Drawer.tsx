@@ -14,7 +14,7 @@ export function Drawer() {
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu size={24} />
+        <Menu size={24} aria-label="menu" />
       </SheetTrigger>
 
       <SheetContent className="w-64 border-muted">
