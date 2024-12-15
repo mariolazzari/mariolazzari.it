@@ -22,9 +22,9 @@ export function Certification({ certification }: CertificationProps) {
 
   return (
     <Link href={url} target="_blank">
-      <Card className="group border border-muted hover:border-primary">
+      <Card className="group bg-background border hover:border-primary">
         <CardHeader className="h-[100px]">
-          <CardTitle className="group-hover:text-primary text-xl ">
+          <CardTitle className="group-hover:text-primary text-xl">
             {title}
           </CardTitle>
           <CardDescription>{renderDate()}</CardDescription>

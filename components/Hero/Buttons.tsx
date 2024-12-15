@@ -1,15 +1,14 @@
+import Link from "next/link";
 import { Download, Mail } from "lucide-react";
-import { LinkButton, LinkButtonProps } from "@/components/LinkButton";
-import { useTranslations } from "next-intl";
-import { getLocale } from "next-intl/server";
+import { useLocale, useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
 
-export async function Buttons() {
+export function Buttons() {
   const t = useTranslations("Home");
-
-  const locale = await getLocale();
+  const locale = useLocale();
 
   // buttons to render
-  const buttons: LinkButtonProps[] = [
+  const buttons = [
     {
       href: "mailto:mario.lazzari@gmail.com",
       label: "mailButton",
@@ -25,14 +24,12 @@ export async function Buttons() {
   return (
     <div className="flex gap-2 my-4">
       {buttons.map(({ href, label, icon }) => (
-        <LinkButton
-          className="w-28"
-          key={href}
-          href={href}
-          label={t(label)}
-          icon={icon}
-          newTab
-        />
+        <Link key={href} href={href} target="_blank">
+          <Button className="w-28">
+            {icon}
+            {t(label)}
+          </Button>
+        </Link>
       ))}
     </div>
   );
