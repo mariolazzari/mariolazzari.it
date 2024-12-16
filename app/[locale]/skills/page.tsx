@@ -19,6 +19,22 @@ function SkillsPage() {
       icon: <Library size={64} />,
       skillType: "lib",
     },
+    {
+      icon: <Wrench size={64} />,
+      skillType: "tool",
+    },
+    {
+      icon: <PanelRight size={64} />,
+      skillType: "ide",
+    },
+    {
+      icon: <Database size={64} />,
+      skillType: "db",
+    },
+    {
+      icon: <Cpu size={64} />,
+      skillType: "os",
+    },
   ];
 
   return (

@@ -43,6 +43,7 @@ import {
   SiPrisma,
   SiTailwindcss,
   SiShadcnui,
+  SiDocker,
 } from "react-icons/si";
 
 export const skills: Skill[] = [
@@ -68,6 +69,13 @@ export const skills: Skill[] = [
     icon: <SiRedhat />,
   },
   {
+    id: "macos",
+    type: "os",
+    name: "MacOS",
+    url: "https://www.apple.com/it/macos/",
+    icon: <SiApple />,
+  },
+  {
     id: "winServer",
     type: "os",
     name: "Windows Server",
@@ -80,13 +88,6 @@ export const skills: Skill[] = [
     name: "AS/400",
     url: "https://www.ibm.com/it-it/it-infrastructure/power/os/ibm-i",
     icon: <FaServer />,
-  },
-  {
-    id: "macos",
-    type: "os",
-    name: "MacOS",
-    url: "https://www.apple.com/it/macos/",
-    icon: <SiApple />,
   },
   {
     id: "js",
@@ -311,6 +312,13 @@ export const skills: Skill[] = [
     name: "NodeJS",
     url: "https://nodejs.org",
     icon: <SiNodedotjs />,
+  },
+  {
+    id: "docker",
+    type: "tool",
+    name: "Docker",
+    url: "https://www.docker.com/",
+    icon: <SiDocker />,
   },
   {
     id: "git",
