@@ -15,6 +15,10 @@ function SkillsPage() {
       icon: <Code size={64} />,
       skillType: "lang",
     },
+    {
+      icon: <Library size={64} />,
+      skillType: "lib",
+    },
   ];
 
   return (
