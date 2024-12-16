@@ -3,9 +3,11 @@ import { Certification } from "./Certification";
 import { LastGithubActivitiesProps } from "./LasfCertificationsProps";
 import { GraduationCap } from "lucide-react";
 
-function LastCertifications({ certifications }: LastGithubActivitiesProps) {
+export function LastCertifications({
+  certifications,
+}: LastGithubActivitiesProps) {
   return (
-    <div className="flex flex-col items-center gap-8 my-8">
+    <section className="flex flex-col items-center gap-8 my-8">
       <div className="flex flex-col items-center">
         <GraduationCap size={64} />
         <h4 className="text-4xl font-semibold text-center">
@@ -24,8 +26,6 @@ function LastCertifications({ certifications }: LastGithubActivitiesProps) {
         href="/certifications"
         icon={<GraduationCap />}
       />
-    </div>
+    </section>
   );
 }
-
-export default LastCertifications;

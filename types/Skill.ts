@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import SkillType from "./SkillType";
+import { SkillType } from "./SkillType";
 
 export type Skill = {
   id: string;
@@ -8,5 +8,3 @@ export type Skill = {
   url: string;
   icon: ReactNode;
 };
-
-export default Skill;

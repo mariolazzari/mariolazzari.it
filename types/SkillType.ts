@@ -1,3 +1,1 @@
-type SkillType = "os" | "lang" | "ide" | "lib" | "db" | "tool";
-
-export default SkillType;
+export type SkillType = "os" | "lang" | "ide" | "lib" | "db" | "tool";

@@ -1,5 +1,4 @@
 import "../globals.css";
-import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Inter } from "next/font/google";
 import { Footer } from "@/components/Footer";
@@ -7,15 +6,6 @@ import { Layout } from "@/types/Layout";
 import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-
-export const metadata: Metadata = {
-  title: {
-    template: "%s | Mario Lazzari",
-    default: "Mario Lazzari",
-  },
-  description:
-    "Mario Lazzari senior full stack developer JavaScript TypeScript NodeJS ReactJS Go",
-};
 
 const inter = Inter({ subsets: ["latin"] });
 

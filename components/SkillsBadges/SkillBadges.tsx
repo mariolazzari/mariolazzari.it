@@ -9,12 +9,12 @@ import {
 import { SkillBadgesProps } from "./SkillBadgesProps";
 import { Badge } from "../ui/badge";
 
-export function SkillBadges({ title, skills }: SkillBadgesProps) {
+export function SkillBadges({ icon, title, skills }: SkillBadgesProps) {
   return (
     <Card className="group hover:border-primary bg-background">
       <CardHeader>
-        <CardTitle className="text-xl font-semibold group-hover:text-primary group-hover:animate-bounce">
-          {title}
+        <CardTitle className="text-xl font-semibold group-hover:text-primary group-hover:animate-bounce flex gap-2">
+          {icon} {title}
         </CardTitle>
         <CardDescription className="hidden"></CardDescription>
       </CardHeader>

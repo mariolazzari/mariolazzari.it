@@ -40,7 +40,7 @@
   },
 
   "Skills": {
-    "title": "Competenze - Mario Lazzari",
+    "title": "Le mie competenze",
     "os": "Sistemi operativi",
     "lang": "Linguaggi di programmazione",
     "db": "Database",
@@ -69,6 +69,14 @@
     "htmlUse": "Utilizzo HTML per tutte le interfacce grafiche utente, sia web, che desktop, grazie a ElectronJS.",
     "cssDesc": "Il Cascading Style Sheets (CSS) è un linguaggio per fogli di stile utilizzato per descrivere la presentazione di un documento scritto in HTML o XML (inclusi vari linguaggi XML quali SVG o XHTML). Il CSS descrive come gli elementi dovrebbero apparire su schermo, su carta, nel parlato o in altri media.",
     "cssUse": "Utilizzo quotidianamente CSS per gestire l'aspetto di tutti i miei progetti, grazie alla grande flessibilità offerta dal modulo flexbox.",
+    "goDesc": "Go è un linguaggio di programmazione ad alto livello compilato e tipizzato staticamente, progettato da Robert Griesemer, Rob Pike e Ken Thompson presso Google. È sintatticamente simile al linguaggio C, ma dispone anche della memory safety, garbage collection, tipizzazione strutturale e concurrency in stile CSP.",
+    "goUse": "Utilizzo questo linguaggio principalmente per implementare API Rest e utility a riga di comando.",
+    "rustDesc": "Rust è estremamente veloce ed efficiente nel consumo di memoria: non ha runtime o garbage collector, può essere impiegato in servizi dove le prestazioni sono fondamentali, funziona su dispositivi embedded ed è facile da integrare con altri linguaggi di programmazione.",
+    "rustUse": "Utilizzo questo linguaggio per sviluppare applicazioni desktop, basate sull'ecosistema Tauri",
+    "cDesc": "C è un linguaggio di programmazione a uso generale di natura imperativa e procedurale creato da Dennis Ritchie negli anni 1970. Tutt'oggi influente, è largamente adoperato nei sistemi operativi, nei driver e nelle pile di protocolli, mentre è in diminuzione il suo uso nelle applicazioni.",
+    "cUse": "Ho utilizzato questo linguaggio per sviluppare codice nativo ad alte presentazioni.",
+    "cppDesc": "C++ è un linguaggio di programmazione ad uso generale creato dall'informatico danese Bjarne Stroustrup. Pubblicato per la prima volta nel 1985 come estensione del linguaggio C, è stato nel tempo esteso notevolmente.",
+    "cppUse": "Ho utilizzato questo linguaggio per sviluppare codice distribuito fra diversi team di sviluppo.",
     "csDesc": "C# è un linguaggio orientato a oggetti elegante e indipendente dai tipi. C# consente agli sviluppatori di compilare molti tipi di applicazioni sicure e affidabili eseguite nell'ecosistema .NET.",
     "csUse": "Ho utilizzato C# per sviluppare principalmente applicazioni descktop per Windows e utilizzo questa tecnologia per supportare applicazioni in produzione.",
     "javaDesc": "Java è una tecnologia utilizzata per lo sviluppo di applicazioni che rendono il Web più divertente e utile. Java è diverso da JavaScript in quanto quest'ultimo è una semplice tecnologia utilizzata per la creazione di pagine Web e viene eseguita solo nel browser.",

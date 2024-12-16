@@ -4,8 +4,29 @@ import { getUserInfo, getUserRepos, getUserInfoExtra } from "@/actions/github";
 import { LastGithubActivities } from "@/components/Github";
 import { Certification } from "@/types/Certification";
 import { getLastCertifications } from "@/actions/certifications";
-import LastCertifications from "@/components/Certifications/LastCertifications";
+import { LastCertifications } from "@/components/Certifications";
 import { Hobbies } from "@/components/Hobbies";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Mario Lazzari",
+    default: "Mario Lazzari",
+  },
+  description:
+    "Mario Lazzari senior full stack developer JavaScript TypeScript NodeJS ReactJS Go Rest Api",
+  keywords: [
+    "Mario",
+    "Lazzari",
+    "JavaScript",
+    "TypeScript",
+    "NodeJS",
+    "RectJS",
+    "Go",
+    "Rest",
+    "Api",
+  ],
+};
 
 async function HomePage() {
   // data fetching

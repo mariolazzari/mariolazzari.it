@@ -8,11 +8,14 @@ import {
 } from "../ui/card";
 import { HobbyProps } from "./HobbyProps";
 import { LinkIcon } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+import { useLocale } from "next-intl";
 
 export function Hobby({ title, description, icon, href }: HobbyProps) {
+  const locale = useLocale();
+
   return (
-    <Link href={href}>
+    <Link href={href} locale={locale}>
       <Card className="w-[350px] group bg-background border hover:border-primary shadow-xl">
         <CardHeader>
           <CardTitle className="font-semibold text-xl flex items-center gap-2 group-hover:text-primary">

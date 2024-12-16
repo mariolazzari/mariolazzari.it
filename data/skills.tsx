@@ -1,5 +1,5 @@
-import Skill from "@/types/Skill";
-import SkillType from "@/types/SkillType";
+import { Skill } from "@/types/Skill";
+import { SkillType } from "@/types/SkillType";
 import { FaJava, FaWindows, FaServer } from "react-icons/fa";
 import {
   TbBrandCSharp,
@@ -37,6 +37,7 @@ import {
   SiSequelize,
   SiDrizzle,
   SiGo,
+  SiRust,
   SiC,
   SiCplusplus,
   SiPrisma,
@@ -123,6 +124,13 @@ export const skills: Skill[] = [
     icon: <SiGo />,
   },
   {
+    id: "rust",
+    type: "lang",
+    name: "Rust",
+    url: "https://www.rust-lang.org/",
+    icon: <SiRust />,
+  },
+  {
     id: "c",
     type: "lang",
     name: "C",
@@ -130,7 +138,7 @@ export const skills: Skill[] = [
     icon: <SiC />,
   },
   {
-    id: "c++",
+    id: "cpp",
     type: "lang",
     name: "C++",
     url: "  https://isocpp.org",
