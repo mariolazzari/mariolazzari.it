@@ -19,9 +19,9 @@ export function SkillCard({ skill }: SkillCardProps) {
 
   return (
     <Link href={url} target="_blank">
-      <Card className="w-[350px]">
+      <Card className="group w-[350px] border-muted hover:border-primary bg-gradient-to-br from-background to-secondary">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-xl font-semibold">
+          <CardTitle className="flex items-center gap-2 text-xl font-semibold group-hover:text-primary">
             {icon} {name}
           </CardTitle>
           <CardDescription></CardDescription>
@@ -31,7 +31,7 @@ export function SkillCard({ skill }: SkillCardProps) {
           <p>{use}</p>
         </CardContent>
         <CardFooter>
-          <LinkIcon />
+          <LinkIcon className="group-hover:animate-bounce group-hover:text-primary" />
         </CardFooter>
       </Card>
     </Link>

@@ -19,7 +19,7 @@ export function Certification({ certification }: CertificationProps) {
 
   return (
     <Link href={url} target="_blank">
-      <Card className="group bg-background border hover:border-primary">
+      <Card className="group border-muted hover:border-primary bg-gradient-to-br from-background to-secondary">
         <CardHeader className="h-[100px]">
           <CardTitle className="group-hover:text-primary text-xl">
             {title}
@@ -29,6 +29,7 @@ export function Certification({ certification }: CertificationProps) {
 
         <CardContent className="h-[250px] flex items-center">
           <Image
+            className="group-hover:scale-105"
             src={imagePath}
             alt={title}
             width={300}

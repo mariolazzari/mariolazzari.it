@@ -16,7 +16,7 @@ export function Hobby({ title, description, icon, href }: HobbyProps) {
 
   return (
     <Link href={href} locale={locale}>
-      <Card className="w-[350px] group bg-background border hover:border-primary shadow-xl">
+      <Card className="w-[350px] group bg-gradient-to-br from-background to-secondary border-muted hover:border-primary shadow-xl">
         <CardHeader>
           <CardTitle className="font-semibold text-xl flex items-center gap-2 group-hover:text-primary">
             {icon}

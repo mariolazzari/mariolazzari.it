@@ -11,7 +11,7 @@ import { Badge } from "../ui/badge";
 
 export function SkillBadges({ icon, title, skills }: SkillBadgesProps) {
   return (
-    <Card className="group hover:border-primary bg-background">
+    <Card className="group border-muted hover:border-primary bg-gradient-to-br from-background to-secondary">
       <CardHeader>
         <CardTitle className="text-xl font-semibold group-hover:text-primary group-hover:animate-bounce flex gap-2">
           {icon} {title}
