@@ -64,7 +64,7 @@ export function Calendar({
   };
 
   return (
-    <div className="max-w-xs sm:max-w-sm  md:max-w-md lg:max-w-3xl xl:max-w-4xl bg-background p-4 rounded-xl shadow-xl">
+    <div className="max-w-xs sm:max-w-sm  md:max-w-md lg:max-w-3xl xl:max-w-5xl bg-background p-4 rounded-xl shadow-xl">
       <GitHubCalendar
         username={username}
         year={year}

@@ -141,9 +141,9 @@
     "sqlmsUse": "Uso questo strumento per lavorare con i progetti basati su server Microsost SQL."
   },
 
-  "Certs": {
-    "title": "Certificazioni - Mario Lazzari",
-    "search": "Cerca argomento"
+  "Certifications": {
+    "title": "Certificazioni",
+    "search": "Cerca"
   },
 
   "Hobbies": {

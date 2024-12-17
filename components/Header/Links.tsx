@@ -39,15 +39,15 @@ export function Links({ isDrawer = false }: LinksProps) {
       className={
         isDrawer
           ? "flex flex-col gap-4 mt-8"
-          : "flex justify-center items-center gap-2"
+          : "flex justify-center items-center gap-4"
       }
     >
       {links.map(link => (
-        <Link className="hover:text-primary" key={link.href} href={link.href}>
-          <li className="flex items-center gap-2 mr-1">
+        <li key={link.href}>
+          <Link className="flex hover:text-primary gap-1" href={link.href}>
             {link.icon} {t(link.label)}
-          </li>
-        </Link>
+          </Link>
+        </li>
       ))}
     </ul>
   );

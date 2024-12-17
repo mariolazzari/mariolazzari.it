@@ -413,3 +413,13 @@ const comparator = (a: Certification, b: Certification): Comparator => {
 
 export const getLastCertifications = (last = 6) =>
   certifications.sort(comparator).reverse().slice(0, last);
+
+export function getCertifications(search = "") {
+  if (search) {
+    return certifications
+      .filter(c => c.title.toLowerCase().includes(search.toLowerCase()))
+      .sort(comparator)
+      .reverse();
+  }
+  return certifications.sort(comparator).reverse();
+}
