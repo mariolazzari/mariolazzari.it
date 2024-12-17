@@ -3,7 +3,7 @@
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import Form from "next/form";
 import { Button } from "../ui/button";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Input } from "../ui/input";
 import {
   SiNodedotjs,
@@ -22,6 +22,7 @@ export function CertificationsFilter() {
   const [search, setSearch] = useState("");
 
   const locale = useLocale();
+  const t = useTranslations("Certifications");
 
   const tags = [
     { id: "Node", icon: <SiNodedotjs /> },
@@ -53,7 +54,7 @@ export function CertificationsFilter() {
       <Input
         name="search"
         value={search}
-        placeholder="Cerca titolo..."
+        placeholder={t("placeholder")}
         onChange={onSearchChange}
       />
 
@@ -78,15 +79,16 @@ export function CertificationsFilter() {
             type="reset"
             variant="outline"
             onClick={onResetClick}
+            disabled={search === ""}
           >
             <GraduationCap />
-            All
+            {t("all")}
           </Button>
         </Link>
 
         <Button className="w-24" type="submit" disabled={search === ""}>
           <Search />
-          Search
+          {t("search")}
         </Button>
       </div>
     </Form>

@@ -2,6 +2,7 @@ import { Home, Laptop, GraduationCap, Code, PartyPopper } from "lucide-react";
 import { LinksProps } from "./LinksProps";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 export function Links({ isDrawer = false }: LinksProps) {
   const t = useTranslations("Menu");
@@ -44,8 +45,16 @@ export function Links({ isDrawer = false }: LinksProps) {
     >
       {links.map(link => (
         <li key={link.href}>
-          <Link className="flex hover:text-primary gap-1" href={link.href}>
-            {link.icon} {t(link.label)}
+          <Link href={link.href}>
+            {isDrawer ? (
+              <DialogClose className="flex hover:text-primary gap-4">
+                {link.icon} {t(link.label)}
+              </DialogClose>
+            ) : (
+              <span className="flex hover:text-primary gap-2">
+                {link.icon} {t(link.label)}
+              </span>
+            )}
           </Link>
         </li>
       ))}

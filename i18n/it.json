@@ -142,8 +142,11 @@
   },
 
   "Certifications": {
-    "title": "Certificazioni",
-    "search": "Cerca"
+    "title": "Le mie certificazioni",
+    "search": "Cerca",
+    "all": "Tutte",
+    "found": "Certificazioni trovate:",
+    "placeholde": "Cerca titolo..."
   },
 
   "Hobbies": {
