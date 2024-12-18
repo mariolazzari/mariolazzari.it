@@ -1,13 +1,19 @@
 import { getNpms } from "@/actions/npm";
+import { NpmCard } from "@/components/NpmCard";
 
 async function ProjectsPage() {
   const npms = await getNpms();
 
   return (
     <section>
-      <div>
+      <div className="flex justify-center items-center flex-wrap gap-16">
         {npms.objects.map(npm => (
-          <div> {npm.package.name}</div>
+          <NpmCard
+            key={npm.package.name}
+            npm={npm.package}
+            downloads={npm.downloads}
+            score={npm.score}
+          />
         ))}
       </div>
     </section>
