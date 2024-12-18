@@ -149,6 +149,10 @@
     "placeholde": "Search title..."
   },
 
+  "Projects": {
+    "title": "My projects"
+  },
+
   "Hobbies": {
     "pageTitle": "Hobbies - Mario Lazzari",
     "title": "My hobbies",
