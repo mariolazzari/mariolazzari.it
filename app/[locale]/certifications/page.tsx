@@ -10,9 +10,10 @@ type Props = PageProps<void, { search: string }>;
 
 async function CertificationsPage({ searchParams }: Props) {
   const { search = "" } = await searchParams;
-  const certs = getCertifications(search);
-
-  const t = await getTranslations("Certifications");
+  const [certs, t] = await Promise.all([
+    getCertifications(search),
+    getTranslations("Certifications"),
+  ]);
 
   return (
     <section className="flex flex-col items-center gap-8">
