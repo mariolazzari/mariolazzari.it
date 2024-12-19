@@ -9,8 +9,19 @@ import {
 import { NpmCardProps } from "./NpmCardProps";
 import { LinkIcon, Download } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import { getNpmDownloads } from "@/actions/npm";
+import { subYears } from "date-fns";
+import { Area } from "../Charts";
 
-export function NpmCard({ npm, downloads }: NpmCardProps) {
+export async function NpmCard({ npm, downloads }: NpmCardProps) {
+  const counts = await getNpmDownloads(
+    npm.name,
+    subYears(new Date(), 1),
+    new Date()
+  );
+
+  console.log(counts.downloads);
+
   return (
     <Link href={npm.links.npm} target="_blank">
       <Card className="w-[350px] h-[400px]">
@@ -20,7 +31,11 @@ export function NpmCard({ npm, downloads }: NpmCardProps) {
             {npm.description}
           </CardDescription>
         </CardHeader>
-        <CardContent className="h-[220px]"></CardContent>
+        <CardContent className="h-[220px]">
+          <Area
+            data={counts.downloads.map(d => ({ x: d.day, y: d.downloads }))}
+          />
+        </CardContent>
         <CardFooter className="flex justify-between">
           <LinkIcon />
 
