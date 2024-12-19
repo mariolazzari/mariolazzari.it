@@ -40,7 +40,7 @@ async function HomePage() {
     }),
     getUserInfoExtra(githubUser),
   ]);
-  const certs: Certification[] = getLastCertifications();
+  const certs: Certification[] = await getLastCertifications();
 
   return (
     <div className="flex flex-col items-center">
