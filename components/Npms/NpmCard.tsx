@@ -10,14 +10,14 @@ import { NpmCardProps } from "./NpmCardProps";
 import { LinkIcon, Download } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { getNpmDownloads } from "@/actions/npm";
-import { subYears } from "date-fns";
+import { subYears, startOfYear, endOfYear } from "date-fns";
 import { Area } from "@/components/Charts";
 
-export async function NpmCard({ npm, downloads }: NpmCardProps) {
+export async function NpmCard({ npm, downloads, year = "last" }: NpmCardProps) {
   const counts = await getNpmDownloads(
     npm.name,
-    subYears(new Date(), 1),
-    new Date()
+    year === "last" ? subYears(new Date(), 1) : startOfYear(new Date(year)),
+    year === "last" ? new Date() : endOfYear(new Date(year))
   );
 
   return (

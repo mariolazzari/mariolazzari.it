@@ -6,4 +6,5 @@ export type LinkButtonProps = {
 } & Partial<{
   icon: ReactNode;
   className: string;
+  variant: "default" | "outline";
 }>;
