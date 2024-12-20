@@ -1,8 +1,9 @@
-type DataValue = {
-  x: string;
-  y: number;
-};
+type Size = number | string;
 
 export type AreaProps = {
-  data: DataValue[];
-};
+  series: ApexAxisChartSeries;
+} & Partial<{
+  width: Size;
+  height: Size;
+  showLegend: boolean;
+}>;
