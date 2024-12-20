@@ -20,8 +20,6 @@ export async function NpmCard({ npm, downloads }: NpmCardProps) {
     new Date()
   );
 
-  console.log(counts.downloads);
-
   return (
     <Link href={npm.links.npm} target="_blank">
       <Card className="w-[350px] h-[400px]">
