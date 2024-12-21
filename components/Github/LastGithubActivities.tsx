@@ -9,7 +9,8 @@ import { LinkButton } from "../LinkButton";
 export function LastGithubActivities({
   info,
   infoExtra,
-}: LastGithubActivitiesProps) {
+}: // repos,
+LastGithubActivitiesProps) {
   const t = useTranslations("Home");
 
   if (!info) {
@@ -24,6 +25,11 @@ export function LastGithubActivities({
       </div>
       <Calendar username={info.login} year="last" />
       <User info={info} extra={infoExtra} />
+
+      {/* {repos.map(repo => (
+        <div key={repo.name}>{repo.name}</div>
+      ))} */}
+
       <LinkButton href="/projects" label="Progetti" />
     </section>
   );

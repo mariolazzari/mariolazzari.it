@@ -42,6 +42,8 @@ async function HomePage() {
   ]);
   const certs: Certification[] = await getLastCertifications();
 
+  console.log(lastRepos);
+
   return (
     <div className="flex flex-col items-center">
       <Hero />

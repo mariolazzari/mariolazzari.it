@@ -21,9 +21,9 @@ export async function NpmCard({ npm, downloads, year = "last" }: NpmCardProps) {
   );
 
   return (
-    <Card className="w-[350px] h-[400px]">
+    <Card className="group w-[350px] h-[400px] border-muted hover:border-primary">
       <CardHeader>
-        <CardTitle>{npm.name}</CardTitle>
+        <CardTitle className="group-hover:text-primary">{npm.name}</CardTitle>
         <CardDescription className="h-[50px]">
           {npm.description}
         </CardDescription>
@@ -39,7 +39,11 @@ export async function NpmCard({ npm, downloads, year = "last" }: NpmCardProps) {
         />
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Link href={npm.links.npm} target="_blank">
+        <Link
+          className="group-hover:animate-bounce"
+          href={npm.links.npm}
+          target="_blank"
+        >
           <LinkIcon />
         </Link>
 
