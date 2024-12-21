@@ -7,6 +7,7 @@ import { Subtitle } from "@/components/Typography";
 import { PageProps } from "@/types/PageProps";
 import { Year } from "@/types/Year";
 import { getLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
 type Props = PageProps<void, { year: string }>;
 
@@ -27,6 +28,7 @@ async function ProjectsPage({ searchParams }: Props) {
 
   const resNpms = await getNpms();
   const locale = await getLocale();
+  const t = await getTranslations("Projects");
 
   // todo: add github last repos
   console.log(lastRepos);
@@ -55,7 +57,7 @@ async function ProjectsPage({ searchParams }: Props) {
 
   return (
     <section className="flex flex-col items-center gap-8">
-      <Subtitle text="I miei progetti" />
+      <Subtitle text={t("title")} />
       {renderButtons(year)}
       <Github info={githubUser} extra={extra} year={year as Year} />
       <Npms npms={resNpms.objects} year={year as Year} locale={locale} />

@@ -150,7 +150,9 @@
   },
 
   "Projects": {
-    "title": "I miei progetti"
+    "title": "I miei progetti",
+    "myGithub": "Il mio profilo Github",
+    "myNpm": "I miei pacchetti Npm"
   },
 
   "Hobbies": {
