@@ -1,10 +1,8 @@
-import { YearsPicker } from "../Pickers/YearsPicker";
 import { Subtitle } from "../Typography";
 import { NpmCard } from "./NpmCard";
 import { NpmsProps } from "./NpmsProps";
-import { redirect } from "@/i18n/routing";
 
-export function Npms({ npms, year = "last", locale }: NpmsProps) {
+export function Npms({ npms, year = "last" }: NpmsProps) {
   return (
     <div className="flex flex-col items-center gap-4">
       <Subtitle text="I mie pacchetti NPM" />
