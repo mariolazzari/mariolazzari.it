@@ -1,16 +1,18 @@
 import { FaGithub } from "react-icons/fa6";
 import { Calendar } from "./Calendar";
 import { LastGithubActivitiesProps } from "./LastGithubActivitiesProps";
+import { RepositoryCard } from "./ReposirotyCard";
 import { User } from "./User";
 import { useTranslations } from "next-intl";
 import { Subtitle } from "../Typography";
 import { LinkButton } from "../LinkButton";
+import { Repositories } from "./Repositories";
 
 export function LastGithubActivities({
   info,
   infoExtra,
-}: // repos,
-LastGithubActivitiesProps) {
+  repos,
+}: LastGithubActivitiesProps) {
   const t = useTranslations("Home");
 
   if (!info) {
@@ -25,11 +27,7 @@ LastGithubActivitiesProps) {
       </div>
       <Calendar username={info.login} year="last" />
       <User info={info} extra={infoExtra} />
-
-      {/* {repos.map(repo => (
-        <div key={repo.name}>{repo.name}</div>
-      ))} */}
-
+      <Repositories title="My last activities" repos={repos} />
       <LinkButton href="/projects" label="Progetti" />
     </section>
   );

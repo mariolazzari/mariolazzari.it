@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 async function HomePage() {
   // data fetching
   const githubUser = await getUserInfo();
-  const [lastRepos, extra] = await Promise.all([
+  const [lastRepos, extra, certs] = await Promise.all([
     getUserRepos({
       direction: "desc",
       page: 1,
@@ -39,10 +39,8 @@ async function HomePage() {
       username: "mariolazzari",
     }),
     getUserInfoExtra(githubUser),
+    getLastCertifications(),
   ]);
-  const certs: Certification[] = await getLastCertifications();
-
-  console.log(lastRepos);
 
   return (
     <div className="flex flex-col items-center">

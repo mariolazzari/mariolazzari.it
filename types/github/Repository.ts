@@ -1,7 +1,7 @@
 import { UserInfo } from "./UserInfo";
 import { Visibility } from "./Visibility";
 
-export type Repo = {
+export type Repository = {
   id: number;
   node_id: string;
   name: string;

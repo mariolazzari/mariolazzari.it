@@ -1,6 +1,6 @@
 "use server";
 
-import { Repo } from "@/types/github/Repo";
+import { Repository } from "@/types/github/Repository";
 import { UserInfo } from "@/types/github/UserInfo";
 import { UserInfoExtra } from "@/types/github/UserInfoExtra";
 import { UserReposParams } from "@/types/github/UserReposParams";
@@ -29,7 +29,7 @@ export async function getUserRepos({
   direction = "desc",
   per_page = 5,
   page = 1,
-}: UserReposParams): Promise<Repo[]> {
+}: UserReposParams): Promise<Repository[]> {
   const { data } = await octokit.repos.listForUser({
     username,
     sort,
@@ -38,7 +38,7 @@ export async function getUserRepos({
     page,
   });
 
-  return data as Repo[];
+  return data as Repository[];
 }
 
 // user extra infos

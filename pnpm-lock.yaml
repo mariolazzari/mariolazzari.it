@@ -72,8 +72,8 @@ importers:
         specifier: 19.0.0
         version: 19.0.0(react@19.0.0)
       react-github-calendar:
-        specifier: ^4.5.1
-        version: 4.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: ^4.5.2
+        version: 4.5.2(react@19.0.0)
       react-icons:
         specifier: ^5.4.0
         version: 5.4.0(react@19.0.0)
@@ -1952,11 +1952,10 @@ packages:
     peerDependencies:
       react: '>=16.13.1'
 
-  react-github-calendar@4.5.1:
-    resolution: {integrity: sha512-upsftOWCzsxMFdr36JaPLaoHFhFtEcfExVdmHqfRwmRHwosaET4NxJito38ywkAXTwyLnf/KdxYYFpDaLaUBgg==}
+  react-github-calendar@4.5.2:
+    resolution: {integrity: sha512-QgX21sjB5+aLWMDQELtZZOQtcoBW9IuPZSf84PBuUwbByfcQLvzLttlQFemC/EmLJ3pRX0YxjYVoM01hxQ9isw==}
     peerDependencies:
-      react: ^17.0.0 || ^18.0.0
-      react-dom: ^17.0.0 || ^18.0.0
+      react: ^18.0.0 || ^19.0.0
 
   react-icons@5.4.0:
     resolution: {integrity: sha512-7eltJxgVt7X64oHh6wSWNwwbKTCtMfK35hcjvJS0yxEAhPM8oUKdS3+kqaW1vicIltw+kR2unHaa12S9pPALoQ==}
@@ -4324,11 +4323,10 @@ snapshots:
       '@babel/runtime': 7.26.0
       react: 19.0.0
 
-  react-github-calendar@4.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  react-github-calendar@4.5.2(react@19.0.0):
     dependencies:
       react: 19.0.0
       react-activity-calendar: 2.7.5(react@19.0.0)
-      react-dom: 19.0.0(react@19.0.0)
       react-error-boundary: 4.1.2(react@19.0.0)
 
   react-icons@5.4.0(react@19.0.0):
