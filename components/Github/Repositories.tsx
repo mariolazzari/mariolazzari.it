@@ -1,5 +1,5 @@
 import { Subtitle } from "../Typography";
-import { RepositoryCard } from "./ReposirotyCard";
+import { RepositoryCard } from "./RepositoryCard";
 import { RepositoriesProps } from "./RepositoriesProps";
 
 export function Repositories({ title = "", repos = [] }: RepositoriesProps) {
@@ -18,6 +18,7 @@ export function Repositories({ title = "", repos = [] }: RepositoriesProps) {
             forks={repo.forks}
             isPrivate={repo.private}
             updated={repo.updated_at}
+            href={repo.archive_url}
           />
         ))}
       </div>

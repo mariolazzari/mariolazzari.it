@@ -1,7 +1,6 @@
 import { FaGithub } from "react-icons/fa6";
 import { Calendar } from "./Calendar";
 import { LastGithubActivitiesProps } from "./LastGithubActivitiesProps";
-import { RepositoryCard } from "./ReposirotyCard";
 import { User } from "./User";
 import { useTranslations } from "next-intl";
 import { Subtitle } from "../Typography";
@@ -27,7 +26,7 @@ export function LastGithubActivities({
       </div>
       <Calendar username={info.login} year="last" />
       <User info={info} extra={infoExtra} />
-      <Repositories title="My last activities" repos={repos} />
+      <Repositories title={t("lastActivities")} repos={repos} />
       <LinkButton href="/projects" label="Progetti" />
     </section>
   );

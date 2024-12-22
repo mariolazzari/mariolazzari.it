@@ -2,7 +2,6 @@ import { Hero } from "@/components/Hero";
 import { SkillsBadges } from "@/components/SkillsBadges";
 import { getUserInfo, getUserRepos, getUserInfoExtra } from "@/actions/github";
 import { LastGithubActivities } from "@/components/Github";
-import { Certification } from "@/types/Certification";
 import { getLastCertifications } from "@/actions/certifications";
 import { LastCertifications } from "@/components/Certifications";
 import { Hobbies } from "@/components/Hobbies";

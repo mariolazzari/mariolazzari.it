@@ -7,4 +7,5 @@ export type RepositoryCardProps = {
   stars: number;
   watchers: number;
   forks: number;
+  href: string;
 };
