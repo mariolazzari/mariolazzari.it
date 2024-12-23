@@ -34,7 +34,7 @@ async function HomePage() {
     getUserRepos({
       direction: "desc",
       page: 1,
-      per_page: 5,
+      per_page: 6,
       username: "mariolazzari",
     }),
     getUserInfoExtra(githubUser),
