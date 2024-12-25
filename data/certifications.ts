@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "First steps in Go",
+    date: "2024-12-24T00:00:00.000Z",
+    url: "https://learn.microsoft.com/api/achievements/share/en-us/MarioLazzari-9041/9XPESD6U?sharingId=D7AF38F33D961213",
+    imagePath: "/certifications/go-first-steps.png",
+  },
+  {
     title: "Beginner's TypeScript",
     date: "2024-03-21T00:00:00.000Z",
     url: "https://res.cloudinary.com/total-typescript/image/upload/v1710970757/certificate/881432f4-b588-4e9d-b47b-0eec6f3220d7/beginners-typescript.png",

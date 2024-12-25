@@ -30,9 +30,6 @@ async function ProjectsPage({ searchParams }: Props) {
   const locale = await getLocale();
   const t = await getTranslations("Projects");
 
-  // todo: add github last repos
-  console.log(lastRepos);
-
   const renderButtons = (year: string) => {
     let curr = new Date().getFullYear();
     const years: Year[] = ["last", curr];
