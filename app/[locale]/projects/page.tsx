@@ -16,11 +16,11 @@ async function ProjectsPage({ searchParams }: Props) {
 
   // data fetching
   const githubUser = await getUserInfo();
-  const [lastRepos, extra] = await Promise.all([
+  const [repos, extra] = await Promise.all([
     getUserRepos({
       direction: "desc",
       page: 1,
-      per_page: 5,
+      per_page: 6,
       username: "mariolazzari",
     }),
     getUserInfoExtra(githubUser),
@@ -56,7 +56,12 @@ async function ProjectsPage({ searchParams }: Props) {
     <section className="flex flex-col items-center gap-8">
       <Subtitle text={t("title")} />
       {renderButtons(year)}
-      <Github info={githubUser} extra={extra} year={year as Year} />
+      <Github
+        info={githubUser}
+        extra={extra}
+        year={year as Year}
+        repos={repos}
+      />
       <Npms npms={resNpms.objects} year={year as Year} locale={locale} />
     </section>
   );
