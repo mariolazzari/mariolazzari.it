@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Moon, Sun, Settings } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -12,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function ThemeToggle() {
+  const [mounted, setMounted] = useState(false);
   const { setTheme, themes } = useTheme();
 
   const renderIcon = (theme: string) => {
@@ -26,6 +28,14 @@ export function ThemeToggle() {
         return <Settings />;
     }
   };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <DropdownMenu>

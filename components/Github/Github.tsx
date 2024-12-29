@@ -14,6 +14,7 @@ export async function Github({ info, extra, year = "last" }: GithubProps) {
       <Subtitle text={t("myGithub")} />
       <Calendar username={info.login} year={year} />
       <User info={info} extra={extra} />
+      
     </div>
   );
 }

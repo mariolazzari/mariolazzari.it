@@ -15,7 +15,7 @@ async function RootLayout({ children, params }: Layout) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={inter.className}>
+    <html lang={locale} className={inter.className} suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <NextIntlClientProvider messages={messages}>
