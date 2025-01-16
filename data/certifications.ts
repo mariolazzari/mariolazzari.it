@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Learning Go",
+    date: "2025-01-15T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/5f36d456f078354bb21c7726362cb89592b2ed0afd0c8e3659daab399d2eb938?trk=share_certificate",
+    imagePath: "/certifications/learning-go.png",
+  },
+  {
     title: "First steps in Go",
     date: "2024-12-24T00:00:00.000Z",
     url: "https://learn.microsoft.com/api/achievements/share/en-us/MarioLazzari-9041/9XPESD6U?sharingId=D7AF38F33D961213",
