@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Learning Go 2024",
+    date: "2025-01-24T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/f0c41e9beef20ebd81306dadcb86b41edda567d8de9d5cc21d0267d831e709b5?trk=share_certificate",
+    imagePath: "/certifications/learning-go25.png",
+  },
+  {
     title: "NextJS eCommerce",
     date: "2025-01-21T00:00:00.000Z",
     url: "https://www.udemy.com/share/10cpvd3@7x45SOybrQhKtC7sAdbfUTWnecZ5AB6LfHg7LoS-e9nqV-duKyMUrgvjOOWVI8o=/",
@@ -14,7 +20,7 @@ export const certifications: Certification[] = [
     imagePath: "/certifications/ai-react.png",
   },
   {
-    title: "Learning Go",
+    title: "Learning Go 2021",
     date: "2025-01-15T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/5f36d456f078354bb21c7726362cb89592b2ed0afd0c8e3659daab399d2eb938?trk=share_certificate",
     imagePath: "/certifications/learning-go.png",
