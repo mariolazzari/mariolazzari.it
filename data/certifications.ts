@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Learning GraphQL",
+    date: "2025-01-25T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/16ce494e3680b44a48036c419aedee554fd90702ed8d713db6e02f2b0570f570?trk=share_certificate",
+    imagePath: "/certifications/learning-graphql.png",
+  },
+  {
     title: "Learning Go 2024",
     date: "2025-01-24T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/f0c41e9beef20ebd81306dadcb86b41edda567d8de9d5cc21d0267d831e709b5?trk=share_certificate",
