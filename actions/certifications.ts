@@ -1,6 +1,8 @@
 "use server";
 
 import { certifications } from "@/data/certifications";
+import connectMongo from "@/lib/db";
+import CertificationModel from "@/models/Certification";
 import { Certification } from "@/types/Certification";
 import { Comparator } from "@/types/Comparator";
 
@@ -35,4 +37,12 @@ export async function getCertifications(search = ""): Promise<Certification[]> {
     .sort(comparator);
 
   return new Promise(res => res(filtered.reverse()));
+}
+
+export async function getCertificationsTest() {
+  await connectMongo();
+
+  const certs = await CertificationModel.find();
+
+  return certs;
 }

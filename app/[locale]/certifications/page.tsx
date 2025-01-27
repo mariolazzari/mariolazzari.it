@@ -1,4 +1,7 @@
-import { getCertifications } from "@/actions/certifications";
+import {
+  getCertifications,
+  //  getCertificationsTest,
+} from "@/actions/certifications";
 import { Certification } from "@/components/Certifications";
 import { CertificationsFilter } from "@/components/Certifications/CertificationsFilter";
 import { Paragraph, Subtitle } from "@/components/Typography";
@@ -14,6 +17,9 @@ async function CertificationsPage({ searchParams }: Props) {
     getCertifications(search),
     getTranslations("Certifications"),
   ]);
+
+  // const test = await getCertificationsTest();
+  // console.log("first", test);
 
   return (
     <section className="flex flex-col items-center gap-8">
