@@ -1,5 +1,5 @@
 function HobbiesPage() {
-  return <div>Hobbies Page</div>;
+  return <>Hobbies</>;
 }
 
 export default HobbiesPage;
