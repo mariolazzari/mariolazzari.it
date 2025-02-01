@@ -5,7 +5,7 @@ import { generateText } from "ai";
 async function DeepSeekPage() {
   const openai = new OpenAI({
     baseURL: "https://api.deepseek.com",
-    apiKey: "gLIV8/o58kPDoAHq81VNGEWOkzV1xoBHiVpI2CuE/cW3fXSD6xaM50a2D2w3Ek6E",
+    apiKey: process.env.DEEPSEEK_TOKEN,
   });
 
   const completion = await openai.chat.completions.create({
