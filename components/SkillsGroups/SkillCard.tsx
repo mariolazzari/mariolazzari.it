@@ -19,7 +19,7 @@ export function SkillCard({ skill }: SkillCardProps) {
 
   return (
     <Link href={url} target="_blank">
-      <Card className="group w-[350px] border-muted hover:border-primary bg-gradient-to-br from-background to-secondary">
+      <Card className="group w-[350px] border-muted hover:border-primary bg-linear-to-br from-background to-secondary">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-xl font-semibold group-hover:text-primary">
             {icon} {name}

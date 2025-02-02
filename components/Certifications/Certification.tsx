@@ -19,7 +19,7 @@ export function Certification({ certification }: CertificationProps) {
 
   return (
     <Link href={url} target="_blank">
-      <Card className="group border-muted hover:border-primary bg-gradient-to-br from-background to-secondary w-[350px]">
+      <Card className="group border-muted hover:border-primary bg-linear-to-br from-background to-secondary w-[350px]">
         <CardHeader className="h-[100px]">
           <CardTitle className="group-hover:text-primary">{title}</CardTitle>
           <CardDescription>{toNow(date, locale)}</CardDescription>
