@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGO_URI = process.env.MONGO_URI || "";
-
+const MONGO_URI = process.env.MONGO_URI ?? "";
 if (!MONGO_URI) {
   throw new Error(
     "Please define the MONGO_URI environment variable in your .env.local file"
@@ -23,7 +22,10 @@ declare global {
 let cached: MongooseCache = global.mongoose || { conn: null, promise: null };
 
 if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
+  cached = global.mongoose = {
+    conn: null,
+    promise: null,
+  };
 }
 
 async function connectMongo() {
