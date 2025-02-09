@@ -29,7 +29,7 @@ export const certifications: Certification[] = [
     title: "Learning Go 2024",
     date: "2025-01-24T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/f0c41e9beef20ebd81306dadcb86b41edda567d8de9d5cc21d0267d831e709b5?trk=share_certificate",
-    imagePath: "/certifications/learning-go25.png",
+    imagePath: "/certifications/learnng-go25.png",
   },
   {
     title: "NextJS eCommerce",

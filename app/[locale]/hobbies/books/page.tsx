@@ -1,6 +1,6 @@
 import Wip from "@/components/Wip";
 
-function SportPage() {
+function BooksPage() {
   return (
     <>
       <Wip />
@@ -8,4 +8,4 @@ function SportPage() {
   );
 }
 
-export default SportPage;
+export default BooksPage;

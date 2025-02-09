@@ -1,5 +1,11 @@
+import { Hobbies } from "@/components/Hobbies";
+
 function HobbiesPage() {
-  return <>Hobbies</>;
+  return (
+    <>
+      <Hobbies />
+    </>
+  );
 }
 
 export default HobbiesPage;

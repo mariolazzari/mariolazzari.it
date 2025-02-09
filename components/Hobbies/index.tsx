@@ -65,7 +65,7 @@ export function Hobbies() {
       title: t("cinTitle"),
       icon: <Video size={32} />,
       description: t("cinText"),
-      href: "/hobbies/sport",
+      href: "/hobbies/cinema",
     },
     {
       title: t("relTitle"),
