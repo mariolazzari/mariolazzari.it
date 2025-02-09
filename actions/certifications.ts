@@ -1,7 +1,7 @@
 "use server";
 
 import { certifications } from "@/data/certifications";
-import connectMongo from "@/lib/db";
+import { connectMongo } from "@/lib/db";
 import CertificationModel from "@/models/Certification";
 import { Certification } from "@/types/Certification";
 import { Comparator } from "@/types/Comparator";
