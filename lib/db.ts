@@ -9,11 +9,16 @@ if (!MONGO_URI) {
 let isConnected = false;
 
 export async function connectMongo() {
-  if (isConnected) {
-    return;
-  }
+  try {
+    if (isConnected) {
+      return;
+    }
 
-  await mongoose.connect(MONGO_URI);
-  isConnected = true;
-  console.info("MongoDB Connected");
+    await mongoose.connect(MONGO_URI);
+    isConnected = true;
+    console.info("MongoDB Connected");
+  } catch (error) {
+    isConnected = false;
+    console.error("MongoDB connection error", error);
+  }
 }

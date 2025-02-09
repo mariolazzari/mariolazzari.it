@@ -11,7 +11,7 @@ export const certifications: Certification[] = [
     title: "Advanced TypeScript concepts",
     date: "2025-02-01T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/168271ad0f0754429c653b2d596c11f64247ea81e7adde7bcf41f40ae1e49e17?trk=share_certificate",
-    imagePath: "/certifications/qev-ts-concepts.png",
+    imagePath: "/certifications/adv-ts-concepts.png",
   },
   {
     title: "Go Standard Library",
