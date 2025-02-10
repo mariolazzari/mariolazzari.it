@@ -6,6 +6,7 @@ import { getLastCertifications } from "@/actions/certifications";
 import { LastCertifications } from "@/components/Certifications";
 import { Hobbies } from "@/components/Hobbies";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: {
@@ -29,8 +30,11 @@ export const metadata: Metadata = {
 
 async function HomePage() {
   // data fetching
-  const githubUser = await getUserInfo();
-  const [lastRepos, extra, certs] = await Promise.all([
+  const [githubUser, certs] = await Promise.all([
+    getUserInfo(),
+    getLastCertifications(),
+  ]);
+  const [lastRepos, extra] = await Promise.all([
     getUserRepos({
       direction: "desc",
       page: 1,
@@ -38,19 +42,23 @@ async function HomePage() {
       username: "mariolazzari",
     }),
     getUserInfoExtra(githubUser),
-    getLastCertifications(),
   ]);
 
   return (
     <div className="flex flex-col items-center">
       <Hero />
       <SkillsBadges />
-      <LastGithubActivities
-        info={githubUser}
-        repos={lastRepos}
-        infoExtra={extra}
-      />
-      <LastCertifications certifications={certs} />
+
+      <Suspense fallback={<p>Loading...</p>}>
+        <LastGithubActivities
+          info={githubUser}
+          repos={lastRepos}
+          infoExtra={extra}
+        />
+      </Suspense>
+      <Suspense fallback={<p>Loading...</p>}>
+        <LastCertifications certifications={certs} />
+      </Suspense>
       <Hobbies />
     </div>
   );

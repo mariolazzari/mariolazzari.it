@@ -44,6 +44,7 @@ import {
   SiTailwindcss,
   SiShadcnui,
   SiDocker,
+  SiReact,
 } from "react-icons/si";
 
 export const skills: Skill[] = [
@@ -234,7 +235,7 @@ export const skills: Skill[] = [
     type: "lib",
     name: "ReactJS",
     url: "https://reactjs.org",
-    icon: <SiPostgresql />,
+    icon: <SiReact />,
   },
   {
     id: "nextjs",
