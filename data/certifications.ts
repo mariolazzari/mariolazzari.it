@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Introduction to MongoDB",
+    date: "2025-02-10T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/21aa75c2dbc0b46ffddb591f3a9171ac860f6cd6ef364af797459646d112b2bb?trk=share_certificate",
+    imagePath: "/certifications/mongo-cert.png",
+  },
+  {
     title: "Go Frameworks",
     date: "2025-02-05T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/e53744664de444e852aac1242ec4f12116809e2605c6ceb6d2cbc36f189c2928?trk=share_certificate",
