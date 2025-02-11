@@ -5,7 +5,6 @@ import {
   FaInstagram,
   FaFacebook,
   FaTwitter,
-  FaCopyright,
 } from "react-icons/fa";
 
 export function Footer() {
@@ -34,17 +33,18 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="h-[50px] flex flex-col items-center py-2">
-      <div className="flex gap-2">
-        {links.map(link => (
-          <Link key={link.href} href={link.href} target="_blank">
-            {link.icon}
+    <footer className="h-[50px] flex flex-col items-center justify-evenly">
+      <div className="flex gap-4 text-xl">
+        {links.map(({ href, icon }) => (
+          <Link key={href} href={href} target="_blank" aria-label={href}>
+            {icon}
           </Link>
         ))}
       </div>
-      <span className="flex items-center gap-2 text-sm">
-        <FaCopyright size={16} /> Mario Lazzari {year}
-      </span>
+
+      <div className="flex items-center gap-2 text-xs">
+        &copy;Mario Lazzari {year}
+      </div>
     </footer>
   );
 }

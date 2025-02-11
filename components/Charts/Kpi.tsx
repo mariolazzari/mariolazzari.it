@@ -9,9 +9,9 @@ export function Kpi({ title, icon, value }: KpisProps) {
       <h6 className="text-4xl font-semibold text-center group-hover:text-primary">
         {value}
       </h6>
-      <h5 className="text-lg font-semibold group-hover:text-primary">
+      <h6 className="text-lg font-semibold group-hover:text-primary">
         {title}
-      </h5>
+      </h6>
     </div>
   );
 }

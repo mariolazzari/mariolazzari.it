@@ -121,7 +121,7 @@ export const skills: Skill[] = [
   {
     id: "go",
     type: "lang",
-    name: "Go",
+    name: "Go Language",
     url: "https://go.dev/",
     icon: <SiGo />,
   },

@@ -1,8 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { SkillsBadges } from "@/components/SkillsBadges";
-import { getUserInfo, getUserRepos, getUserInfoExtra } from "@/actions/github";
 import { LastGithubActivities } from "@/components/Github";
-import { getLastCertifications } from "@/actions/certifications";
 import { LastCertifications } from "@/components/Certifications";
 import { Hobbies } from "@/components/Hobbies";
 import { Metadata } from "next";
@@ -28,36 +26,18 @@ export const metadata: Metadata = {
   ],
 };
 
-async function HomePage() {
-  // data fetching
-  const [githubUser, certs] = await Promise.all([
-    getUserInfo(),
-    getLastCertifications(),
-  ]);
-  const [lastRepos, extra] = await Promise.all([
-    getUserRepos({
-      direction: "desc",
-      page: 1,
-      per_page: 6,
-      username: "mariolazzari",
-    }),
-    getUserInfoExtra(githubUser),
-  ]);
-
+function HomePage() {
   return (
     <div className="flex flex-col items-center">
       <Hero />
       <SkillsBadges />
 
-      <Suspense fallback={<p>Loading...</p>}>
-        <LastGithubActivities
-          info={githubUser}
-          repos={lastRepos}
-          infoExtra={extra}
-        />
+      <Suspense>
+        <LastCertifications />
       </Suspense>
-      <Suspense fallback={<p>Loading...</p>}>
-        <LastCertifications certifications={certs} />
+
+      <Suspense>
+        <LastGithubActivities />
       </Suspense>
       <Hobbies />
     </div>
