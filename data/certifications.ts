@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "TypeScript monorepo",
+    date: "2025-02-13T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/964799e136aa9006bb8a0adb1b63420e5d8ff060a819e7ade7c505cc4bf0bfdc?trk=share_certificate",
+    imagePath: "/certifications/ts-monorepo.png",
+  },
+  {
     title: "Introduction to MongoDB",
     date: "2025-02-10T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/21aa75c2dbc0b46ffddb591f3a9171ac860f6cd6ef364af797459646d112b2bb?trk=share_certificate",
