@@ -1,10 +1,21 @@
+import { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-};
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "apod.nasa.gov",
+        port: "",
+        pathname: "/**",
+        search: "",
+      },
+    ],
+  },
+} satisfies NextConfig;
 
 export default withNextIntl(nextConfig);

@@ -1,11 +1,17 @@
+import { getToday } from "@/actions/nasa";
 import { Subtitle } from "@/components/Typography";
+import { Picture } from "./Picture";
 
-function ApodPage() {
+async function Apod() {
+  const todayImg = await getToday();
+
   return (
-    <div>
-      <Subtitle text="Nasa picture of the day" />
+    <div className="flex flex-col gap-8 items-center">
+      <Subtitle text="Nasa astronomy picture of the day" />
+
+      {todayImg.success && <Picture apod={todayImg.data} />}
     </div>
   );
 }
 
-export default ApodPage;
+export default Apod;
