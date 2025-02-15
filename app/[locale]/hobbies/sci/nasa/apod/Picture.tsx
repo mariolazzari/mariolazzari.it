@@ -16,7 +16,7 @@ type Props = {
 
 export function Picture({ apod }: Props) {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-96">
       <CardHeader>
         <CardTitle>{apod.title}</CardTitle>
         <CardDescription>{apod.date}</CardDescription>
@@ -25,8 +25,8 @@ export function Picture({ apod }: Props) {
         <Image
           src={apod.url}
           alt={apod.title}
-          width={350}
-          height={200}
+          width={400}
+          height={300}
           priority
         />
         <div className="h-64 overflow-y-auto mt-4">
