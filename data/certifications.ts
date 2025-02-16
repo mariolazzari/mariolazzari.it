@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Functional programming with ES6",
+    date: "2025-02-16T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/5d7f42701f8506c3f9679d5891838dd2d5125eac67de419be359642565a20266?trk=share_certificate",
+    imagePath: "/certifications/func-es6.png",
+  },
+  {
     title: "TypeScript monorepo",
     date: "2025-02-13T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/964799e136aa9006bb8a0adb1b63420e5d8ff060a819e7ade7c505cc4bf0bfdc?trk=share_certificate",

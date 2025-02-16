@@ -3,8 +3,8 @@ import Apod from "./apod";
 
 function NasaPage() {
   return (
-    <Tabs defaultValue="apod" className="min-h-[80dvh]">
-      <TabsList className="w-full">
+    <Tabs defaultValue="apod" className="min-h-[80dvh] te ">
+      <TabsList className="">
         <TabsTrigger value="apod">APOD</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
       </TabsList>

@@ -14,7 +14,7 @@ type Props = PageProps<void, { search: string }>;
 async function CertificationsPage({ searchParams }: Props) {
   const { search = "" } = await searchParams;
   const [certs, t] = await Promise.all([
-    getCertifications(search),
+    getCertifications(search ?? ""),
     getTranslations("Certifications"),
   ]);
 
