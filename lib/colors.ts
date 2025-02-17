@@ -12,6 +12,9 @@ export function getLanguageColor(language: string): string | undefined {
     case "Html":
       return "#e34c27";
 
+    case "Python":
+      return "#3572a5";
+
     default:
       return undefined;
   }
