@@ -6,6 +6,7 @@ import { Layout } from "@/types/Layout";
 import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { Cookies } from "@/components/Cookies";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,8 @@ async function RootLayout({ children, params }: Layout) {
               {children}
             </main>
             <Footer />
+
+            <Cookies />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
