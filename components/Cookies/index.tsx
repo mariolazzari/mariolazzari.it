@@ -8,10 +8,46 @@ import { CookiesProps } from "./CookiesProps";
 
 export function Cookies({
   variant = "default",
+  locale = "en",
   onAccept,
   onDecline,
 }: CookiesProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const locales = {
+    en: {
+      title: "We use cookies",
+      accept: "Accept",
+      decline: "Decline",
+      learnMore: "Learn more",
+      message:
+        "We use cookies to ensure you get the best experience on our website. For more information on how we use cookies, please see our cookie policy.",
+      clicking: "By clicking",
+      agree: "you agree to our use of cookies.",
+    },
+    it: {
+      title: "Utilizziamo i cookie",
+      accept: "Accetta",
+      decline: "Rifiuta",
+      learnMore: "Scopri di più",
+      message:
+        "Utilizziamo i cookie per garantire che tu possa avere la migliore esperienza sul nostro sito. Per maggiori informazioni su come utilizziamo i cookie, consulta la nostra politica sui cookie.",
+      clicking: "Cliccando",
+      agree: "accetti l'uso dei cookie.",
+    },
+    br: {
+      title: "Nós usamos cookies",
+      accept: "Aceitar",
+      decline: "Recusar",
+      learnMore: "Saiba mais",
+      message:
+        "Usamos cookies para garantir que você tenha a melhor experiência em nosso site. Para obter mais informações sobre como usamos cookies, consulte nossa política de cookies.",
+      clicking: "Ao clicar",
+      agree: "você concorda com o uso de cookies.",
+    },
+  };
+
+  const { title, message, clicking, accept, decline, agree } = locales[locale];
 
   const getStyles = useCallback(() => {
     if (variant === "default") {
@@ -43,15 +79,13 @@ export function Cookies({
     onDecline?.();
   };
 
+  // check if cookieConsent is set
   useEffect(() => {
     try {
-      if (document.cookie.includes("cookieConsent=true")) {
-        setIsOpen(false);
-      } else {
-        setIsOpen(true);
-      }
+      const cookieConsent = document.cookie.includes("cookieConsent=true");
+      setIsOpen(!cookieConsent);
     } catch (ex) {
-      console.log("Cookies consent error", ex);
+      console.error("Cookies consent error", ex);
     }
   }, []);
 
@@ -60,35 +94,33 @@ export function Cookies({
       <div className="dark:bg-card bg-background rounded-md m-3 border border-border shadow-lg">
         <div className="grid gap-2">
           <div className="border-b border-border h-14 flex items-center justify-between p-4">
-            <h2 className="text-md font-medium">I use cookies</h2>
+            <h2 className="text-md font-medium">{title}</h2>
             <CookieIcon className="h-[1.2rem] w-[1.2rem]" />
           </div>
           <div className="p-2">
             <p className="text-xs font-normal text-start">
-              I use cookies to ensure you get the best experience on our
-              website. For more information on how we use cookies, please see
-              our cookie policy.
+              {message}
               <span className="text-xs">
-                By clicking
-                <span className="font-medium opacity-80">Accept</span>, you
-                agree to our use of cookies.
+                {clicking}
+                <span className="font-medium opacity-80">{accept}</span>
+                {agree}
               </span>
-              <br />
+              {/* <br />
               <a href="#" className="text-xs underline">
-                Learn more.
-              </a>
+                {learnMore}
+              </a> */}
             </p>
           </div>
           <div className="flex gap-2 p-4 py-5 border-t border-border dark:bg-background/20">
             <Button onClick={onAcceptClick} className="w-full">
-              Accept
+              {accept}
             </Button>
             <Button
               onClick={onDeclineClick}
               className="w-full"
               variant="secondary"
             >
-              Decline
+              {decline}
             </Button>
           </div>
         </div>
