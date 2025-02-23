@@ -13,7 +13,7 @@ export function Flags() {
   ];
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center flex-1">
       {flags.map(({ img, locale }) => (
         <Link key={locale} href={path} locale={locale}>
           <Image src={img} alt={locale} width={24} height={24} priority />

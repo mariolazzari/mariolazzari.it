@@ -12,7 +12,7 @@ export function Header() {
         <Links />
       </nav>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-1 justify-end">
         <ThemeToggle />
         <Drawer />
       </div>
