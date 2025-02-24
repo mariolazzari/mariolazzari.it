@@ -1,24 +1,24 @@
 import mongoose from "mongoose";
 
-const MONGO_URI = process.env.MONGO_URI as string;
+// mongodb connection settings
+const MONGO_URI: string = process.env.MONGO_URI ?? "";
 if (!MONGO_URI) {
-  throw new Error("Please define MONGO_URI in .env.local");
+  throw new Error(
+    "Please define the MONGO_URI environment variable in .env.local"
+  );
 }
 
-// Use a global cache to prevent multiple connections in development
-let isConnected = false;
-
-export async function connectMongo() {
+export const connectMongo = async () => {
   try {
-    if (isConnected) {
+    if (mongoose.connection.readyState >= 1) {
       return;
     }
-
-    await mongoose.connect(MONGO_URI);
-    isConnected = true;
-    console.info("MongoDB Connected");
-  } catch (error) {
-    isConnected = false;
-    console.error("MongoDB connection error", error);
+    await mongoose.connect(MONGO_URI, {
+      bufferCommands: false,
+    });
+    console.info("Connected to MongoDB:", MONGO_URI);
+  } catch (ex) {
+    console.error("Error connecting to MongoDB", ex);
+    throw ex;
   }
-}
+};

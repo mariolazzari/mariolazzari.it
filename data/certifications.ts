@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Go practice",
+    date: "2025-02-24T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/5607619987ad3fbbf7d57446c1c439b225b78dede223bb6da252d6fb57fa273f?trk=share_certificate",
+    imagePath: "/certifications/go-practice.png",
+  },
+  {
     title: "Python essential training",
     date: "2025-02-22T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/cf50d6150b3f1dee09b13dca12ebb04710680b1366fa43a5dc178a44defbb21c?trk=share_certificate",
