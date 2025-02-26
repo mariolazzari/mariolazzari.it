@@ -22,7 +22,7 @@ export function SkillBadges({ icon, title, skills }: SkillBadgesProps) {
         {skills.map(skill => (
           <Link
             key={skill.id}
-            className="flex items-center gap-1 text-lg hover:text-primary"
+            className="flex items-center gap-1 text-lg hover:font-bold"
             href={skill.url}
             target="_blank"
           >

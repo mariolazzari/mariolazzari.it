@@ -51,7 +51,7 @@ export function Links({ isDrawer = false }: LinksProps) {
                 {link.icon} {t(link.label)}
               </DialogClose>
             ) : (
-              <span className="flex hover:text-primary gap-2">
+              <span className="flex hover:font-bold gap-2">
                 {link.icon} {t(link.label)}
               </span>
             )}
