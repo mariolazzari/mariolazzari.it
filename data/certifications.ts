@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Supply chain smart contracts",
+    date: "2025-02-27T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/8bb27b32bbd9d216d2190ecb1c15ab654b32ba3eaf57506316267d5bc6a86b6c?trk=share_certificate",
+    imagePath: "/certifications/supply-chain.png",
+  },
+  {
     title: "Go practice",
     date: "2025-02-24T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/5607619987ad3fbbf7d57446c1c439b225b78dede223bb6da252d6fb57fa273f?trk=share_certificate",
