@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Building Web3 Apps in React",
+    date: "2025-03-01T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/bb4db3e56c0c7ccd1b3f43f39dab9c166b06aa61b168922690ae98e2781e62f3?trk=share_certificate",
+    imagePath: "/certifications/react-web3.png",
+  },
+  {
     title: "Supply chain smart contracts",
     date: "2025-02-27T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/8bb27b32bbd9d216d2190ecb1c15ab654b32ba3eaf57506316267d5bc6a86b6c?trk=share_certificate",
