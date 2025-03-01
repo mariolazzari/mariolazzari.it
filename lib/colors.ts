@@ -6,7 +6,7 @@ export function getLanguageColor(language: string): string | undefined {
     case "typescript":
       return "#3178c6";
 
-    case "oo":
+    case "go":
       return "#00add8";
 
     case "html":
