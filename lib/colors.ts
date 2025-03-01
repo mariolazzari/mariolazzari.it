@@ -1,5 +1,5 @@
 export function getLanguageColor(language: string): string | undefined {
-  switch (language.toLowerCase()) {
+  switch (language?.toLowerCase()) {
     case "javascript":
       return "#f1e05a";
 
