@@ -15,6 +15,15 @@ export function getLanguageColor(language: string): string | undefined {
     case "python":
       return "#3572a5";
 
+    case "solidity":
+      return "#aa6746";
+
+    case "jupyter notebook":
+      return "#da5b0d";
+
+    // case "python":
+    //   return "#3572a5";
+
     default:
       return undefined;
   }

@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Applied concurrency in Go",
+    date: "2025-03-04T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/bbd1b6a8386ebdae4af712716f311114e8d0deae82f32d9a500bd267e5a69d3c?trk=share_certificate",
+    imagePath: "/certifications/go-concur.png",
+  },
+  {
     title: "Building Web3 Apps in React",
     date: "2025-03-01T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/bb4db3e56c0c7ccd1b3f43f39dab9c166b06aa61b168922690ae98e2781e62f3?trk=share_certificate",
