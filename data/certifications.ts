@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Learning NextJS",
+    date: "2025-03-07T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/12dbb4d01edfa2c7f57dac4a4e47fd2e1458b5f60a2c3bbe3e5d2d953d8d47d8?trk=share_certificate",
+    imagePath: "/certifications/learning-nextjs.png",
+  },
+  {
     title: "Applied concurrency in Go",
     date: "2025-03-04T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/bbd1b6a8386ebdae4af712716f311114e8d0deae82f32d9a500bd267e5a69d3c?trk=share_certificate",
