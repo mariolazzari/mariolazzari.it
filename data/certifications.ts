@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "TypeScript Design Patterns",
+    date: "2025-03-12T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/1c68a7dbbdb0198978ba1df403702b87db1e1bc73145951524d906d234dd1481?trk=share_certificate",
+    imagePath: "/certifications/ts-dp.png",
+  },
+  {
     title: "Learning NextJS",
     date: "2025-03-07T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/12dbb4d01edfa2c7f57dac4a4e47fd2e1458b5f60a2c3bbe3e5d2d953d8d47d8?trk=share_certificate",
