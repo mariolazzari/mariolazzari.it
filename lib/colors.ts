@@ -21,8 +21,8 @@ export function getLanguageColor(language: string): string | undefined {
     case "jupyter notebook":
       return "#da5b0d";
 
-    // case "python":
-    //   return "#3572a5";
+    case "rust":
+      return "#dea584";
 
     default:
       return undefined;
