@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Choosing backend language",
+    date: "2025-03-14T00:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/ff3bfd5e61333b75ad7112fc56abb837b26055f8d8fa22b7166170ff802fef68?trk=share_certificate",
+    imagePath: "/certifications/choosing.png",
+  },
+  {
     title: "TypeScript Design Patterns",
     date: "2025-03-12T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/1c68a7dbbdb0198978ba1df403702b87db1e1bc73145951524d906d234dd1481?trk=share_certificate",
