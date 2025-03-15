@@ -1,6 +1,8 @@
 import Image from "next/image";
 import {
+  SiDocker,
   SiExpress,
+  SiGo,
   SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
@@ -12,13 +14,14 @@ import {
 
 function LinkedIn() {
   return (
-    <div className="flex gap-8">
+    <div className="flex gap-6 items-center">
       <div className="flex flex-col gap-4 justify-center text-3xl">
         <div className="flex gap-6">
           <SiTypescript />
           <SiNodedotjs />
           <SiReact />
           <SiNextdotjs />
+          <SiGo />
         </div>
 
         <div className="flex gap-6">
@@ -26,10 +29,11 @@ function LinkedIn() {
           <SiExpress />
           <SiMongodb />
           <SiPostgresql />
+          <SiDocker />
         </div>
       </div>
 
-      <Image src="/images/logo.png" width={100} height={100} alt="Mario" />
+      <Image src="/images/logo.png" width={50} height={50} alt="Mario" />
     </div>
   );
 }
