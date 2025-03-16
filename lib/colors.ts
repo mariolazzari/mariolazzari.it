@@ -1,5 +1,8 @@
 export function getLanguageColor(language: string): string | undefined {
   switch (language?.toLowerCase()) {
+    case "css":
+      return "#663399";
+
     case "dockerfile":
       return "#374d54";
 
