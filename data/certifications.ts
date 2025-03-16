@@ -2,6 +2,30 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Docker Foundations Professional Certificate",
+    date: "2025-03-16T18:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/af7522e5961fd1e1eb31cb3cc8d8c9a3cacf97050d35c8f706745b6bfde70210?trk=share_certificate",
+    imagePath: "/certifications/docker-pro.png",
+  },
+  {
+    title: "Learning Docker compose",
+    date: "2025-03-16T10:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/1140e21b4bf7f966755ab171e6c6d5cadfbdc7b8e2bbf3a2ddc08dff25fd93c2?trk=share_certificate",
+    imagePath: "/certifications/docker-compose.png",
+  },
+  {
+    title: "Docker: your 1st project",
+    date: "2025-03-16T09:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/aee2c0cc9f7d452c23211a391ac76581404c4586a80b807e7f27a972d83fd3c1?trk=share_certificate",
+    imagePath: "/certifications/docker-1st.png",
+  },
+  {
+    title: "Learning Docker",
+    date: "2025-03-16T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/8553e15c0c0df4e2ebe1289d7203488241f229298b1fb86dfc4d544474b29525?trk=share_certificate",
+    imagePath: "/certifications/learning-docker.png",
+  },
+  {
     title: "Choosing backend language",
     date: "2025-03-14T00:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/ff3bfd5e61333b75ad7112fc56abb837b26055f8d8fa22b7166170ff802fef68?trk=share_certificate",
