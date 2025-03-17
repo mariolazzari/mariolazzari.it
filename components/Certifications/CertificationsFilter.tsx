@@ -13,8 +13,10 @@ import {
   SiTypescript,
   SiPostgresql,
   SiLinkedin,
+  SiGo,
+  SiDocker,
 } from "react-icons/si";
-import { Search, GraduationCap } from "lucide-react";
+import { Search, GraduationCap, Icon } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { Link } from "@/i18n/routing";
 
@@ -32,6 +34,8 @@ export function CertificationsFilter() {
     { id: "TypeScript", icon: <SiTypescript /> },
     { id: "Sql", icon: <SiPostgresql /> },
     { id: "LinkedIn", icon: <SiLinkedin /> },
+    { id: "Go", icon: <SiGo /> },
+    { id: "Docker", icon: <SiDocker /> },
   ];
 
   const onSearchChange: ChangeEventHandler<HTMLInputElement> = e => {
