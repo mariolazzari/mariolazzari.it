@@ -16,7 +16,7 @@ import {
   SiGo,
   SiDocker,
 } from "react-icons/si";
-import { Search, GraduationCap, Icon } from "lucide-react";
+import { Search, GraduationCap } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { Link } from "@/i18n/routing";
 
