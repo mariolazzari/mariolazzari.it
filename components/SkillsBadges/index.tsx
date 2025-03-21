@@ -43,13 +43,13 @@ export function SkillsBadges() {
   };
 
   return (
-    <section className="flex flex-col items-center my-8 gap-4">
-      <div className="flex flex-col items-center">
+    <section className="flex flex-col items-center gap-8">
+      <div className="flex flex-col items-center mb-8">
         <Laptop size={64} />
         <Subtitle text={tHome("skillsTitle")} />
       </div>
 
-      <div className="my-8 flex justify-center gap-16 flex-wrap">
+      <div className="flex justify-center gap-16 flex-wrap">
         {skillTypes.map(st => (
           <SkillBadges
             key={st}
