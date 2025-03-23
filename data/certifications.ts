@@ -2,7 +2,19 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
-    title: "Docker Foundations Professional Certificate",
+    title: "Mozilla JavaScript foundations",
+    date: "2025-03-23T09:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/429ff5e8131dc56cbe16a8a7e0b4c9573be0c036b01330853f336333bc1e1a75?trk=share_certificate",
+    imagePath: "/certifications/mozilla-js.png",
+  },
+  {
+    title: "Learning JavScript",
+    date: "2025-03-21T09:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/0023ed26497cdd4351d9358b8c9dc0f925c1cc27a818ecce0d4768ee082ba95e?trk=share_certificate",
+    imagePath: "/certifications/learning-js.png",
+  },
+  {
+    title: "Docker Foundations Professional",
     date: "2025-03-16T18:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/af7522e5961fd1e1eb31cb3cc8d8c9a3cacf97050d35c8f706745b6bfde70210?trk=share_certificate",
     imagePath: "/certifications/docker-pro.png",
