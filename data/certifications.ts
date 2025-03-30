@@ -2,6 +2,18 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "JavaScript Async",
+    date: "2025-03-30T10:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/a93121e066a098b3bb968cc12f0debc9ed27deb23b4df38fc6b16e7ba69f8801?trk=share_certificate",
+    imagePath: "/certifications/js-async.png",
+  },
+  {
+    title: "JavaScript functional programming",
+    date: "2025-03-29T22:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/60be86005127e48a2e26e8a794035787e8aac85c5c7b16746ca62223f00a1009?trk=share_certificate",
+    imagePath: "/certifications/js-func-prog.png",
+  },
+  {
     title: "Mozilla JavaScript foundations",
     date: "2025-03-23T09:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/429ff5e8131dc56cbe16a8a7e0b4c9573be0c036b01330853f336333bc1e1a75?trk=share_certificate",
