@@ -2,7 +2,7 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
-    title: "JavaScript recursion",
+    title: "JavaScript Recursion",
     date: "2025-04-04T09:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/daea56d766e932d740362939625f1506c558e0047e4908b098cec04dd204a39e?trk=share_certificate",
     imagePath: "/certifications/js-recursion.png",
