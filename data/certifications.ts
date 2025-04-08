@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "JavaScript Maps & Sets",
+    date: "2025-04-08T23:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/b8cffe5bd991a2e710dffbd4a3887bb9749f115392e2b42347d893072c4deb19?trk=share_certificate",
+    imagePath: "/certifications/js-maps-sets.png",
+  },
+  {
     title: "JavaScript Recursion",
     date: "2025-04-04T09:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/daea56d766e932d740362939625f1506c558e0047e4908b098cec04dd204a39e?trk=share_certificate",
