@@ -2,6 +2,18 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Improve JavaScript skills",
+    date: "2025-04-15T20:00:00.000Z",
+    url: "https://www.linkedin.com/learning/paths/improve-your-javascript-language-skills",
+    imagePath: "/certifications/improve-js.png",
+  },
+  {
+    title: "JavaScript tricky bits",
+    date: "2025-04-15T20:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/9477f3371f3b84ec995ecd95df83f2dada36538354644d54b2bd9d7aa217c355?trk=share_certificate",
+    imagePath: "/certifications/js-tricky.png",
+  },
+  {
     title: "JavaScript Patterns",
     date: "2025-04-12T09:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/9883612cc068f6fca545241fe003325383e3020c3d511a5fdcf53d2d3ffe4145?trk=share_certificate",
