@@ -47,7 +47,7 @@
     "db": "Database",
     "ide": "Ambienti di sviluppo",
     "lib": "Librerie",
-    "tools": "Strumenti",
+    "tool": "Strumenti",
     "debianDesc": "Debian è un sistema operativo multipiattaforma che supporta varie architetture di computer, composto interamente da software libero. La sua forma più diffusa è 'Debian GNU/Linux', così denominata perché utilizza al suo interno programmi di utilità provenienti dal sistema operativo GNU e utilizzando Linux come kernel",
     "debianUse": "Ho utilizzato Debian principalmente come server web, FTP e progetti storage. Per anni ho utilizzato questa distribuzione anche sui mie pc personali.",
     "ubuntuDesc": "Ubuntu è un termine africano col quale è stato chiamato il sistema operativo nato nel 2004 e basato su Linux, più precisamente sul ramo unstable di Debian. Ubuntu è prevalentemente composto da software libero, distribuito liberamente con licenza GNU GPL, ma supporta anche software proprietario.",
