@@ -13,16 +13,16 @@
     "@mariolazzari/nasa-api": "^0.1.4",
     "@mariolazzari/rijks": "^0.3.0",
     "@octokit/rest": "^21.1.1",
-    "@radix-ui/react-avatar": "^1.1.6",
-    "@radix-ui/react-dialog": "^1.1.10",
-    "@radix-ui/react-dropdown-menu": "^2.1.10",
-    "@radix-ui/react-popover": "^1.1.10",
+    "@radix-ui/react-avatar": "^1.1.7",
+    "@radix-ui/react-dialog": "^1.1.11",
+    "@radix-ui/react-dropdown-menu": "^2.1.12",
+    "@radix-ui/react-popover": "^1.1.11",
     "@radix-ui/react-separator": "^1.1.4",
     "@radix-ui/react-slot": "^1.2.0",
-    "@radix-ui/react-tabs": "^1.1.7",
-    "@radix-ui/react-tooltip": "^1.2.3",
+    "@radix-ui/react-tabs": "^1.1.9",
+    "@radix-ui/react-tooltip": "^1.2.4",
     "@types/js-cookie": "^3.0.6",
-    "apexcharts": "^4.5.0",
+    "apexcharts": "^4.6.0",
     "bcryptjs": "^3.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -31,7 +31,7 @@
     "mongoose": "^8.13.2",
     "next": "15.3.1",
     "next-auth": "5.0.0-beta.25",
-    "next-intl": "^4.0.2",
+    "next-intl": "^4.0.3",
     "next-themes": "^0.4.6",
     "react": "19.1.0",
     "react-apexcharts": "^1.7.0",
@@ -48,7 +48,7 @@
     "@types/node": "^22.14.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
-    "eslint": "^9.25.0",
+    "eslint": "^9.25.1",
     "eslint-config-next": "15.3.1",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.4",
@@ -57,7 +57,8 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "react-cookie-manager",
-      "sharp"
+      "sharp",
+      "unrs-resolver"
     ]
   }
 }
