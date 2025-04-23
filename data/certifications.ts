@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Testing React with Vitest",
+    date: "2025-04-23T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/7788793e5fc14f7dbed465c0ca02dac40d9cb429d40cb45094e5b0f5a9531868?trk=share_certificate",
+    imagePath: "/certifications/react-vitest.png",
+  },
+  {
     title: "Improve JavaScript skills",
     date: "2025-04-15T20:00:00.000Z",
     url: "https://www.linkedin.com/learning/paths/improve-your-javascript-language-skills",
