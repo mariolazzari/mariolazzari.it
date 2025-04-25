@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Writing Cli in Go",
+    date: "2025-04-25T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/d5a7dd16bee14bead357a9b7e6aba0f54d4c4b33ac8ba2704717ce37c5c2d03e?trk=share_certificate",
+    imagePath: "/certifications/cli-go.png",
+  },
+  {
     title: "Testing React with Vitest",
     date: "2025-04-23T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/7788793e5fc14f7dbed465c0ca02dac40d9cb429d40cb45094e5b0f5a9531868?trk=share_certificate",
