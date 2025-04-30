@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Build a Microservice in Go",
+    date: "2025-04-30T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/4412341d7fb339b26c8163f861aa3dccc810957e802d706772a13f5af21ca969?trk=share_certificate",
+    imagePath: "/certifications/micro-go.png",
+  },
+  {
     title: "Writing Cli in Go",
     date: "2025-04-25T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/d5a7dd16bee14bead357a9b7e6aba0f54d4c4b33ac8ba2704717ce37c5c2d03e?trk=share_certificate",
