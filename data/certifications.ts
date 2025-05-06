@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "JavaScript closures",
+    date: "2025-05-06T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/27f1b6f0203e6ee6d13b9ec0c440a75235bf4a5d0e481123e0a7a717b092e41b?trk=share_certificate",
+    imagePath: "/certifications/js-closures.png",
+  },
+  {
     title: "Scaling TypeScript for enterprise",
     date: "2025-05-05T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/2d9b374339e1072b45281e493320f180cb517afc8343f2f939f4478615c38c92?trk=share_certificate",
