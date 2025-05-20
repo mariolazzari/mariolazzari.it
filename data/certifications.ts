@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Advanced TypeScript: Generics & Types",
+    date: "2025-05-20T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/da31bf0061fb7fb6c9f91272899da697294f1b22e3602a813d4f92d33044a6b7?trk=share_certificate",
+    imagePath: "/certifications/ts-generics-cond.png",
+  },
+  {
     title: "Go for developers",
     date: "2025-05-17T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/72a609744cb90c90eb4c30190ff440a197bf087ea8aaf735d535bd9200e8f8a2?trk=share_certificate",
