@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "JavaScript strings manipulation",
+    date: "2025-05-21T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/45c151e22a680fef7049e4ab893d3698dc7b950c44fa53660e323996f192df1d?trk=share_certificate",
+    imagePath: "/certifications/js-strings.png",
+  },
+  {
     title: "Advanced TypeScript: Generics & Types",
     date: "2025-05-20T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/da31bf0061fb7fb6c9f91272899da697294f1b22e3602a813d4f92d33044a6b7?trk=share_certificate",
