@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "JavaScript scope & closures",
+    date: "2025-05-22T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/d312768e1dc8041ede507cc86ca47338afc50f37cb586e68a44b04e7dcb4dd13?trk=share_certificate",
+    imagePath: "/certifications/js-scope-closures.png",
+  },
+  {
     title: "JavaScript strings manipulation",
     date: "2025-05-21T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/45c151e22a680fef7049e4ab893d3698dc7b950c44fa53660e323996f192df1d?trk=share_certificate",
