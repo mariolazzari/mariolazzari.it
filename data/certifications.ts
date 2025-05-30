@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "React design patterns",
+    date: "2025-05-30T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/16faf8a521f3968282067695cd9102e2f116b6dafc650ccd7841d8dc5fd0ba4f?trk=share_certificate",
+    imagePath: "/certifications/react-dp.png",
+  },
+  {
     title: "JavaScript scope & closures",
     date: "2025-05-22T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/d312768e1dc8041ede507cc86ca47338afc50f37cb586e68a44b04e7dcb4dd13?trk=share_certificate",
