@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Prompt engineering",
+    date: "2025-06-06T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/49f055eb8c0c86ec60f9a18ff623b6477d8dd2440375fe14a8e8b91d0a2d6074?trk=share_certificate",
+    imagePath: "/certifications/prompt-ai.png",
+  },
+  {
     title: "What is generative AI",
     date: "2025-06-04T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/ad40c0ddd324ee3d594c4ad4ac70eefeab9207c596ca6966060b7761daa3322c?trk=share_certificate",

@@ -27,7 +27,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "lucide-react": "^0.512.0",
+    "lucide-react": "^0.513.0",
     "mongoose": "^8.15.1",
     "next": "15.3.3",
     "next-auth": "5.0.0-beta.25",
@@ -41,13 +41,13 @@
     "react-icons": "^5.5.0",
     "tailwind-merge": "^3.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.25.50"
+    "zod": "^3.25.56"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.8",
-    "@types/node": "^22.15.29",
+    "@types/node": "^22.15.30",
     "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
+    "@types/react-dom": "^19.1.6",
     "eslint": "^9.28.0",
     "eslint-config-next": "15.3.3",
     "postcss": "^8.5.4",
