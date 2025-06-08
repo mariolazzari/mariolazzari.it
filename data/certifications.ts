@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "TypeScript for NodeJS",
+    date: "2025-08-06T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/e22edb3f002b8cd6caf71fec491d91a05a6c8e68ccdb44eee4b0c7d22c37e327?trk=share_certificate",
+    imagePath: "/certifications/ts-node-dev.png",
+  },
+  {
     title: "Prompt engineering",
     date: "2025-06-06T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/49f055eb8c0c86ec60f9a18ff623b6477d8dd2440375fe14a8e8b91d0a2d6074?trk=share_certificate",
