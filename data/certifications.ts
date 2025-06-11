@@ -2,8 +2,14 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "GraphQL essential training",
+    date: "2025-06-11T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/3e8f53042e3c3b6bbc4b0a016e9f8b9aa42020413ca29f4e7fa7e8af83730641?trk=share_certificate",
+    imagePath: "/certifications/graphql-et.png",
+  },
+  {
     title: "TypeScript for NodeJS",
-    date: "2025-08-06T08:00:00.000Z",
+    date: "2025-06-08T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/e22edb3f002b8cd6caf71fec491d91a05a6c8e68ccdb44eee4b0c7d22c37e327?trk=share_certificate",
     imagePath: "/certifications/ts-node-dev.png",
   },
