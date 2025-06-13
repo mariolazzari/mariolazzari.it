@@ -2,6 +2,18 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Stay ahead in GraphQL",
+    date: "2025-06-13T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/paths/stay-ahead-in-graphql?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BT8oJ%2BKWPRGGgGx2Qof%2F58A%3D%3D",
+    imagePath: "/certifications/stay-graphql.png",
+  },
+  {
+    title: "Migrating REST to GraphQL",
+    date: "2025-06-13T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/51ebbe6f29ab5ae6b594efe9344bd3bb04bc7f40402043ba4b3c8e2b993d0a42?trk=share_certificate",
+    imagePath: "/certifications/rest-graphql.png",
+  },
+  {
     title: "GraphQL essential training",
     date: "2025-06-11T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/3e8f53042e3c3b6bbc4b0a016e9f8b9aa42020413ca29f4e7fa7e8af83730641?trk=share_certificate",
