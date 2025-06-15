@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Tailwind CSS 4 essential",
+    date: "2025-06-15T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/7a6b50a71ddaa0311ac984a343a23217b5767cc2ac93cfc260837581a915056d?trk=share_certificate",
+    imagePath: "/certifications/tailwind4.png",
+  },
+  {
     title: "Stay ahead in GraphQL",
     date: "2025-06-13T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/paths/stay-ahead-in-graphql?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_content_view%3BT8oJ%2BKWPRGGgGx2Qof%2F58A%3D%3D",
