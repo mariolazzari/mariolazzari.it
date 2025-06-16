@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "TypeScript & GraphQL",
+    date: "2025-06-16T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/32dc7344a64718e616ee23bd2be3d51e0979ddc1b76448f3d8697bdaee23906a?trk=share_certificate",
+    imagePath: "/certifications/ts-graphql.png",
+  },
+  {
     title: "Tailwind CSS 4 essential",
     date: "2025-06-15T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/7a6b50a71ddaa0311ac984a343a23217b5767cc2ac93cfc260837581a915056d?trk=share_certificate",
