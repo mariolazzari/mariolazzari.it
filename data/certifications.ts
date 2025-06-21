@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Microservices with TypeScript & Node",
+    date: "2025-06-21T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/a154f86866fab4c90e98764f56a0de2f420d03764915e4cac998fc4c1b7fc453?trk=share_certificate",
+    imagePath: "/certifications/ts-scaling.png",
+  },
+  {
     title: "TypeScript & GraphQL",
     date: "2025-06-16T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/32dc7344a64718e616ee23bd2be3d51e0979ddc1b76448f3d8697bdaee23906a?trk=share_certificate",
