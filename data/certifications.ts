@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Rust essential training",
+    date: "2025-07-02T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/24866e7990e19e99ba61f656c3987cca8ff2ed1f9da3c4c63b3aded06265b429?trk=share_certificate",
+    imagePath: "/certifications/rust-et.png",
+  },
+  {
     title: "Microservices with TypeScript & Node",
     date: "2025-06-21T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/a154f86866fab4c90e98764f56a0de2f420d03764915e4cac998fc4c1b7fc453?trk=share_certificate",
