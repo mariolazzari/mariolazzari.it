@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Web APIs in Rust",
+    date: "2025-07-05T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/0111a93821a751232e1edcc66a70aa3abb4b8cd4e39b1e70a38333b4a5716e97?trk=share_certificate",
+    imagePath: "/certifications/rust-actix.png",
+  },
+  {
     title: "Rust essential training",
     date: "2025-07-02T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/24866e7990e19e99ba61f656c3987cca8ff2ed1f9da3c4c63b3aded06265b429?trk=share_certificate",
