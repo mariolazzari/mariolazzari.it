@@ -102,8 +102,8 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.1.11)
       zod:
-        specifier: ^3.25.72
-        version: 3.25.72
+        specifier: ^3.25.74
+        version: 3.25.74
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4.1.11
@@ -2702,8 +2702,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zod@3.25.72:
-    resolution: {integrity: sha512-Cl+fe4dNL4XumOBNBsr0lHfA80PQiZXHI4xEMTEr8gt6aGz92t3lBA32e71j9+JeF/VAYvdfBnuwJs+BMx/BrA==}
+  zod@3.25.74:
+    resolution: {integrity: sha512-J8poo92VuhKjNknViHRAIuuN6li/EwFbAC8OedzI8uxpEPGiXHGQu9wemIAioIpqgfB4SySaJhdk0mH5Y4ICBg==}
 
 snapshots:
 
@@ -5453,4 +5453,4 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod@3.25.72: {}
+  zod@3.25.74: {}
