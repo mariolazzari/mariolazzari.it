@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Advanced Rust programming with AI",
+    date: "2025-07-23T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/8adc810a824260e6b24c02e0fb0b328007eb27fe48e1a2b91a33f5d74ec06330?trk=share_certificate",
+    imagePath: "/certifications/rust-ai.png",
+  },
+  {
     title: "Full stack with Rust & Leptos",
     date: "2025-07-07T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/2aefd8d7fdd6ab90ca97d577c489146e635dbb747a31da18060945508fe42986?trk=share_certificate",

@@ -15,6 +15,7 @@ import {
   SiLinkedin,
   SiGo,
   SiDocker,
+  SiRust,
 } from "react-icons/si";
 import { Search, GraduationCap } from "lucide-react";
 import { Badge } from "../ui/badge";
@@ -36,6 +37,7 @@ export function CertificationsFilter() {
     { id: "LinkedIn", icon: <SiLinkedin /> },
     { id: "Go", icon: <SiGo /> },
     { id: "Docker", icon: <SiDocker /> },
+    { id: "Rust", icon: <SiRust /> },
   ];
 
   const onSearchChange: ChangeEventHandler<HTMLInputElement> = e => {
@@ -63,17 +65,23 @@ export function CertificationsFilter() {
       />
 
       <div className="flex justify-center flex-wrap gap-2">
-        {tags.map(({ id, icon }) => (
-          <Link key={id} href={`/certifications?search=${id}`} locale={locale}>
-            <Badge
-              className="border-primary gap-1 px-2 py-1"
-              variant={search === id ? "default" : "outline"}
-              onClick={() => onTagClick(id)}
+        {tags
+          .sort((a, b) => a.id.localeCompare(b.id))
+          .map(({ id, icon }) => (
+            <Link
+              key={id}
+              href={`/certifications?search=${id}`}
+              locale={locale}
             >
-              {icon} {id}
-            </Badge>
-          </Link>
-        ))}
+              <Badge
+                className="border-primary gap-1 px-2 py-1"
+                variant={search === id ? "default" : "outline"}
+                onClick={() => onTagClick(id)}
+              >
+                {icon} {id}
+              </Badge>
+            </Link>
+          ))}
       </div>
 
       <div className="flex justify-center items-center flex-wrap gap-2">
