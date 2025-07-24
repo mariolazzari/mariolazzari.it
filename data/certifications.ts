@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Practical GitHub actions",
+    date: "2025-07-24T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/5653c52418ec178c7b6207d87d9123382d0e8b741a090f8fa407dced1843c3a8?trk=share_certificate",
+    imagePath: "/certifications/github-actions.png",
+  },
+  {
     title: "Advanced Rust programming with AI",
     date: "2025-07-23T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/8adc810a824260e6b24c02e0fb0b328007eb27fe48e1a2b91a33f5d74ec06330?trk=share_certificate",
