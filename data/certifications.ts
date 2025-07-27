@@ -2,6 +2,18 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Context package in Go",
+    date: "2025-07-27T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/b8335ed59f7c6519cf8ff6219fb3b327081a20af8eecc3f560dda538254ada70?trk=share_certificate",
+    imagePath: "/certifications/go-context.png",
+  },
+  {
+    title: "Design patterns in Rust",
+    date: "2025-07-26T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/42b6a6f9b5b3c869ebf0270268fe26257cb00dd0e06c6b19455f3e5e84488ce8?trk=share_certificate",
+    imagePath: "/certifications/rust-dp.png",
+  },
+  {
     title: "Practical GitHub actions",
     date: "2025-07-24T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/5653c52418ec178c7b6207d87d9123382d0e8b741a090f8fa407dced1843c3a8?trk=share_certificate",
