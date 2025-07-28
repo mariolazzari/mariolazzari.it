@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Scaling NodeJs applications",
+    date: "2025-07-28T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/6b675dd0201e7b3fd298426ac5ba40c7664b931baef57bb546891514a5bfa6fa?trk=share_certificate",
+    imagePath: "/certifications/node-scaling.png",
+  },
+  {
     title: "Context package in Go",
     date: "2025-07-27T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/b8335ed59f7c6519cf8ff6219fb3b327081a20af8eecc3f560dda538254ada70?trk=share_certificate",
