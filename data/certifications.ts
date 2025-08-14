@@ -2,8 +2,14 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "OpenAI: build assistanta with NodeJS",
+    date: "2025-08-14T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/de81c69db45fdda825e3fc596f1a9792244f3ca247f3bf352e28445844f39090?trk=share_certificate",
+    imagePath: "/certifications/openai-build-assistant.png",
+  },
+  {
     title: "Level up PostgreSQL",
-    date: "2025-11-08T08:00:00.000Z",
+    date: "2025-08-11T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/21fea0be79a1d9e76afe9c57f338d545ee26e83ffdecb3a73fc782c473811bce?trk=share_certificate",
     imagePath: "/certifications/levelup-postgres.png",
   },
