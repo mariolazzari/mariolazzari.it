@@ -16,6 +16,7 @@ import {
   SiGo,
   SiDocker,
   SiRust,
+  SiOpenai,
 } from "react-icons/si";
 import { Search, GraduationCap } from "lucide-react";
 import { Badge } from "../ui/badge";
@@ -38,6 +39,7 @@ export function CertificationsFilter() {
     { id: "Go", icon: <SiGo /> },
     { id: "Docker", icon: <SiDocker /> },
     { id: "Rust", icon: <SiRust /> },
+    { id: "OpenAI", icon: <SiOpenai /> },
   ];
 
   const onSearchChange: ChangeEventHandler<HTMLInputElement> = e => {
