@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "OpenAI embeddings",
+    date: "2025-08-16T10:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/e591dba019709b2aadeaf6b2204e93e90d19b58201c83c8ce4d491d558a91a7f?trk=share_certificate",
+    imagePath: "/certifications/openai-embed.png",
+  },
+  {
     title: "OpenAI functions calling",
     date: "2025-08-16T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/c32c3e104891f06199c3f264f828d7add317e91bcd458c9e3c41194aed2ea08b?trk=share_certificate",
