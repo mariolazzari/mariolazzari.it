@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "OpenAI DALL-E image API",
+    date: "2025-08-17T11:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/e12d467c9d01321a4a38e675ab02ceccea5773182ce2faee676d2ab40991af2a?trk=share_certificate",
+    imagePath: "/certifications/openai-dall-e.png",
+  },
+  {
     title: "OpenAI fine tuning",
     date: "2025-08-17T10:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/0c91edc7dbd489990e85b24282178ff9ba4456be4cb0d9feab9e95120decd869?trk=share_certificate",
