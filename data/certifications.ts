@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "OpenAI Moderation API",
+    date: "2025-08-19T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/2e0940f2c2296bb44885a819e160485e6a111cb8eb1077668759c695ceafdcdd?trk=share_certificate",
+    imagePath: "/certifications/openai-moderation.png",
+  },
+  {
     title: "OpenAI Speach API",
     date: "2025-08-18T09:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/85f0b08e70059aaa56724a8875a0cbc44bc322cf7a8d463a623f828573b96a3b?trk=share_certificate",
