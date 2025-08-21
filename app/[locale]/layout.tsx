@@ -2,12 +2,12 @@ import "../globals.css";
 import { Header } from "@/components/Header";
 import { Inter } from "next/font/google";
 import { Footer } from "@/components/Footer";
-import { Layout } from "@/types/Layout";
 import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Cookies } from "@/components/Cookies";
 import { CookiesLocale } from "@/components/Cookies/CookiesProps";
+import { Layout } from "@/types/Layout";
 
 const inter = Inter({ subsets: ["latin"] });
 

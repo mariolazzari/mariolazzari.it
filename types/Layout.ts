@@ -1,10 +1,8 @@
 import { ReactNode } from "react";
 
-export type Layout<T = void> = Readonly<{
+export type Layout = Readonly<{
   children: ReactNode;
-  params: Promise<
-    {
-      locale: string;
-    } & T
-  >;
+  params: Promise<{
+    locale: string;
+  }>;
 }>;
