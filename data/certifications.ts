@@ -3,7 +3,7 @@ import { Certification } from "@/types/Certification";
 export const certifications: Certification[] = [
   {
     title: "OpenAI API: Canvas",
-    date: "2025-08-25T09:00:00.000Z",
+    date: "2025-08-25T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/fc3bf2c60a1d86b6f6d7fdec611089aaab4d938a83aab3684eb12ce4086c84cb?trk=share_certificate",
     imagePath: "/certifications/openai-canvas.png",
   },
