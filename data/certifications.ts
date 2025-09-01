@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Advanced PostgreSQL tuning",
+    date: "2025-09-01T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/8d2dd114803cc2f4ba8f13f1f4342e7adc73233e870db92a523ca33311a059e7?trk=share_certificate",
+    imagePath: "/certifications/adv-postgres-tuning.png",
+  },
+  {
     title: "PostgreSQL with RAG",
     date: "2025-08-29T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/3f14cba50e69fb5d081f68b00191735ef78d0fc94d5d3c51c68c4fac15d0c5c5?trk=share_certificate",
