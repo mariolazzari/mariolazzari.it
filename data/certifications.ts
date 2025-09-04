@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "React AI music",
+    date: "2025-09-04T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/68e9eb1c95da4eb9bed1f171b2eaeb392f9ad653a9e73b11d09e8b98cb478c23?trk=share_certificate",
+    imagePath: "/certifications/react-ai-music.png",
+  },
+  {
     title: "AI for JavaScript developers",
     date: "2025-09-03T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/893d0866fdb6fb91474184a3740c6efc78b7abf4e5820428e9bc9a9a05d13cfb?trk=share_certificate",
