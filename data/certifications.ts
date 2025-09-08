@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "React ChatBot with OpenAI",
+    date: "2025-09-08T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/850cda453e414ef90ae2b15fad9051f9774f7fcd01e2756f6e61bf19a350f36d?trk=share_certificate",
+    imagePath: "/certifications/next-chatbot.png",
+  },
+  {
     title: "React TanStack Query",
     date: "2025-09-06T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/2b2480c44c7c2e7c24e2b01544086e8ad11f97bcdabbf56f315e12b102912001?trk=share_certificate",
