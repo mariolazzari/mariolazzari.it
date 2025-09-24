@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Design patterns in Go",
+    date: "2025-09-24T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/53305209f0961e2d4ddec6f996922a938023fc7dab898cdd103de34d0e7036aa?trk=share_certificate",
+    imagePath: "/certifications/go-design-patterns.png",
+  },
+  {
     title: "Go practice: error handling",
     date: "2025-09-19T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/1ac86074fe27d2e407050375ed9f9023d87c51da5b6b7917add17b8c17039e95?trk=share_certificate",
