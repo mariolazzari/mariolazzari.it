@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "TypeScript with JSDoc",
+    date: "2025-09-27T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/63f916f350da1e6740ede73aa33057969808ee952b0c8f091efe0612ff2cb8ac?trk=share_certificate",
+    imagePath: "/certifications/ts-jsdoc.png",
+  },
+  {
     title: "Design patterns in Go",
     date: "2025-09-24T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/53305209f0961e2d4ddec6f996922a938023fc7dab898cdd103de34d0e7036aa?trk=share_certificate",
