@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Databases for NodeJS developers",
+    date: "2025-10-04T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/002e212b7b5eab0a052952e41e0f8a9eb4898c43f3440b9be5b4f4e850e24035?trk=share_certificate",
+    imagePath: "/certifications/db-nodejs.png",
+  },
+  {
     title: "Data structures in JavaScript",
     date: "2025-09-28T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/cc2cf968c86e504b1cae5b3f2f3972be3760e1b87ae34fa78bb01a606835cb43?trk=share_certificate",
