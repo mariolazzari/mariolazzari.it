@@ -2,7 +2,7 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
-    title: "Go practice concurrency",
+    title: "NodeJS cluster: PM2, Redis & Nginx",
     date: "2025-10-08T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-9fda1968-3edb-436b-85b7-647114171e9c/",
     imagePath: "/certifications/nodejs-cluster.png",
