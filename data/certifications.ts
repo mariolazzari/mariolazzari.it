@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "JavaScript practice: OOP",
+    date: "2025-10-13T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/aa3410e0471916e06926b8fc034eac5b6bfc28c3904943cdbebfb2b8adac704d?trk=share_certificate",
+    imagePath: "/certifications/js-oop.png",
+  },
+  {
     title: "NodeJS cluster: PM2, Redis & Nginx",
     date: "2025-10-08T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-9fda1968-3edb-436b-85b7-647114171e9c/",
