@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Vite for developers",
+    date: "2025-10-21T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-a0176e8c-14b2-45ff-9bc2-f86f9b45abf3/",
+    imagePath: "/certifications/vite-dev.png",
+  },
+  {
     title: "Prompt engineering AI",
     date: "2025-10-16T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/734f642d3ce6bf84dcda81cea29337881e79d114c951106bfd1a83b0d5c3bec3?trk=share_certificate",
