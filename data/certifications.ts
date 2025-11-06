@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Consuming API with Go",
+    date: "2025-11-06T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/cde4df04f8f477e7837d73c853a6d05e39281306443522cc25de96ef5d97f356?trk=share_certificate",
+    imagePath: "/certifications/cons-api-go.png",
+  },
+  {
     title: "Level up advanced SQL",
     date: "2025-10-30T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/4c5ae9520078839244f4b72843f88e53f9d4f789959e152b1ec92b469298104c?trk=share_certificate",
