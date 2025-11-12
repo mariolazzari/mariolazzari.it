@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Programming with Go modules",
+    date: "2025-11-12T08:00:00.000Z",
+    url: "https://www.linkedin.com/learning/certificates/7a4adccfc593b75ead9699c01e92bb7c2f5fcd3c1e94224944603cceb332c391?trk=share_certificate",
+    imagePath: "/certifications/go-modules.png",
+  },
+  {
     title: "Go: the complete guide",
     date: "2025-11-10T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-14c0b706-02ed-4a73-9766-cad543306e9d/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
