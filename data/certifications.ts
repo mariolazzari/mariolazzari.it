@@ -2,12 +2,17 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "JavaScript code interview",
+    date: "2025-12-04T08:00:00.000Z",
+    url: "",
+    imagePath: "/certifications/js-code-inter.png",
+  },
+  {
     title: "Level-up: Go",
     date: "2025-12-02T08:00:00.000Z",
     url: "https://www.linkedin.com/learning/certificates/1c795fb0f9eb806f98d5373d0e7541934255392a8de880f2afe4f833bad53475?trk=share_certificate",
     imagePath: "/certifications/go-level-up.png",
   },
-
   {
     title: "Go complete developer guide",
     date: "2025-11-27T08:00:00.000Z",
