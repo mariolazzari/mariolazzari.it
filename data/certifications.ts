@@ -4,7 +4,7 @@ export const certifications: Certification[] = [
   {
     title: "JavaScript code interview",
     date: "2025-12-04T08:00:00.000Z",
-    url: "",
+    url: "https://www.udemy.com/certificate/UC-2d69b2a4-fdce-4a16-9419-05354306d49b/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
     imagePath: "/certifications/js-code-inter.png",
   },
   {
