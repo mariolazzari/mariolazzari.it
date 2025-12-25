@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "React testing",
+    date: "2025-12-25T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-5b0c428f-059a-499b-a66a-9b615394361c/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
+    imagePath: "/certifications/react-testing.png",
+  },
+  {
     title: "NextJS & PostgreSQL",
     date: "2025-12-22T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-01c9cb10-54c9-49e3-a42f-46202763f4da/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
