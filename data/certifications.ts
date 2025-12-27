@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "TypeScript interview questions",
+    date: "2025-12-27T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-f78aea4e-44e2-48a8-88e0-0effee392711/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
+    imagePath: "/certifications/ts-inter.png",
+  },
+  {
     title: "React testing",
     date: "2025-12-25T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-5b0c428f-059a-499b-a66a-9b615394361c/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
