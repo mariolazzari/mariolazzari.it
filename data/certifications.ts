@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Shadcn & NextJS",
+    date: "2026-01-18T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-8f20f00c-e2f5-48bf-acbb-76edf83ec650/",
+    imagePath: "/certifications/shadcn.png",
+  },
+  {
     title: "NextAuthJS with TypeScript",
     date: "2026-01-07T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-31aac6ee-7b4a-43fa-9b62-635c449cecf5/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
