@@ -8,6 +8,8 @@ import (
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/cache"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/config"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/http/handlers"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/http/middlewares"
 )
 
 func main() {
@@ -15,12 +17,18 @@ func main() {
 	cfg := config.Load()
 
 	// connect postgres
-	postgres := db.Connect(cfg.PosgresURL)
+	postgres, err := db.Connect(cfg.PosgresURL)
+	if err != nil {
+		log.Fatalf("Postgres connection failed: %v", err)
+	}
 	defer postgres.Close()
 
 	// redis connection
-	redis := cache.Connect(cfg.RedisURL)
-	defer cache.Close(redis)
+	redis, err := cache.Connect(cfg.RedisURL)
+	if err != nil {
+		log.Fatalf("Redis connection failed: %v", err)
+	}
+	defer redis.Close()
 
 	// setup gin router
 	if cfg.Env == "production" {
@@ -30,12 +38,13 @@ func main() {
 	// create router
 	router := gin.Default()
 	router.SetTrustedProxies([]string{cfg.Host})
-
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "OK",
-		})
-	})
+	// middlewares
+	router.Use(
+		middlewares.Postgres(postgres),
+		middlewares.Redis(redis),
+	)
+	// routes
+	router.GET("/health", handlers.HealthHandler)
 
 	// start server
 	if err := router.Run(fmt.Sprintf("%s:%s", "127.0.0.1", cfg.Port)); err != nil {

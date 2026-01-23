@@ -2,44 +2,36 @@ package db
 
 import (
 	"context"
-	"log"
+	"fmt"
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-func Connect(dbUrl string) *pgxpool.Pool {
-	// create context with timeout
+func Connect(dbURL string) (*pgxpool.Pool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	// parse config
-	cfg, err := pgxpool.ParseConfig(dbUrl)
+	cfg, err := pgxpool.ParseConfig(dbURL)
 	if err != nil {
-		log.Fatalf("Postgres config parsing error: %v", err)
+		return nil, fmt.Errorf("parse config: %w", err)
 	}
 
-	// pool settings
 	cfg.MaxConns = 25
 	cfg.MinConns = 5
 	cfg.MaxConnLifetime = 5 * time.Minute
 	cfg.MaxConnIdleTime = 1 * time.Minute
 	cfg.HealthCheckPeriod = 1 * time.Minute
 
-	// create pool
 	pool, err := pgxpool.NewWithConfig(ctx, cfg)
 	if err != nil {
-		log.Fatalf("Pool creation error: %v", err)
+		return nil, fmt.Errorf("create pool: %w", err)
 	}
 
-	// test connection
 	if err := pool.Ping(ctx); err != nil {
-		log.Fatalf("Postgres connection error: %v", err)
+		pool.Close()
+		return nil, fmt.Errorf("ping db: %w", err)
 	}
 
-	return pool
-}
-
-func Close(pool *pgxpool.Pool) {
-	pool.Close()
+	return pool, nil
 }
