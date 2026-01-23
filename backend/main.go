@@ -1,13 +1,35 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/config"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
+)
 
 func main() {
+	// read env variables
+	cfg := config.Load()
+
+	// connect postgres
+	postgres := db.Connect(cfg.PosgresURL)
+	defer postgres.Close()
+
+	// setup gin router
+	if cfg.Env == "production" {
+		gin.SetMode(gin.ReleaseMode)
+	}
+
+	// create router
 	router := gin.Default()
-	router.GET("/ping", func(c *gin.Context) {
+	router.SetTrustedProxies([]string{cfg.Host})
+
+	router.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message": "pong",
+			"message": "OK",
 		})
 	})
-	router.Run()
+
+	router.Run(fmt.Sprintf("%s:%s", cfg.Host, cfg.Port))
 }
