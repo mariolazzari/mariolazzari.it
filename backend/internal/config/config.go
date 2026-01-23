@@ -12,6 +12,7 @@ type Config struct {
 	Port       string
 	Host       string
 	PosgresURL string
+	RedisURL   string
 }
 
 // load config from .env or other sources
@@ -27,6 +28,7 @@ func Load() *Config {
 		Host:       getValue("HOST", "127.0.0.1"),
 		Port:       getValue("PORT", "4001"),
 		PosgresURL: getValue("POSTGRES_URL", ""),
+		RedisURL:   getValue("REDIS_URL", "redis://localhost:6379"),
 	}
 
 	// check if postgres url is empty
