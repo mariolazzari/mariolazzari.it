@@ -9,6 +9,7 @@ import (
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/config"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/middleware"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/routes"
 )
 
 func main() {
@@ -46,11 +47,11 @@ func main() {
 	})
 
 	// API routes
-	// apiGroup := router.Group("/api/v1")
-	// {
-	// 	routes.RegisterUserRoutes(apiGroup, pdb, rdb)
-	// 	routes.RegisterCertificationRoutes(apiGroup, pdb, rdb)
-	// }
+	apiGroup := router.Group("/api/v1")
+	{
+		// routes.RegisterUserRoutes(apiGroup, pdb, rdb)
+		routes.RegisterCertificationRoutes(apiGroup, pdb, rdb)
+	}
 
 	fmt.Printf("Server running on %s:%s in %s mode\n", cfg.Host, cfg.Port, cfg.Env)
 	if err := router.Run(":" + cfg.Port); err != nil {
