@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	"github.com/gin-gonic/gin"
@@ -16,21 +15,25 @@ func main() {
 	// load environment variables
 	cfg := config.Load()
 
+	// application context
 	ctx := context.Background()
 
 	// connect database
-	pdb, err := db.ConnectPostgres(ctx)
+	pdb, err := db.ConnectPostgres(&ctx)
 	if err != nil {
 		log.Fatalf("Postgres connection error: %s", err.Error())
 	}
 	defer pdb.Close()
 
 	// enable caching
-	rdb, err := db.ConnectRedis(ctx)
+	rdb, err := db.ConnectRedis(&ctx)
 	if err != nil {
 		log.Fatalf("Redis connection error: %s", err.Error())
 	}
 	defer rdb.Close()
+
+	// create admin user
+	EnsureAdminUser(ctx, pdb)
 
 	// set gin mode
 	if cfg.Env == "release" {
@@ -39,6 +42,7 @@ func main() {
 
 	// setup router
 	router := gin.Default()
+	router.SetTrustedProxies([]string{"127.0.0.1"})
 	router.Use(middleware.CORSMiddleware())
 
 	// Health check endpoint
@@ -49,13 +53,13 @@ func main() {
 	// API routes
 	apiGroup := router.Group("/api/v1")
 	{
-		// routes.RegisterUserRoutes(apiGroup, pdb, rdb)
+		routes.RegisterAuthRoutes(apiGroup, pdb, rdb)
 		routes.RegisterCertificationRoutes(apiGroup, pdb, rdb)
+		routes.RegisterUserRoutes(apiGroup, pdb, rdb)
 	}
 
-	fmt.Printf("Server running on %s:%s in %s mode\n", cfg.Host, cfg.Port, cfg.Env)
+	// start server
 	if err := router.Run(":" + cfg.Port); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
-
 }

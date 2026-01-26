@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"context"
 	"net/http"
 	"strconv"
 
@@ -11,22 +10,18 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-type CertificationHandler struct {
-	db    *pgxpool.Pool
-	redis *redis.Client
-}
+type CertificationHandler Handler
 
-// NewCertificationHandler creates a new certification handler
-func NewCertificationHandler(db *pgxpool.Pool, redisClient *redis.Client) *CertificationHandler {
+// creates a new certification handler
+func NewCertificationHandler(pdb *pgxpool.Pool, rdb *redis.Client) *CertificationHandler {
 	return &CertificationHandler{
-		db:    db,
-		redis: redisClient,
+		pdb: pdb,
+		rdb: rdb,
 	}
 }
 
-// GetAllCertifications retrieves all certifications for the authenticated user
+// retrieves all certifications for the authenticated user
 func (h *CertificationHandler) GetAllCertifications(c *gin.Context) {
-	ctx := context.Background()
 	// userID, _ := c.Get("user_id")
 
 	// cacheKey := "certifications:" + userID.(string)
@@ -41,7 +36,7 @@ func (h *CertificationHandler) GetAllCertifications(c *gin.Context) {
 	// 	return
 	// }
 
-	rows, err := h.db.Query(ctx,
+	rows, err := h.pdb.Query(c,
 		"SELECT id, title, image_src, date, url, created_at, updated_at FROM certifications ORDER BY date DESC",
 	)
 	if err != nil {
@@ -65,7 +60,6 @@ func (h *CertificationHandler) GetAllCertifications(c *gin.Context) {
 
 // GetCertificationByID retrieves a specific certification
 func (h *CertificationHandler) GetCertificationByID(c *gin.Context) {
-	ctx := context.Background()
 	//	userID, _ := c.Get("user_id")
 	certID, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -86,7 +80,7 @@ func (h *CertificationHandler) GetCertificationByID(c *gin.Context) {
 	// }
 
 	var cert models.Certification
-	err = h.db.QueryRow(ctx,
+	err = h.pdb.QueryRow(c,
 		"SELECT id, title, image_src, date, url, created_at, updated_at FROM certifications WHERE id = $1",
 		certID,
 	).Scan(&cert.ID, &cert.Title, &cert.ImageSrc, &cert.Date, &cert.URL, &cert.CreatedAt, &cert.UpdatedAt)
@@ -101,7 +95,6 @@ func (h *CertificationHandler) GetCertificationByID(c *gin.Context) {
 
 // CreateCertification creates a new certification
 func (h *CertificationHandler) CreateCertification(c *gin.Context) {
-	ctx := context.Background()
 	//	userID, _ := c.Get("user_id")
 
 	var input models.CertificationCreateInput
@@ -112,7 +105,7 @@ func (h *CertificationHandler) CreateCertification(c *gin.Context) {
 
 	// add new certification
 	var cert models.Certification
-	err := h.db.QueryRow(ctx,
+	err := h.pdb.QueryRow(c,
 		"INSERT INTO certifications (title, image_src, date, url, created_at, updated_at) VALUES ($1, $2, $3, $4, NOW(), NOW()) RETURNING id, title, image_src, date, url, created_at, updated_at",
 		input.Title, input.ImageSrc, input.Date, input.URL,
 	).Scan(&cert.ID, &cert.Title, &cert.ImageSrc, &cert.Date, &cert.URL, &cert.CreatedAt, &cert.UpdatedAt)
@@ -130,7 +123,6 @@ func (h *CertificationHandler) CreateCertification(c *gin.Context) {
 
 // UpdateCertification updates a certification
 func (h *CertificationHandler) UpdateCertification(c *gin.Context) {
-	ctx := context.Background()
 	// userID, _ := c.Get("user_id")
 	certID, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -145,7 +137,7 @@ func (h *CertificationHandler) UpdateCertification(c *gin.Context) {
 	}
 
 	var cert models.Certification
-	err = h.db.QueryRow(ctx,
+	err = h.pdb.QueryRow(c,
 		`UPDATE certifications 
 		 SET title = COALESCE(NULLIF($1, ''), title),
 		     image_src = COALESCE(NULLIF($2, ''), image_src),
@@ -170,7 +162,6 @@ func (h *CertificationHandler) UpdateCertification(c *gin.Context) {
 
 // DeleteCertification deletes a certification
 func (h *CertificationHandler) DeleteCertification(c *gin.Context) {
-	ctx := context.Background()
 	// userID, _ := c.Get("user_id")
 	certID, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -178,7 +169,7 @@ func (h *CertificationHandler) DeleteCertification(c *gin.Context) {
 		return
 	}
 
-	result, err := h.db.Exec(ctx, "DELETE FROM certifications WHERE id = $1", certID)
+	result, err := h.pdb.Exec(c, "DELETE FROM certifications WHERE id = $1", certID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
