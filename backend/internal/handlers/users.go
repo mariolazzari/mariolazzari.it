@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/models"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 	"github.com/redis/go-redis/v9"
@@ -13,7 +14,7 @@ import (
 
 type UserHandler Handler
 
-// NewUserHandler creates a new user handler
+// creates a new user handler
 func NewUserHandler(pdb *pgxpool.Pool, rdb *redis.Client) *UserHandler {
 	return &UserHandler{
 		pdb: pdb,
@@ -21,18 +22,22 @@ func NewUserHandler(pdb *pgxpool.Pool, rdb *redis.Client) *UserHandler {
 	}
 }
 
+const cacheKey = "users:all"
+
 // retrieves all users
 func (h *UserHandler) GetAllUsers(c *gin.Context) {
-
 	// Try to get from cache
-	// cachedUsers, err := h.redis.Get(ctx, "users:all").Result()
-	// if err == nil {
-	// 	c.JSON(http.StatusOK, gin.H{
-	// 		"data":  cachedUsers,
-	// 		"cache": true,
-	// 	})
-	// 	return
-	// }
+	cachedUsers, ok := db.GetCache[[]models.User](c, h.rdb, cacheKey)
+	if ok {
+		c.JSON(http.StatusOK, gin.H{
+			"data":  cachedUsers,
+			"cache": true,
+		})
+		return
+	}
+
+	// get users from db
+	var users []models.User
 
 	rows, err := h.pdb.Query(c, "SELECT id, email, first_name, last_name, created_at, updated_at FROM users ORDER BY created_at DESC")
 	if err != nil {
@@ -41,7 +46,6 @@ func (h *UserHandler) GetAllUsers(c *gin.Context) {
 	}
 	defer rows.Close()
 
-	users := []models.User{}
 	for rows.Next() {
 		var user models.User
 		if err := rows.Scan(&user.ID, &user.Email, &user.FirstName, &user.LastName, &user.CreatedAt, &user.UpdatedAt); err != nil {
@@ -50,6 +54,9 @@ func (h *UserHandler) GetAllUsers(c *gin.Context) {
 		}
 		users = append(users, user)
 	}
+
+	// save user in cache
+	db.SetCache(c, h.rdb, cacheKey, cachedUsers, 0)
 
 	c.JSON(http.StatusOK, gin.H{"data": users})
 }

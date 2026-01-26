@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
@@ -17,23 +18,35 @@ type CustomClaims struct {
 }
 
 var jwtSecret []byte
+var jwtExpiresIn int
 
+// Initialize JWT settings
 func init() {
 	secret := os.Getenv("JWT_SECRET")
 	if secret == "" {
 		log.Fatal("JWT_SECRET is not set")
 	}
 	jwtSecret = []byte(secret)
+
+	expiresIn := os.Getenv("JWT_EXPIRES_IN")
+	if expiresIn == "" {
+		log.Fatal("JWT_EXPIRES_IN is not set")
+	}
+
+	var err error
+	jwtExpiresIn, err = strconv.Atoi(expiresIn)
+	if err != nil {
+		log.Fatal("JWT_EXPIRES_IN is not a valid integer")
+	}
 }
 
 // GenerateToken generates a JWT token
 func GenerateToken(userID, email string) (string, error) {
-	expirationTime := time.Now().Add(24 * time.Hour)
 	claims := &CustomClaims{
 		UserID: userID,
 		Email:  email,
 		RegisteredClaims: jwt.RegisteredClaims{
-			ExpiresAt: jwt.NewNumericDate(expirationTime),
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Duration(jwtExpiresIn) * time.Second)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
 		},
 	}
@@ -51,7 +64,7 @@ func GenerateToken(userID, email string) (string, error) {
 func ValidateToken(token string) (*CustomClaims, error) {
 	claims := &CustomClaims{}
 
-	parsedToken, err := jwt.ParseWithClaims(token, claims, func(token *jwt.Token) (interface{}, error) {
+	parsedToken, err := jwt.ParseWithClaims(token, claims, func(token *jwt.Token) (any, error) {
 		// Verify signing method
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])

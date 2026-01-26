@@ -6,6 +6,11 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// load config from .env or other sources
+func init() {
+	godotenv.Load()
+}
+
 type Config struct {
 	Env          string
 	Port         string
@@ -16,25 +21,17 @@ type Config struct {
 	JwtExpiresIn string
 }
 
-// load config from .env or other sources
-func init() {
-	godotenv.Load()
-}
-
 // Load configuration from environment variables
 func Load() *Config {
-	// read env variables
-	cfg := Config{
+	return &Config{
 		Env:          getValue("ENV", "development"),
 		Host:         getValue("HOST", "127.0.0.1"),
 		Port:         getValue("PORT", "4001"),
 		PosgresURL:   getValue("POSTGRES_URL", "postgresql://user:password@localhost:5432/dbname"),
 		RedisURL:     getValue("REDIS_URL", "redis://localhost:6379"),
 		JwtSecret:    getValue("JWT_SECRET", "default_secret"),
-		JwtExpiresIn: getValue("JWT_EXPIRES_IN", "1d"),
+		JwtExpiresIn: getValue("JWT_EXPIRES_IN", "3600"),
 	}
-
-	return &cfg
 }
 
 // retrieves the value of the environment variable named by the key.

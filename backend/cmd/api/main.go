@@ -11,6 +11,7 @@ import (
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/routes"
 )
 
+// entry point of the application.
 func main() {
 	// load environment variables
 	cfg := config.Load()
@@ -33,7 +34,7 @@ func main() {
 	defer rdb.Close()
 
 	// create admin user
-	EnsureAdminUser(ctx, pdb)
+	db.EnsureAdminUser(ctx, pdb)
 
 	// set gin mode
 	if cfg.Env == "release" {

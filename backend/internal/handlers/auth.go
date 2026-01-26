@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -19,54 +20,6 @@ func NewAuthHandler(pdb *pgxpool.Pool, rdb *redis.Client) *AuthHandler {
 		rdb: rdb,
 	}
 }
-
-// handles user registration
-// func (h *AuthHandler) Register(c *gin.Context) {
-// 	ctx := context.Background()
-// 	var input models.UserCreateInput
-
-// 	if err := c.ShouldBindJSON(&input); err != nil {
-// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-// 		return
-// 	}
-
-// 	// Check if user already exists
-// 	var exists bool
-// 	err := h.db.QueryRow(ctx, "SELECT EXISTS(SELECT 1 FROM users WHERE email = $1)", input.Email).Scan(&exists)
-// 	if err != nil {
-// 		c.JSON(http.StatusInternalServerError, gin.H{"error": "database error"})
-// 		return
-// 	}
-// 	if exists {
-// 		c.JSON(http.StatusConflict, gin.H{"error": "email already registered"})
-// 		return
-// 	}
-
-// 	// Hash password
-// 	hashedPassword, err := utils.HashPassword(input.Password)
-// 	if err != nil {
-// 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to process password"})
-// 		return
-// 	}
-
-// 	userID := utils.GenerateID()
-// 	var user models.User
-
-// 	err = h.db.QueryRow(ctx,
-// 		"INSERT INTO users (id, email, password, first_name, last_name, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, NOW(), NOW()) RETURNING id, email, first_name, last_name, created_at, updated_at",
-// 		userID, input.Email, hashedPassword, input.FirstName, input.LastName,
-// 	).Scan(&user.ID, &user.Email, &user.FirstName, &user.LastName, &user.CreatedAt, &user.UpdatedAt)
-
-// 	if err != nil {
-// 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to create user"})
-// 		return
-// 	}
-
-// 	c.JSON(http.StatusCreated, gin.H{
-// 		"message": "user registered successfully",
-// 		"data":    user,
-// 	})
-// }
 
 // login user
 func (h *AuthHandler) Login(c *gin.Context) {
@@ -103,6 +56,12 @@ func (h *AuthHandler) Login(c *gin.Context) {
 		return
 	}
 
+	// Set secure cookie for production
+	secure := false
+	if os.Getenv("APP_ENV") == "production" {
+		secure = true
+	}
+
 	// httpOnly cookie
 	http.SetCookie(c.Writer, &http.Cookie{
 		Name:     "access_token",
@@ -110,7 +69,7 @@ func (h *AuthHandler) Login(c *gin.Context) {
 		Path:     "/",
 		MaxAge:   86400,
 		HttpOnly: true,
-		Secure:   true, // true SOLO con HTTPS
+		Secure:   secure,
 		SameSite: http.SameSiteLaxMode,
 	})
 

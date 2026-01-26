@@ -8,6 +8,7 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
+// registers authentication routes.
 func RegisterAuthRoutes(r *gin.RouterGroup, pdb *pgxpool.Pool, rdb *redis.Client) {
 	authHandler := handlers.NewAuthHandler(pdb, rdb)
 
