@@ -12,7 +12,7 @@ import (
 
 // CustomClaims represents JWT token claims
 type CustomClaims struct {
-	UserID string `json:"user_id"`
+	UserID int    `json:"user_id"`
 	Email  string `json:"email"`
 	jwt.RegisteredClaims
 }
@@ -41,7 +41,7 @@ func init() {
 }
 
 // GenerateToken generates a JWT token
-func GenerateToken(userID, email string) (string, error) {
+func GenerateToken(userID int, email string) (string, error) {
 	claims := &CustomClaims{
 		UserID: userID,
 		Email:  email,

@@ -64,3 +64,10 @@ func SetCache[T any](ctx context.Context, rdb *redis.Client, key string, value T
 		log.Printf("cache: failed to set key %s in Redis: %v", key, err)
 	}
 }
+
+// deletes a key from cache
+func DelCache(ctx context.Context, rdb *redis.Client, key string) {
+	if err := rdb.Del(ctx, key).Err(); err != nil {
+		log.Printf("cache: failed to delete key %s: %v", key, err)
+	}
+}
