@@ -19,6 +19,7 @@ type Config struct {
 	RedisURL     string
 	JwtSecret    string
 	JwtExpiresIn string
+	AdminEmail   string
 }
 
 // Load configuration from environment variables
@@ -31,6 +32,7 @@ func Load() *Config {
 		RedisURL:     getValue("REDIS_URL", "redis://localhost:6379"),
 		JwtSecret:    getValue("JWT_SECRET", "default_secret"),
 		JwtExpiresIn: getValue("JWT_EXPIRES_IN", "3600"),
+		AdminEmail:   getValue("ADMIN_EMAL", "admin@mariolazzari.it"),
 	}
 }
 

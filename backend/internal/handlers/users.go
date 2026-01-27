@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -22,12 +21,10 @@ func NewUserHandler(pdb *pgxpool.Pool, rdb *redis.Client) *UserHandler {
 	}
 }
 
-const cacheKey = "users:all"
-
 // retrieves all users
 func (h *UserHandler) GetAllUsers(c *gin.Context) {
 	// Try to get from cache
-	cachedUsers, ok := db.GetCache[[]models.User](c, h.rdb, cacheKey)
+	cachedUsers, ok := db.GetCache[[]models.User](c, h.rdb, usersCacheKey)
 	if ok {
 		c.JSON(http.StatusOK, gin.H{
 			"data":  cachedUsers,
@@ -56,7 +53,7 @@ func (h *UserHandler) GetAllUsers(c *gin.Context) {
 	}
 
 	// save results in cache
-	db.SetCache(c, h.rdb, cacheKey, users, 0)
+	db.SetCache(c, h.rdb, usersCacheKey, users, 0)
 
 	c.JSON(http.StatusOK, gin.H{"data": users})
 }
@@ -64,14 +61,13 @@ func (h *UserHandler) GetAllUsers(c *gin.Context) {
 // GetUserByID retrieves a user by ID
 func (h *UserHandler) GetUserByID(c *gin.Context) {
 	// get user id param
-	userID, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	userID, ok := utils.GetParam[int](c, "id")
+	if !ok {
 		return
 	}
 
 	var user models.User
-	err = h.pdb.QueryRow(c, "SELECT id, email, first_name, last_name, created_at, updated_at FROM users WHERE id = $1", userID).
+	err := h.pdb.QueryRow(c, "SELECT id, email, first_name, last_name, created_at, updated_at FROM users WHERE id = $1", userID).
 		Scan(&user.ID, &user.Email, &user.FirstName, &user.LastName, &user.CreatedAt, &user.UpdatedAt)
 
 	if err != nil {
@@ -123,7 +119,7 @@ func (h *UserHandler) CreateUser(c *gin.Context) {
 	}
 
 	// invalidate cache
-	db.DelCache(c, h.rdb, cacheKey)
+	db.DelCache(c, h.rdb, usersCacheKey)
 
 	c.JSON(http.StatusCreated, gin.H{"data": user})
 }
@@ -131,9 +127,8 @@ func (h *UserHandler) CreateUser(c *gin.Context) {
 // updates existing user
 func (h *UserHandler) UpdateUser(c *gin.Context) {
 	// get user id param
-	userID, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	userID, ok := utils.GetParam[int](c, "id")
+	if !ok {
 		return
 	}
 
@@ -146,7 +141,7 @@ func (h *UserHandler) UpdateUser(c *gin.Context) {
 
 	// update existing user
 	var user models.User
-	err = h.pdb.QueryRow(c,
+	err := h.pdb.QueryRow(c,
 		"UPDATE users SET first_name = COALESCE(NULLIF($1, ''), first_name), last_name = COALESCE(NULLIF($2, ''), last_name), updated_at = NOW() WHERE id = $3 RETURNING id, email, first_name, last_name, created_at, updated_at",
 		input.FirstName, input.LastName, userID,
 	).Scan(&user.ID, &user.Email, &user.FirstName, &user.LastName, &user.CreatedAt, &user.UpdatedAt)
@@ -157,16 +152,16 @@ func (h *UserHandler) UpdateUser(c *gin.Context) {
 	}
 
 	// invalidate cache
-	db.DelCache(c, h.rdb, cacheKey)
+	db.DelCache(c, h.rdb, usersCacheKey)
 
 	c.JSON(http.StatusOK, gin.H{"data": user})
 }
 
 // deletes exiating user
 func (h *UserHandler) DeleteUser(c *gin.Context) {
-	userID, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	// get user id param
+	userID, ok := utils.GetParam[int](c, "id")
+	if !ok {
 		return
 	}
 
@@ -182,7 +177,7 @@ func (h *UserHandler) DeleteUser(c *gin.Context) {
 	}
 
 	// invalidate cache
-	db.DelCache(c, h.rdb, cacheKey)
+	db.DelCache(c, h.rdb, userCacheKey(userID))
 
 	c.JSON(http.StatusOK, gin.H{"message": "user deleted successfully"})
 }

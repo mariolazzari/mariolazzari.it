@@ -11,7 +11,7 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-func ConnectRedis(ctx *context.Context) (*redis.Client, error) {
+func ConnectRedis(ctx context.Context) (*redis.Client, error) {
 	// get redis url from env
 	redisURL := os.Getenv("REDIS_URL")
 	if redisURL == "" {
@@ -26,7 +26,7 @@ func ConnectRedis(ctx *context.Context) (*redis.Client, error) {
 	rdb := redis.NewClient(opt)
 
 	// ping redis
-	if err := rdb.Ping(*ctx).Err(); err != nil {
+	if err := rdb.Ping(ctx).Err(); err != nil {
 		return nil, err
 	}
 
@@ -59,7 +59,7 @@ func SetCache[T any](ctx context.Context, rdb *redis.Client, key string, value T
 		return
 	}
 
-	err = rdb.SetNX(ctx, key, data, ttl).Err()
+	err = rdb.Set(ctx, key, data, ttl).Err()
 	if err != nil {
 		log.Printf("cache: failed to set key %s in Redis: %v", key, err)
 	}

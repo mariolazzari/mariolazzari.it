@@ -2,11 +2,12 @@ package handlers
 
 import (
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/models"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 	"github.com/redis/go-redis/v9"
 )
 
@@ -60,10 +61,9 @@ func (h *CertificationHandler) GetAllCertifications(c *gin.Context) {
 
 // GetCertificationByID retrieves a specific certification
 func (h *CertificationHandler) GetCertificationByID(c *gin.Context) {
-	//	userID, _ := c.Get("user_id")
-	certID, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	// get certification id
+	certID, ok := utils.GetParam[int](c, "id")
+	if !ok {
 		return
 	}
 
@@ -80,7 +80,7 @@ func (h *CertificationHandler) GetCertificationByID(c *gin.Context) {
 	// }
 
 	var cert models.Certification
-	err = h.pdb.QueryRow(c,
+	err := h.pdb.QueryRow(c,
 		"SELECT id, title, image_src, date, url, created_at, updated_at FROM certifications WHERE id = $1",
 		certID,
 	).Scan(&cert.ID, &cert.Title, &cert.ImageSrc, &cert.Date, &cert.URL, &cert.CreatedAt, &cert.UpdatedAt)
@@ -116,17 +116,16 @@ func (h *CertificationHandler) CreateCertification(c *gin.Context) {
 	}
 
 	// Invalidate cache
-	//	h.redis.Del(ctx, "certifications:"+userID.(string))
+	//	db.DelCache(c,h.rdb, )
 
 	c.JSON(http.StatusCreated, gin.H{"data": cert})
 }
 
 // UpdateCertification updates a certification
 func (h *CertificationHandler) UpdateCertification(c *gin.Context) {
-	// userID, _ := c.Get("user_id")
-	certID, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	// get certification id
+	certID, ok := utils.GetParam[int](c, "id")
+	if !ok {
 		return
 	}
 
@@ -137,7 +136,7 @@ func (h *CertificationHandler) UpdateCertification(c *gin.Context) {
 	}
 
 	var cert models.Certification
-	err = h.pdb.QueryRow(c,
+	err := h.pdb.QueryRow(c,
 		`UPDATE certifications 
 		 SET title = COALESCE(NULLIF($1, ''), title),
 		     image_src = COALESCE(NULLIF($2, ''), image_src),
@@ -162,10 +161,9 @@ func (h *CertificationHandler) UpdateCertification(c *gin.Context) {
 
 // DeleteCertification deletes a certification
 func (h *CertificationHandler) DeleteCertification(c *gin.Context) {
-	// userID, _ := c.Get("user_id")
-	certID, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	// get certification id
+	certID, ok := utils.GetParam[int](c, "id")
+	if !ok {
 		return
 	}
 
@@ -181,7 +179,7 @@ func (h *CertificationHandler) DeleteCertification(c *gin.Context) {
 	}
 
 	// Invalidate cache
-	// h.redis.Del(ctx, "certification:"+certID)
+	db.DelCache(c, h.rdb, "certs:all")
 
 	c.JSON(http.StatusOK, gin.H{"message": "certification deleted successfully"})
 }

@@ -12,18 +12,18 @@ import (
 )
 
 // connects to the PostgreSQL database using the provided context.
-func ConnectPostgres(ctx *context.Context) (*pgxpool.Pool, error) {
+func ConnectPostgres(ctx context.Context) (*pgxpool.Pool, error) {
 	dsn := os.Getenv("POSTGRES_URL")
 	if dsn == "" {
 		return nil, errors.New("POSTGRES_URL not set")
 	}
 
-	pool, err := pgxpool.New(*ctx, dsn)
+	pool, err := pgxpool.New(ctx, dsn)
 	if err != nil {
 		return nil, err
 	}
 
-	if err = pool.Ping(*ctx); err != nil {
+	if err = pool.Ping(ctx); err != nil {
 		return nil, err
 	}
 
@@ -32,13 +32,13 @@ func ConnectPostgres(ctx *context.Context) (*pgxpool.Pool, error) {
 
 // ensures that the admin user exists in the database.
 func EnsureAdminUser(ctx context.Context, db *pgxpool.Pool) error {
-	// read admin email and password from environment variables
-	adminEmail := os.Getenv("ADMIN_USER")
+	// read admin user email and password from environment variables
+	adminEmail := os.Getenv("ADMIN_EMAIL")
 	if adminEmail == "" {
-		return fmt.Errorf("ADMIN_USER environment variable is not set")
+		return fmt.Errorf("ADMIN_EMAIL environment variable is not set")
 	}
 	adminPassword := os.Getenv("ADMIN_PASSWORD")
-	if adminEmail == "" {
+	if adminPassword == "" {
 		return fmt.Errorf("ADMIN_PASSWORD environment variable is not set")
 	}
 

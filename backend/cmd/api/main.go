@@ -20,14 +20,14 @@ func main() {
 	ctx := context.Background()
 
 	// connect database
-	pdb, err := db.ConnectPostgres(&ctx)
+	pdb, err := db.ConnectPostgres(ctx)
 	if err != nil {
 		log.Fatalf("Postgres connection error: %s", err.Error())
 	}
 	defer pdb.Close()
 
 	// enable caching
-	rdb, err := db.ConnectRedis(&ctx)
+	rdb, err := db.ConnectRedis(ctx)
 	if err != nil {
 		log.Fatalf("Redis connection error: %s", err.Error())
 	}
