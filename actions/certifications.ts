@@ -26,13 +26,27 @@ export async function getLastCertifications(
 ): Promise<Certification[]> {
   const sorted = certifications.sort(comparator).reverse().slice(0, last);
 
-  return new Promise((res) => res(sorted));
+  return new Promise(res => res(sorted));
 }
 
 export async function getCertifications(search = ""): Promise<Certification[]> {
   const filtered = certifications
-    .filter((c) => c.title.toLowerCase().includes(search.toLowerCase()))
+    .filter(c => c.title.toLowerCase().includes(search.toLowerCase()))
     .sort(comparator);
 
-  return new Promise((res) => res(filtered.reverse()));
+  return new Promise(res => res(filtered.reverse()));
 }
+
+// export async function getCertificationsTest(): Promise<Certification[]> {
+//   const res = await fetch("http://127.0.0.1:4001/api/v1/certifications");
+//   if (!res.ok) {
+//     console.error(res.statusText);
+//     throw new Error("Error fetching certifications");
+//   }
+
+//   const data = await res.json();
+
+//   console.log("data", data);
+
+//   return data;
+// }
