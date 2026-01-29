@@ -7,6 +7,7 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/models"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/repositories"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 	"github.com/redis/go-redis/v9"
 )
@@ -23,6 +24,7 @@ func NewCertificationHandler(pdb *pgxpool.Pool, rdb *redis.Client) *Certificatio
 
 // retrieves all certifications for the authenticated user
 func (h *CertificationHandler) GetAllCertifications(c *gin.Context) {
+
 	// userID, _ := c.Get("user_id")
 
 	// cacheKey := "certifications:" + userID.(string)
@@ -37,23 +39,11 @@ func (h *CertificationHandler) GetAllCertifications(c *gin.Context) {
 	// 	return
 	// }
 
-	rows, err := h.pdb.Query(c,
-		"SELECT id, title, image_src, date, url, created_at, updated_at FROM certifications ORDER BY date DESC",
-	)
+	certRepo := repositories.NewCertificationsRepository(h.pdb)
+	certifications, err := certRepo.GetCertifications(c)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to fetch certifications"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
-	}
-	defer rows.Close()
-
-	certifications := []models.Certification{}
-	for rows.Next() {
-		var cert models.Certification
-		if err := rows.Scan(&cert.ID, &cert.Title, &cert.ImageSrc, &cert.Date, &cert.URL, &cert.CreatedAt, &cert.UpdatedAt); err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-			return
-		}
-		certifications = append(certifications, cert)
 	}
 
 	c.JSON(http.StatusOK, gin.H{"data": certifications})
@@ -95,7 +85,7 @@ func (h *CertificationHandler) GetCertificationByID(c *gin.Context) {
 
 // CreateCertification creates a new certification
 func (h *CertificationHandler) CreateCertification(c *gin.Context) {
-	// 
+	//
 	var input models.CertificationCreateInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

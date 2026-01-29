@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -32,7 +33,12 @@ func AuthMiddleware() gin.HandlerFunc {
 			token = cookieToken
 		}
 
-		claims, err := utils.ValidateToken(token)
+		tm, err := utils.NewTokenManager()
+		if err != nil {
+			fmt.Println("Config error:", err)
+			return
+		}
+		claims, err := tm.ValidateToken(token)
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid token"})
 			c.Abort()

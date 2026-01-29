@@ -2,21 +2,33 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
+	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/config"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/middleware"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/routes"
 )
 
+func init() {
+	fmt.Println("init")
+	cwd, _ := os.Getwd()
+	log.Println("CWD:", cwd)
+	godotenv.Load()
+}
+
 // entry point of the application.
 func main() {
-	// load environment variables
-	cfg := config.Load()
 
-	// application context
+	// load environment variables and create application context
+	cfg, err := config.New()
+	if err != nil {
+		log.Fatalf("Error reading enviroment variables: %s", err)
+	}
 	ctx := context.Background()
 
 	// connect database
@@ -60,7 +72,7 @@ func main() {
 	}
 
 	// start server
-	if err := router.Run(":" + cfg.Port); err != nil {
-		log.Fatalf("Failed to start server: %v", err)
+	if err := router.Run(fmt.Sprintf(":%d", cfg.Port)); err != nil {
+		log.Fatalf("Failed to start server: %s", err)
 	}
 }

@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
@@ -50,7 +51,13 @@ func (h *AuthHandler) Login(c *gin.Context) {
 	}
 
 	// Generate token
-	token, err := utils.GenerateToken(user.ID, user.Email)
+	tm, err := utils.NewTokenManager()
+	if err != nil {
+		fmt.Println("Config error:", err)
+		return
+	}
+
+	token, err := tm.GenerateToken(user.ID, user.Email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to generate token"})
 		return
@@ -67,7 +74,7 @@ func (h *AuthHandler) Login(c *gin.Context) {
 		Name:     "access_token",
 		Value:    token,
 		Path:     "/",
-		MaxAge:   86400,
+		MaxAge:   tm.ExpiresIn,
 		HttpOnly: true,
 		Secure:   secure,
 		SameSite: http.SameSiteLaxMode,
@@ -76,7 +83,7 @@ func (h *AuthHandler) Login(c *gin.Context) {
 	response := models.AuthResponse{
 		Token:     token,
 		User:      &user,
-		ExpiresIn: 86400, // 24 hours in seconds
+		ExpiresIn: int64(tm.ExpiresIn),
 	}
 
 	c.JSON(http.StatusOK, gin.H{"data": response})

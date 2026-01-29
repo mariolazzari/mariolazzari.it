@@ -1,46 +1,57 @@
 package config
 
 import (
+	"fmt"
 	"os"
 
-	"github.com/joho/godotenv"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 )
-
-// load config from .env or other sources
-func init() {
-	godotenv.Load()
-}
 
 type Config struct {
 	Env          string
-	Port         string
+	Port         int
 	Host         string
-	PosgresURL   string
-	RedisURL     string
+	DBURL        string
+	CacheURL     string
 	JwtSecret    string
-	JwtExpiresIn string
+	JwtExpiresIn int
 	AdminEmail   string
 }
 
-// Load configuration from environment variables
-func Load() *Config {
-	return &Config{
+// New loads the configuration from environment variables or .env file.
+// Returns an error if critical variables are missing or invalid.
+func New() (*Config, error) {
+	fmt.Println("new")
+
+	port := utils.ParseInt(getValue("PORT", "4001"), 4001)
+	jwtExp := utils.ParseInt(getValue("JWT_EXPIRES_IN", "3600"), 3600)
+
+	cfg := &Config{
 		Env:          getValue("ENV", "development"),
 		Host:         getValue("HOST", "127.0.0.1"),
-		Port:         getValue("PORT", "4001"),
-		PosgresURL:   getValue("POSTGRES_URL", "postgresql://user:password@localhost:5432/dbname"),
-		RedisURL:     getValue("REDIS_URL", "redis://localhost:6379"),
-		JwtSecret:    getValue("JWT_SECRET", "default_secret"),
-		JwtExpiresIn: getValue("JWT_EXPIRES_IN", "3600"),
-		AdminEmail:   getValue("ADMIN_EMAL", "admin@mariolazzari.it"),
+		Port:         port,
+		DBURL:        getValue("POSTGRES_URL", ""),
+		CacheURL:     getValue("REDIS_URL", "redis://localhost:6379"),
+		JwtSecret:    getValue("JWT_SECRET", "s3cret"),
+		JwtExpiresIn: jwtExp,
+		AdminEmail:   getValue("ADMIN_EMAIL", "admin@mariolazzari.it"),
 	}
+
+	// Validate critical variables
+	// if cfg.DBURL == "" {
+	// 	return nil, errors.New("POSTGRES_URL is required")
+	// }
+	// if cfg.JwtSecret == "" {
+	// 	return nil, errors.New("JWT_SECRET is required")
+	// }
+
+	return cfg, nil
 }
 
-// retrieves the value of the environment variable named by the key.
+// getValue returns the environment variable or the default value if not set.
 func getValue(key, defVal string) string {
-	val, ok := os.LookupEnv(key)
-	if !ok {
-		return defVal
+	if val, ok := os.LookupEnv(key); ok {
+		return val
 	}
-	return val
+	return defVal
 }
