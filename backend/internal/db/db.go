@@ -11,7 +11,7 @@ import (
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 )
 
-// connects to the PostgreSQL database using the provided context.
+// ConnectPostgres connects to the PostgreSQL database using the provided context.
 func ConnectPostgres(ctx context.Context) (*pgxpool.Pool, error) {
 	dsn := os.Getenv("POSTGRES_URL")
 	if dsn == "" {
@@ -30,7 +30,7 @@ func ConnectPostgres(ctx context.Context) (*pgxpool.Pool, error) {
 	return pool, nil
 }
 
-// ensures that the admin user exists in the database.
+// EnsureAdminUser ensures that the admin user exists in the database.
 func EnsureAdminUser(ctx context.Context, db *pgxpool.Pool) error {
 	// read admin user email and password from environment variables
 	adminEmail := os.Getenv("ADMIN_EMAIL")

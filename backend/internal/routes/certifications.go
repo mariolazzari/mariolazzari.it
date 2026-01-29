@@ -8,19 +8,19 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
+// RegisterCertificationRoutes registers certification-related routes.
 func RegisterCertificationRoutes(r *gin.RouterGroup, pdb *pgxpool.Pool, rdb *redis.Client) {
+	certGroup := r.Group("/certifications")
 	certHandler := handlers.NewCertificationHandler(pdb, rdb)
 
-	certifications := r.Group("/certifications")
-	{
-		// public routes
-		certifications.GET("", certHandler.GetAllCertifications)
-		certifications.GET("/:id", certHandler.GetCertificationByID)
+	// public routes
+	certGroup.GET("", certHandler.GetAllCertifications)
+	certGroup.GET("/:id", certHandler.GetCertificationByID)
 
-		// private routes
-		certifications.Use(middleware.AuthMiddleware())
-		certifications.POST("", certHandler.CreateCertification)
-		certifications.PUT("/:id", certHandler.UpdateCertification)
-		certifications.DELETE("/:id", certHandler.DeleteCertification)
-	}
+	// private routes
+	authMW := middleware.AuthMiddleware()
+	certGroup.POST("", authMW, certHandler.CreateCertification)
+	certGroup.PUT("/:id", authMW, certHandler.UpdateCertification)
+	certGroup.DELETE("/:id", authMW, certHandler.DeleteCertification)
+
 }

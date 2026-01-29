@@ -8,19 +8,18 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
+// RegisterUserRoutes registers user-related routes.
 func RegisterUserRoutes(r *gin.RouterGroup, pdb *pgxpool.Pool, rdb *redis.Client) {
+	users := r.Group("/users")
 	userHandler := handlers.NewUserHandler(pdb, rdb)
 
-	users := r.Group("/users")
-	{
-		// public routes
-		users.GET("", userHandler.GetAllUsers)
-		users.GET("/:id", userHandler.GetUserByID)
+	// public routes
+	users.GET("", userHandler.GetAllUsers)
+	users.GET("/:id", userHandler.GetUserByID)
 
-		// private routes
-		users.Use(middleware.AuthMiddleware())
-		users.POST("", userHandler.CreateUser)
-		users.PUT("/:id", userHandler.UpdateUser)
-		users.DELETE("/:id", userHandler.DeleteUser)
-	}
+	// private routes
+	authMiddleware := middleware.AuthMiddleware()
+	users.POST("", authMiddleware, userHandler.CreateUser)
+	users.PUT("/:id", authMiddleware, userHandler.UpdateUser)
+	users.DELETE("/:id", authMiddleware, userHandler.DeleteUser)
 }

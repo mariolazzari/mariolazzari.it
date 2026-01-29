@@ -11,6 +11,7 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
+// ConnectRedis connects to redis.
 func ConnectRedis(ctx context.Context) (*redis.Client, error) {
 	// get redis url from env
 	redisURL := os.Getenv("REDIS_URL")
@@ -33,7 +34,7 @@ func ConnectRedis(ctx context.Context) (*redis.Client, error) {
 	return rdb, nil
 }
 
-// read key from cache
+// GetCache reads a key from cache.
 func GetCache[T any](ctx context.Context, rdb *redis.Client, key string) (T, bool) {
 	var result T
 
@@ -51,7 +52,7 @@ func GetCache[T any](ctx context.Context, rdb *redis.Client, key string) (T, boo
 	return result, true
 }
 
-// save value in cache with TTL
+// SetCache saves value in cache with TTL.
 func SetCache[T any](ctx context.Context, rdb *redis.Client, key string, value T, ttl time.Duration) {
 	data, err := json.Marshal(value)
 	if err != nil {
@@ -65,7 +66,7 @@ func SetCache[T any](ctx context.Context, rdb *redis.Client, key string, value T
 	}
 }
 
-// deletes a key from cache
+// DelCache deletes a key from cache.
 func DelCache(ctx context.Context, rdb *redis.Client, key string) {
 	if err := rdb.Del(ctx, key).Err(); err != nil {
 		log.Printf("cache: failed to delete key %s: %v", key, err)

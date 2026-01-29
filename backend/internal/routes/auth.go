@@ -8,17 +8,15 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-// registers authentication routes.
+// RegisterAuthRoutes registers authentication routes.
 func RegisterAuthRoutes(r *gin.RouterGroup, pdb *pgxpool.Pool, rdb *redis.Client) {
+	auth := r.Group("/auth")
 	authHandler := handlers.NewAuthHandler(pdb, rdb)
 
-	auth := r.Group("/auth")
-	{
-		// public routes
-		auth.POST("/login", authHandler.Login)
+	// public routes
+	auth.POST("/login", authHandler.Login)
 
-		// private routes
-		auth.Use(middleware.AuthMiddleware())
-		auth.POST("/logout", authHandler.Logout)
-	}
+	// private routes
+	authMW := middleware.AuthMiddleware()
+	auth.POST("/logout", authMW, authHandler.Logout)
 }

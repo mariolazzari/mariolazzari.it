@@ -95,8 +95,7 @@ func (h *CertificationHandler) GetCertificationByID(c *gin.Context) {
 
 // CreateCertification creates a new certification
 func (h *CertificationHandler) CreateCertification(c *gin.Context) {
-	//	userID, _ := c.Get("user_id")
-
+	// 
 	var input models.CertificationCreateInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

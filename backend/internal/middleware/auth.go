@@ -11,18 +11,12 @@ import (
 // validates JWT token
 func AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-
-		cookies := c.Request.Header.Get("Cookie")
-		auth := c.GetHeader("Authorization")
-		println("Cookie header:", cookies)
-		println("Authorization:", auth)
-
 		var token string
 
 		// 1. Try Authorization header
 		authHeader := c.GetHeader("Authorization")
-		if strings.HasPrefix(authHeader, "Bearer ") {
-			token = strings.TrimPrefix(authHeader, "Bearer ")
+		if after, ok := strings.CutPrefix(authHeader, "Bearer "); ok {
+			token = after
 			token = strings.TrimSpace(token)
 			token = strings.Trim(token, `"`)
 		}
@@ -30,7 +24,6 @@ func AuthMiddleware() gin.HandlerFunc {
 		// 2. Fallback to cookie
 		if token == "" {
 			cookieToken, err := c.Cookie("access_token")
-
 			if err != nil {
 				c.JSON(http.StatusUnauthorized, gin.H{"error": "authentication required"})
 				c.Abort()

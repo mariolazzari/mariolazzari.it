@@ -2,7 +2,7 @@ package models
 
 import "time"
 
-// Certification represents a certification
+// Certification represents a certification table
 type Certification struct {
 	ID        int64     `json:"id" db:"id"`
 	Title     string    `json:"title" db:"title"`
