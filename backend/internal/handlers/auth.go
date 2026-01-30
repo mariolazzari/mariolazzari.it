@@ -6,19 +6,19 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/cache"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/models"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
-	"github.com/redis/go-redis/v9"
 )
 
 type AuthHandler Handler
 
 // NewAuthHandler creates a new auth handler
-func NewAuthHandler(pdb *pgxpool.Pool, rdb *redis.Client) *AuthHandler {
+func NewAuthHandler(db *db.DB, cache *cache.Cache) *AuthHandler {
 	return &AuthHandler{
-		pdb: pdb,
-		rdb: rdb,
+		db:    db,
+		cache: cache,
 	}
 }
 
@@ -33,8 +33,7 @@ func (h *AuthHandler) Login(c *gin.Context) {
 
 	var user models.User
 	var hashedPassword string
-
-	err := h.pdb.QueryRow(c,
+	err := h.db.Pool.QueryRow(c,
 		"SELECT id, email, password, first_name, last_name, created_at, updated_at FROM users WHERE email = $1",
 		input.Email,
 	).Scan(&user.ID, &user.Email, &hashedPassword, &user.FirstName, &user.LastName, &user.CreatedAt, &user.UpdatedAt)

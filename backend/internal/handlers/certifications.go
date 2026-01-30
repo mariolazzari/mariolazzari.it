@@ -4,21 +4,20 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/cache"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/models"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/repositories"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
-	"github.com/redis/go-redis/v9"
 )
 
 type CertificationHandler Handler
 
 // creates a new certification handler
-func NewCertificationHandler(pdb *pgxpool.Pool, rdb *redis.Client) *CertificationHandler {
+func NewCertificationHandler(db *db.DB, cache *cache.Cache) *CertificationHandler {
 	return &CertificationHandler{
-		pdb: pdb,
-		rdb: rdb,
+		db:    db,
+		cache: cache,
 	}
 }
 
@@ -39,7 +38,7 @@ func (h *CertificationHandler) GetAllCertifications(c *gin.Context) {
 	// 	return
 	// }
 
-	certRepo := repositories.NewCertificationsRepository(h.pdb)
+	certRepo := repositories.NewCertificationsRepository(h.db.Pool)
 	certifications, err := certRepo.GetCertifications(c)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -70,7 +69,7 @@ func (h *CertificationHandler) GetCertificationByID(c *gin.Context) {
 	// }
 
 	var cert models.Certification
-	err := h.pdb.QueryRow(c,
+	err := h.db.Pool.QueryRow(c,
 		"SELECT id, title, image_src, date, url, created_at, updated_at FROM certifications WHERE id = $1",
 		certID,
 	).Scan(&cert.ID, &cert.Title, &cert.ImageSrc, &cert.Date, &cert.URL, &cert.CreatedAt, &cert.UpdatedAt)
@@ -86,7 +85,7 @@ func (h *CertificationHandler) GetCertificationByID(c *gin.Context) {
 // CreateCertification creates a new certification
 func (h *CertificationHandler) CreateCertification(c *gin.Context) {
 	//
-	var input models.CertificationCreateInput
+	var input models.CertificationInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -94,7 +93,7 @@ func (h *CertificationHandler) CreateCertification(c *gin.Context) {
 
 	// add new certification
 	var cert models.Certification
-	err := h.pdb.QueryRow(c,
+	err := h.db.Pool.QueryRow(c,
 		"INSERT INTO certifications (title, image_src, date, url, created_at, updated_at) VALUES ($1, $2, $3, $4, NOW(), NOW()) RETURNING id, title, image_src, date, url, created_at, updated_at",
 		input.Title, input.ImageSrc, input.Date, input.URL,
 	).Scan(&cert.ID, &cert.Title, &cert.ImageSrc, &cert.Date, &cert.URL, &cert.CreatedAt, &cert.UpdatedAt)
@@ -118,14 +117,14 @@ func (h *CertificationHandler) UpdateCertification(c *gin.Context) {
 		return
 	}
 
-	var input models.CertificationUpdateInput
+	var input models.CertificationInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
 	var cert models.Certification
-	err := h.pdb.QueryRow(c,
+	err := h.db.Pool.QueryRow(c,
 		`UPDATE certifications 
 		 SET title = COALESCE(NULLIF($1, ''), title),
 		     image_src = COALESCE(NULLIF($2, ''), image_src),
@@ -156,7 +155,7 @@ func (h *CertificationHandler) DeleteCertification(c *gin.Context) {
 		return
 	}
 
-	result, err := h.pdb.Exec(c, "DELETE FROM certifications WHERE id = $1", certID)
+	result, err := h.db.Pool.Exec(c, "DELETE FROM certifications WHERE id = $1", certID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -168,7 +167,7 @@ func (h *CertificationHandler) DeleteCertification(c *gin.Context) {
 	}
 
 	// Invalidate cache
-	db.DelCache(c, h.rdb, "certs:all")
+	// h.cache.Del(c, "certs:all")
 
 	c.JSON(http.StatusOK, gin.H{"message": "certification deleted successfully"})
 }

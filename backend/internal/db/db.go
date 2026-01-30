@@ -2,36 +2,42 @@ package db
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"log"
 	"os"
+	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 )
 
-// ConnectPostgres connects to the PostgreSQL database using the provided context.
-func ConnectPostgres(ctx context.Context) (*pgxpool.Pool, error) {
-	dsn := os.Getenv("POSTGRES_URL")
-	if dsn == "" {
-		return nil, errors.New("POSTGRES_URL not set")
-	}
+type DB struct {
+	Pool *pgxpool.Pool
+}
 
+// ConnectPostgres connects to the PostgreSQL database using the provided context.
+func New(ctx context.Context, dsn string) (*DB, error) {
 	pool, err := pgxpool.New(ctx, dsn)
 	if err != nil {
 		return nil, err
 	}
 
-	if err = pool.Ping(ctx); err != nil {
+	pingCtx, cancel := context.WithTimeout(ctx, 2*time.Second)
+	defer cancel()
+	if err := pool.Ping(pingCtx); err != nil {
+		pool.Close()
 		return nil, err
 	}
 
-	return pool, nil
+	return &DB{Pool: pool}, nil
+}
+
+func (db *DB) Close() {
+	db.Pool.Close()
 }
 
 // EnsureAdminUser ensures that the admin user exists in the database.
-func EnsureAdminUser(ctx context.Context, db *pgxpool.Pool) error {
+func (db *DB) EnsureAdminUser(ctx context.Context) error {
 	// read admin user email and password from environment variables
 	adminEmail := os.Getenv("ADMIN_EMAIL")
 	if adminEmail == "" {
@@ -44,7 +50,7 @@ func EnsureAdminUser(ctx context.Context, db *pgxpool.Pool) error {
 
 	// check if admin already created
 	var exists bool
-	err := db.QueryRow(ctx,
+	err := db.Pool.QueryRow(ctx,
 		`SELECT EXISTS (SELECT 1 FROM users WHERE email = $1)`,
 		adminEmail,
 	).Scan(&exists)
@@ -64,7 +70,7 @@ func EnsureAdminUser(ctx context.Context, db *pgxpool.Pool) error {
 		return err
 	}
 
-	_, err = db.Exec(ctx, `
+	_, err = db.Pool.Exec(ctx, `
 		INSERT INTO users (
 			email,
 			password,

@@ -4,49 +4,43 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"os"
+	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/cache"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/config"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/middleware"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/routes"
 )
 
-func init() {
-	fmt.Println("init")
-	cwd, _ := os.Getwd()
-	log.Println("CWD:", cwd)
-	godotenv.Load()
-}
-
 // entry point of the application.
 func main() {
-
-	// load environment variables and create application context
+	// load environment variables
 	cfg, err := config.New()
 	if err != nil {
 		log.Fatalf("Error reading enviroment variables: %s", err)
 	}
-	ctx := context.Background()
+
+	// application context
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 
 	// connect database
-	pdb, err := db.ConnectPostgres(ctx)
+	pdb, err := db.New(ctx, cfg.DBURL)
 	if err != nil {
 		log.Fatalf("Postgres connection error: %s", err.Error())
 	}
 	defer pdb.Close()
 
+	// create admin user
+	pdb.EnsureAdminUser(ctx)
+
 	// enable caching
-	rdb, err := db.ConnectRedis(ctx)
+	rdb, err := cache.New(ctx, cfg.CacheURL)
 	if err != nil {
 		log.Fatalf("Redis connection error: %s", err.Error())
 	}
 	defer rdb.Close()
-
-	// create admin user
-	db.EnsureAdminUser(ctx, pdb)
 
 	// set gin mode
 	if cfg.Env == "release" {
@@ -54,22 +48,8 @@ func main() {
 	}
 
 	// setup router
-	router := gin.Default()
-	router.SetTrustedProxies([]string{"127.0.0.1"})
-	router.Use(middleware.CORSMiddleware())
-
-	// Health check endpoint
-	router.GET("/api/health", func(c *gin.Context) {
-		c.JSON(200, gin.H{"status": "ok"})
-	})
-
-	// API routes
-	apiGroup := router.Group("/api/v1")
-	{
-		routes.RegisterAuthRoutes(apiGroup, pdb, rdb)
-		routes.RegisterCertificationRoutes(apiGroup, pdb, rdb)
-		routes.RegisterUserRoutes(apiGroup, pdb, rdb)
-	}
+	router := routes.New(pdb, rdb, cfg.Env)
+	router.RegisterRoutes()
 
 	// start server
 	if err := router.Run(fmt.Sprintf(":%d", cfg.Port)); err != nil {

@@ -1,9 +1,9 @@
 package config
 
 import (
-	"fmt"
 	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 )
 
@@ -21,8 +21,7 @@ type Config struct {
 // New loads the configuration from environment variables or .env file.
 // Returns an error if critical variables are missing or invalid.
 func New() (*Config, error) {
-	fmt.Println("new")
-
+	godotenv.Load()
 	port := utils.ParseInt(getValue("PORT", "4001"), 4001)
 	jwtExp := utils.ParseInt(getValue("JWT_EXPIRES_IN", "3600"), 3600)
 

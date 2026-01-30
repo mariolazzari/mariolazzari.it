@@ -14,17 +14,9 @@ type Certification struct {
 }
 
 // CertificationCreateInput represents input for creating a certification
-type CertificationCreateInput struct {
+type CertificationInput struct {
 	Title    string    `json:"title" binding:"required,max=255"`
 	ImageSrc string    `json:"image_src" binding:"required"`
 	Date     time.Time `json:"date" binding:"required"`
 	URL      string    `json:"url" binding:"required,url"`
-}
-
-// CertificationUpdateInput represents input for updating a certification
-type CertificationUpdateInput struct {
-	Title    string    `json:"title"`
-	ImageSrc string    `json:"image_src"`
-	Date     time.Time `json:"date"`
-	URL      string    `json:"url"`
 }
