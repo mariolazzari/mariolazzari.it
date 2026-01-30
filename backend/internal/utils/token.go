@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 	"strconv"
 	"time"
@@ -72,4 +73,22 @@ func (tm *TokenManager) ValidateToken(tokenStr string) (*CustomClaims, error) {
 	}
 
 	return claims, nil
+}
+
+// SetAccessToken sets the JWT access token cookie
+func (tm *TokenManager) SetAccessToken(w http.ResponseWriter, token string, maxAge int) {
+	secure := false
+	if os.Getenv("APP_ENV") == "production" {
+		secure = true
+	}
+
+	http.SetCookie(w, &http.Cookie{
+		Name:     "access_token",
+		Value:    token,
+		Path:     "/",
+		MaxAge:   maxAge,
+		HttpOnly: true,
+		Secure:   secure,
+		SameSite: http.SameSiteLaxMode,
+	})
 }
