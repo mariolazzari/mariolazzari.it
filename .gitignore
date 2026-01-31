@@ -41,5 +41,5 @@ next-env.d.ts
 
 # go backend
 air.toml
-/backend/bin/
-/backend/tmp/
+backend/bin/
+backend/tmp/

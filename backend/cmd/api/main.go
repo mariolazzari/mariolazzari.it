@@ -6,52 +6,53 @@ import (
 	"log"
 	"time"
 
-	"github.com/gin-gonic/gin"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/cache"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/config"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/routes"
 )
 
-// entry point of the application.
+// main is the entry point of the backend application.
+// It loads configuration, establishes database and cache connections,
+// registers HTTP routes, and starts the HTTP server.
 func main() {
-	// load environment variables
+	// Load environment variables and application configuration.
 	cfg, err := config.New()
 	if err != nil {
 		log.Fatalf("Error reading enviroment variables: %s", err)
 	}
 
-	// application context
+	// Create a context with a timeout for initialization operations
+	// such as connecting to the database or Redis.
+	// NOTE: the 5-second timeout is only for setup; requests will use separate contexts.
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	// connect database
+	// Connect to PostgreSQL and create an admin user if necessary.
 	pdb, err := db.New(ctx, cfg.DBURL)
 	if err != nil {
-		log.Fatalf("Postgres connection error: %s", err.Error())
+		log.Fatalf("Postgres connection error: %s", err)
 	}
 	defer pdb.Close()
 
-	// create admin user
-	pdb.EnsureAdminUser(ctx)
+	// Ensure an admin user exists in the database.
+	if err := pdb.EnsureAdminUser(ctx); err != nil {
+		log.Fatalf("Failed to ensure admin user: %s", err)
+	}
 
-	// enable caching
+	// Connect to Redis for caching.
 	rdb, err := cache.New(ctx, cfg.CacheURL)
 	if err != nil {
-		log.Fatalf("Redis connection error: %s", err.Error())
+		log.Fatalf("Redis connection error: %s", err)
 	}
 	defer rdb.Close()
 
-	// set gin mode
-	if cfg.Env == "release" {
-		gin.SetMode(gin.ReleaseMode)
-	}
-
-	// setup router
+	// Initialize the HTTP router with database and Redis dependencies.
 	router := routes.New(pdb, rdb, cfg.Env)
+	// Register all application routes.
 	router.RegisterRoutes()
 
-	// start server
+	// Start the HTTP server on the configured port.
 	if err := router.Run(fmt.Sprintf(":%d", cfg.Port)); err != nil {
 		log.Fatalf("Failed to start server: %s", err)
 	}
