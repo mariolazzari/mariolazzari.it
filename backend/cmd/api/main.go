@@ -6,10 +6,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/cache"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/config"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/app"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/routes"
 )
 
 // main is the entry point of the backend application.
@@ -17,7 +15,7 @@ import (
 // registers HTTP routes, and starts the HTTP server.
 func main() {
 	// Load environment variables and application configuration.
-	cfg, err := config.New()
+	cfg, err := app.NewConfig()
 	if err != nil {
 		log.Fatalf("Error reading enviroment variables: %s", err)
 	}
@@ -29,7 +27,7 @@ func main() {
 	defer cancel()
 
 	// Connect to PostgreSQL and create an admin user if necessary.
-	pdb, err := db.New(ctx, cfg.DBURL)
+	pdb, err := db.NewPostgres(ctx, cfg.DBURL)
 	if err != nil {
 		log.Fatalf("Postgres connection error: %s", err)
 	}
@@ -41,14 +39,14 @@ func main() {
 	}
 
 	// Connect to Redis for caching.
-	rdb, err := cache.New(ctx, cfg.CacheURL)
+	rdb, err := db.NewRedis(ctx, cfg.CacheURL)
 	if err != nil {
 		log.Fatalf("Redis connection error: %s", err)
 	}
 	defer rdb.Close()
 
 	// Initialize the HTTP router with database and Redis dependencies.
-	router := routes.New(pdb, rdb, cfg.Env)
+	router := app.NewRouter(pdb, rdb, cfg.Env)
 	// Register all application routes.
 	router.RegisterRoutes()
 

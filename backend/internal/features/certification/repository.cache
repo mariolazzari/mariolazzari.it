@@ -1,4 +1,4 @@
-package cache
+package certification
 
 import (
 	"context"
@@ -7,11 +7,11 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/models"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
 )
 
 type CertificationCache struct {
-	cache *Cache
+	cache *db.Redis
 	ttl   time.Duration
 }
 
@@ -20,7 +20,7 @@ func (r *CertificationCache) key(id int) string {
 	return "certification:" + strconv.Itoa(id)
 }
 
-func NewCertificationCache(cache *Cache, ttl time.Duration) *CertificationCache {
+func NewCertificationCache(cache *db.Redis, ttl time.Duration) *CertificationCache {
 	return &CertificationCache{
 		cache: cache,
 		ttl:   ttl,
@@ -28,7 +28,7 @@ func NewCertificationCache(cache *Cache, ttl time.Duration) *CertificationCache 
 }
 
 // GetByID tries to get a certification from Redis
-func (r *CertificationCache) GetByID(ctx context.Context, id int) (*models.Certification, error) {
+func (r *CertificationCache) GetByID(ctx context.Context, id int) (*Certification, error) {
 	var chached string
 
 	key := r.key(id)
@@ -36,7 +36,7 @@ func (r *CertificationCache) GetByID(ctx context.Context, id int) (*models.Certi
 	if !ok {
 		return nil, errors.New("Cache miss")
 	}
-	var cert models.Certification
+	var cert Certification
 	if err := json.Unmarshal([]byte(chached), &cert); err != nil {
 		return nil, err
 	}

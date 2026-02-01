@@ -1,4 +1,4 @@
-package config
+package app
 
 import (
 	"os"
@@ -20,7 +20,7 @@ type Config struct {
 
 // New loads the configuration from environment variables or .env file.
 // Returns an error if critical variables are missing or invalid.
-func New() (*Config, error) {
+func NewConfig() (*Config, error) {
 	godotenv.Load()
 	port := utils.ParseInt(getValue("PORT", "4001"), 4001)
 	jwtExp := utils.ParseInt(getValue("JWT_EXPIRES_IN", "3600"), 3600)

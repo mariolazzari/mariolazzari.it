@@ -1,21 +1,19 @@
-package handlers
+package auth
 
 import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/models"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/services"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 )
 
 type AuthHandler struct {
-	service *services.AuthService
+	service *AuthService
 	tm      *utils.TokenManager
 }
 
 // NewAuthHandler creates a new auth handler
-func NewAuthHandler(service *services.AuthService, tm *utils.TokenManager) *AuthHandler {
+func NewAuthHandler(service *AuthService, tm *utils.TokenManager) *AuthHandler {
 	return &AuthHandler{
 		service: service,
 		tm:      tm,
@@ -24,7 +22,7 @@ func NewAuthHandler(service *services.AuthService, tm *utils.TokenManager) *Auth
 
 // login user
 func (h *AuthHandler) Login(c *gin.Context) {
-	var input models.UserLoginInput
+	var input UserLoginInput
 
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -36,11 +34,11 @@ func (h *AuthHandler) Login(c *gin.Context) {
 	resp, err := h.service.Login(c.Request.Context(), input)
 	if err != nil {
 		switch err {
-		case services.ErrInvalidCredentials:
+		case ErrInvalidCredentials:
 			c.JSON(http.StatusUnauthorized, gin.H{
 				"error": "invalid credentials",
 			})
-		case services.ErrTokenGeneration:
+		case ErrTokenGeneration:
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"error": "authentication failed",
 			})

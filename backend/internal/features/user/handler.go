@@ -1,19 +1,20 @@
-package handlers
+package user
 
 import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/cache"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/models"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 )
 
-type UserHandler Handler
+type UserHandler struct {
+	db    *db.Postgres
+	cache *db.Redis
+}
 
 // creates a new user handler
-func NewUserHandler(db *db.DB, cache *cache.Cache) *UserHandler {
+func NewUserHandler(db *db.Postgres, cache *db.Redis) *UserHandler {
 	return &UserHandler{
 		db:    db,
 		cache: cache,
@@ -23,7 +24,7 @@ func NewUserHandler(db *db.DB, cache *cache.Cache) *UserHandler {
 // retrieves all users
 func (h *UserHandler) GetAllUsers(c *gin.Context) {
 	// Try to get from cache
-	var users []models.User
+	var users []User
 
 	// ok := cache.Get(c, usersCacheKey, &users)
 	// if ok {
@@ -44,7 +45,7 @@ func (h *UserHandler) GetAllUsers(c *gin.Context) {
 
 	// save results
 	for rows.Next() {
-		var user models.User
+		var user User
 		if err := rows.Scan(&user.ID, &user.Email, &user.FirstName, &user.LastName, &user.CreatedAt, &user.UpdatedAt); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
@@ -66,7 +67,7 @@ func (h *UserHandler) GetUserByID(c *gin.Context) {
 		return
 	}
 
-	var user models.User
+	var user User
 	err := h.db.Pool.QueryRow(c, "SELECT id, email, first_name, last_name, created_at, updated_at FROM users WHERE id = $1", userID).
 		Scan(&user.ID, &user.Email, &user.FirstName, &user.LastName, &user.CreatedAt, &user.UpdatedAt)
 
@@ -81,7 +82,7 @@ func (h *UserHandler) GetUserByID(c *gin.Context) {
 // creates new user
 func (h *UserHandler) CreateUser(c *gin.Context) {
 	// parse request body
-	var input models.UserCreateInput
+	var input UserCreateInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -107,7 +108,7 @@ func (h *UserHandler) CreateUser(c *gin.Context) {
 	}
 
 	// insert new user
-	var user models.User
+	var user User
 	err = h.db.Pool.QueryRow(c,
 		"INSERT INTO users (email, password, first_name, last_name, created_at, updated_at) VALUES ($1, $2, $3, $4, NOW(), NOW()) RETURNING id, email, first_name, last_name, created_at, updated_at",
 		input.Email, hashedPassword, input.FirstName, input.LastName,
@@ -133,14 +134,14 @@ func (h *UserHandler) UpdateUser(c *gin.Context) {
 	}
 
 	// check request body
-	var input models.UserUpdateInput
+	var input UserUpdateInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
 	// update existing user
-	var user models.User
+	var user User
 	err := h.db.Pool.QueryRow(c,
 		"UPDATE users SET first_name = COALESCE(NULLIF($1, ''), first_name), last_name = COALESCE(NULLIF($2, ''), last_name), updated_at = NOW() WHERE id = $3 RETURNING id, email, first_name, last_name, created_at, updated_at",
 		input.FirstName, input.LastName, userID,

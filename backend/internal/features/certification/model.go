@@ -1,4 +1,4 @@
-package models
+package certification
 
 import "time"
 

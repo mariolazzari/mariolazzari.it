@@ -1,11 +1,10 @@
-package db
+package certification
 
 import (
 	"context"
 	"errors"
 
 	"github.com/jackc/pgx/v5/pgxpool"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/models"
 )
 
 type CertificationRepository struct {
@@ -44,16 +43,16 @@ const delCertQry = `DELETE FROM certifications
 					`
 
 // ListByUser retrieves all certifications for a specific user
-func (r *CertificationRepository) ReadAll(ctx context.Context) ([]*models.Certification, error) {
+func (r *CertificationRepository) ReadAll(ctx context.Context) ([]*Certification, error) {
 	rows, err := r.pool.Query(ctx, getCertsQry)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
 
-	certs := []*models.Certification{}
+	certs := []*Certification{}
 	for rows.Next() {
-		c := &models.Certification{}
+		c := &Certification{}
 		if err := rows.Scan(
 			&c.ID,
 			&c.Title,
@@ -72,8 +71,8 @@ func (r *CertificationRepository) ReadAll(ctx context.Context) ([]*models.Certif
 }
 
 // GetByID retrieves a certification by ID
-func (r *CertificationRepository) Read(ctx context.Context, id int) (*models.Certification, error) {
-	cert := &models.Certification{}
+func (r *CertificationRepository) Read(ctx context.Context, id int) (*Certification, error) {
+	cert := &Certification{}
 	err := r.pool.QueryRow(ctx, getCertQry, id).Scan(
 		&cert.ID,
 		&cert.Title,
@@ -90,8 +89,9 @@ func (r *CertificationRepository) Read(ctx context.Context, id int) (*models.Cer
 }
 
 // Create adds a new certification and returns its ID
-func (r *CertificationRepository) Create(ctx context.Context, cert *models.Certification) (int, error) {
+func (r *CertificationRepository) Create(ctx context.Context, cert *Certification) (int, error) {
 	var id int
+
 	err := r.pool.QueryRow(ctx, addCertQry,
 		cert.Title,
 		cert.ImageSrc,
@@ -100,6 +100,7 @@ func (r *CertificationRepository) Create(ctx context.Context, cert *models.Certi
 		cert.CreatedAt,
 		cert.UpdatedAt,
 	).Scan(&id)
+
 	if err != nil {
 		return 0, err
 	}
@@ -107,7 +108,7 @@ func (r *CertificationRepository) Create(ctx context.Context, cert *models.Certi
 }
 
 // Update modifies an existing certification by ID
-func (r *CertificationRepository) Update(ctx context.Context, cert *models.Certification) error {
+func (r *CertificationRepository) Update(ctx context.Context, cert *Certification) error {
 	cmdTag, err := r.pool.Exec(ctx, updateCertQry,
 		cert.Title,
 		cert.ImageSrc,

@@ -1,4 +1,6 @@
-package models
+package auth
+
+import "github.com/mariolazzari/mariolazzari.it/backend/internal/features/user"
 
 // UserLoginInput represents input for user login
 type UserLoginInput struct {
@@ -7,7 +9,7 @@ type UserLoginInput struct {
 }
 
 type AuthResponse struct {
-	Token     string `json:"token"`
-	User      *User  `json:"user"`
-	ExpiresIn int64  `json:"expires_in"`
+	Token     string     `json:"token"`
+	User      *user.User `json:"user"`
+	ExpiresIn int64      `json:"expires_in"`
 }

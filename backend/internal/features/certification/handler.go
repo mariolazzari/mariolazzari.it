@@ -1,20 +1,20 @@
-package handlers
+package certification
 
 import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/cache"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/models"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/repositories"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 )
 
-type CertificationHandler Handler
+type CertificationHandler struct {
+	db    *db.Postgres
+	cache *db.Redis
+}
 
 // creates a new certification handler
-func NewCertificationHandler(db *db.DB, cache *cache.Cache) *CertificationHandler {
+func NewCertificationHandler(db *db.Postgres, cache *db.Redis) *CertificationHandler {
 	return &CertificationHandler{
 		db:    db,
 		cache: cache,
@@ -38,14 +38,14 @@ func (h *CertificationHandler) GetAllCertifications(c *gin.Context) {
 	// 	return
 	// }
 
-	certRepo := repositories.NewCertificationsRepository(h.db.Pool)
-	certifications, err := certRepo.GetCertifications(c)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
+	// certRepo := repositories.NewCertificationCache(h.db.Pool)
+	// certifications, err := certRepo.GetCertifications(c)
+	// if err != nil {
+	// 	c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	// 	return
+	// }
 
-	c.JSON(http.StatusOK, gin.H{"data": certifications})
+	c.JSON(http.StatusOK, gin.H{"data": "wip"})
 }
 
 // GetCertificationByID retrieves a specific certification
@@ -68,7 +68,7 @@ func (h *CertificationHandler) GetCertificationByID(c *gin.Context) {
 	// 	return
 	// }
 
-	var cert models.Certification
+	var cert Certification
 	err := h.db.Pool.QueryRow(c,
 		"SELECT id, title, image_src, date, url, created_at, updated_at FROM certifications WHERE id = $1",
 		certID,
@@ -85,14 +85,14 @@ func (h *CertificationHandler) GetCertificationByID(c *gin.Context) {
 // CreateCertification creates a new certification
 func (h *CertificationHandler) CreateCertification(c *gin.Context) {
 	//
-	var input models.CertificationInput
+	var input CertificationInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
 	// add new certification
-	var cert models.Certification
+	var cert Certification
 	err := h.db.Pool.QueryRow(c,
 		"INSERT INTO certifications (title, image_src, date, url, created_at, updated_at) VALUES ($1, $2, $3, $4, NOW(), NOW()) RETURNING id, title, image_src, date, url, created_at, updated_at",
 		input.Title, input.ImageSrc, input.Date, input.URL,
@@ -117,13 +117,13 @@ func (h *CertificationHandler) UpdateCertification(c *gin.Context) {
 		return
 	}
 
-	var input models.CertificationInput
+	var input CertificationInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	var cert models.Certification
+	var cert Certification
 	err := h.db.Pool.QueryRow(c,
 		`UPDATE certifications 
 		 SET title = COALESCE(NULLIF($1, ''), title),

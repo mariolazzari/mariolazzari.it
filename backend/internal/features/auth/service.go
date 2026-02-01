@@ -1,11 +1,9 @@
-package services
+package auth
 
 import (
 	"context"
 	"errors"
 
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/models"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/repositories"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 )
 
@@ -15,11 +13,11 @@ var (
 )
 
 type AuthService struct {
-	repo  *repositories.AuthRepository
+	repo  *AuthRepository
 	token *utils.TokenManager
 }
 
-func NewAuthService(repo *repositories.AuthRepository) (*AuthService, error) {
+func NewAuthService(repo *AuthRepository) (*AuthService, error) {
 	tm, err := utils.NewTokenManager()
 	if err != nil {
 		return nil, err
@@ -31,7 +29,7 @@ func NewAuthService(repo *repositories.AuthRepository) (*AuthService, error) {
 	}, nil
 }
 
-func (s *AuthService) Login(ctx context.Context, input models.UserLoginInput) (*models.AuthResponse, error) {
+func (s *AuthService) Login(ctx context.Context, input UserLoginInput) (*AuthResponse, error) {
 	user, err := s.repo.GetUserByEmail(ctx, input.Email)
 	if err != nil {
 		return nil, ErrInvalidCredentials
@@ -49,7 +47,7 @@ func (s *AuthService) Login(ctx context.Context, input models.UserLoginInput) (*
 	// hide password
 	user.Password = ""
 
-	return &models.AuthResponse{
+	return &AuthResponse{
 		Token:     token,
 		User:      user,
 		ExpiresIn: int64(s.token.ExpiresIn),

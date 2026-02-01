@@ -1,24 +1,29 @@
-package routes
+package app
 
 import (
+	"time"
+
 	"github.com/gin-gonic/gin"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/cache"
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
-	"github.com/mariolazzari/mariolazzari.it/backend/internal/middleware"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/features/auth"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/features/certification"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/features/health"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/features/user"
 )
 
 // Router holds the Gin engine along with references to
 // the database and cache for dependency injection into handlers.
 type Router struct {
-	engine *gin.Engine
-	db     *db.DB
-	cache  *cache.Cache
+	engine   *gin.Engine
+	postgres *db.Postgres
+	redis    *db.Redis
+	start    time.Time
 }
 
-// New creates a new Router instance.
+// NewRouter creates a new Router instance.
 // It initializes the Gin engine, sets the mode based on the environment,
 // applies global middleware, and sets trusted proxies.
-func New(db *db.DB, cache *cache.Cache, env string) *Router {
+func NewRouter(db *db.Postgres, cache *db.Redis, env string) *Router {
 	if env == "release" {
 		gin.SetMode(gin.ReleaseMode)
 	}
@@ -27,12 +32,13 @@ func New(db *db.DB, cache *cache.Cache, env string) *Router {
 	r := gin.Default()
 	r.SetTrustedProxies([]string{"127.0.0.1"})
 	// Apply global middleware, e.g., CORS.
-	r.Use(middleware.CORSMiddleware())
+	// r.Use(middleware.CORSMiddleware())
 
 	return &Router{
-		engine: r,
-		db:     db,
-		cache:  cache,
+		engine:   r,
+		postgres: db,
+		redis:    cache,
+		start:    time.Now(),
 	}
 }
 
@@ -40,9 +46,10 @@ func New(db *db.DB, cache *cache.Cache, env string) *Router {
 // Additional route registration methods (like users, certifications, etc.) can be called here.
 func (r *Router) RegisterRoutes() {
 	api := r.engine.Group("/api/v1")
-	r.registerAuth(api)
-	r.registerHealth(api)
-	// r.registerUsers(api)
+	auth.RegisterAuth(api, r.postgres, r.redis)
+	certification.RegisterRoutes(api, r.postgres, r.redis)
+	health.RegisterRoutes(api, r.postgres, r.redis)
+	user.RegisterRoutes(api, r.postgres, r.redis)
 }
 
 // Run starts the HTTP server on the specified address.
