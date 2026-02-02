@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/mariolazzari/mariolazzari.it/backend/internal/db"
+	"github.com/mariolazzari/mariolazzari.it/backend/internal/utils"
 )
 
 // Service gestisce la logica della diagnostica
@@ -24,10 +25,12 @@ func NewService(pg *db.Postgres, r *db.Redis) *Service {
 
 // GetStatus effettua i ping e restituisce lo stato completo
 func (s *Service) GetStatus(ctx context.Context) Health {
+	now := time.Now()
 	h := Health{
 		Status:    "ok",
-		Uptime:    time.Since(s.Start).String(),
-		Timestamp: time.Now().Unix(),
+		Uptime:    utils.DurationToHuman(time.Since(s.Start)),
+		Timestamp: now.Unix(),
+		DateTime:  now,
 	}
 
 	// Ping Postgres

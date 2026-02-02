@@ -17,7 +17,7 @@ import (
 //
 //	POST /auth/login   - Public login endpoint
 //	POST /auth/logout  - Protected logout endpoint (requires authentication)
-func RegisterAuth(rg *gin.RouterGroup, pdb *db.Postgres, rdb *db.Redis) {
+func RegisterRoutes(rg *gin.RouterGroup, pdb *db.Postgres, rdb *db.Redis) {
 	// Initialize the authentication repository to handle DB operations related to users/tokens.
 	authRepo := NewAuthRepository(pdb)
 

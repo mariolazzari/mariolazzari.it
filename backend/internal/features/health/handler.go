@@ -1,7 +1,6 @@
 package health
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -17,9 +16,6 @@ func NewHandler(s *Service) *Handler {
 
 func (h *Handler) GetHealth(c *gin.Context) {
 	health := h.service.GetStatus(c.Request.Context())
-
-	fmt.Println("XXXXX")
-
 	statusCode := http.StatusOK
 	if health.Status != "ok" {
 		statusCode = http.StatusServiceUnavailable

@@ -15,7 +15,7 @@ import (
 // registers HTTP routes, and starts the HTTP server.
 func main() {
 	// Load environment variables and application configuration.
-	cfg, err := app.NewConfig()
+	cfg, err := app.New()
 	if err != nil {
 		log.Fatalf("Error reading enviroment variables: %s", err)
 	}

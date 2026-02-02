@@ -20,7 +20,7 @@ type Config struct {
 
 // New loads the configuration from environment variables or .env file.
 // Returns an error if critical variables are missing or invalid.
-func NewConfig() (*Config, error) {
+func New() (*Config, error) {
 	godotenv.Load()
 	port := utils.ParseInt(getValue("PORT", "4001"), 4001)
 	jwtExp := utils.ParseInt(getValue("JWT_EXPIRES_IN", "3600"), 3600)
@@ -31,18 +31,18 @@ func NewConfig() (*Config, error) {
 		Port:         port,
 		DBURL:        getValue("POSTGRES_URL", ""),
 		CacheURL:     getValue("REDIS_URL", "redis://localhost:6379"),
-		JwtSecret:    getValue("JWT_SECRET", "s3cret"),
+		JwtSecret:    getValue("JWT_SECRET", ""),
 		JwtExpiresIn: jwtExp,
 		AdminEmail:   getValue("ADMIN_EMAIL", "admin@mariolazzari.it"),
 	}
 
 	// Validate critical variables
-	// if cfg.DBURL == "" {
-	// 	return nil, errors.New("POSTGRES_URL is required")
-	// }
-	// if cfg.JwtSecret == "" {
-	// 	return nil, errors.New("JWT_SECRET is required")
-	// }
+	if cfg.DBURL == "" {
+		return nil, ErrPostgresURLRequired
+	}
+	if cfg.JwtSecret == "" {
+		return nil, ErrJWTSecretRequired
+	}
 
 	return cfg, nil
 }
