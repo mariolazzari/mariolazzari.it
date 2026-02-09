@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Working with concurrency in Go",
+    date: "2026-02-09T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-a36f4799-5742-4eda-a9b2-4071a8c34317/",
+    imagePath: "/certifications/go-work-conc.png",
+  },
+  {
     title: "Concurrency in Go",
     date: "2026-01-31T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-f6ce47e4-7718-4c82-98bc-84277bc01952",
