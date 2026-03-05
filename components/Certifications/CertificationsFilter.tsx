@@ -12,12 +12,12 @@ import {
   SiJavascript,
   SiTypescript,
   SiPostgresql,
-  SiLinkedin,
   SiGo,
   SiDocker,
   SiRust,
   SiOpenai,
 } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
 import { Search, GraduationCap } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { Link } from "@/i18n/routing";
@@ -35,7 +35,7 @@ export function CertificationsFilter() {
     { id: "JavaScript", icon: <SiJavascript /> },
     { id: "TypeScript", icon: <SiTypescript /> },
     { id: "Sql", icon: <SiPostgresql /> },
-    { id: "LinkedIn", icon: <SiLinkedin /> },
+    { id: "LinkedIn", icon: <FaLinkedin /> },
     { id: "Go", icon: <SiGo /> },
     { id: "Docker", icon: <SiDocker /> },
     { id: "Rust", icon: <SiRust /> },
@@ -56,7 +56,7 @@ export function CertificationsFilter() {
 
   return (
     <Form
-      className="flex flex-col gap-4 w-[350px]"
+      className="flex flex-col gap-4 w-87.5"
       action={`/${locale}/certifications`}
     >
       <Input
