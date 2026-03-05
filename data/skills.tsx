@@ -10,7 +10,7 @@ import { VscVscode, VscAzureDevops } from "react-icons/vsc";
 import { DiMsqlServer } from "react-icons/di";
 
 import {
-  SiCss3,
+  SiCss,
   SiHtml5,
   SiJavascript,
   SiTypescript,
@@ -22,7 +22,6 @@ import {
   SiApachenetbeanside,
   SiAndroidstudio,
   SiMongodb,
-  SiOracle,
   SiMysql,
   SiPostgresql,
   SiRedux,
@@ -46,6 +45,7 @@ import {
   SiDocker,
   SiReact,
 } from "react-icons/si";
+import { GrOracle } from "react-icons/gr";
 
 export const skills: Skill[] = [
   {
@@ -116,7 +116,7 @@ export const skills: Skill[] = [
     type: "lang",
     name: "CSS",
     url: "https://developer.mozilla.org/it/docs/Web/CSS",
-    icon: <SiCss3 />,
+    icon: <SiCss />,
   },
   {
     id: "go",
@@ -214,7 +214,7 @@ export const skills: Skill[] = [
     type: "db",
     name: "Oracle",
     url: "https://www.oracle.com",
-    icon: <SiOracle />,
+    icon: <GrOracle />,
   },
   {
     id: "mysql",
