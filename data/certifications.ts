@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Backend engineering with Go",
+    date: "2026-03-19T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-2689c68f-7784-4870-8ff2-c5bff528dc96/",
+    imagePath: "/certifications/go-backend.png",
+  },
+  {
     title: "Modern Redis unleashed",
     date: "2026-03-05T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-3029ac33-7551-4b94-9cd2-81e45a6f6f50/",
