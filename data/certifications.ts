@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn Ubuntu Linux",
+    date: "2026-04-05T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-878d3403-2e8f-450a-a1b5-e5c60f60b860/",
+    imagePath: "/certifications/learn-ubuntu.png",
+  },
+  {
     title: "Learn Go by building",
     date: "2026-03-29T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-15a7107b-50df-4924-87e3-4dcac4a16b9d/",
