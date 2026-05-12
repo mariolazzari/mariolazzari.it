@@ -2,6 +2,12 @@ import { Certification } from "@/types/Certification";
 
 export const certifications: Certification[] = [
   {
+    title: "Self hosting with Docker & Linux",
+    date: "2026-05-12T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-aec36675-f4fc-4bc9-b60a-58e50c1f85ea/",
+    imagePath: "/certifications/docker-self.png",
+  },
+  {
     title: "Go from 0",
     date: "2026-05-07T08:00:00.000Z",
     url: "https://www.udemy.com/course/go-introduzione-applicazione-pratica/",
