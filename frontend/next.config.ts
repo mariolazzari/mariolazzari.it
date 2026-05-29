@@ -4,7 +4,10 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
+  output: "standalone",
+  poweredByHeader: false,
   reactStrictMode: false,
+  reactCompiler: true,
   images: {
     remotePatterns: [
       {
