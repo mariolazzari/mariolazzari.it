@@ -4,31 +4,20 @@ import (
 	"context"
 	"log"
 	"net/http"
-	"os"
 
-	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/mariolazzari/mariolazzari.it/internal/config"
+	"github.com/mariolazzari/mariolazzari.it/internal/db"
 )
 
 func main() {
+	// read enviroment vars
+	cfg := config.New()
+
+	// main context
 	ctx := context.Background()
-
-	// Get DB URL from environment
-	dbUrl := os.Getenv("DATABASE_URL")
-
-	// Initialize pgxpool
-	dbpool, err := pgxpool.New(ctx, dbUrl)
-	if err != nil {
-		log.Fatalf("Unable to create connection pool: %v", err)
-	}
-	defer dbpool.Close()
-
-	// Verify connection
-	err = dbpool.Ping(ctx)
-	if err != nil {
-		log.Fatalf("Unable to ping database: %v", err)
-	}
-
-	log.Println("Successfully connected to Postgres using pgxpool")
+	// Postgres connection
+	db.ConnectPostgres(ctx, cfg.PostgresUrl)
+	// Redis connection
 
 	// 2. Avvia il server HTTP
 	mux := http.NewServeMux()
@@ -41,7 +30,7 @@ func main() {
 		Handler: mux,
 	}
 
-	log.Println("Mario Lazzari starting on :8080...")
+	log.Printf("%s starting on port %d", cfg.AppName, cfg.AppPort)
 	if err := server.ListenAndServe(); err != nil {
 		log.Fatalf("Server failed: %v", err)
 	}

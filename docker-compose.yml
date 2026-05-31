@@ -18,7 +18,10 @@ services:
       dockerfile: Dockerfile
     container_name: ${APP_NAME}-backend
     environment:
-      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - APP_MODE=prod
+      - APP_NAME=${APP_NAME}
+      - APP_PORT=${APP_PORT}
+      - POSTGRES_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
       - REDIS_URL=redis://redis:6379
     depends_on:
       - db

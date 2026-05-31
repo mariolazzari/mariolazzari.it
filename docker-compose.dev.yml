@@ -25,7 +25,10 @@ services:
     volumes:
       - ./backend:/app/backend
     environment:
-      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - APP_MODE=dev
+      - APP_NAME=${APP_NAME}
+      - APP_PORT=${APP_PORT}
+      - POSTGRES_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
       - REDIS_URL=redis://redis:6379
     command: air -c .air.toml
     depends_on:
