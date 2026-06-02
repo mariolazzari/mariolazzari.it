@@ -13,7 +13,6 @@ func ConnectPostgres(ctx context.Context, conn string) {
 	if err != nil {
 		log.Fatalf("Postgres connection error: %v", err)
 	}
-	defer dbPool.Close()
 
 	// check connection
 	err = dbPool.Ping(ctx)
