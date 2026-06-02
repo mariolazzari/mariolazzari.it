@@ -31,11 +31,9 @@ function HomePage() {
     <div className="flex flex-col items-center">
       <Hero />
       <SkillsBadges />
-
       <Suspense>
         <LastCertifications />
       </Suspense>
-
       <Suspense>
         <LastGithubActivities />
       </Suspense>
