@@ -1,40 +1,37 @@
-import {
-  getCertifications,
-  //  getCertificationsTest,
-} from "@/actions/certifications";
-import { Certification } from "@/components/Certifications";
-import { CertificationsFilter } from "@/components/Certifications/CertificationsFilter";
-import { Paragraph, Subtitle } from "@/components/Typography";
-import { PageProps } from "@/types/PageProps";
-import { GraduationCap } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { Title } from "@/components/Typography";
+import { certifications } from "@/data/certfifications";
+import { SearchCertifications, SearchResults } from "@/views/Certifications";
+import { PageProps } from "@/type";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Certifications",
+};
 
 type Props = PageProps<void, { search: string }>;
 
 async function CertificationsPage({ searchParams }: Props) {
   const { search = "" } = await searchParams;
-  const [certs, t] = await Promise.all([
-    getCertifications(search ?? ""),
-    getTranslations("Certifications"),
-  ]);
 
-  // const test = await getCertificationsTest();
-  // console.log("first", test);
+  function parseDate(date: string) {
+    const [day, month, year] = date.split("/");
+    return new Date(Number(year), Number(month) - 1, Number(day)).getTime();
+  }
+
+  const filtered = certifications
+    .filter(c => c.title.toLowerCase().includes(search.toLowerCase()))
+    .sort((a, b) => {
+      const dateDiff = parseDate(b.date) - parseDate(a.date);
+      if (dateDiff !== 0) return dateDiff;
+      return a.title.localeCompare(b.title, "it");
+    });
 
   return (
-    <section className="flex flex-col items-center gap-8">
-      <div className="flex flex-col items-center">
-        <GraduationCap size={64} />
-        <Subtitle text={t("title")} />
-        <Paragraph text={`${t("found")}: ${certs.length}`} />
-      </div>
-      <CertificationsFilter />
-      <div className="flex justify-center items-center flex-wrap gap-16">
-        {certs.map(cert => (
-          <Certification key={cert.title} certification={cert} />
-        ))}
-      </div>
-    </section>
+    <div className="w-full min-h-screen flex flex-col items-center gap-4 py-8">
+      <Title>Le mie certificazioni</Title>
+      <SearchCertifications search={search} total={filtered.length} />
+      <SearchResults results={filtered} />
+    </div>
   );
 }
 

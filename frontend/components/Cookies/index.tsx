@@ -55,7 +55,7 @@ export function Cookies({
         "fixed z-[200] bottom-0 left-0 right-0 sm:left-4 sm:bottom-4 w-full sm:max-w-md duration-700",
         isOpen
           ? "transition-[opacity,transform] translate-y-0 opacity-100"
-          : "hidden"
+          : "hidden",
       );
     }
 
@@ -63,7 +63,7 @@ export function Cookies({
       "fixed z-[200] bottom-0 left-0 right-0 sm:left-4 sm:bottom-4 w-full sm:max-w-md duration-700",
       isOpen
         ? "transition-[opacity,transform] translate-y-0 opacity-100"
-        : "hidden"
+        : "hidden",
     );
   }, [variant, isOpen]);
 

@@ -1,0 +1,60 @@
+# =========================
+# General
+# =========================
+.git
+.gitignore
+README.md
+Dockerfile
+docker-compose.yml
+*.log
+.env
+.env.*
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# =========================
+# Node / Next.js (frontend)
+# =========================
+frontend/node_modules
+frontend/.next
+frontend/out
+frontend/dist
+frontend/build
+frontend/.turbo
+frontend/.vercel
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# dependency caches
+frontend/node_modules/.cache
+frontend/.cache
+
+# =========================
+# Go (backend)
+# =========================
+backend/bin
+backend/dist
+backend/tmp
+backend/vendor
+backend/*.exe
+backend/*.test
+
+# Go build cache (locale)
+**/*.out
+
+# =========================
+# Docker / build artifacts
+# =========================
+**/node_modules
+**/.next
+**/dist
+**/build
+**/coverage
+
+# optional: exclude local Go modules cache if mounted accidentally
+**/.go/pkg

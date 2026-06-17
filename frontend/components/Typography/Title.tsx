@@ -1,12 +1,11 @@
-import { cn } from "@/lib/utils";
-import { TypographyProps } from "./TypographyProps";
+import { ComponentProps } from "react";
 
-export function Title({ text, className }: TypographyProps) {
+type Props = ComponentProps<"h2">;
+
+export function Title(props: Props) {
   return (
-    <h1
-      className={cn("text-6xl text-center text-primary font-bold", className)}
-    >
-      {text}
-    </h1>
+    <h2 className="text-primary text-center text-4xl font-semibold" {...props}>
+      {props.children}
+    </h2>
   );
 }

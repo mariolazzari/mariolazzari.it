@@ -1,15 +1,37 @@
-import "../globals.css";
-import { Header } from "@/components/Header";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Footer } from "@/components/Footer";
-import { ThemeProvider } from "next-themes";
-import { NextIntlClientProvider } from "next-intl";
+import "../globals.css";
+import { cn } from "@/lib/utils";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/AppSidebar";
+import { Providers } from "@/components/Providers";
+import { Layout } from "@/type/Layout";
+import { DockBar } from "@/components/DockBar";
 import { getMessages } from "next-intl/server";
 import { Cookies } from "@/components/Cookies";
-import { CookiesLocale } from "@/components/Cookies/CookiesProps";
-import { Layout } from "@/types/Layout";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s - Mario Lazzari Senior Full Stack Developer",
+    default: "Mario Lazzari - Senior Full Stack Developer",
+  },
+  description:
+    "Mario Lazzari senior full stack developer Go Rust JavaScript TypeScript NodeJS ReactJS Go Rest Api",
+  keywords: [
+    "Mario",
+    "Lazzari",
+    "JavaScript",
+    "TypeScript",
+    "NodeJS",
+    "RectJS",
+    "Go",
+    "Rest",
+    "Api",
+    "Rust",
+  ],
+};
 
 async function RootLayout({ children, params }: Layout) {
   // locales
@@ -17,19 +39,22 @@ async function RootLayout({ children, params }: Layout) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={inter.className} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={cn("h-full", "antialiased", "font-sans", inter.variable)}
+      suppressHydrationWarning
+    >
       <body>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <NextIntlClientProvider messages={messages}>
-            <Header />
-            <main className="h-[calc(100dvh-100px)] overflow-y-auto p-4">
-              {children}
-            </main>
-            <Footer />
+        <Providers locale={locale} messages={messages}>
+          <AppSidebar />
+          <main className="w-full min-h-screen">
+            <SidebarTrigger className="md:hidden" />
+            {children}
+          </main>
 
-            <Cookies locale={locale as CookiesLocale} />
-          </NextIntlClientProvider>
-        </ThemeProvider>
+          <DockBar locale={locale} />
+          <Cookies />
+        </Providers>
       </body>
     </html>
   );
