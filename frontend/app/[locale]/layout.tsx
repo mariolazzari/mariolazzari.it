@@ -52,7 +52,7 @@ async function RootLayout({ children, params }: Layout) {
             {children}
           </main>
 
-          <DockBar locale={locale} />
+          <DockBar />
           <Cookies />
         </Providers>
       </body>

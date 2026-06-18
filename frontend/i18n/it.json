@@ -12,7 +12,7 @@
     "skyHub": "Sky Hub",
     "cr2": "CR2 Sinapsi",
     "myCode": "Il mio codice",
-    "mail": "mario.lazzari@gmail.com",
+    "mail": "Mail",
     "linkedin": "LinkedIn",
     "github": "Github",
     "instagram": "Instagram",
@@ -21,18 +21,17 @@
   },
 
   "Home": {
-    "pageTitle": "Mario Lazzari - JavaScript Full Stack Developer",
-    "title": "Mario Lazzari",
-    "subtitle": "Senior Full Stack Developer",
-    "intro": "",
     "mailButton": "Mail",
     "cvButton": "CV",
-    "skillsTitle": "Le mie competenze",
-    "skillsButton": "Competenze",
-    "githubLastYear": "Il mio ultimo anno su Github",
-    "lastActivities": "Le mie ultime attività",
-    "certTitle": "Ultime certificazioni",
-    "certButton": "Certificazioni"
+    "project1Desc": "Scopri opere d'arte dei principali musei del mondo attraverso un'unica piattaforma unificata.",
+    "project1P1": "Museum Hub è una piattaforma web che aggrega dati relativi alle opere d'arte dei principali musei a livello globale.",
+    "project1P2": "Attraverso l'integrazione con API pubbliche dei musei, gli utenti possono esplorare collezioni, cercare artisti e opere e accedere al patrimonio culturale da un'unica interfaccia.",
+    "project2Desc": "Esplora missioni spaziali, oggetti celesti e dati astronomici delle principali agenzie spaziali in un unico luogo.",
+    "project2P1": "Sky Hub è un'applicazione full-stack che raccoglie e consolida informazioni provenienti da più API dedicate allo spazio in un'unica esperienza utente intuitiva.",
+    "project2P2": "La piattaforma consente agli utenti di scoprire missioni spaziali, immagini astronomiche, dati satellitari, calendari di lancio e approfondimenti scientifici delle principali agenzie spaziali mondiali.",
+    "project3Desc": "Sistema di accoglienza ospedaliera accessibile e strutturato per pazienti pediatrici con disabilità.",
+    "project3P1": "Pediatric Admission Hub è un sistema web progettato per supportare il personale ospedaliero nella gestione del processo di accoglienza di pazienti pediatrici con disabilità.",
+    "project3P2": "Il sistema è progettato per ridurre le frizioni in ambienti ad alto carico, garantendo al contempo che i dati sensibili dei pazienti siano organizzati e facilmente accessibili al personale autorizzato."
   },
 
   "Skills": {
@@ -82,12 +81,5 @@
     "desc7": "Cinema europeo e film d'inchiesta caratterizzati da una forte attenzione narrativa e sociale.",
     "title8": "Storia e Società",
     "desc8": "Analisi storica come strumento per comprendere sistemi complessi ed evoluzione delle società."
-  },
-
-  "Button": {
-    "back": "Indietro",
-    "more": "Scopri di più",
-    "search": "Cerca",
-    "options": "Opzioni"
   }
 }

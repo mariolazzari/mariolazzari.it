@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { MouseEventHandler, SubmitEventHandler, useState } from "react";
+import { SubmitEventHandler, useState } from "react";
 import { SearchBadge } from "./SearchBadge";
 import {
   SiDocker,

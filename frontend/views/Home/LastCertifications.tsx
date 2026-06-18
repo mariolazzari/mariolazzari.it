@@ -1,8 +1,8 @@
-import { certifications } from "@/data/certfifications";
 import { Title } from "@/components/Typography";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CertificationCard } from "@/components/Cards";
+import { certifications } from "../Certifications";
 
 export function LastCertifications() {
   const certs = certifications.slice(0, 6);

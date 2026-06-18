@@ -1,15 +1,17 @@
 import { Mail } from "lucide-react";
 import { Button } from "../ui/button";
-import Link from "next/link";
 import { btnClass } from ".";
+import { getTranslations } from "next-intl/server";
 
-export function MailButton() {
+export async function MailButton() {
+  const t = await getTranslations("Home");
+
   return (
-    <Link href="mailto:mario.lazzari@gmail.com" target="_blank">
-      <Button className={btnClass}>
+    <Button asChild className={btnClass}>
+      <a href="mailto:mario.lazzari@gmail.com">
         <Mail />
-        Scrimi
-      </Button>
-    </Link>
+        {t("mailButton")}
+      </a>
+    </Button>
   );
 }

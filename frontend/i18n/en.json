@@ -12,7 +12,7 @@
     "skyHub": "Sky Hub",
     "cr2": "CR2 Sinapsi",
     "myCode": "Il mio codice",
-    "mail": "mario.lazzari@gmail.com",
+    "mail": "Mail",
     "linkedin": "LinkedIn",
     "github": "Github",
     "instagram": "Instagram",
@@ -21,17 +21,17 @@
   },
 
   "Home": {
-    "title": "Mario Lazzari",
-    "subtitle": "Senior Full Stack Developer",
-    "intro": "",
     "mailButton": "Mail",
     "cvButton": "Resume",
-    "skillsTitle": "My skills",
-    "skillsButton": "Skills",
-    "githubLastYear": "My last year on Github",
-    "lastActivities": "My last activities",
-    "certTitle": "Last certifications",
-    "certButton": "Certifications"
+    "project1Desc": "Discover artworks from the world's leading museums through a single unified platform.",
+    "project1P1": "Museum Hub is a web platform that aggregates artwork data from major museums around the world.",
+    "project1P2": "Through integrations with public museum APIs, users can explore collections, search for artists and artworks, and access cultural heritage from a single interface.",
+    "project2Desc": "Explore space missions, celestial objects, and astronomy data from leading space agencies in one place.",
+    "project2P1": "Sky Hub is a full-stack application that collects and consolidates information from multiple space-related APIs into a single, user-friendly experience.",
+    "project2P2": "The platform enables users to discover space missions, astronomical imagery, satellite data, launch schedules, and scientific insights from some of the world's leading space organizations.",
+    "project3Desc": "Accessible and structured hospital intake system for pediatric patients with disabilities.",
+    "project3P1": "Pediatric Admission Hub is a web-based system designed to support hospital staff in managing the admission process of pediatric patients with disabilities.",
+    "project3P2": "The system is designed to reduce friction in high-load environments while ensuring that sensitive patient data is organized and easily accessible to authorized personnel."
   },
 
   "Skills": {
@@ -82,12 +82,5 @@
     "desc7": "European cinema and investigative films with strong narrative and social focus.",
     "title8": "History & Society",
     "desc8": "Historical analysis as a tool to understand complex systems and societal evolution."
-  },
-
-  "Button": {
-    "back": "Back",
-    "more": "Learn more",
-    "search": "Search",
-    "options": "Options"
   }
 }

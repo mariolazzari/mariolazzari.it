@@ -12,7 +12,7 @@ import { Dock, DockIcon } from "@/components/ui/dock";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { HTMLAttributes } from "react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
-import { LocaleButton } from "../Buttons/LocaleButton";
+import { LocaleButton } from "@/components/Buttons";
 
 export type IconProps = HTMLAttributes<SVGElement>;
 
@@ -42,11 +42,7 @@ const DATA = {
   },
 };
 
-type Props = {
-  locale: string;
-};
-
-export function DockBar({ locale }: Props) {
+export function DockBar() {
   return (
     <div className="flex flex-col items-center justify-center fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
       <Dock direction="middle">
@@ -96,7 +92,7 @@ export function DockBar({ locale }: Props) {
         ))}
 
         <AnimatedThemeToggler variant="hexagon" fromCenter />
-        <LocaleButton locale={locale} />
+        <LocaleButton />
       </Dock>
     </div>
   );

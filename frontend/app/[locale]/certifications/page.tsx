@@ -1,6 +1,9 @@
 import { Title } from "@/components/Typography";
-import { certifications } from "@/data/certfifications";
-import { SearchCertifications, SearchResults } from "@/views/Certifications";
+import {
+  certifications,
+  SearchCertifications,
+  SearchResults,
+} from "@/views/Certifications";
 import { PageProps } from "@/type";
 import { Metadata } from "next";
 

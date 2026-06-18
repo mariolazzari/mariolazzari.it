@@ -1,30 +1,27 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/routing";
 import { Button } from "../ui/button";
-import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
-type Props = {
-  locale: string;
-};
-
-export const LocaleButton = ({ locale }: Props) => {
-  const pathname = usePathname();
+export const LocaleButton = () => {
+  const locale = useLocale();
   const router = useRouter();
+  const pathname = usePathname();
 
   const onClick = () => {
-    const href =
-      locale === "it"
-        ? pathname.replace("/it", "/en")
-        : pathname.replace("/en", "/it");
-
-    console.log("first,href", href);
-
-    router.push(href);
+    const nextLocale = locale === "it" ? "en" : "it";
+    router.replace(pathname, { locale: nextLocale });
   };
 
   return (
-    <Button className="text-xl" variant="ghost" size="icon" onClick={onClick}>
+    <Button
+      className="text-xl"
+      variant="ghost"
+      size="icon"
+      onClick={onClick}
+      aria-label={`Switch language (current: ${locale})`}
+    >
       {locale}
     </Button>
   );
