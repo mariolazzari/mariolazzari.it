@@ -43,7 +43,7 @@ export async function Skills() {
       <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l"></div>
 
       <Link href="/skills">
-        <Button className="mb-16 mt-8">
+        <Button className="my-8">
           <Code /> {t("skillButton")}
         </Button>
       </Link>

@@ -65,7 +65,7 @@ export function Project({
           </div>
         </CardContent>
         <CardFooter className="border-border border-t p-4 [.border-t]:pt-4 flex-col gap-2">
-          <Button asChild className="w-full" variant="outline">
+          <Button className="w-full" variant="outline" asChild>
             <Link
               href={href1}
               className="flex items-center justify-center gap-2"
@@ -74,13 +74,9 @@ export function Project({
               Go to project
             </Link>
           </Button>
-          <Button asChild className="w-full">
-            <Link
-              className="flex items-center justify-center gap-2 text-primary-foreground font-medium"
-              href={href2}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+
+          <Button className="w-full" asChild>
+            <Link href={href2} target="_blank" rel="noopener noreferrer">
               <FaGithub />
               View on GitHub
             </Link>
