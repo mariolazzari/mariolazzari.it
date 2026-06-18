@@ -15,7 +15,7 @@ export function Counters() {
     <div className="flex justify-center gap-8 flex-wrap">
       {items.map(item => (
         <GlareHover key={item.title} duration={666}>
-          <div className="w-32 flex flex-col items-center bg-secondary rounded-md py-2">
+          <div className="w-32 flex flex-col items-center bg-secondary rounded-md py-2 cursor-default">
             {item.icon}
             <h4 className="font-semibold text-primary text-xl mt-4">
               {item.title}

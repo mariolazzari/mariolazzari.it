@@ -10,7 +10,7 @@ type Props = {
 
 export function Hobby({ title, description, icon }: Props) {
   return (
-    <GlareHover duration={600}>
+    <GlareHover className="cursor-default" duration={666}>
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">

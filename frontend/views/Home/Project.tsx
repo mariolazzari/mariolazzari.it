@@ -37,19 +37,21 @@ export function Project({
   return (
     <Card className="w-full max-w-sm border-none p-0 shadow-none">
       <MagicCard className="p-0 border border-primary/30" mode="gradient">
-        <CardHeader className="h-27.5 border-border border-b p-4 [.border-b]:pb-4">
+        <CardHeader className="h-27.5 border-border border-b p-4">
           <div className="flex items-center gap-3">
-            {icon}
-            <div className="flex-1">
-              <CardTitle>{title}</CardTitle>
-              <CardDescription className="mt-1">{description}</CardDescription>
+            <div className="shrink-0">{icon}</div>
+            <div className="flex-1 text-left">
+              <CardTitle className="text-left">{title}</CardTitle>
+              <CardDescription className="mt-1 text-left">
+                {description}
+              </CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent className="p-4">
-          <div className="flex flex-col gap-4 h-48">
-            <p className="text-sm font-medium">{text1}</p>
-            <p className="text-sm font-medium">{text2}</p>
+          <div className="flex flex-col gap-4 h-48 items-start">
+            <p className="text-sm font-medium text-left">{text1}</p>
+            <p className="text-sm font-medium text-left">{text2}</p>
           </div>
 
           <div className="mt-auto flex items-center gap-2">
@@ -64,6 +66,7 @@ export function Project({
             ))}
           </div>
         </CardContent>
+
         <CardFooter className="border-border border-t p-4 [.border-t]:pt-4 flex-col gap-2">
           <Button className="w-full" variant="outline" asChild>
             <Link
@@ -71,14 +74,14 @@ export function Project({
               className="flex items-center justify-center gap-2"
             >
               {icon}
-              Go to project
+              {title}
             </Link>
           </Button>
 
           <Button className="w-full" asChild>
             <Link href={href2} target="_blank" rel="noopener noreferrer">
               <FaGithub />
-              View on GitHub
+              GitHub
             </Link>
           </Button>
         </CardFooter>

@@ -16,7 +16,7 @@ export async function Hero() {
           <span className="text-primary font-bold">Docker</span>, con attenzione
           a performance, architettura e manutenibilità del codice.
         </h3>
-        <h4 className="text-pretty">
+        <h4>
           Lavoro su sistemi complessi, dashboard e piattaforme dati, curando
           l’intero ciclo:{" "}
           <span className="text-primary font-bold">frontend</span>,{" "}
@@ -36,7 +36,7 @@ export async function Hero() {
           focus on performance, architecture, and code maintainability.
         </h3>
 
-        <h4 className="text-pretty">
+        <h4>
           I work on complex systems, dashboards, and data platforms, covering
           the entire lifecycle:{" "}
           <span className="text-primary font-bold">frontend</span>,{" "}
@@ -60,7 +60,7 @@ export async function Hero() {
         <MailButton /> <ResumeButton />
       </div>
 
-      <div className="mx-auto max-w-xl text-justify text-lg my-4 space-y-2">
+      <div className="mx-auto max-w-xl text-center text-lg my-4 space-y-2">
         {intro}
       </div>
     </div>
