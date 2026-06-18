@@ -76,10 +76,10 @@ export function Project({
           </Button>
           <Button asChild className="w-full">
             <Link
+              className="flex items-center justify-center gap-2 text-primary-foreground font-medium"
               href={href2}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2"
             >
               <FaGithub />
               View on GitHub

@@ -9,12 +9,12 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
+  SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Logo } from "../Logo";
 import { Footer } from "./Footer";
 import { MenuItem, projects, site, socials } from ".";
-import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -24,34 +24,38 @@ import {
   CollapsibleTrigger,
 } from "../ui/collapsible";
 import { ChevronDown } from "lucide-react";
+import { usePathname } from "@/i18n/routing";
 
 export function AppSidebar() {
   const { toggleSidebar, open } = useSidebar();
   const pathname = usePathname();
   const t = useTranslations("Sidebar");
 
-  const renderItem = (
-    { href, newTab, label, icon }: MenuItem,
-    selected: string,
-  ) => {
-    const isActive = selected === href;
+  const renderItem = ({ href, newTab, label, icon }: MenuItem) => {
+    const isActive = pathname === href;
 
     return (
-      <SidebarMenuButton
-        key={href}
-        asChild
-        isActive={isActive}
-        className="bg-transparent! hover:bg-primary! data-[active=true]:bg-transparent! font-semibold!"
-      >
-        <Link href={href} target={newTab ? "_blank" : "_parent"}>
-          {icon}
-          <span className={cn(isActive && "text-primary")}>{t(label)}</span>
-        </Link>
-      </SidebarMenuButton>
+      <SidebarMenuItem key={href}>
+        <SidebarMenuButton
+          asChild
+          isActive={isActive}
+          className="bg-transparent! hover:bg-primary! data-[active=true]:bg-transparent! font-semibold!"
+        >
+          <Link
+            href={href}
+            target={newTab ? "_blank" : undefined}
+            rel={newTab ? "noopener noreferrer" : undefined}
+            aria-label={t(label)}
+          >
+            {icon}
+            <span className={cn(isActive && "text-primary")}>{t(label)}</span>
+          </Link>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
     );
   };
 
-  const renderGroup = async (label: string, items: MenuItem[]) => (
+  const renderGroup = (label: string, items: MenuItem[]) => (
     <Collapsible
       defaultOpen
       className="group/collapsible"
@@ -66,9 +70,7 @@ export function AppSidebar() {
         </SidebarGroupLabel>
         <CollapsibleContent>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map(item => renderItem(item, pathname))}
-            </SidebarMenu>
+            <SidebarMenu>{items.map(renderItem)}</SidebarMenu>
           </SidebarGroupContent>
         </CollapsibleContent>
       </SidebarGroup>

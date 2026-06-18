@@ -17,7 +17,7 @@ export function LastCertifications() {
       </div>
 
       <Button>
-        .<Link href="/certifications">Mostra tutte</Link>
+        <Link href="/certifications">Mostra tutte</Link>
       </Button>
     </div>
   );
