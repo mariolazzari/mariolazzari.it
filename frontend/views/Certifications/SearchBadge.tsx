@@ -11,7 +11,8 @@ type Props = {
 export function SearchBadge({ img, label, selected, onClick }: Props) {
   return (
     <Badge
-      className="px-2 py-3 cursor-pointer"
+      aria-hidden
+      className="px-4 py-3 cursor-pointer"
       variant={selected ? "default" : "outline"}
       onClick={onClick}
     >

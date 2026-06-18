@@ -13,7 +13,11 @@ type Props = PropsWithChildren<{
 
 export function Providers({ children, locale, messages }: Props) {
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider
+      locale={locale}
+      messages={messages}
+      timeZone="Europe/Rome"
+    >
       <ThemeProvider
         attribute="class"
         defaultTheme="dark"

@@ -23,6 +23,7 @@
   "Home": {
     "mailButton": "Mail",
     "cvButton": "CV",
+    "projectTitle": "I miei progetti",
     "project1Desc": "Scopri opere d'arte dei principali musei del mondo attraverso un'unica piattaforma unificata.",
     "project1P1": "Museum Hub è una piattaforma web che aggrega dati relativi alle opere d'arte dei principali musei a livello globale.",
     "project1P2": "Attraverso l'integrazione con API pubbliche dei musei, gli utenti possono esplorare collezioni, cercare artisti e opere e accedere al patrimonio culturale da un'unica interfaccia.",
@@ -31,7 +32,26 @@
     "project2P2": "La piattaforma consente agli utenti di scoprire missioni spaziali, immagini astronomiche, dati satellitari, calendari di lancio e approfondimenti scientifici delle principali agenzie spaziali mondiali.",
     "project3Desc": "Sistema di accoglienza ospedaliera accessibile e strutturato per pazienti pediatrici con disabilità.",
     "project3P1": "Pediatric Admission Hub è un sistema web progettato per supportare il personale ospedaliero nella gestione del processo di accoglienza di pazienti pediatrici con disabilità.",
-    "project3P2": "Il sistema è progettato per ridurre le frizioni in ambienti ad alto carico, garantendo al contempo che i dati sensibili dei pazienti siano organizzati e facilmente accessibili al personale autorizzato."
+    "project3P2": "Il sistema è progettato per ridurre le frizioni in ambienti ad alto carico, garantendo al contempo che i dati sensibili dei pazienti siano organizzati e facilmente accessibili al personale autorizzato.",
+    "projectButton": "Mostra tutti",
+    "skillTitle": "Le mie competenze",
+    "skillB1": "Sviluppo di interfacce utente basate su componenti veloci, modulari e manutenibili",
+    "skillB2": "Creazione di applicazioni web full-stack moderne con rendering ottimizzato e funzionalità SEO avanzate",
+    "skillB3": "Realizzazione di applicazioni robuste e scalabili attraverso tipizzazione statica e maggiore produttività per gli sviluppatori",
+    "skillB4": "Progettazione di interfacce responsive e moderne utilizzando un framework CSS utility-first",
+    "skillB5": "Sviluppo di design system professionali con componenti UI riutilizzabili e accessibili",
+    "skillB6": "Gestione efficiente di stati complessi in applicazioni React di livello enterprise",
+    "skillB7": "Creazione di applicazioni web leggere e altamente interattive con approccio HTML-first",
+    "skillB8": "Garantire la validazione dei dati type-safe tra frontend e backend",
+    "skillF1": "Sviluppo di API, microservizi e sistemi backend ad alte prestazioni con focus su semplicità e concorrenza",
+    "skillF2": "Costruzione di applicazioni server-side scalabili e API REST utilizzando JavaScript e TypeScript",
+    "skillF3": "Progettazione di database relazionali affidabili con query avanzate, indicizzazione e capacità transazionali",
+    "skillF4": "Implementazione di soluzioni ad alta velocità per caching, messaging e gestione delle sessioni",
+    "skillF5": "Sviluppo di sistemi backend ad alte prestazioni e memory-safe con forti garanzie di concorrenza",
+    "skillF6": "Containerizzazione delle applicazioni per garantire deployment coerenti tra ambienti di sviluppo e produzione",
+    "skillF7": "Progettazione di modelli dati document-based flessibili per applicazioni scalabili e performanti",
+    "skillF8": "Gestione di server, automazione dei workflow e ambienti di produzione utilizzando sistemi Linux",
+    "skillButton": "Mostra tutte"
   },
 
   "Skills": {

@@ -1,7 +1,9 @@
-import { Baby, Eye } from "lucide-react";
+import { Baby, Code, Eye } from "lucide-react";
 import { MdMuseum } from "react-icons/md";
 import { Project } from "./Project";
 import { getTranslations } from "next-intl/server";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export async function Projects() {
   const t = await getTranslations("Home");
@@ -31,9 +33,9 @@ export async function Projects() {
   ];
 
   return (
-    <div className="my-16">
+    <div className="my-16 text-center">
       <h2 className="text-4xl text-primary font-semibold text-center mb-16">
-        I mie progetti
+        {t("projectTitle")}
       </h2>
       <div className="flex justify-center gap-8 flex-wrap my-8">
         {projects.map((prj, idx) => (
@@ -50,6 +52,12 @@ export async function Projects() {
           />
         ))}
       </div>
+
+      <Link href="/projects/github-data">
+        <Button className="mt-4">
+          <Code /> {t("projectButton")}
+        </Button>
+      </Link>
     </div>
   );
 }
