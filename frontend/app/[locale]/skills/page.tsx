@@ -2,20 +2,23 @@ import { Title } from "@/components/Typography";
 import { Skills, SkillsCloud } from "@/views/Skills";
 import { PrevSkills } from "@/views/Skills/PrevSkills";
 import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Skills",
 };
 
-function SkillsPage() {
+async function SkillsPage() {
+  const t = await getTranslations("Skills");
+
   return (
     <div className="w-full flex flex-col gap-8 px-4 py-8">
       <SkillsCloud />
 
-      <Title>Il mio stack tecnologico</Title>
+      <Title>{t("techStack")}</Title>
       <Skills />
 
-      <Title>Tecnologie che ho utilizzato</Title>
+      <Title>{t("oldStack")}</Title>
       <PrevSkills />
     </div>
   );
