@@ -9,25 +9,22 @@ import {
 } from "@/components/ui/tooltip";
 import { Dock, DockIcon } from "@/components/ui/dock";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
-import { HTMLAttributes } from "react";
 import { LocaleButton } from "@/components/Buttons";
 import { getTranslations } from "next-intl/server";
-
-export type IconProps = HTMLAttributes<SVGElement>;
-
-const links = [
-  { href: "/", icon: HomeIcon, label: "home" },
-  { href: "/skills", icon: Laptop, label: "skills" },
-  { href: "/certifications", icon: GraduationCap, label: "certifications" },
-  { href: "/projects/github-data", icon: Code, label: "projects" },
-];
 
 export async function DockBar() {
   const t = await getTranslations("Sidebar");
 
+  const links = [
+    { href: "/", icon: HomeIcon, label: "home" },
+    { href: "/skills", icon: Laptop, label: "skills" },
+    { href: "/certifications", icon: GraduationCap, label: "certifications" },
+    { href: "/projects/github-data", icon: Code, label: "projects" },
+  ];
+
   return (
     <div className="flex flex-col items-center justify-center fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
-      <Dock direction="middle">
+      <Dock direction="middle" iconSize={48}>
         {links.map(link => (
           <DockIcon key={link.label}>
             <Tooltip>
@@ -48,8 +45,13 @@ export async function DockBar() {
           </DockIcon>
         ))}
 
-        <AnimatedThemeToggler variant="hexagon" fromCenter />
-        <LocaleButton />
+        <DockIcon>
+          <AnimatedThemeToggler className="mt-2" variant="hexagon" fromCenter />
+        </DockIcon>
+
+        <DockIcon>
+          <LocaleButton />
+        </DockIcon>
       </Dock>
     </div>
   );

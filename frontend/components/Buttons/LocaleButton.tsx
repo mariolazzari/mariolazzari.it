@@ -16,9 +16,9 @@ export const LocaleButton = () => {
 
   return (
     <Button
-      className="text-xl"
+      className="text-2xl rounded-full"
       variant="ghost"
-      size="icon"
+      size="icon-lg"
       onClick={onClick}
       aria-label={`Switch language (current: ${locale})`}
     >
