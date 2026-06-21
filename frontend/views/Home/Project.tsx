@@ -49,12 +49,14 @@ export function Project({
           </div>
         </CardHeader>
         <CardContent className="p-4">
-          <div className="flex flex-col gap-4 h-48 items-start">
+          <div className="flex flex-col gap-4 min-h-48 items-start">
             <p className="text-sm font-medium text-left">{text1}</p>
             <p className="text-sm font-medium text-left">{text2}</p>
           </div>
+        </CardContent>
 
-          <div className="mt-auto flex items-center gap-2">
+        <CardFooter className="border-border border-t p-4 [.border-t]:pt-4 flex-col gap-2">
+          <div className="w-full flex items-center gap-2">
             {images.map(img => (
               <Image
                 key={img}
@@ -65,9 +67,7 @@ export function Project({
               />
             ))}
           </div>
-        </CardContent>
 
-        <CardFooter className="border-border border-t p-4 [.border-t]:pt-4 flex-col gap-2">
           <Button className="w-full" variant="outline" asChild>
             <Link
               href={href1}

@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { Code, GraduationCap, HomeIcon, Laptop } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import { GraduationCap, HomeIcon, Laptop, Star } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -19,7 +17,7 @@ export async function DockBar() {
     { href: "/", icon: HomeIcon, label: "home" },
     { href: "/skills", icon: Laptop, label: "skills" },
     { href: "/certifications", icon: GraduationCap, label: "certifications" },
-    { href: "/projects/github-data", icon: Code, label: "projects" },
+    { href: "/hobbies", icon: Star, label: "hobbies" },
   ];
 
   return (
@@ -29,14 +27,7 @@ export async function DockBar() {
           <DockIcon key={link.label}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link
-                  href={link.href}
-                  aria-label={link.label}
-                  className={cn(
-                    buttonVariants({ variant: "ghost", size: "icon" }),
-                    "size-12 rounded-full",
-                  )}
-                >
+                <Link href={link.href} aria-label={link.label}>
                   <link.icon className="size-6" />
                 </Link>
               </TooltipTrigger>

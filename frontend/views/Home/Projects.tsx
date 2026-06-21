@@ -1,4 +1,4 @@
-import { Baby, Code, Eye } from "lucide-react";
+import { Code, Euro, Eye } from "lucide-react";
 import { MdMuseum } from "react-icons/md";
 import { Project } from "./Project";
 import { getTranslations } from "next-intl/server";
@@ -24,10 +24,10 @@ export async function Projects() {
       images: ["go", "postgres", "redis", "react"],
     },
     {
-      icon: <Baby size={50} />,
-      title: "CR2 Sinapsi",
-      href1: "/projects/sinapsi",
-      href2: "https://github.com/mariolazzari/cr2-sinapsi",
+      icon: <Euro size={50} />,
+      title: "Go Europeana",
+      href1: "/projects/europeana",
+      href2: "https://github.com/mariolazzari/go-europeana",
       images: ["go", "postgres", "redis", "react"],
     },
   ];

@@ -1,11 +1,10 @@
 import {
-  Baby,
   Code,
+  Euro,
   Home,
   Laptop,
   Mail,
   Paintbrush,
-  PartyPopper,
   School,
   Star,
 } from "lucide-react";
@@ -29,13 +28,13 @@ export const site: MenuItem[] = [
   { href: "/", label: "home", icon: <Home /> },
   { href: "/skills", label: "skills", icon: <Laptop /> },
   { href: "/certifications", label: "certifications", icon: <School /> },
-  { href: "/hobbies", label: "hobbies", icon: <PartyPopper /> },
+  { href: "/hobbies", label: "hobbies", icon: <Star /> },
 ];
 
 export const projects: MenuItem[] = [
   { href: "/projects/museum-hub", label: "museumHub", icon: <Paintbrush /> },
   { href: "/projects/sky-hub", label: "skyHub", icon: <Star /> },
-  { href: "/projects/cr2-sinapsi", label: "cr2", icon: <Baby /> },
+  { href: "/projects/europeana", label: "europeana", icon: <Euro /> },
   { href: "/projects/github-data", label: "myCode", icon: <Code /> },
 ];
 
