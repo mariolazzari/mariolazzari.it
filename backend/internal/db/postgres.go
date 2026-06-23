@@ -20,5 +20,5 @@ func ConnectPostgres(ctx context.Context, conn string) {
 		log.Fatalf("Postgres ping error: %v", err)
 	}
 
-	log.Println("Postgres connection pool open successfully")
+	log.Println("Postgres connection pool started")
 }
