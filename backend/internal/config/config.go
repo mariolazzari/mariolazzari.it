@@ -7,20 +7,24 @@ import (
 )
 
 type Config struct {
-	AppName     string
-	AppMode     string
-	AppPort     int
-	PostgresUrl string
-	RedisUrl    string
+	AppName         string
+	AppMode         string
+	AppPort         int
+	PostgresUrl     string
+	RedisUrl        string
+	EuropeanaApiKey string
+	DplaApiKey      string
 }
 
 func New() *Config {
 	return &Config{
-		AppName:     getEnv("APP_NAME"),
-		AppMode:     getEnv("APP_MODE"),
-		AppPort:     getIntEnv("APP_PORT"),
-		PostgresUrl: getEnv("POSTGRES_URL"),
-		RedisUrl:    getEnv("REDIS_URL"),
+		AppName:         getEnv("APP_NAME"),
+		AppMode:         getEnv("APP_MODE"),
+		AppPort:         getIntEnv("APP_PORT"),
+		PostgresUrl:     getEnv("POSTGRES_URL"),
+		RedisUrl:        getEnv("REDIS_URL"),
+		EuropeanaApiKey: getEnv("EUROPEANA_API_KEY"),
+		DplaApiKey:      getEnv("DPLA_API_KEY"),
 	}
 }
 

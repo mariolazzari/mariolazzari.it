@@ -2,23 +2,35 @@ package db
 
 import (
 	"context"
-	"log"
+	"fmt"
+	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-func ConnectPostgres(ctx context.Context, conn string) {
-	// oped connection
+func NewPostgresPool(ctx context.Context, conn string) (*pgxpool.Pool, error) {
+	// configuration tuning
+	config, err := pgxpool.ParseConfig(conn)
+	if err != nil {
+		return nil, err
+	}
+	config.MaxConns = 50
+	config.MinConns = 10
+	config.MaxConnLifetime = 30 * time.Minute
+	config.MaxConnIdleTime = 5 * time.Minute
+	config.HealthCheckPeriod = 1 * time.Minute
+
+	// open connection
 	dbPool, err := pgxpool.New(ctx, conn)
 	if err != nil {
-		log.Fatalf("Postgres connection error: %v", err)
+		return nil, fmt.Errorf("create postgres pool: %w", err)
 	}
 
 	// check connection
 	err = dbPool.Ping(ctx)
 	if err != nil {
-		log.Fatalf("Postgres ping error: %v", err)
+		return nil, fmt.Errorf("ping postgres: %w", err)
 	}
 
-	log.Println("Postgres connection pool started")
+	return dbPool, err
 }
