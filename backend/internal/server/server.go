@@ -1,21 +1,37 @@
 package server
 
 import (
-	"log"
 	"log/slog"
 	"net/http"
 
-	"github.com/go-redis/redis"
 	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/redis/go-redis/v9"
 )
 
 type Server struct {
+	mux   *http.ServeMux
 	log   *slog.Logger
 	db    *pgxpool.Pool
 	cache *redis.Client
-	mux   *http.ServeMux
 	// queries *db.Qeuries
+}
 
+func New(log *slog.Logger, db *pgxpool.Pool, cache *redis.Client) *Server {
+	// server router
+	mux := http.NewServeMux()
+
+	// server settings
+	s := &Server{
+		log:   log,
+		mux:   mux,
+		db:    db,
+		cache: cache,
+	}
+
+	// register api routes
+	s.registerRoutes()
+
+	return s
 }
 
 func (s *Server) registerRoutes() {
@@ -24,28 +40,18 @@ func (s *Server) registerRoutes() {
 	})
 }
 
-// func New() (*Server, error) {
-// 	// server router
-// 	mux := http.NewServeMux()
-
-// 	s.registerRoutes()
-
-// 	return s, nil
-// }
+func (s *Server) Mux() *http.ServeMux {
+	return s.mux
+}
 
 func (s *Server) Stop() {
 	// Check if DB exists before closing to avoid panic
 	if s.db != nil {
 		s.db.Close()
-		log.Println("Database connection pool closed")
 	}
 
 	// Check if Redis exists before closing
 	if s.cache != nil {
-		if err := s.cache.Close(); err != nil {
-			log.Printf("Error closing cache: %v", err)
-		} else {
-			log.Println("Cache connection closed")
-		}
+		_ = s.cache.Close()
 	}
 }

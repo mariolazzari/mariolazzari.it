@@ -3,13 +3,16 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	"github.com/mariolazzari/mariolazzari.it/internal/config"
 	"github.com/mariolazzari/mariolazzari.it/internal/db"
 	"github.com/mariolazzari/mariolazzari.it/internal/logger"
+	"github.com/mariolazzari/mariolazzari.it/internal/server"
 )
 
 func main() {
@@ -23,10 +26,8 @@ func main() {
 	// main context
 	ctx := context.Background()
 
-	// postgres connection
-	myLog.Info("Connecting Postgres")
-
 	// Postgres connection
+	myLog.Info("Connecting Postgres")
 	dbPool, err := db.NewPostgresPool(ctx, cfg.PostgresUrl)
 	if err != nil {
 		myLog.Error(fmt.Sprintf("Postgres connection error: %s", err))
@@ -44,19 +45,38 @@ func main() {
 	defer rdc.Close()
 	myLog.Info("Redis connected")
 
-	// Start server
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello from Mario Lazzari Go Backend!"))
-	})
-
-	server := &http.Server{
+	// Init server
+	server := server.New(myLog, dbPool, rdc)
+	httpServer := &http.Server{
 		Addr:    ":8080",
-		Handler: mux,
+		Handler: server.Mux(),
 	}
 
-	log.Printf("%s starting on port %d", cfg.AppName, cfg.AppPort)
-	if err := server.ListenAndServe(); err != nil {
-		log.Fatalf("Server failed: %v", err)
+	// Start server
+	go func() {
+		myLog.Info(fmt.Sprintf("%s starting on port %d", cfg.AppName, cfg.AppPort))
+		if err := httpServer.ListenAndServe(); err != nil {
+			myLog.Error(fmt.Sprintf("http server error: %s", err))
+			os.Exit(1)
+		}
+	}()
+
+	// Graceful shutdown
+	quit := make(chan os.Signal, 1)
+	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
+	<-quit
+	myLog.Info("Shutting down server...")
+
+	// Create a deadline to wait for current operations to complete
+	shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	if err := httpServer.Shutdown(shutdownCtx); err != nil {
+		myLog.Error("Server forced to shutdown", "error", err)
 	}
+
+	// Call your server stop logic
+	server.Stop()
+
+	myLog.Info("Server exited properly")
 }
