@@ -3,7 +3,6 @@ package server
 import (
 	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
 	"strconv"
 	"strings"
@@ -11,37 +10,37 @@ import (
 
 // decode reads the request body into the provided destination 'v'.
 // It enforces security constraints such as body size limits and strict field matching.
-func (s *Server) decode(w http.ResponseWriter, r *http.Request, v any) error {
-	// Limit the request body size to 1MB to prevent Denial of Service (DoS) attacks.
-	// http.MaxBytesReader will return an error if the client sends a larger payload.
-	r.Body = http.MaxBytesReader(w, r.Body, 1024*1024)
-	defer r.Body.Close()
+// func (s *Server) decode(w http.ResponseWriter, r *http.Request, v any) error {
+// 	// Limit the request body size to 1MB to prevent Denial of Service (DoS) attacks.
+// 	// http.MaxBytesReader will return an error if the client sends a larger payload.
+// 	r.Body = http.MaxBytesReader(w, r.Body, 1024*1024)
+// 	defer r.Body.Close()
 
-	dec := json.NewDecoder(r.Body)
+// 	dec := json.NewDecoder(r.Body)
 
-	// Force an error if the JSON contains fields not defined in the target struct.
-	// This ensures strict contract adherence and prevents "garbage" data injection.
-	dec.DisallowUnknownFields()
+// 	// Force an error if the JSON contains fields not defined in the target struct.
+// 	// This ensures strict contract adherence and prevents "garbage" data injection.
+// 	dec.DisallowUnknownFields()
 
-	if err := dec.Decode(v); err != nil {
-		s.log.Warn("json decode failed",
-			"remote_addr", r.RemoteAddr,
-			"path", r.URL.Path,
-			"error", err,
-		)
-		return fmt.Errorf("decode json: %w", err)
-	}
+// 	if err := dec.Decode(v); err != nil {
+// 		s.log.Warn("json decode failed",
+// 			"remote_addr", r.RemoteAddr,
+// 			"path", r.URL.Path,
+// 			"error", err,
+// 		)
+// 		return fmt.Errorf("decode json: %w", err)
+// 	}
 
-	// Ensure the request body contains only a single JSON object.
-	// We attempt to decode a second empty struct; if it doesn't return io.EOF,
-	// it means there is extra trailing data in the body.
-	err := dec.Decode(&struct{}{})
-	if err != io.EOF {
-		return fmt.Errorf("request body must only contain a single JSON object")
-	}
+// 	// Ensure the request body contains only a single JSON object.
+// 	// We attempt to decode a second empty struct; if it doesn't return io.EOF,
+// 	// it means there is extra trailing data in the body.
+// 	err := dec.Decode(&struct{}{})
+// 	if err != io.EOF {
+// 		return fmt.Errorf("request body must only contain a single JSON object")
+// 	}
 
-	return nil
-}
+// 	return nil
+// }
 
 // encode writes a JSON response with the specified HTTP status code.
 func (s *Server) encode(w http.ResponseWriter, r *http.Request, status int, v any) {

@@ -27,7 +27,7 @@ func New(apiKey string) *Client {
 	}
 }
 
-func (c *Client) SearchArtworks(ctx context.Context, params museumhub.ArtworkSearch) ([]museumhub.Artwork, error) {
+func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*museumhub.ArtworksResponse, error) {
 	u, err := url.Parse(c.baseURL + "/search.json")
 	if err != nil {
 		return nil, err
@@ -36,12 +36,17 @@ func (c *Client) SearchArtworks(ctx context.Context, params museumhub.ArtworkSea
 	query := u.Query()
 	query.Set("wskey", c.apiKey)
 	query.Set("query", params.Query)
-	query.Set("rows", "20")
+	query.Set("rows", fmt.Sprint(params.Limit))
+	query.Set("start", fmt.Sprint(params.Offset+1))
 	query.Set("media", "true")
+	query.Set("sort", "score+desc")
 
 	u.RawQuery = query.Encode()
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u.String(), nil)
+
+	fmt.Println("err", err)
+
 	if err != nil {
 		return nil, err
 	}
@@ -56,24 +61,44 @@ func (c *Client) SearchArtworks(ctx context.Context, params museumhub.ArtworkSea
 		return nil, fmt.Errorf("europeana error: %d", resp.StatusCode)
 	}
 
-	var searchResponse *SearchResponse
+	var searchResponse SearchResponse
 	if err := json.NewDecoder(resp.Body).Decode(&searchResponse); err != nil {
 		return nil, err
 	}
 
-	out := make([]museumhub.Artwork, 0, len(searchResponse.Items))
+	items := make([]museumhub.Artwork, 0, len(searchResponse.Items))
 
 	for _, it := range searchResponse.Items {
-		out = append(out, museumhub.Artwork{
-			ID:              it.GUID,
-			Title:           it.GetTitle("en"),
-			Description:     it.GetDescription("en"),
+		items = append(items, museumhub.Artwork{
+			ID:              it.ID,
+			Title:           it.GetTitle(params.Locale),
+			Author:          it.GetAuthor(params.Locale),
+			Description:     it.GetDescription(params.Locale),
 			Museum:          it.GetMuseum(),
 			ImageURL:        it.GetImageUrl(),
 			ImagePreviewURL: it.GetImagePreviewUrl(),
+			Year:            it.GetYear(),
 			Source:          "europeana",
 		})
 	}
 
-	return out, nil
+	pages := 0
+	if searchResponse.ItemsCount > 0 {
+		pages = (searchResponse.TotalResults + searchResponse.ItemsCount - 1) / searchResponse.ItemsCount
+	}
+
+	page := 0
+	if params.Limit > 0 {
+		page = (params.Offset / params.Limit) + 1
+	}
+
+	artworksResponse := &museumhub.ArtworksResponse{
+		Total:   searchResponse.TotalResults,
+		PerPage: searchResponse.ItemsCount,
+		Items:   items,
+		Pages:   pages,
+		Page:    page,
+	}
+
+	return artworksResponse, nil
 }

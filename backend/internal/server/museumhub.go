@@ -7,12 +7,6 @@ import (
 	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub/europeana"
 )
 
-type MuseumHubSearchResponse struct {
-	Query  string `json:"query"`
-	Limit  int    `json:"limit"`
-	Offset int    `json:"offset"`
-}
-
 func (s *Server) handleMuseumHubSearch(w http.ResponseWriter, r *http.Request) {
 	query, ok := s.parseQuery(r, w, "query")
 	if !ok {
@@ -26,12 +20,13 @@ func (s *Server) handleMuseumHubSearch(w http.ResponseWriter, r *http.Request) {
 	limit, offset := s.extractPagination(r)
 
 	euroClient := europeana.New(s.cfg.EuropeanaApiKey)
-	artworks, err := euroClient.SearchArtworks(r.Context(), museumhub.ArtworkSearch{
+	artworks, err := euroClient.Search(r.Context(), museumhub.ArtworkSearch{
 		Query:  query,
 		Limit:  limit,
 		Offset: offset,
 		Locale: locale,
 	})
+
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

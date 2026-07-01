@@ -79,6 +79,20 @@ func (i Item) GetDescription(lang string) string {
 	return ""
 }
 
+func (i Item) GetAuthor(lang string) string {
+	// localized
+	if desc, ok := i.DCCreatorLangAware[lang]; ok && len(desc) > 0 {
+		return desc[0]
+	}
+
+	// original as fallback
+	if len(i.DCCreator) > 0 {
+		return i.DCCreator[0]
+	}
+
+	return ""
+}
+
 func (i Item) GetMuseum() string {
 	if len(i.DataProvider) > 0 {
 		return i.DataProvider[0]
@@ -98,6 +112,14 @@ func (i Item) GetImageUrl() string {
 func (i Item) GetImagePreviewUrl() string {
 	if len(i.EDMPreview) > 0 {
 		return i.EDMPreview[0]
+	}
+
+	return ""
+}
+
+func (i Item) GetYear() string {
+	if len(i.Year) > 0 {
+		return i.Year[0]
 	}
 
 	return ""
