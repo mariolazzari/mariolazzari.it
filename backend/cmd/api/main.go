@@ -46,7 +46,7 @@ func main() {
 	myLog.Info("Redis connected")
 
 	// Init server
-	server := server.New(myLog, dbPool, rdc)
+	server := server.New(myLog, dbPool, rdc, cfg)
 	httpServer := &http.Server{
 		Addr:    ":8080",
 		Handler: server.Mux(),

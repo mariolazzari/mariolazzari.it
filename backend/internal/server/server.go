@@ -3,29 +3,35 @@ package server
 import (
 	"log/slog"
 	"net/http"
+	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/mariolazzari/mariolazzari.it/internal/config"
 	"github.com/redis/go-redis/v9"
 )
 
 type Server struct {
-	mux   *http.ServeMux
-	log   *slog.Logger
-	db    *pgxpool.Pool
-	cache *redis.Client
+	startTime time.Time
+	mux       *http.ServeMux
+	log       *slog.Logger
+	db        *pgxpool.Pool
+	cache     *redis.Client
+	cfg       *config.Config
 	// queries *db.Qeuries
 }
 
-func New(log *slog.Logger, db *pgxpool.Pool, cache *redis.Client) *Server {
+func New(log *slog.Logger, db *pgxpool.Pool, cache *redis.Client, cfg *config.Config) *Server {
 	// server router
 	mux := http.NewServeMux()
 
 	// server settings
 	s := &Server{
-		log:   log,
-		mux:   mux,
-		db:    db,
-		cache: cache,
+		startTime: time.Now(),
+		log:       log,
+		mux:       mux,
+		db:        db,
+		cache:     cache,
+		cfg:       cfg,
 	}
 
 	// register api routes
@@ -35,9 +41,10 @@ func New(log *slog.Logger, db *pgxpool.Pool, cache *redis.Client) *Server {
 }
 
 func (s *Server) registerRoutes() {
-	s.mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello from Mario Lazzari Go Backend!"))
-	})
+	// museumhub
+	s.mux.HandleFunc("GET /api/museumhub/search", s.handleMuseumHubSearch)
+	// system
+	s.mux.HandleFunc("GET /api/system/health", s.handleHealthCheck)
 }
 
 func (s *Server) Mux() *http.ServeMux {
