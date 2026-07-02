@@ -1,4 +1,4 @@
-import { DateStr } from "@/type";
+import { DateStr } from "@/types";
 import { formatDistanceToNow } from "date-fns";
 import { it, enGB } from "date-fns/locale";
 

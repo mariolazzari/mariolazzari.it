@@ -1,5 +1,5 @@
 import { CertificationCard } from "@/components/Cards";
-import { Certification } from "@/type";
+import { Certification } from "@/types";
 
 type Props = {
   results: Certification[];

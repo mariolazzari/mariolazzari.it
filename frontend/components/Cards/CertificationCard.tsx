@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Certification } from "@/type/Certification";
+import { Certification } from "@/types/Certification";
 import {
   Card,
   CardContent,

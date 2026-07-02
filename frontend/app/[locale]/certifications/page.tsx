@@ -4,7 +4,7 @@ import {
   SearchCertifications,
   SearchResults,
 } from "@/views/Certifications";
-import { PageProps } from "@/type";
+import { PageProps } from "@/types";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

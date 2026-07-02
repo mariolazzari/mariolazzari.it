@@ -1,4 +1,4 @@
-import { Certification } from "@/type";
+import { Certification } from "@/types";
 
 export * from "./SearchBadge";
 export * from "./SearchCertifications";

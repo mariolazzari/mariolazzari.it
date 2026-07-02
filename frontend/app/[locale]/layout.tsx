@@ -5,10 +5,11 @@ import { cn } from "@/lib/utils";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Providers } from "@/components/Providers";
-import { Layout } from "@/type/Layout";
+import { Layout } from "@/types/Layout";
 import { DockBar } from "@/components/DockBar";
 import { getMessages } from "next-intl/server";
 import { Cookies } from "@/components/Cookies";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -53,6 +54,7 @@ async function RootLayout({ children, params }: Layout) {
           </main>
 
           <DockBar />
+          <Toaster />
           <Cookies />
         </Providers>
       </body>

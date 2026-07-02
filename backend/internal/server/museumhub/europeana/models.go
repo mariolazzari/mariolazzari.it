@@ -81,8 +81,8 @@ func (i Item) GetDescription(lang string) string {
 
 func (i Item) GetAuthor(lang string) string {
 	// localized
-	if desc, ok := i.DCCreatorLangAware[lang]; ok && len(desc) > 0 {
-		return desc[0]
+	if name, ok := i.DCCreatorLangAware[lang]; ok && len(name) > 0 {
+		return name[0]
 	}
 
 	// original as fallback
