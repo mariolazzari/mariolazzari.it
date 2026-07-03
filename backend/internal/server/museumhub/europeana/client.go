@@ -37,20 +37,21 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 	// api key and query
 	query.Set("wskey", c.apiKey)
 	query.Set("query", params.Query)
+
 	// pagination
 	query.Set("rows", fmt.Sprint(params.Limit))
 	query.Set("start", fmt.Sprint(params.Offset+1))
+
 	// media only
-	query.Set("media", "true")
-	query.Set("thumbnail", "true")
-	// richer metadata payload
-	query.Set("profile", "rich")
-	// ranking
-	query.Set("sort", "score+desc")
-	// filter: only objects that are actually usable as artworks
+	//query.Add("qf", "media:true")
+	//query.Add("qf", "thumbnail:true")
+	query.Add("qf", "what:painting")
 	query.Add("qf", "TYPE:IMAGE")
-	// optional but strongly recommended for art-quality results
-	query.Add("qf", "contentTier:4") // highest metadata/quality tier
+	query.Add("qf", "contentTier:4")
+
+	// settings
+	query.Set("profile", "rich")
+	query.Set("sort", "score desc")
 
 	u.RawQuery = query.Encode()
 
@@ -77,6 +78,7 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 	items := make([]museumhub.Artwork, 0, len(searchResponse.Items))
 
 	for _, it := range searchResponse.Items {
+
 		items = append(items, museumhub.Artwork{
 			ID:              it.ID,
 			Title:           it.GetTitle(params.Locale),

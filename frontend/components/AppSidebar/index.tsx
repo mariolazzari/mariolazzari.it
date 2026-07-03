@@ -1,13 +1,4 @@
-import {
-  Code,
-  Euro,
-  Home,
-  Laptop,
-  Mail,
-  Paintbrush,
-  School,
-  Star,
-} from "lucide-react";
+import { Code, Euro, Home, Laptop, Mail, School, Star } from "lucide-react";
 import { ReactNode } from "react";
 import {
   FaFacebook,
@@ -16,6 +7,7 @@ import {
   FaLinkedin,
   FaTwitter,
 } from "react-icons/fa6";
+import { MdMuseum } from "react-icons/md";
 
 export type MenuItem = {
   href: string;
@@ -32,7 +24,7 @@ export const site: MenuItem[] = [
 ];
 
 export const projects: MenuItem[] = [
-  { href: "/projects/museum-hub", label: "museumHub", icon: <Paintbrush /> },
+  { href: "/projects/museum-hub", label: "museumHub", icon: <MdMuseum /> },
   { href: "/projects/sky-hub", label: "skyHub", icon: <Star /> },
   { href: "/projects/europeana", label: "europeana", icon: <Euro /> },
   { href: "/projects/github-data", label: "myCode", icon: <Code /> },
