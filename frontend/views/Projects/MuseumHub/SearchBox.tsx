@@ -4,10 +4,14 @@ import { SubmitEventHandler, useState } from "react";
 import { ResetButton, SearchButton } from "@/components/Buttons";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
-import { PaginationBox } from "./PaginationBox";
+import { PerPage } from "./PerPage";
 
-export function SearchBox() {
-  const [query, setQuery] = useState("");
+type Props = {
+  query: string;
+};
+
+export function SearchBox({ query = "" }: Props) {
+  const [selectedQuery, setSelectedQuery] = useState(query);
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState("10");
 
@@ -20,10 +24,10 @@ export function SearchBox() {
     if (isNaN(limit)) {
       limit = 10;
     }
-    let offset = (page + 1) * limit;
+    let offset = (page - 1) * limit;
 
     router.push(
-      `/projects/museum-hub?query=${query}&limit=${limit}&offset=${offset}`,
+      `/projects/museum-hub?query=${selectedQuery}&limit=${limit}&offset=${offset}`,
     );
   };
 
@@ -33,21 +37,20 @@ export function SearchBox() {
         <Input
           className="max-w-md"
           placeholder="Search your favourite painter..."
-          value={query}
-          onChange={e => setQuery(e.target.value)}
+          value={selectedQuery}
+          onChange={e => setSelectedQuery(e.target.value)}
         />
 
         <div className="flex gap-4">
-          <ResetButton disabled={query === ""} onClick={() => setQuery("")} />
-          <SearchButton disabled={query === ""} />
+          <ResetButton
+            type="button"
+            disabled={selectedQuery === ""}
+            onClick={() => setSelectedQuery("")}
+          />
+          <SearchButton disabled={selectedQuery === ""} />
         </div>
 
-        <PaginationBox
-          rowsPerPage={perPage}
-          onRowsPerPageChange={setPerPage}
-          onNextClick={() => setPage(page => page + 1)}
-          onPrevClick={() => setPage(page => page - 1)}
-        />
+        <PerPage rowsPerPage={perPage} onRowsPerPageChange={setPerPage} />
       </form>
     </div>
   );

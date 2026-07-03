@@ -19,23 +19,23 @@ type Props = {
 
 export function ArtworkCard({ item }: Props) {
   return (
-    <Card className="w-full max-w-sm border-none p-0 shadow-none">
-      <MagicCard className="p-0">
-        <CardHeader className="border-border border-b p-4 [.border-b]:pb-4">
-          <CardTitle>{item.title}</CardTitle>
+    <Card className="w-full min-w-xs max-w-sm border-none p-0">
+      <MagicCard>
+        <CardHeader className="p-4">
+          <CardTitle className="">{item.title}</CardTitle>
           <CardDescription>{item.museum}</CardDescription>
         </CardHeader>
-        <CardContent className="flex justify-center items-center p-4">
+        <CardContent className="p-0">
           <Lens
-            zoomFactor={2}
-            lensSize={150}
+            zoomFactor={2.5}
+            lensSize={200}
             isStatic={false}
             ariaLabel="Zoom Area"
           >
             <PixelImage src={item.image_preview_url} grid="8x8" />
           </Lens>
         </CardContent>
-        <CardFooter className="border-border border-t p-4 [.border-t]:pt-4">
+        <CardFooter>
           <Link href={item.image_url} target="_blank">
             <Eye />
           </Link>

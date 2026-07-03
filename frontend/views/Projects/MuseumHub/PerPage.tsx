@@ -1,12 +1,5 @@
 import { Field, FieldLabel } from "@/components/ui/field";
 import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
-import {
   Select,
   SelectContent,
   SelectGroup,
@@ -18,16 +11,9 @@ import {
 type Props = {
   rowsPerPage: string;
   onRowsPerPageChange: (page: string) => void;
-  onNextClick: () => void;
-  onPrevClick: () => void;
 };
 
-export function PaginationBox({
-  rowsPerPage,
-  onRowsPerPageChange,
-  onNextClick,
-  onPrevClick,
-}: Props) {
+export function PerPage({ rowsPerPage, onRowsPerPageChange }: Props) {
   return (
     <div className="flex items-center justify-between gap-4">
       <Field orientation="horizontal" className="w-fit">
@@ -47,16 +33,6 @@ export function PaginationBox({
           </SelectContent>
         </Select>
       </Field>
-      <Pagination className="mx-0 w-auto">
-        <PaginationContent>
-          <PaginationItem onClick={onNextClick}>
-            <PaginationPrevious />
-          </PaginationItem>
-          <PaginationItem onClick={onPrevClick}>
-            <PaginationNext />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
     </div>
   );
 }

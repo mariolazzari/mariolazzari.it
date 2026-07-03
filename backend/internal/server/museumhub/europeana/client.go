@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"strings"
 	"time"
 
 	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub"
@@ -27,6 +28,26 @@ func New(apiKey string) *Client {
 	}
 }
 
+func buildDataProviderQuery() string {
+	providers := []string{
+		"Rijksmuseum",
+		"Mauritshuis",
+		"Fine Arts Museum Vienna",
+		"Dresden State Art Collections. Old Masters Picture Gallery",
+		"National Library of France",
+		"Austrian Gallery Belvedere",
+	}
+
+	// Create the quoted list: "Rijksmuseum" OR "Mauritshuis"
+	quoted := make([]string, len(providers))
+	for i, p := range providers {
+		quoted[i] = fmt.Sprintf("\"%s\"", p)
+	}
+
+	// Join with OR and wrap in parentheses
+	return fmt.Sprintf("DATA_PROVIDER:(%s)", strings.Join(quoted, " OR "))
+}
+
 func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*museumhub.ArtworksResponse, error) {
 	u, err := url.Parse(c.baseURL + "/search.json")
 	if err != nil {
@@ -37,19 +58,14 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 	// api key and query
 	query.Set("wskey", c.apiKey)
 	query.Set("query", params.Query)
-
 	// pagination
 	query.Set("rows", fmt.Sprint(params.Limit))
 	query.Set("start", fmt.Sprint(params.Offset+1))
-
-	// media only
-	//query.Add("qf", "media:true")
-	//query.Add("qf", "thumbnail:true")
+	// media filters
 	query.Add("qf", "what:painting")
 	query.Add("qf", "TYPE:IMAGE")
-	query.Add("qf", "contentTier:4")
-
-	// settings
+	query.Add("qf", "contentTier:(3 OR 4)")
+	query.Add("qf", buildDataProviderQuery())
 	query.Set("profile", "rich")
 	query.Set("sort", "score desc")
 
@@ -79,13 +95,19 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 
 	for _, it := range searchResponse.Items {
 
+		// avoid missing images
+		imgUrl := it.GetImageUrl()
+		if imgUrl == "" {
+			continue
+		}
+
 		items = append(items, museumhub.Artwork{
 			ID:              it.ID,
 			Title:           it.GetTitle(params.Locale),
 			Author:          it.GetAuthor(params.Locale),
 			Description:     it.GetDescription(params.Locale),
 			Museum:          it.GetMuseum(),
-			ImageURL:        it.GetImageUrl(),
+			ImageURL:        imgUrl,
 			ImagePreviewURL: it.GetImagePreviewUrl(),
 			Year:            it.GetYear(),
 			Source:          "europeana",

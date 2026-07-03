@@ -8,15 +8,14 @@ export const metadata: Metadata = {
   title: "Museum Hub",
 };
 
-type Props = PageProps<
-  void,
-  {
-    query: string;
-    limit: string;
-    offset: string;
-    locale: string;
-  }
->;
+type SearchParams = {
+  query: string;
+  limit: string;
+  offset: string;
+  locale: string;
+};
+
+type Props = PageProps<void, SearchParams>;
 
 async function MuseumHubPage({ searchParams }: Props) {
   const { query, locale, limit, offset } = await searchParams;
@@ -27,7 +26,7 @@ async function MuseumHubPage({ searchParams }: Props) {
     return;
   }
 
-  return <MuseumHub data={res.data} />;
+  return <MuseumHub query={query} data={res.data} />;
 }
 
 export default MuseumHubPage;
