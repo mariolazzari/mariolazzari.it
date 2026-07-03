@@ -11,12 +11,7 @@ const dummy: MuseunHubResponse = {
   items: [],
 };
 
-export const getArtworks = async (
-  query = "",
-  limit = 10,
-  offset = 0,
-  locale = "en",
-) => {
+export const getArtworks = async (query = "", locale = "en") => {
   if (query === "") {
     return {
       success: true,
@@ -24,7 +19,7 @@ export const getArtworks = async (
     };
   }
 
-  const url = `/museumhub/search?query=${query}&limit=${limit}&offset=${offset}&locale=${locale}`;
+  const url = `/museumhub/search?query=${query}&limit=100&offset=0&locale=${locale}`;
 
   console.log("first", url);
 

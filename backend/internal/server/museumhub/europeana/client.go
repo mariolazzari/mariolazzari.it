@@ -30,12 +30,27 @@ func New(apiKey string) *Client {
 
 func buildDataProviderQuery() string {
 	providers := []string{
+		// neetherland
 		"Rijksmuseum",
 		"Mauritshuis",
+		"National Archives of the Netherlands",
+		// Austra
 		"Fine Arts Museum Vienna",
-		"Dresden State Art Collections. Old Masters Picture Gallery",
-		"National Library of France",
 		"Austrian Gallery Belvedere",
+		"The Albertina Museum",
+		// Germany
+		"Alte Pinakothek, Munich",
+		"Dresden State Art Collections. Old Masters Picture Gallery",
+		// France - wip
+		"National Library of France",
+		"Orsay Museum",
+		// Spain - wip
+		"Sorolla Museum",
+		"Thyssen-Bornemisza Museum",
+		// UK - wip
+		"National Gallery",
+		// Israel
+		"The Israel Museum, Jerusalem",
 	}
 
 	// Create the quoted list: "Rijksmuseum" OR "Mauritshuis"
@@ -64,10 +79,10 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 	// media filters
 	query.Add("qf", "what:painting")
 	query.Add("qf", "TYPE:IMAGE")
-	query.Add("qf", "contentTier:(3 OR 4)")
+	//query.Add("qf", "contentTier:(3 OR 4)")
 	query.Add("qf", buildDataProviderQuery())
-	query.Set("profile", "rich")
-	query.Set("sort", "score desc")
+	//query.Set("profile", "rich")
+	//query.Set("sort", "score desc")
 
 	u.RawQuery = query.Encode()
 
