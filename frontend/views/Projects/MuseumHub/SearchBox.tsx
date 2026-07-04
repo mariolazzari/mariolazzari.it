@@ -5,13 +5,20 @@ import { ResetButton, SearchButton } from "@/components/Buttons";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 
+const URL = "/projects/museum-hub";
+
 export function SearchBox() {
-  const [selectedQuery, setSelectedQuery] = useState("");
+  const [query, setQuery] = useState("");
   const router = useRouter();
 
   const onSubmit: SubmitEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
-    router.push(`/projects/museum-hub?query=${selectedQuery}`);
+    router.push(`${URL}?query=${query}`);
+  };
+
+  const onReset = () => {
+    setQuery("");
+    router.push(URL);
   };
 
   return (
@@ -19,17 +26,13 @@ export function SearchBox() {
       <Input
         className="max-w-md"
         placeholder="Search your favourite painter..."
-        value={selectedQuery}
-        onChange={e => setSelectedQuery(e.target.value)}
+        value={query}
+        onChange={e => setQuery(e.target.value)}
       />
 
       <div className="flex gap-4">
-        <ResetButton
-          type="button"
-          disabled={selectedQuery === ""}
-          onClick={() => setSelectedQuery("")}
-        />
-        <SearchButton disabled={selectedQuery === ""} />
+        <ResetButton type="button" disabled={query === ""} onClick={onReset} />
+        <SearchButton disabled={query === ""} />
       </div>
     </form>
   );

@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Building a RAG app in Go",
+    date: "2026-07-04T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-e5682670-6f5e-42b0-a82a-46b146aef58d/",
+    imagePath: "/certifications/go-rag.png",
+    tags: ["go", "postgres", "html", "js"],
+  },
+  {
     title: "Go complete bootcamp",
     date: "2026-06-16T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-6b779e7e-819e-4b22-a77a-e2cad1dd22fd/",

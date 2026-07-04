@@ -53,7 +53,7 @@ func buildDataProviderQuery() string {
 		"The Israel Museum, Jerusalem",
 	}
 
-	// Create the quoted list: "Rijksmuseum" OR "Mauritshuis"
+	// Create the quoted list: "Rijksmuseum" OR "Mauritshuis"...
 	quoted := make([]string, len(providers))
 	for i, p := range providers {
 		quoted[i] = fmt.Sprintf("\"%s\"", p)
@@ -79,9 +79,9 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 	// media filters
 	query.Add("qf", "what:painting")
 	query.Add("qf", "TYPE:IMAGE")
-	//query.Add("qf", "contentTier:(3 OR 4)")
+	query.Add("qf", "contentTier:(3 OR 4)")
 	query.Add("qf", buildDataProviderQuery())
-	//query.Set("profile", "rich")
+	query.Set("profile", "rich")
 	//query.Set("sort", "score desc")
 
 	u.RawQuery = query.Encode()

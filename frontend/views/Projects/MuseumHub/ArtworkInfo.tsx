@@ -19,10 +19,10 @@ export function ArtworkInfo({ artwork }: Props) {
       <PopoverTrigger asChild>
         <Button className="cursor-pointer w-full" variant="outline">
           <Info />
-          Dettagli opera
+          Artwork details
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="flex w-full max-w-sm flex-col gap-1">
+      <PopoverContent className="flex w-full max-w-sm flex-col gap-1 p-4">
         <h2 className="text-lg">{author}</h2>
         <h2 className="text-lg font-semibold italic">
           {title}{" "}
