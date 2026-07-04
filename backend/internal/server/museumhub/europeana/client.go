@@ -112,7 +112,8 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 
 		// avoid missing images
 		imgUrl := it.GetImageUrl()
-		if imgUrl == "" {
+		thumbUrl := it.GetImagePreviewUrl()
+		if imgUrl == "" || thumbUrl == "" {
 			continue
 		}
 
@@ -123,7 +124,7 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 			Description:     it.GetDescription(params.Locale),
 			Museum:          it.GetMuseum(),
 			ImageURL:        imgUrl,
-			ImagePreviewURL: it.GetImagePreviewUrl(),
+			ImagePreviewURL: thumbUrl,
 			Year:            it.GetYear(),
 			Source:          "europeana",
 		})

@@ -5,12 +5,8 @@ import { ResetButton, SearchButton } from "@/components/Buttons";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 
-type Props = {
-  query: string;
-};
-
-export function SearchBox({ query = "" }: Props) {
-  const [selectedQuery, setSelectedQuery] = useState(query);
+export function SearchBox() {
+  const [selectedQuery, setSelectedQuery] = useState("");
   const router = useRouter();
 
   const onSubmit: SubmitEventHandler<HTMLFormElement> = e => {
