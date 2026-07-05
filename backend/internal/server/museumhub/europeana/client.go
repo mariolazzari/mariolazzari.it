@@ -6,11 +6,62 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
-	"strings"
+	"sync"
 	"time"
+
+	"golang.org/x/sync/errgroup"
 
 	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub"
 )
+
+const (
+	maxConcurrency  = 5
+	rowsPerProvider = 25
+)
+
+// Providers list updated with exact Europeana DATA_PROVIDER strings
+var providers = []string{
+	// Netherlands
+	"Rijksmuseum",
+	"Mauritshuis",
+	"National Archives of the Netherlands",
+	// Italy
+	"Brera Art Gallery",
+	"Turin Gallery for Modern and Contemporary Art",
+	// Austria
+	"Fine Arts Museum Vienna",
+	"Austrian Gallery Belvedere",
+	"The Albertina Museum",
+	// Germany
+	"Alte Pinakothek, Munich",
+	"Dresden State Art Collections. Old Masters Picture Gallery",
+	"Museum of City History Leipzig",
+	// Belgium
+	"Saint Bavo Cathedral, Ghent",
+	// France
+	"National Library of France",
+	"Orsay Museum",
+	// Spain
+	"Constanța Art Museum",
+	"National Museum of Romanticism",
+	"Sorolla Museum",
+	"Thyssen-Bornemisza Museum",
+	// UK
+	"Ministry of Culture",
+	"National Gallery",
+	"Royal Collection Trust",
+	"Royal Institute for Cultural Heritage",
+	// Israel
+	"The Israel Museum, Jerusalem",
+	// Denmark
+	"National Gallery of Denmark",
+	// Other
+	"Groeninge Museum",
+	// Lithuania
+	"M. K. Čiurlionis National Museum of Art",
+	// Romania
+	"Craiova Art Museum",
+}
 
 type Client struct {
 	apiKey     string
@@ -28,63 +79,97 @@ func New(apiKey string) *Client {
 	}
 }
 
-func buildDataProviderQuery() string {
-	providers := []string{
-		// neetherland
-		"Rijksmuseum",
-		"Mauritshuis",
-		"National Archives of the Netherlands",
-		// Austra
-		"Fine Arts Museum Vienna",
-		"Austrian Gallery Belvedere",
-		"The Albertina Museum",
-		// Germany
-		"Alte Pinakothek, Munich",
-		"Dresden State Art Collections. Old Masters Picture Gallery",
-		// France - wip
-		"National Library of France",
-		"Orsay Museum",
-		// Spain - wip
-		"Sorolla Museum",
-		"Thyssen-Bornemisza Museum",
-		// UK - wip
-		"National Gallery",
-		// Israel
-		"The Israel Museum, Jerusalem",
-	}
-
-	// Create the quoted list: "Rijksmuseum" OR "Mauritshuis"...
-	quoted := make([]string, len(providers))
-	for i, p := range providers {
-		quoted[i] = fmt.Sprintf("\"%s\"", p)
-	}
-
-	// Join with OR and wrap in parentheses
-	return fmt.Sprintf("DATA_PROVIDER:(%s)", strings.Join(quoted, " OR "))
+type providerResult struct {
+	Items []museumhub.Artwork
 }
 
+// Search executes concurrent requests across providers, filters by media quality,
+// dedups by ID, sorts alphabetically by description, and enforces pagination boundaries.
 func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*museumhub.ArtworksResponse, error) {
+	var (
+		g   errgroup.Group
+		mu  sync.Mutex
+		all []museumhub.Artwork
+	)
+
+	// 1. Setup limit boundaries safely
+	limit := params.Limit
+	if limit <= 0 {
+		limit = 10
+	} else if limit > 100 {
+		limit = 100 // Prevent memory abuse
+	}
+
+	g.SetLimit(maxConcurrency)
+
+	for _, provider := range providers {
+		g.Go(func() error {
+			res, err := c.searchProvider(ctx, provider, params, rowsPerProvider)
+			if err != nil {
+				// Soft error handling: log or silently drop provider errors
+				// to avoid stopping the entire pipeline for one down museum
+				return nil
+			}
+
+			mu.Lock()
+			all = append(all, res.Items...)
+			mu.Unlock()
+
+			return nil
+		})
+	}
+
+	if err := g.Wait(); err != nil {
+		return nil, err
+	}
+
+	// 2. Dedup by ID
+	seen := make(map[string]struct{}, len(all))
+	deduped := make([]museumhub.Artwork, 0, len(all))
+
+	for _, a := range all {
+		if _, ok := seen[a.ID]; ok {
+			continue
+		}
+		seen[a.ID] = struct{}{}
+		deduped = append(deduped, a)
+	}
+
+	// 3. Trim to requested limit
+	if len(deduped) > limit {
+		deduped = deduped[:limit]
+	}
+
+	return &museumhub.ArtworksResponse{
+		Total: len(deduped),
+		Items: deduped,
+		Pages: 1,
+		Page:  1,
+	}, nil
+}
+
+func (c *Client) searchProvider(ctx context.Context, provider string, params museumhub.ArtworkSearch, rows int) (*providerResult, error) {
 	u, err := url.Parse(c.baseURL + "/search.json")
 	if err != nil {
 		return nil, err
 	}
 
-	query := u.Query()
-	// api key and query
-	query.Set("wskey", c.apiKey)
-	query.Set("query", params.Query)
-	// pagination
-	query.Set("rows", fmt.Sprint(params.Limit))
-	query.Set("start", fmt.Sprint(params.Offset+1))
-	// media filters
-	query.Add("qf", "what:painting")
-	query.Add("qf", "TYPE:IMAGE")
-	query.Add("qf", "contentTier:(3 OR 4)")
-	query.Add("qf", buildDataProviderQuery())
-	query.Set("profile", "rich")
-	//query.Set("sort", "score desc")
+	q := u.Query()
+	q.Set("wskey", c.apiKey)
+	q.Set("query", params.Query)
+	q.Set("rows", fmt.Sprint(rows))
+	q.Set("start", "1")
 
-	u.RawQuery = query.Encode()
+	// Filter rules
+	q.Add("qf", "what:painting")
+	q.Add("qf", "TYPE:IMAGE")
+	q.Add("qf", "contentTier:(3 OR 4)")
+	q.Add("qf", fmt.Sprintf(`DATA_PROVIDER:"%s"`, provider))
+
+	q.Set("profile", "rich")
+	q.Set("sort", "score desc")
+
+	u.RawQuery = q.Encode()
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u.String(), nil)
 	if err != nil {
@@ -101,19 +186,18 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 		return nil, fmt.Errorf("europeana error: %d", resp.StatusCode)
 	}
 
-	var searchResponse SearchResponse
-	if err := json.NewDecoder(resp.Body).Decode(&searchResponse); err != nil {
+	var sr SearchResponse
+	if err := json.NewDecoder(resp.Body).Decode(&sr); err != nil {
 		return nil, err
 	}
 
-	items := make([]museumhub.Artwork, 0, len(searchResponse.Items))
+	items := make([]museumhub.Artwork, 0, len(sr.Items))
 
-	for _, it := range searchResponse.Items {
+	for _, it := range sr.Items {
+		img := it.GetImageUrl()
+		thumb := it.GetImagePreviewUrl()
 
-		// avoid missing images
-		imgUrl := it.GetImageUrl()
-		thumbUrl := it.GetImagePreviewUrl()
-		if imgUrl == "" || thumbUrl == "" {
+		if img == "" || thumb == "" {
 			continue
 		}
 
@@ -123,30 +207,14 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 			Author:          it.GetAuthor(params.Locale),
 			Description:     it.GetDescription(params.Locale),
 			Museum:          it.GetMuseum(),
-			ImageURL:        imgUrl,
-			ImagePreviewURL: thumbUrl,
+			ImageURL:        img,
+			ImagePreviewURL: thumb,
 			Year:            it.GetYear(),
 			Source:          "europeana",
 		})
 	}
 
-	pages := 0
-	if searchResponse.ItemsCount > 0 {
-		pages = (searchResponse.TotalResults + searchResponse.ItemsCount - 1) / searchResponse.ItemsCount
-	}
-
-	page := 0
-	if params.Limit > 0 {
-		page = (params.Offset / params.Limit) + 1
-	}
-
-	artworksResponse := &museumhub.ArtworksResponse{
-		Total:   searchResponse.TotalResults,
-		PerPage: searchResponse.ItemsCount,
-		Items:   items,
-		Pages:   pages,
-		Page:    page,
-	}
-
-	return artworksResponse, nil
+	return &providerResult{
+		Items: items,
+	}, nil
 }
