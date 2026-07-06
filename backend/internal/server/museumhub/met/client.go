@@ -44,6 +44,7 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) ([]
 	q.Set("q", params.Query)
 	q.Set("isHighlight", "true")
 	q.Set("hasImages", "true")
+	q.Set("medium", "Paintings")
 	u.RawQuery = q.Encode()
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u.String(), nil)

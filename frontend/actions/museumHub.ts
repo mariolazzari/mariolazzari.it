@@ -16,7 +16,7 @@ export const getArtworks: GetArtworks = async (query, locale) => {
     };
   }
 
-  const url = `/museumhub/search?query=${query}&limit=100&offset=0&locale=${locale}`;
+  const url = `/museumhub/search?query=${query}&limit=20&offset=0&locale=${locale}`;
 
   return await getData<ArtWork[]>(url);
 };
