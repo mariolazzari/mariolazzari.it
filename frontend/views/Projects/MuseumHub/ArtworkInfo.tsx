@@ -4,11 +4,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Artwork } from "@/types";
+import { ArtWork } from "@/types";
 import { Info } from "lucide-react";
 
 type Props = {
-  artwork: Artwork;
+  artwork: ArtWork;
 };
 
 export function ArtworkInfo({ artwork }: Props) {
