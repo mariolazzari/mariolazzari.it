@@ -16,7 +16,7 @@ import (
 
 const (
 	maxConcurrency  = 5
-	rowsPerProvider = 25
+	rowsPerProvider = 20
 )
 
 // Providers list updated with exact Europeana DATA_PROVIDER strings
@@ -25,6 +25,7 @@ var providers = []string{
 	"Rijksmuseum",
 	"Mauritshuis",
 	"National Archives of the Netherlands",
+	"Centraal Museum Utrecht",
 	// Italy
 	"Brera Art Gallery",
 	"Turin Gallery for Modern and Contemporary Art",
@@ -50,7 +51,6 @@ var providers = []string{
 	"Ministry of Culture",
 	"National Gallery",
 	"Royal Collection Trust",
-	"Royal Institute for Cultural Heritage",
 	// Israel
 	"The Israel Museum, Jerusalem",
 	// Denmark
@@ -85,7 +85,7 @@ type providerResult struct {
 
 // Search executes concurrent requests across providers, filters by media quality,
 // dedups by ID, sorts alphabetically by description, and enforces pagination boundaries.
-func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*museumhub.ArtworksResponse, error) {
+func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) ([]museumhub.Artwork, error) {
 	var (
 		g   errgroup.Group
 		mu  sync.Mutex
@@ -94,10 +94,8 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 
 	// 1. Setup limit boundaries safely
 	limit := params.Limit
-	if limit <= 0 {
-		limit = 10
-	} else if limit > 100 {
-		limit = 100 // Prevent memory abuse
+	if limit <= 0 || limit > 100 {
+		limit = 100
 	}
 
 	g.SetLimit(maxConcurrency)
@@ -140,12 +138,7 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) (*m
 		deduped = deduped[:limit]
 	}
 
-	return &museumhub.ArtworksResponse{
-		Total: len(deduped),
-		Items: deduped,
-		Pages: 1,
-		Page:  1,
-	}, nil
+	return deduped, nil
 }
 
 func (c *Client) searchProvider(ctx context.Context, provider string, params museumhub.ArtworkSearch, rows int) (*providerResult, error) {
@@ -162,8 +155,9 @@ func (c *Client) searchProvider(ctx context.Context, provider string, params mus
 
 	// Filter rules
 	q.Add("qf", "what:painting")
+	q.Add("qf", "what:gemälde")
 	q.Add("qf", "TYPE:IMAGE")
-	q.Add("qf", "contentTier:(3 OR 4)")
+	// q.Add("qf", "contentTier:(2 OR 4)")
 	q.Add("qf", fmt.Sprintf(`DATA_PROVIDER:"%s"`, provider))
 
 	q.Set("profile", "rich")
@@ -217,4 +211,8 @@ func (c *Client) searchProvider(ctx context.Context, provider string, params mus
 	return &providerResult{
 		Items: items,
 	}, nil
+}
+
+func (c *Client) Name() string {
+	return "Europeana"
 }

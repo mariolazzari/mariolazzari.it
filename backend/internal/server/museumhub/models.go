@@ -1,5 +1,9 @@
 package museumhub
 
+import (
+	"context"
+)
+
 type ArtworkSearch struct {
 	Query  string
 	Limit  int
@@ -25,4 +29,9 @@ type ArtworksResponse struct {
 	Pages   int       `json:"pages"`
 	PerPage int       `json:"per_page"`
 	Items   []Artwork `json:"items"`
+}
+
+type MuseumClient interface {
+	Search(ctx context.Context, params ArtworkSearch) ([]Artwork, error)
+	Name() string
 }

@@ -1,30 +1,22 @@
 "use server";
 
 import { getData } from "@/lib/net";
-import { MuseunHubResponse, Result } from "@/types";
-
-const noRerocrds: MuseunHubResponse = {
-  total: 0,
-  page: 1,
-  pages: 0,
-  per_page: 0,
-  items: [],
-};
+import { ArtWork, Result } from "@/types";
 
 type GetArtworks = (
   query: string,
   locale: string,
-) => Promise<Result<MuseunHubResponse>>;
+) => Promise<Result<ArtWork[]>>;
 
 export const getArtworks: GetArtworks = async (query, locale) => {
   if (query === "") {
     return {
       success: true,
-      data: noRerocrds,
+      data: [],
     };
   }
 
   const url = `/museumhub/search?query=${query}&limit=100&offset=0&locale=${locale}`;
 
-  return await getData<MuseunHubResponse>(url);
+  return await getData<ArtWork[]>(url);
 };

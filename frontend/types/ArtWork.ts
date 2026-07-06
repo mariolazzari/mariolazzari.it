@@ -1,4 +1,4 @@
-export type Artwork = {
+export type ArtWork = {
   id: string;
   author?: string;
   title: string;
@@ -8,12 +8,4 @@ export type Artwork = {
   image_preview_url: string;
   year?: string;
   source: string;
-};
-
-export type MuseunHubResponse = {
-  total: number;
-  page: number;
-  pages: number;
-  per_page: number;
-  items: Artwork[];
 };

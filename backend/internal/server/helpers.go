@@ -94,3 +94,13 @@ func (s *Server) parseQuery(r *http.Request, w http.ResponseWriter, key string) 
 	}
 	return qry, true
 }
+
+func filter[T any](items []T, keep func(T) bool) []T {
+	out := make([]T, 0, len(items))
+	for _, v := range items {
+		if keep(v) {
+			out = append(out, v)
+		}
+	}
+	return out
+}

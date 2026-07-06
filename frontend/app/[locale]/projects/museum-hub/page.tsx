@@ -25,7 +25,7 @@ async function MuseumHubPage({ searchParams }: Props) {
     return;
   }
 
-  return <MuseumHub data={res.data} />;
+  return <MuseumHub artWorks={res.data} />;
 }
 
 export default MuseumHubPage;
