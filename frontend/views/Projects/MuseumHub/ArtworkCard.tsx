@@ -7,16 +7,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Lens } from "@/components/ui/lens";
-import { MagicCard } from "@/components/ui/magic-card";
 import { PixelImage } from "@/components/ui/pixel-image";
-import { Artwork } from "@/types";
+import { ArtWork } from "@/types";
 import { Eye, Info } from "lucide-react";
 import Link from "next/link";
 import { ArtworkInfo } from "./ArtworkInfo";
 import { Button } from "@/components/ui/button";
 
 type Props = {
-  item: Artwork;
+  item: ArtWork;
 };
 
 export function ArtworkCard({ item }: Props) {
