@@ -4,12 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"html"
 	"net/http"
 	"net/url"
-	"regexp"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub"
@@ -99,10 +96,10 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) ([]
 			ID:              strconv.Itoa(a.ID),
 			Title:           a.Title,
 			Author:          a.ArtistTitle,
-			Description:     cleanDescription(a.Description),
+			Description:     museumhub.CleanDescription(a.Description),
 			Museum:          c.Name(),
-			ImageURL:        iiifImageURL(a.ImageID, 1200),
-			ImagePreviewURL: iiifImageURL(a.ImageID, 400),
+			ImageURL:        museumhub.IiifImageURL(a.ImageID, 1200),
+			ImagePreviewURL: museumhub.IiifImageURL(a.ImageID, 400),
 			Year:            a.DateDisplay,
 			Source:          c.Name(),
 		})
@@ -113,29 +110,4 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) ([]
 
 func (c *Client) Name() string {
 	return "Chicago Art Institute"
-}
-
-func iiifImageURL(imageID string, width int) string {
-	if imageID == "" {
-		return ""
-	}
-
-	// prefer smaller safe size first
-	return fmt.Sprintf(
-		"https://www.artic.edu/iiif/2/%s/full/%d,/0/default.jpg",
-		imageID,
-		width,
-	)
-}
-
-func cleanDescription(s string) string {
-	s = html.UnescapeString(s)
-
-	re := regexp.MustCompile(`<[^>]*>`)
-	s = re.ReplaceAllString(s, "")
-
-	s = strings.ReplaceAll(s, "\n", " ")
-	s = strings.TrimSpace(s)
-
-	return s
 }
