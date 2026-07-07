@@ -8,6 +8,7 @@ import (
 
 	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub"
 	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub/chicago"
+	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub/cleveland"
 	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub/europeana"
 	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub/met"
 	"golang.org/x/sync/errgroup"
@@ -47,10 +48,12 @@ func (s *Server) handleMuseumHubSearch(w http.ResponseWriter, r *http.Request) {
 	euroClient := europeana.New(s.cfg.EuropeanaApiKey)
 	metClient := met.New()
 	chicagoClient := chicago.New()
+	clevelandClient := cleveland.New()
 	clients := []museumhub.MuseumClient{
 		euroClient,
 		metClient,
 		chicagoClient,
+		clevelandClient,
 	}
 
 	for _, client := range clients {

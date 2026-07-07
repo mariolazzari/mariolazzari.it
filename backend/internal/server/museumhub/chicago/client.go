@@ -29,19 +29,6 @@ func New() *Client {
 	}
 }
 
-func iiifImageURL(imageID string, width int) string {
-	if imageID == "" {
-		return ""
-	}
-
-	// prefer smaller safe size first
-	return fmt.Sprintf(
-		"https://www.artic.edu/iiif/2/%s/full/%d,/0/default.jpg",
-		imageID,
-		width,
-	)
-}
-
 func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) ([]museumhub.Artwork, error) {
 
 	limit := params.Limit
@@ -126,6 +113,19 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) ([]
 
 func (c *Client) Name() string {
 	return "Chicago Art Institute"
+}
+
+func iiifImageURL(imageID string, width int) string {
+	if imageID == "" {
+		return ""
+	}
+
+	// prefer smaller safe size first
+	return fmt.Sprintf(
+		"https://www.artic.edu/iiif/2/%s/full/%d,/0/default.jpg",
+		imageID,
+		width,
+	)
 }
 
 func cleanDescription(s string) string {
