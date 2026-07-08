@@ -71,6 +71,8 @@ export function Project({
           <Button className="w-full" variant="outline" asChild>
             <Link
               href={href1}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2"
             >
               {icon}

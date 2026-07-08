@@ -1,4 +1,4 @@
-import { Code, Euro, Home, Laptop, Mail, School, Star } from "lucide-react";
+import { Code, Home, Laptop, Mail, School, Star } from "lucide-react";
 import { ReactNode } from "react";
 import {
   FaFacebook,
@@ -26,7 +26,6 @@ export const site: MenuItem[] = [
 export const projects: MenuItem[] = [
   { href: "/projects/museum-hub", label: "museumHub", icon: <MdMuseum /> },
   { href: "/projects/sky-hub", label: "skyHub", icon: <Star /> },
-  { href: "/projects/europeana", label: "europeana", icon: <Euro /> },
   { href: "/projects/github-data", label: "myCode", icon: <Code /> },
 ];
 

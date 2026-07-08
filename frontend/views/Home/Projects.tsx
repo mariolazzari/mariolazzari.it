@@ -1,4 +1,4 @@
-import { Code, Euro, Eye } from "lucide-react";
+import { Code, Eye, Flag, Orbit, Pencil } from "lucide-react";
 import { MdMuseum } from "react-icons/md";
 import { Project } from "./Project";
 import { getTranslations } from "next-intl/server";
@@ -13,22 +13,36 @@ export async function Projects() {
       icon: <MdMuseum size={50} />,
       title: "Museum Hub",
       href1: "/projects/museum-hub",
-      href2: "https://github.com/mariolazzari/rijks",
-      images: ["go", "postgres", "redis", "react"],
+      href2: "https://github.com/mariolazzari/mariolazzari.it",
+      images: ["go", "postgres", "redis", "react", "docker"],
+    },
+    {
+      icon: <Orbit size={50} />,
+      title: "Sky Hub",
+      href1: "/projects/sky-hub",
+      href2: "https://github.com/mariolazzari/mariolazzari.it",
+      images: ["go", "postgres", "redis", "react", "docker"],
+    },
+    {
+      icon: <Pencil size={50} />,
+      title: "Maria Filippini Lazzari",
+      href1: "https://mariafilippini.it",
+      href2: "https://github.com/mariolazzari/mariafilippini.it",
+      images: ["go", "postgres", "redis", "react", "docker"],
     },
     {
       icon: <Eye size={50} />,
-      title: "Sky Hub",
-      href1: "/projects/sky-hub",
-      href2: "https://github.com/mariolazzari/rijks",
-      images: ["go", "postgres", "redis", "react"],
+      title: "Antonio Arioli",
+      href1: "https://antonioarioli.it",
+      href2: "https://github.com/mariolazzari/antonioarioli.it",
+      images: ["go", "postgres", "redis", "react", "docker"],
     },
     {
-      icon: <Euro size={50} />,
-      title: "Go Europeana",
-      href1: "/projects/europeana",
-      href2: "https://github.com/mariolazzari/go-europeana",
-      images: ["go", "postgres", "redis", "react"],
+      icon: <Flag size={50} />,
+      title: "GF MontiForm",
+      href1: "https://gfmontiform.it",
+      href2: "https://github.com/mariolazzari/gfmontiform.it",
+      images: ["go", "postgres", "redis", "react", "docker"],
     },
   ];
 
