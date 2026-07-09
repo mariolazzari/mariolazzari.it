@@ -37,8 +37,9 @@ func NewIngestor(pool *pgxpool.Pool, rdb *redis.Client, clients []MuseumClient, 
 // Ingest handles a single search query: logs it, fetches artwork from external APIs concurrently,
 // persists records via an optimized PostgreSQL upsert transaction, and updates the Redis cache.
 func (i *Ingestor) Ingest(ctx context.Context, queryText string, locale string) ([]Artwork, error) {
-	// 1. Log query stats
-	_, err := i.queries.UpsertSearchQuery(ctx, queryText)
+	// 1. Track search stats without blocking the rest of the execution flow
+	writeCtx := context.WithoutCancel(ctx)
+	_, err := i.queries.UpsertSearchQuery(writeCtx, queryText)
 	if err != nil {
 		i.log.Error("Failed to upsert search query statistics", "error", err)
 	}
@@ -50,7 +51,7 @@ func (i *Ingestor) Ingest(ctx context.Context, queryText string, locale string) 
 		Locale: locale,
 	}
 
-	// 2. Fetch dai musei (Usiamo un errgroup locale senza sovrascrivere ctx!)
+	// 2. Fetch dai musei
 	g, _ := errgroup.WithContext(ctx)
 	var mu sync.Mutex
 	var allArtworks []Artwork
@@ -61,7 +62,7 @@ func (i *Ingestor) Ingest(ctx context.Context, queryText string, locale string) 
 			results, err := c.Search(ctx, searchParams)
 			if err != nil {
 				i.log.Error("Error fetching from provider", "provider", c.Name(), "error", err)
-				return nil // Ritorniamo nil così un museo offline non blocca gli altri 4
+				return nil
 			}
 
 			mu.Lock()
@@ -83,23 +84,10 @@ func (i *Ingestor) Ingest(ctx context.Context, queryText string, locale string) 
 		}
 	}
 
-	if len(filtered) == 0 {
-		return filtered, nil
-	}
-
-	// 4. SALVATAGGIO PROTETTO (Usa WithoutCancel)
-	// Questo garantisce che Postgres e Redis scrivano SEMPRE, senza subire i fallimenti dei musei
-	writeCtx := context.WithoutCancel(ctx)
-
-	tx, err := i.pool.Begin(writeCtx)
-	if err != nil {
-		return nil, fmt.Errorf("failed to initiate postgres transaction: %w", err)
-	}
-	defer tx.Rollback(writeCtx)
-
-	qtx := i.queries.WithTx(tx)
+	// 4. SALVATAGGIO DIRETTO SUL POOL (Niente più tx!)
+	// In questo modo il 'continue' funziona davvero e isola i record corrotti.
 	for _, art := range filtered {
-		_, err = qtx.UpsertArtwork(writeCtx, db.UpsertArtworkParams{
+		_, err = i.queries.UpsertArtwork(writeCtx, db.UpsertArtworkParams{
 			ID:              art.ID,
 			Author:          art.Author,
 			Title:           art.Title,
@@ -111,13 +99,10 @@ func (i *Ingestor) Ingest(ctx context.Context, queryText string, locale string) 
 			Source:          art.Source,
 		})
 		if err != nil {
+			// Questo log ora ti dirà l'errore REALE di Postgres (es. stringa troppo lunga)
 			i.log.Error("Failed to upsert artwork", "art_id", art.ID, "error", err)
 			continue
 		}
-	}
-
-	if err := tx.Commit(writeCtx); err != nil {
-		return nil, fmt.Errorf("failed to commit transaction: %w", err)
 	}
 
 	// 5. Scrittura Cache su Redis
