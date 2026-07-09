@@ -9,9 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"golang.org/x/sync/errgroup"
-
 	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub"
+	"golang.org/x/sync/errgroup"
 )
 
 const (

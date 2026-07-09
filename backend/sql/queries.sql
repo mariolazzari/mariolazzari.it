@@ -26,14 +26,22 @@ ON CONFLICT (id) DO UPDATE SET
     source            = EXCLUDED.source
 RETURNING id, author, title, description, museum, image_url, image_preview_url, year, source, created_at, updated_at;
 
--- name: UpsertSearchQuery :one
-INSERT INTO museumhub.search_stats (query, count)
-VALUES (@query_text::text, 1)
-ON CONFLICT (query) DO UPDATE SET
-    count = museumhub.search_stats.count + 1
-RETURNING query, count, last_update;
-
 -- name: SearchArtworks :many
 SELECT id, author, title, description, museum, image_url, image_preview_url, year, source, created_at, updated_at
 FROM museumhub.artworks
 WHERE to_tsvector('simple', author || ' ' || title || ' ' || description || ' ' || museum) @@ websearch_to_tsquery('simple', @search_term::text);
+
+-- name: UpsertSearchQuery :one
+INSERT INTO museumhub.queries (query, count)
+VALUES (@query_text::text, 1)
+ON CONFLICT (query) DO UPDATE SET
+    count = museumhub.queries.count + 1
+RETURNING query, count, last_update;
+
+-- name: GetStaleQueries :many
+SELECT query 
+FROM museumhub.queries 
+WHERE last_update < NOW() - INTERVAL '1 day'
+ORDER BY last_update ASC 
+LIMIT 1;
+

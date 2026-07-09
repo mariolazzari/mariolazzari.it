@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"strconv"
 	"strings"
 )
 
@@ -57,30 +56,30 @@ func (s *Server) encode(w http.ResponseWriter, r *http.Request, status int, v an
 
 // extractPagination extracts and validates both limit and offset from query string.
 // ex: /remarks?limit=10&offset=20
-func (s *Server) extractPagination(r *http.Request) (int, int) {
-	q := r.URL.Query()
+// func (s *Server) extractPagination(r *http.Request) (int, int) {
+// 	q := r.URL.Query()
 
-	// Limit
-	limit, err := strconv.Atoi(q.Get("limit"))
-	if err != nil || limit <= 0 {
-		// default limit 10
-		limit = 10
-	}
+// 	// Limit
+// 	limit, err := strconv.Atoi(q.Get("limit"))
+// 	if err != nil || limit <= 0 {
+// 		// default limit 10
+// 		limit = 10
+// 	}
 
-	// Max 100 records
-	if limit > 100 {
-		limit = 100
-	}
+// 	// Max 100 records
+// 	if limit > 100 {
+// 		limit = 100
+// 	}
 
-	// Offset
-	offset, err := strconv.Atoi(q.Get("offset"))
-	if err != nil || offset < 0 {
-		// default offset 0
-		offset = 0
-	}
+// 	// Offset
+// 	offset, err := strconv.Atoi(q.Get("offset"))
+// 	if err != nil || offset < 0 {
+// 		// default offset 0
+// 		offset = 0
+// 	}
 
-	return limit, offset
-}
+// 	return limit, offset
+// }
 
 func (s *Server) parseQuery(r *http.Request, w http.ResponseWriter, key string) (string, bool) {
 	qry := r.URL.Query().Get(key)
@@ -95,12 +94,12 @@ func (s *Server) parseQuery(r *http.Request, w http.ResponseWriter, key string) 
 	return qry, true
 }
 
-func filter[T any](items []T, keep func(T) bool) []T {
-	out := make([]T, 0, len(items))
-	for _, v := range items {
-		if keep(v) {
-			out = append(out, v)
-		}
-	}
-	return out
-}
+// func filter[T any](items []T, keep func(T) bool) []T {
+// 	out := make([]T, 0, len(items))
+// 	for _, v := range items {
+// 		if keep(v) {
+// 			out = append(out, v)
+// 		}
+// 	}
+// 	return out
+// }

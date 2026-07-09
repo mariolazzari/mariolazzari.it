@@ -24,8 +24,11 @@ CREATE INDEX idx_artworks_fts_simple
 ON museumhub.artworks 
 USING gin (to_tsvector('simple', author || ' ' || title || ' ' || description || ' ' || museum));
 
-CREATE TABLE museumhub.search_stats (
+CREATE TABLE museumhub.queries (
     query       TEXT PRIMARY KEY,
     count       INTEGER DEFAULT 1 NOT NULL,
     last_update TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
+
+CREATE INDEX idx_search_stats_last_update 
+ON museumhub.queries (last_update ASC);

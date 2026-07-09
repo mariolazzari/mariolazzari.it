@@ -13,6 +13,12 @@ import (
 	"github.com/mariolazzari/mariolazzari.it/internal/db"
 	"github.com/mariolazzari/mariolazzari.it/internal/logger"
 	"github.com/mariolazzari/mariolazzari.it/internal/server"
+	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub"
+	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub/chicago"
+	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub/cleveland"
+	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub/europeana"
+	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub/met"
+	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub/whitney"
 )
 
 func main() {
@@ -45,8 +51,18 @@ func main() {
 	defer rdc.Close()
 	myLog.Info("Redis connected")
 
+	// ingestors
+	museumClients := []museumhub.MuseumClient{
+		europeana.New(cfg.EuropeanaApiKey),
+		met.New(),
+		chicago.New(),
+		cleveland.New(),
+		whitney.New(),
+	}
+	museumHubIngestor := museumhub.NewIngestor(dbPool, rdc, museumClients, myLog)
+
 	// Init server
-	server := server.New(myLog, dbPool, rdc, cfg)
+	server := server.New(myLog, dbPool, rdc, cfg, museumHubIngestor)
 	httpServer := &http.Server{
 		Addr:    ":8080",
 		Handler: server.Mux(),

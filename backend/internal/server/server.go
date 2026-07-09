@@ -7,31 +7,36 @@ import (
 
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/mariolazzari/mariolazzari.it/internal/config"
+	"github.com/mariolazzari/mariolazzari.it/internal/db"
+	"github.com/mariolazzari/mariolazzari.it/internal/server/museumhub"
 	"github.com/redis/go-redis/v9"
 )
 
 type Server struct {
-	startTime time.Time
-	mux       *http.ServeMux
-	log       *slog.Logger
-	db        *pgxpool.Pool
-	cache     *redis.Client
-	cfg       *config.Config
-	// queries *db.Qeuries
+	startTime         time.Time
+	mux               *http.ServeMux
+	log               *slog.Logger
+	db                *pgxpool.Pool
+	queries           *db.Queries
+	cache             *redis.Client
+	cfg               *config.Config
+	museumHubIngestor *museumhub.Ingestor
 }
 
-func New(log *slog.Logger, db *pgxpool.Pool, cache *redis.Client, cfg *config.Config) *Server {
+func New(log *slog.Logger, pool *pgxpool.Pool, cache *redis.Client, cfg *config.Config, mhi *museumhub.Ingestor) *Server {
 	// server router
 	mux := http.NewServeMux()
 
 	// server settings
 	s := &Server{
-		startTime: time.Now(),
-		log:       log,
-		mux:       mux,
-		db:        db,
-		cache:     cache,
-		cfg:       cfg,
+		startTime:         time.Now(),
+		log:               log,
+		mux:               mux,
+		db:                pool,
+		queries:           db.New(pool),
+		cache:             cache,
+		cfg:               cfg,
+		museumHubIngestor: mhi,
 	}
 
 	// register api routes
