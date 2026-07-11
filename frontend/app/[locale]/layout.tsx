@@ -19,19 +19,55 @@ export const metadata: Metadata = {
     default: "Mario Lazzari - Senior Full Stack Developer",
   },
   description:
-    "Mario Lazzari senior full stack developer Go Rust JavaScript TypeScript NodeJS ReactJS Go Rest Api",
+    "Senior Full Stack Developer with 29 years of experience building scalable web applications using Go, TypeScript, Next.js, React, PostgreSQL and Node.js.",
   keywords: [
-    "Mario",
-    "Lazzari",
-    "JavaScript",
+    "Senior Full Stack Developer",
+    "Go Developer",
+    "Next.js",
     "TypeScript",
-    "NodeJS",
-    "RectJS",
-    "Go",
-    "Rest",
-    "Api",
-    "Rust",
+    "React",
+    "Node.js",
+    "PostgreSQL",
+    "Redis",
   ],
+  metadataBase: new URL("https://www.mariolazzari.it"),
+  openGraph: {
+    title: "Mario Lazzari | Senior Full Stack Developer",
+    description:
+      "Portfolio of Mario Lazzari, Senior Full Stack Developer specialized in Go, TypeScript, Next.js and scalable backend architectures.",
+    url: "https://www.mariolazzari.it",
+    siteName: "Mario Lazzari",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/images/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Mario Lazzari",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mario Lazzari | Senior Full Stack Developer",
+    description: "Portfolio of Mario Lazzari, Senior Full Stack Developer.",
+    images: ["/images/og.jpg"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+  authors: [
+    {
+      name: "Mario Lazzari",
+      url: "https://www.mariolazzari.it",
+    },
+  ],
+  creator: "Mario Lazzari",
+  publisher: "Mario Lazzari",
+  verification: {
+    google: "MjHnIJ8UuM4K92Q0ShOmpohEh7qiEcpuj3V",
+  },
 };
 
 async function RootLayout({ children, params }: Layout) {

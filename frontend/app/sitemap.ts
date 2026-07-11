@@ -1,20 +1,62 @@
+import { startOfMonth } from "date-fns";
 import type { MetadataRoute } from "next";
 
-function sitemap(): MetadataRoute.Sitemap {
-  const url = "https://mariolazzari.it";
-  const lastModified = new Date();
-  const routes = ["", "/skills", "/certifications", "/projects", "/hobbies"];
+const url = "https://www.mariolazzari.it";
 
-  return routes.map(route => ({
-    url: `${url}${route}`,
-    lastModified,
-    alternates: {
-      languages: {
-        it: `${url}/it${route}`,
-        en: `${url}/en${route}`,
-      },
-    },
-  }));
+const locales = ["it", "en"] as const;
+
+const routes = [
+  {
+    path: "",
+    priority: 1,
+    changeFrequency: "yearly",
+  },
+  {
+    path: "/skills",
+    priority: 0.8,
+    changeFrequency: "monthly",
+  },
+  {
+    path: "/certifications",
+    priority: 0.7,
+    changeFrequency: "weekly",
+  },
+  {
+    path: "/hobbies",
+    priority: 0.5,
+    changeFrequency: "yearly",
+  },
+  {
+    path: "/museum-hub",
+    priority: 0.9,
+    changeFrequency: "daily",
+  },
+] satisfies {
+  path: string;
+  priority: number;
+  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+}[];
+
+const lastModified = startOfMonth(new Date());
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return routes.flatMap(route =>
+    locales.map(locale => {
+      const localizedUrl = `${url}/${locale}${route.path}`;
+
+      return {
+        url: localizedUrl,
+        lastModified,
+        changeFrequency: route.changeFrequency,
+        priority: route.priority,
+        alternates: {
+          languages: {
+            "x-default": `${url}/it${route.path}`,
+            it: `${url}/it${route.path}`,
+            en: `${url}/en${route.path}`,
+          },
+        },
+      };
+    }),
+  );
 }
-
-export default sitemap;

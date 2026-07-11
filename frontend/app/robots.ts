@@ -1,13 +1,12 @@
 import type { MetadataRoute } from "next";
 
-function robots(): MetadataRoute.Robots {
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://mariolazzari.it/sitemap.xml",
+    sitemap: "https://www.mariolazzari.it/sitemap.xml",
+    host: "https://www.mariolazzari.it",
   };
 }
-
-export default robots;
