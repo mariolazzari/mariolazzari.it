@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Redis: complete developer guide",
+    date: "2026-07-12T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-0972094d-6616-4445-8fe9-28fbe9c8cbc1",
+    imagePath: "/certifications/redis-complete.png",
+    tags: ["redis", "ts", "react"],
+  },
+  {
     title: "Building a RAG app in Go",
     date: "2026-07-04T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-e5682670-6f5e-42b0-a82a-46b146aef58d/",

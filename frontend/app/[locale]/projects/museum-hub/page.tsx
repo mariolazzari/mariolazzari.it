@@ -1,7 +1,6 @@
 import { getArtworks } from "@/actions/museumHub";
 import { MuseumHub } from "@/views/Projects/MuseumHub";
 import { Metadata } from "next";
-import { toast } from "sonner";
 import { PageProps } from "@/types";
 import { getLocale } from "next-intl/server";
 
@@ -21,8 +20,7 @@ async function MuseumHubPage({ searchParams }: Props) {
 
   const res = await getArtworks(query, locale);
   if (!res.success) {
-    toast.error("Error fetching data");
-    return;
+    throw new Error(res.error);
   }
 
   return <MuseumHub artWorks={res.data} />;
