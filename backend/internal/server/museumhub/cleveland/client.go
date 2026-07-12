@@ -42,9 +42,8 @@ func (c *Client) Search(ctx context.Context, params museumhub.ArtworkSearch) ([]
 	q.Set("skip", "0")
 	q.Set("limit", strconv.Itoa(limit))
 	q.Set("hasImages", "1")
+	q.Set("type", "Painting")
 	q.Set("indent", "1")
-	//	q.Set("highlight", "1")
-	//	q.Set("currently_on_view", "1")
 	q.Set(
 		"fields",
 		"title,description,creation_date_latest,images,type",
