@@ -21,7 +21,7 @@ export function MuseumHub({ artWorks = [] }: Props) {
       </h2>
 
       <div className="flex justify-center items-start flex-wrap gap-8 mb-16">
-        {artWorks.slice(0, 100).map(item => (
+        {artWorks.slice(0, 50).map(item => (
           <ArtworkCard key={item.id} item={item} />
         ))}
       </div>
