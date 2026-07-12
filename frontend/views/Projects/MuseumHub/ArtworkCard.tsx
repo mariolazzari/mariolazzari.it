@@ -9,7 +9,7 @@ import {
 import { Lens } from "@/components/ui/lens";
 import { PixelImage } from "@/components/ui/pixel-image";
 import { ArtWork } from "@/types";
-import { Eye, Info } from "lucide-react";
+import { Eye } from "lucide-react";
 import Link from "next/link";
 import { ArtworkInfo } from "./ArtworkInfo";
 import { Button } from "@/components/ui/button";
@@ -29,7 +29,7 @@ export function ArtworkCard({ item }: Props) {
             isStatic={false}
             ariaLabel="Zoom Area"
           >
-            <PixelImage src={item.image_preview_url} grid="8x8" />{" "}
+            <PixelImage src={item.image_preview_url} grid="8x8" />
           </Lens>
         </div>
       </CardHeader>
