@@ -10,7 +10,7 @@ import (
 
 type Querier interface {
 	GetStaleQueries(ctx context.Context) ([]string, error)
-	SearchArtworks(ctx context.Context, searchTerm string) ([]MuseumhubArtwork, error)
+	SearchArtworks(ctx context.Context, arg SearchArtworksParams) ([]MuseumhubArtwork, error)
 	// ==========
 	// Museum Hub
 	// ==========

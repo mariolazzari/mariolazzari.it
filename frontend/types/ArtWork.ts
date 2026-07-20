@@ -9,3 +9,7 @@ export type ArtWork = {
   year?: string;
   source: string;
 };
+
+export type ArtWorkResponse = {
+  items: ArtWork[];
+};

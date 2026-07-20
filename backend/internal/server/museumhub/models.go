@@ -28,7 +28,7 @@ type ArtworksResponse struct {
 	Page    int       `json:"page"`
 	Pages   int       `json:"pages"`
 	PerPage int       `json:"per_page"`
-	Items   []Artwork `json:"items"`
+	Data    []Artwork `json:"data"`
 }
 
 type MuseumClient interface {

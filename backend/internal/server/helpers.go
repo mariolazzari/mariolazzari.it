@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -56,30 +57,30 @@ func (s *Server) encode(w http.ResponseWriter, r *http.Request, status int, v an
 
 // extractPagination extracts and validates both limit and offset from query string.
 // ex: /remarks?limit=10&offset=20
-// func (s *Server) extractPagination(r *http.Request) (int, int) {
-// 	q := r.URL.Query()
+func (s *Server) extractPagination(r *http.Request) (int, int) {
+	q := r.URL.Query()
 
-// 	// Limit
-// 	limit, err := strconv.Atoi(q.Get("limit"))
-// 	if err != nil || limit <= 0 {
-// 		// default limit 10
-// 		limit = 10
-// 	}
+	// Limit
+	limit, err := strconv.Atoi(q.Get("limit"))
+	if err != nil || limit <= 0 {
+		// default limit 10
+		limit = 10
+	}
 
-// 	// Max 100 records
-// 	if limit > 100 {
-// 		limit = 100
-// 	}
+	// Max 100 records
+	if limit > 100 {
+		limit = 100
+	}
 
-// 	// Offset
-// 	offset, err := strconv.Atoi(q.Get("offset"))
-// 	if err != nil || offset < 0 {
-// 		// default offset 0
-// 		offset = 0
-// 	}
+	// Offset
+	offset, err := strconv.Atoi(q.Get("offset"))
+	if err != nil || offset < 0 {
+		// default offset 0
+		offset = 0
+	}
 
-// 	return limit, offset
-// }
+	return limit, offset
+}
 
 func (s *Server) parseQuery(r *http.Request, w http.ResponseWriter, key string) (string, bool) {
 	qry := r.URL.Query().Get(key)
@@ -92,6 +93,14 @@ func (s *Server) parseQuery(r *http.Request, w http.ResponseWriter, key string) 
 		return "", false
 	}
 	return qry, true
+}
+
+type PaginatedResponse[T any] struct {
+	Total   int `json:"total"`
+	Page    int `json:"page"`
+	Pages   int `json:"pages"`
+	PerPage int `json:"per_page"`
+	Data    T   `json:"data"`
 }
 
 // func filter[T any](items []T, keep func(T) bool) []T {

@@ -3,5 +3,6 @@ export * from "./Certification";
 export * from "./DateStr";
 export * from "./Layout";
 export * from "./PageProps";
+export * from "./Paginated";
 export * from "./Params";
 export * from "./Result";

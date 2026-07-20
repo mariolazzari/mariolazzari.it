@@ -10,20 +10,22 @@ export const metadata: Metadata = {
 
 type SearchParams = {
   query: string;
+  limit: string;
+  offset: string;
 };
 
 type Props = PageProps<void, SearchParams>;
 
 async function MuseumHubPage({ searchParams }: Props) {
-  const { query = "" } = await searchParams;
+  const { query = "", limit = "10", offset = "0" } = await searchParams;
   const locale = await getLocale();
 
-  const res = await getArtworks(query, locale);
+  const res = await getArtworks(query, locale, limit, offset);
   if (!res.success) {
     throw new Error(res.error);
   }
 
-  return <MuseumHub artWorks={res.data} />;
+  return <MuseumHub response={res.data} />;
 }
 
 export default MuseumHubPage;

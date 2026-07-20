@@ -38,13 +38,26 @@ func (q *Queries) GetStaleQueries(ctx context.Context) ([]string, error) {
 }
 
 const searchArtworks = `-- name: SearchArtworks :many
-SELECT id, author, title, description, museum, image_url, image_preview_url, year, source, created_at, updated_at
-FROM museumhub.artworks
-WHERE to_tsvector('simple', author || ' ' || title || ' ' || description || ' ' || museum) @@ websearch_to_tsquery('simple', $1::text)
+SELECT 
+    id, author, title, description, museum, image_url, image_preview_url, year, source, created_at, updated_at
+FROM 
+    museumhub.artworks
+WHERE 
+    search_vector @@ websearch_to_tsquery('simple', $1::text)
+ORDER BY 
+    id
+LIMIT $3::int
+OFFSET $2::int
 `
 
-func (q *Queries) SearchArtworks(ctx context.Context, searchTerm string) ([]MuseumhubArtwork, error) {
-	rows, err := q.db.Query(ctx, searchArtworks, searchTerm)
+type SearchArtworksParams struct {
+	SearchTerm string `json:"search_term"`
+	PageOffset int32  `json:"page_offset"`
+	PageLimit  int32  `json:"page_limit"`
+}
+
+func (q *Queries) SearchArtworks(ctx context.Context, arg SearchArtworksParams) ([]MuseumhubArtwork, error) {
+	rows, err := q.db.Query(ctx, searchArtworks, arg.SearchTerm, arg.PageOffset, arg.PageLimit)
 	if err != nil {
 		return nil, err
 	}
