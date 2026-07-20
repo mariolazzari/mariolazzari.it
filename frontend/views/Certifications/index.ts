@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn Go",
+    date: "2026-07-20T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/6379ab81-0a32-47eb-bf2d-56ded8f095fc",
+    imagePath: "/certifications/bd-learn-go.png",
+    tags: ["go"],
+  },
+  {
     title: "Redis: complete developer guide",
     date: "2026-07-12T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-0972094d-6616-4445-8fe9-28fbe9c8cbc1",

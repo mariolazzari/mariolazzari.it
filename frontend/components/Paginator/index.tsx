@@ -1,11 +1,9 @@
-import { Field, FieldLabel } from "@/components/ui/field";
+import { Field } from "@/components/ui/field";
 import {
   Pagination,
   PaginationContent,
   PaginationItem,
   PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
 } from "@/components/ui/pagination";
 import {
   Select,
@@ -38,6 +36,7 @@ export function Paginator({
   disablePrev,
   total,
 }: Props) {
+  // Safe handlers to block clicks when disabled
   const handlePrev = (e: React.MouseEvent) => {
     if (disablePrev) {
       e.preventDefault();
@@ -55,8 +54,8 @@ export function Paginator({
   };
 
   return (
-    <div className="flex items-center justify-between gap-4">
-      <Field orientation="horizontal" className="w-10">
+    <div className="flex items-center justify-between gap-4 w-full">
+      <Field orientation="horizontal" className="flex items-center gap-2">
         <Select value={value} onValueChange={onValueChange}>
           <SelectTrigger className="w-20" id="select-rows-per-page">
             <SelectValue />
@@ -71,36 +70,44 @@ export function Paginator({
             </SelectGroup>
           </SelectContent>
         </Select>
-        / <span className="text-primary font-semibold">{total}</span>
+        <span className="text-sm text-muted-foreground">
+          / <span className="text-primary font-semibold">{total}</span>
+        </span>
       </Field>
 
       <Pagination className="mx-0 w-auto">
         <PaginationContent className="gap-1">
-          {!disablePrev && (
-            <PaginationItem>
-              <PaginationLink
-                size="icon"
-                onClick={onPrevClick}
-                className="cursor-pointer"
-                aria-label="Go to previous page" // Importante per l'accessibilità!
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </PaginationLink>
-            </PaginationItem>
-          )}
+          <PaginationItem>
+            <PaginationLink
+              size="icon"
+              onClick={handlePrev}
+              aria-label="Go to previous page"
+              aria-disabled={disablePrev}
+              className={
+                disablePrev
+                  ? "pointer-events-none opacity-40 text-muted-foreground"
+                  : "cursor-pointer"
+              }
+            >
+              <ChevronLeft size={16} />
+            </PaginationLink>
+          </PaginationItem>
 
-          {!disableNext && (
-            <PaginationItem>
-              <PaginationLink
-                size="icon"
-                onClick={onNextClick}
-                className="cursor-pointer"
-                aria-label="Go to next page"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </PaginationLink>
-            </PaginationItem>
-          )}
+          <PaginationItem>
+            <PaginationLink
+              size="icon"
+              onClick={handleNext}
+              aria-label="Go to next page"
+              aria-disabled={disableNext}
+              className={
+                disableNext
+                  ? "pointer-events-none opacity-40 text-muted-foreground"
+                  : "cursor-pointer"
+              }
+            >
+              <ChevronRight size={16} />
+            </PaginationLink>
+          </PaginationItem>
         </PaginationContent>
       </Pagination>
     </div>
