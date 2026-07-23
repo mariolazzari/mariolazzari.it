@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn HTTP Clients in Go",
+    date: "2026-07-23T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/85a36378-4ff1-49ca-9ee9-f585df510cb7",
+    imagePath: "/certifications/bd-learn-http-clients-go.png",
+    tags: ["go"],
+  },
+  {
     title: "Learn Go",
     date: "2026-07-20T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/6379ab81-0a32-47eb-bf2d-56ded8f095fc",
