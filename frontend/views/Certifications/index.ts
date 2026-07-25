@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "HTMX: practical guide",
+    date: "2026-07-25T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-e5a52ee5-72ab-4413-92d4-8234db1318c6/",
+    imagePath: "/certifications/htmx.png",
+    tags: ["htmx", "html", "js"],
+  },
+  {
     title: "Learn HTTP Clients in Go",
     date: "2026-07-23T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/85a36378-4ff1-49ca-9ee9-f585df510cb7",
