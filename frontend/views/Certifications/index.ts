@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn Linux",
+    date: "2026-07-29T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/70a06cb5-249b-4d1a-915d-1a693b2f201d",
+    imagePath: "/certifications/bd-learn-linux.png",
+    tags: ["linux"],
+  },
+  {
     title: "HTMX: practical guide",
     date: "2026-07-25T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-e5a52ee5-72ab-4413-92d4-8234db1318c6/",
