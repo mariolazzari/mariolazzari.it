@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn TypeScript",
+    date: "2026-08-10T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/396e9667-59da-48a6-b824-7fa0d04ca92d",
+    imagePath: "/certifications/bd-learn-ts.png",
+    tags: ["ts", "js", "nodejs"],
+  },
+  {
     title: "Learn JavaScript",
     date: "2026-08-03T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/6e264d64-f8f5-43ea-a517-8cc97a88731d",
