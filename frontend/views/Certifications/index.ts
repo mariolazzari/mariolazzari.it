@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Postgres complete guide",
+    date: "2026-08-21T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-3c4aa6f6-e639-47e6-8061-787e1d79eb94/",
+    imagePath: "/certifications/complete-postgres.png",
+    tags: ["postgres", "js", "nodejs"],
+  },
+  {
     title: "Learn TypeScript",
     date: "2026-08-10T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/396e9667-59da-48a6-b824-7fa0d04ca92d",
