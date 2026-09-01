@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "BookBot in Python",
+    date: "2026-09-01T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/4331154f-95be-4bf4-87a4-9abdd0a8c0aa",
+    imagePath: "/certifications/bd-bookbot.png",
+    tags: ["python"],
+  },
+  {
     title: "Introduction to Python",
     date: "2026-08-31T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/a2e91cbc-6e39-4dab-9e39-0c63d9ce1b3e",
