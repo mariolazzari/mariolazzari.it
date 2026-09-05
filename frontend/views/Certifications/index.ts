@@ -8,7 +8,7 @@ export const certifications: Certification[] = [
   {
     title: "Learn Git",
     date: "2026-09-05T08:00:00.000Z",
-    url: "",
+    url: "https://www.boot.dev/certificates/81b6e5d5-9cc6-417a-9050-470d8aadf6fd",
     imagePath: "/certifications/bd-git.png",
     tags: ["git", "linux"],
   },
