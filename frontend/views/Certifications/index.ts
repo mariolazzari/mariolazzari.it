@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn Git",
+    date: "2026-09-05T08:00:00.000Z",
+    url: "",
+    imagePath: "/certifications/bd-git.png",
+    tags: ["git", "linux"],
+  },
+  {
     title: "BookBot in Python",
     date: "2026-09-01T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/4331154f-95be-4bf4-87a4-9abdd0a8c0aa",
