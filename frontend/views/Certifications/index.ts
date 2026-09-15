@@ -10,7 +10,7 @@ export const certifications: Certification[] = [
     date: "2026-09-15T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/4bf99e75-9763-4e03-8752-530fd5493d36",
     imagePath: "/certifications/bd-sql.png",
-    tags: ["sql"],
+    tags: ["postgres"],
   },
   {
     title: "First personal project",
