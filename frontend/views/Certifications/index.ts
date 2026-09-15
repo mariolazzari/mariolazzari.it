@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn SQL",
+    date: "2026-09-15T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/4bf99e75-9763-4e03-8752-530fd5493d36",
+    imagePath: "/certifications/bd-sql.png",
+    tags: ["sql"],
+  },
+  {
     title: "First personal project",
     date: "2026-09-10T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/79b7c0c9-7bbe-49e6-aa99-c45044d13b1b",
