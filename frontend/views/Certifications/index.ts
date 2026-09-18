@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn Docker",
+    date: "2026-09-18T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/8bfa2ea7-5a72-40e5-83ab-abfdd5c1b3ca",
+    imagePath: "/certifications/bd-docker.png",
+    tags: ["docker", "go", "python"],
+  },
+  {
     title: "Learn SQL",
     date: "2026-09-15T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/4bf99e75-9763-4e03-8752-530fd5493d36",
