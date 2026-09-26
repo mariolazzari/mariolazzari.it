@@ -6,6 +6,22 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Capstone project",
+    date: "2026-09-26T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/ae0ff3bc-25ea-416a-ba1d-7e7ec98b5f29",
+    imagePath: "/certifications/bd-capstone.png",
+    tags: [
+      "docker",
+      "go",
+      "nodejs",
+      "react",
+      "nextjs",
+      "linux",
+      "postgres",
+      "redis",
+    ],
+  },
+  {
     title: "Learn Docker",
     date: "2026-09-18T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/8bfa2ea7-5a72-40e5-83ab-abfdd5c1b3ca",
