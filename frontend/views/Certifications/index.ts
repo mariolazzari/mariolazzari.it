@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Build a Pokedex in Go",
+    date: "2026-09-30T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/676d1024-8643-45b0-bfbb-8ea82b98c793",
+    imagePath: "/certifications/bd-pokedex.png",
+    tags: ["go"],
+  },
+  {
     title: "Capstone project",
     date: "2026-09-26T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/ae0ff3bc-25ea-416a-ba1d-7e7ec98b5f29",
