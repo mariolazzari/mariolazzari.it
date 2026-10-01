@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Complete Rust developer guide",
+    date: "2026-10-01T08:00:00.000Z",
+    url: "https://www.udemy.com/certificate/UC-277279e1-4f91-4b54-ab83-ee9ff2f65b6c/",
+    imagePath: "/certifications/rust-complete-guide.png",
+    tags: ["rust"],
+  },
+  {
     title: "Build a Pokedex in Go",
     date: "2026-09-30T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/676d1024-8643-45b0-bfbb-8ea82b98c793",
