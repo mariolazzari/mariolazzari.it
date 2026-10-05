@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn OOP in Python",
+    date: "2026-10-05T08:00:00.000Z",
+    url: "",
+    imagePath: "/certifications/bd-oop-python.png",
+    tags: ["python"],
+  },
+  {
     title: "Complete Rust developer guide",
     date: "2026-10-01T08:00:00.000Z",
     url: "https://www.udemy.com/certificate/UC-277279e1-4f91-4b54-ab83-ee9ff2f65b6c/",
