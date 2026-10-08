@@ -6,9 +6,16 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Asteroids in Python",
+    date: "2026-10-08T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/8ded820e-53ff-4ac4-806e-c8e5e648ac4a",
+    imagePath: "/certifications/bd-asteroids.png",
+    tags: ["python"],
+  },
+  {
     title: "Learn OOP in Python",
     date: "2026-10-05T08:00:00.000Z",
-    url: "",
+    url: "https://www.boot.dev/certificates/320a9fb5-1b3e-439f-9f93-fd3ab2a627bd",
     imagePath: "/certifications/bd-oop-python.png",
     tags: ["python"],
   },
