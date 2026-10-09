@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Blog aggregator in Go",
+    date: "2026-10-08T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/bbdf00f3-f979-4d49-98ae-e553cbfcb5b7",
+    imagePath: "/certifications/bd-gator.png",
+    tags: ["go", "postgres", "docker"],
+  },
+  {
     title: "Asteroids in Python",
     date: "2026-10-08T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/8ded820e-53ff-4ac4-806e-c8e5e648ac4a",
