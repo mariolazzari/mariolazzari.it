@@ -6,8 +6,15 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn HTTP server in Go",
+    date: "2026-10-12T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/9fc725aa-0d2a-4f84-8c8e-ac464ed50c4f",
+    imagePath: "/certifications/bd-go-http-server.png",
+    tags: ["go", "postgres", "docker"],
+  },
+  {
     title: "Blog aggregator in Go",
-    date: "2026-10-08T08:00:00.000Z",
+    date: "2026-10-10T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/bbdf00f3-f979-4d49-98ae-e553cbfcb5b7",
     imagePath: "/certifications/bd-gator.png",
     tags: ["go", "postgres", "docker"],
