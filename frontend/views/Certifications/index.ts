@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn funcitonal programmin in Python",
+    date: "2026-10-15T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/60955c00-5280-4810-b9db-fdf227531e1d",
+    imagePath: "/certifications/bd-python-fx.png",
+    tags: ["python"],
+  },
+  {
     title: "Learn HTTP server in Go",
     date: "2026-10-12T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/9fc725aa-0d2a-4f84-8c8e-ac464ed50c4f",
