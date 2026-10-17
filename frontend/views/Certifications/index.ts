@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Build an AI agent in Python",
+    date: "2026-10-16T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/26cbb718-f23b-4052-a6e3-b0c03fdb9f31",
+    imagePath: "/certifications/bd-python-ai.png",
+    tags: ["python"],
+  },
+  {
     title: "Learn funcitonal programmin in Python",
     date: "2026-10-15T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/60955c00-5280-4810-b9db-fdf227531e1d",
