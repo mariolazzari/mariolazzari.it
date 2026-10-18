@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Build a web scraper in Go",
+    date: "2026-10-18T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/ee467c8c-7f5c-4131-aa99-c2923ad3d44f",
+    imagePath: "/certifications/bd-go-scraper.png",
+    tags: ["go"],
+  },
+  {
     title: "Build an AI agent in Python",
     date: "2026-10-16T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/26cbb718-f23b-4052-a6e3-b0c03fdb9f31",
