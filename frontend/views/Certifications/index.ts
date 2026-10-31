@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Find a programming job",
+    date: "2026-10-31T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/acf92b11-d390-4aeb-a717-2ea24eef336e",
+    imagePath: "/certifications/bd-job.png",
+    tags: ["go", "react", "postgres", "docker"],
+  },
+  {
     title: "AI coding with OpenCode",
     date: "2026-10-28T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/b09d2600-f384-48b0-8c1f-690ab9385294",
