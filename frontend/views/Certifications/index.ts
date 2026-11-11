@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Data structures & algorithms in Python",
+    date: "2026-11-11T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/fa0e5866-0956-4488-8eb2-4950952e8ba3",
+    imagePath: "/certifications/bd-data-struct.png",
+    tags: ["python"],
+  },
+  {
     title: "Find a programming job",
     date: "2026-10-31T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/acf92b11-d390-4aeb-a717-2ea24eef336e",
