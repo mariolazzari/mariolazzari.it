@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Static site generator in Python",
+    date: "2026-11-14T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/e1048fe9-6045-41d8-98cb-39a09c2a8959",
+    imagePath: "/certifications/bd-static-gen.png",
+    tags: ["python"],
+  },
+  {
     title: "Data structures & algorithms in Python",
     date: "2026-11-11T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/fa0e5866-0956-4488-8eb2-4950952e8ba3",
