@@ -6,6 +6,13 @@ export * from "./SearchResults";
 
 export const certifications: Certification[] = [
   {
+    title: "Learn memory management in C",
+    date: "2026-11-20T08:00:00.000Z",
+    url: "https://www.boot.dev/certificates/95080028-ba1e-402b-b534-34ff3eca88d9",
+    imagePath: "/certifications/bd-learn-mem-c.png",
+    tags: ["c"],
+  },
+  {
     title: "Static site generator in Python",
     date: "2026-11-14T08:00:00.000Z",
     url: "https://www.boot.dev/certificates/e1048fe9-6045-41d8-98cb-39a09c2a8959",
